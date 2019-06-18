@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.OrderPurchaseBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.OrderPurchaseBean">
+    <id column="order_purchase_id" jdbcType="VARCHAR" property="orderPurchaseId" />
+    <result column="order_purchase_title" jdbcType="VARCHAR" property="orderPurchaseTitle" />
+    <result column="order_purchase_time" jdbcType="TIMESTAMP" property="orderPurchaseTime" />
+    <result column="supplier_id" jdbcType="VARCHAR" property="supplierId" />
+    <result column="order_purchase_money" jdbcType="VARCHAR" property="orderPurchaseMoney" />
+    <result column="order_purchase_number" jdbcType="VARCHAR" property="orderPurchaseNumber" />
+    <result column="order_purchase_state" jdbcType="VARCHAR" property="orderPurchaseState" />
+    <result column="order_purchase_business_time" jdbcType="TIMESTAMP" property="orderPurchaseBusinessTime" />
+    <result column="order_purchase_business_address" jdbcType="VARCHAR" property="orderPurchaseBusinessAddress" />
+    <result column="order_purchase_business_type" jdbcType="VARCHAR" property="orderPurchaseBusinessType" />
+    <result column="order_purchase_person" jdbcType="VARCHAR" property="orderPurchasePerson" />
+    <result column="order_purchase_info" jdbcType="VARCHAR" property="orderPurchaseInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="order_purchase_update_time" jdbcType="TIMESTAMP" property="orderPurchaseUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    order_purchase_id, order_purchase_title, order_purchase_time, supplier_id, order_purchase_money, 
+    order_purchase_number, order_purchase_state, order_purchase_business_time, order_purchase_business_address, 
+    order_purchase_business_type, order_purchase_person, order_purchase_info, company_id, 
+    order_purchase_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from order_purchase
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from order_purchase
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    insert into order_purchase (order_purchase_id, order_purchase_title, 
+      order_purchase_time, supplier_id, order_purchase_money, 
+      order_purchase_number, order_purchase_state, 
+      order_purchase_business_time, order_purchase_business_address, 
+      order_purchase_business_type, order_purchase_person, 
+      order_purchase_info, company_id, order_purchase_update_time
+      )
+    values (#{orderPurchaseId,jdbcType=VARCHAR}, #{orderPurchaseTitle,jdbcType=VARCHAR}, 
+      #{orderPurchaseTime,jdbcType=TIMESTAMP}, #{supplierId,jdbcType=VARCHAR}, #{orderPurchaseMoney,jdbcType=VARCHAR}, 
+      #{orderPurchaseNumber,jdbcType=VARCHAR}, #{orderPurchaseState,jdbcType=VARCHAR}, 
+      #{orderPurchaseBusinessTime,jdbcType=TIMESTAMP}, #{orderPurchaseBusinessAddress,jdbcType=VARCHAR}, 
+      #{orderPurchaseBusinessType,jdbcType=VARCHAR}, #{orderPurchasePerson,jdbcType=VARCHAR}, 
+      #{orderPurchaseInfo,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    insert into order_purchase
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderPurchaseId != null">
+        order_purchase_id,
+      </if>
+      <if test="orderPurchaseTitle != null">
+        order_purchase_title,
+      </if>
+      <if test="orderPurchaseTime != null">
+        order_purchase_time,
+      </if>
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="orderPurchaseMoney != null">
+        order_purchase_money,
+      </if>
+      <if test="orderPurchaseNumber != null">
+        order_purchase_number,
+      </if>
+      <if test="orderPurchaseState != null">
+        order_purchase_state,
+      </if>
+      <if test="orderPurchaseBusinessTime != null">
+        order_purchase_business_time,
+      </if>
+      <if test="orderPurchaseBusinessAddress != null">
+        order_purchase_business_address,
+      </if>
+      <if test="orderPurchaseBusinessType != null">
+        order_purchase_business_type,
+      </if>
+      <if test="orderPurchasePerson != null">
+        order_purchase_person,
+      </if>
+      <if test="orderPurchaseInfo != null">
+        order_purchase_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="orderPurchaseUpdateTime != null">
+        order_purchase_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderPurchaseId != null">
+        #{orderPurchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseTitle != null">
+        #{orderPurchaseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseTime != null">
+        #{orderPurchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseMoney != null">
+        #{orderPurchaseMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseNumber != null">
+        #{orderPurchaseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseState != null">
+        #{orderPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessTime != null">
+        #{orderPurchaseBusinessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderPurchaseBusinessAddress != null">
+        #{orderPurchaseBusinessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessType != null">
+        #{orderPurchaseBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchasePerson != null">
+        #{orderPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseInfo != null">
+        #{orderPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseUpdateTime != null">
+        #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    update order_purchase
+    <set>
+      <if test="orderPurchaseTitle != null">
+        order_purchase_title = #{orderPurchaseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseTime != null">
+        order_purchase_time = #{orderPurchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseMoney != null">
+        order_purchase_money = #{orderPurchaseMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseNumber != null">
+        order_purchase_number = #{orderPurchaseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseState != null">
+        order_purchase_state = #{orderPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessTime != null">
+        order_purchase_business_time = #{orderPurchaseBusinessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderPurchaseBusinessAddress != null">
+        order_purchase_business_address = #{orderPurchaseBusinessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessType != null">
+        order_purchase_business_type = #{orderPurchaseBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchasePerson != null">
+        order_purchase_person = #{orderPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseInfo != null">
+        order_purchase_info = #{orderPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseUpdateTime != null">
+        order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    update order_purchase
+    set order_purchase_title = #{orderPurchaseTitle,jdbcType=VARCHAR},
+      order_purchase_time = #{orderPurchaseTime,jdbcType=TIMESTAMP},
+      supplier_id = #{supplierId,jdbcType=VARCHAR},
+      order_purchase_money = #{orderPurchaseMoney,jdbcType=VARCHAR},
+      order_purchase_number = #{orderPurchaseNumber,jdbcType=VARCHAR},
+      order_purchase_state = #{orderPurchaseState,jdbcType=VARCHAR},
+      order_purchase_business_time = #{orderPurchaseBusinessTime,jdbcType=TIMESTAMP},
+      order_purchase_business_address = #{orderPurchaseBusinessAddress,jdbcType=VARCHAR},
+      order_purchase_business_type = #{orderPurchaseBusinessType,jdbcType=VARCHAR},
+      order_purchase_person = #{orderPurchasePerson,jdbcType=VARCHAR},
+      order_purchase_info = #{orderPurchaseInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP}
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

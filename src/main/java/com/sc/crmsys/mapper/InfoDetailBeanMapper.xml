@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.InfoDetailBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.InfoDetailBean">
+    <id column="info_detail_id" jdbcType="VARCHAR" property="infoDetailId" />
+    <result column="info_id" jdbcType="VARCHAR" property="infoId" />
+    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="info_detail_state" jdbcType="VARCHAR" property="infoDetailState" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="info_detail_update_time" jdbcType="TIMESTAMP" property="infoDetailUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    info_detail_id, info_id, employ_id, info_detail_state, company_id, info_detail_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from info_detail
+    where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from info_detail
+    where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.InfoDetailBean">
+    insert into info_detail (info_detail_id, info_id, employ_id, 
+      info_detail_state, company_id, info_detail_update_time
+      )
+    values (#{infoDetailId,jdbcType=VARCHAR}, #{infoId,jdbcType=VARCHAR}, #{employId,jdbcType=VARCHAR}, 
+      #{infoDetailState,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{infoDetailUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.InfoDetailBean">
+    insert into info_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="infoDetailId != null">
+        info_detail_id,
+      </if>
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="employId != null">
+        employ_id,
+      </if>
+      <if test="infoDetailState != null">
+        info_detail_state,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="infoDetailUpdateTime != null">
+        info_detail_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="infoDetailId != null">
+        #{infoDetailId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoId != null">
+        #{infoId,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDetailState != null">
+        #{infoDetailState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDetailUpdateTime != null">
+        #{infoDetailUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.InfoDetailBean">
+    update info_detail
+    <set>
+      <if test="infoId != null">
+        info_id = #{infoId,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        employ_id = #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDetailState != null">
+        info_detail_state = #{infoDetailState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDetailUpdateTime != null">
+        info_detail_update_time = #{infoDetailUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.InfoDetailBean">
+    update info_detail
+    set info_id = #{infoId,jdbcType=VARCHAR},
+      employ_id = #{employId,jdbcType=VARCHAR},
+      info_detail_state = #{infoDetailState,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      info_detail_update_time = #{infoDetailUpdateTime,jdbcType=TIMESTAMP}
+    where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
+  </update>
+</mapper>

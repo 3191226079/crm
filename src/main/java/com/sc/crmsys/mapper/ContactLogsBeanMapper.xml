@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.ContactLogsBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.ContactLogsBean">
+    <id column="contact_logs_id" jdbcType="VARCHAR" property="contactLogsId" />
+    <result column="contact_logs_title" jdbcType="VARCHAR" property="contactLogsTitle" />
+    <result column="contact_logs_time" jdbcType="TIMESTAMP" property="contactLogsTime" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="contact_logs_content" jdbcType="VARCHAR" property="contactLogsContent" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="contact_logs_last_time" jdbcType="TIMESTAMP" property="contactLogsLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contact_logs_id, contact_logs_title, contact_logs_time, customer_id, contact_logs_content, 
+    company_id, contact_logs_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contact_logs
+    where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contact_logs
+    where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.ContactLogsBean">
+    insert into contact_logs (contact_logs_id, contact_logs_title, 
+      contact_logs_time, customer_id, contact_logs_content, 
+      company_id, contact_logs_last_time)
+    values (#{contactLogsId,jdbcType=VARCHAR}, #{contactLogsTitle,jdbcType=VARCHAR}, 
+      #{contactLogsTime,jdbcType=TIMESTAMP}, #{customerId,jdbcType=VARCHAR}, #{contactLogsContent,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{contactLogsLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.ContactLogsBean">
+    insert into contact_logs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contactLogsId != null">
+        contact_logs_id,
+      </if>
+      <if test="contactLogsTitle != null">
+        contact_logs_title,
+      </if>
+      <if test="contactLogsTime != null">
+        contact_logs_time,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="contactLogsContent != null">
+        contact_logs_content,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="contactLogsLastTime != null">
+        contact_logs_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contactLogsId != null">
+        #{contactLogsId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsTitle != null">
+        #{contactLogsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsTime != null">
+        #{contactLogsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsContent != null">
+        #{contactLogsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsLastTime != null">
+        #{contactLogsLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.ContactLogsBean">
+    update contact_logs
+    <set>
+      <if test="contactLogsTitle != null">
+        contact_logs_title = #{contactLogsTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsTime != null">
+        contact_logs_time = #{contactLogsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsContent != null">
+        contact_logs_content = #{contactLogsContent,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLogsLastTime != null">
+        contact_logs_last_time = #{contactLogsLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.ContactLogsBean">
+    update contact_logs
+    set contact_logs_title = #{contactLogsTitle,jdbcType=VARCHAR},
+      contact_logs_time = #{contactLogsTime,jdbcType=TIMESTAMP},
+      customer_id = #{customerId,jdbcType=VARCHAR},
+      contact_logs_content = #{contactLogsContent,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      contact_logs_last_time = #{contactLogsLastTime,jdbcType=TIMESTAMP}
+    where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

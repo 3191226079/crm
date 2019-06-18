@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.CustomerLoseBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.CustomerLoseBean">
+    <id column="customer_lose_id" jdbcType="VARCHAR" property="customerLoseId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_lose_operation" jdbcType="VARCHAR" property="customerLoseOperation" />
+    <result column="customer_lose_promethods" jdbcType="VARCHAR" property="customerLosePromethods" />
+    <result column="customer_lose_sate" jdbcType="VARCHAR" property="customerLoseSate" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="customer_lose_last_time" jdbcType="TIMESTAMP" property="customerLoseLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_lose_id, customer_id, customer_lose_operation, customer_lose_promethods, 
+    customer_lose_sate, company_id, customer_lose_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer_lose
+    where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customer_lose
+    where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.CustomerLoseBean">
+    insert into customer_lose (customer_lose_id, customer_id, customer_lose_operation, 
+      customer_lose_promethods, customer_lose_sate, 
+      company_id, customer_lose_last_time)
+    values (#{customerLoseId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{customerLoseOperation,jdbcType=VARCHAR}, 
+      #{customerLosePromethods,jdbcType=VARCHAR}, #{customerLoseSate,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{customerLoseLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.CustomerLoseBean">
+    insert into customer_lose
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerLoseId != null">
+        customer_lose_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerLoseOperation != null">
+        customer_lose_operation,
+      </if>
+      <if test="customerLosePromethods != null">
+        customer_lose_promethods,
+      </if>
+      <if test="customerLoseSate != null">
+        customer_lose_sate,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="customerLoseLastTime != null">
+        customer_lose_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerLoseId != null">
+        #{customerLoseId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseOperation != null">
+        #{customerLoseOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLosePromethods != null">
+        #{customerLosePromethods,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseSate != null">
+        #{customerLoseSate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseLastTime != null">
+        #{customerLoseLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CustomerLoseBean">
+    update customer_lose
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseOperation != null">
+        customer_lose_operation = #{customerLoseOperation,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLosePromethods != null">
+        customer_lose_promethods = #{customerLosePromethods,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseSate != null">
+        customer_lose_sate = #{customerLoseSate,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerLoseLastTime != null">
+        customer_lose_last_time = #{customerLoseLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.CustomerLoseBean">
+    update customer_lose
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      customer_lose_operation = #{customerLoseOperation,jdbcType=VARCHAR},
+      customer_lose_promethods = #{customerLosePromethods,jdbcType=VARCHAR},
+      customer_lose_sate = #{customerLoseSate,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      customer_lose_last_time = #{customerLoseLastTime,jdbcType=TIMESTAMP}
+    where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

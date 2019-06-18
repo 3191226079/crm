@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.PermissionSubfieldBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.PermissionSubfieldBean">
+    <id column="subfield_number" jdbcType="VARCHAR" property="subfieldNumber" />
+    <result column="subfield_name" jdbcType="VARCHAR" property="subfieldName" />
+    <result column="subfield_remarks" jdbcType="VARCHAR" property="subfieldRemarks" />
+    <result column="subfield_last_time" jdbcType="TIMESTAMP" property="subfieldLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    subfield_number, subfield_name, subfield_remarks, subfield_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission_subfield
+    where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_subfield
+    where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.PermissionSubfieldBean">
+    insert into permission_subfield (subfield_number, subfield_name, subfield_remarks, 
+      subfield_last_time)
+    values (#{subfieldNumber,jdbcType=VARCHAR}, #{subfieldName,jdbcType=VARCHAR}, #{subfieldRemarks,jdbcType=VARCHAR}, 
+      #{subfieldLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.PermissionSubfieldBean">
+    insert into permission_subfield
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="subfieldNumber != null">
+        subfield_number,
+      </if>
+      <if test="subfieldName != null">
+        subfield_name,
+      </if>
+      <if test="subfieldRemarks != null">
+        subfield_remarks,
+      </if>
+      <if test="subfieldLastTime != null">
+        subfield_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="subfieldNumber != null">
+        #{subfieldNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldName != null">
+        #{subfieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldRemarks != null">
+        #{subfieldRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldLastTime != null">
+        #{subfieldLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.PermissionSubfieldBean">
+    update permission_subfield
+    <set>
+      <if test="subfieldName != null">
+        subfield_name = #{subfieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldRemarks != null">
+        subfield_remarks = #{subfieldRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldLastTime != null">
+        subfield_last_time = #{subfieldLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.PermissionSubfieldBean">
+    update permission_subfield
+    set subfield_name = #{subfieldName,jdbcType=VARCHAR},
+      subfield_remarks = #{subfieldRemarks,jdbcType=VARCHAR},
+      subfield_last_time = #{subfieldLastTime,jdbcType=TIMESTAMP}
+    where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

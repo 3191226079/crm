@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.UserRoleBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.UserRoleBean">
+    <id column="user_role_id" jdbcType="VARCHAR" property="userRoleId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="role_number" jdbcType="VARCHAR" property="roleNumber" />
+    <result column="user_role_person" jdbcType="VARCHAR" property="userRolePerson" />
+    <result column="user_role_update_time" jdbcType="TIMESTAMP" property="userRoleUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_role_id, user_id, role_number, user_role_person, user_role_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where user_role_id = #{userRoleId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_role
+    where user_role_id = #{userRoleId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.UserRoleBean">
+    insert into user_role (user_role_id, user_id, role_number, 
+      user_role_person, user_role_update_time)
+    values (#{userRoleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{roleNumber,jdbcType=VARCHAR}, 
+      #{userRolePerson,jdbcType=VARCHAR}, #{userRoleUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.UserRoleBean">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        user_role_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="roleNumber != null">
+        role_number,
+      </if>
+      <if test="userRolePerson != null">
+        user_role_person,
+      </if>
+      <if test="userRoleUpdateTime != null">
+        user_role_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userRoleId != null">
+        #{userRoleId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null">
+        #{roleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userRolePerson != null">
+        #{userRolePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="userRoleUpdateTime != null">
+        #{userRoleUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.UserRoleBean">
+    update user_role
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null">
+        role_number = #{roleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userRolePerson != null">
+        user_role_person = #{userRolePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="userRoleUpdateTime != null">
+        user_role_update_time = #{userRoleUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_role_id = #{userRoleId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.UserRoleBean">
+    update user_role
+    set user_id = #{userId,jdbcType=VARCHAR},
+      role_number = #{roleNumber,jdbcType=VARCHAR},
+      user_role_person = #{userRolePerson,jdbcType=VARCHAR},
+      user_role_update_time = #{userRoleUpdateTime,jdbcType=TIMESTAMP}
+    where user_role_id = #{userRoleId,jdbcType=VARCHAR}
+  </update>
+</mapper>

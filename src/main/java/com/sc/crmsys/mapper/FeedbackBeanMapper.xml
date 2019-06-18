@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.FeedbackBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.FeedbackBean">
+    <id column="feedback_id" jdbcType="VARCHAR" property="feedbackId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="feedback_state" jdbcType="VARCHAR" property="feedbackState" />
+    <result column="feedback_type" jdbcType="VARCHAR" property="feedbackType" />
+    <result column="feedback_time" jdbcType="TIMESTAMP" property="feedbackTime" />
+    <result column="feedback_reason" jdbcType="VARCHAR" property="feedbackReason" />
+    <result column="feedback_charge" jdbcType="VARCHAR" property="feedbackCharge" />
+    <result column="feedback_title" jdbcType="VARCHAR" property="feedbackTitle" />
+    <result column="feedback_content" jdbcType="VARCHAR" property="feedbackContent" />
+    <result column="feedback_analyse" jdbcType="VARCHAR" property="feedbackAnalyse" />
+    <result column="feedback_last_time" jdbcType="TIMESTAMP" property="feedbackLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    feedback_id, customer_id, company_id, feedback_state, feedback_type, feedback_time, 
+    feedback_reason, feedback_charge, feedback_title, feedback_content, feedback_analyse, 
+    feedback_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from feedback
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from feedback
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.FeedbackBean">
+    insert into feedback (feedback_id, customer_id, company_id, 
+      feedback_state, feedback_type, feedback_time, 
+      feedback_reason, feedback_charge, feedback_title, 
+      feedback_content, feedback_analyse, feedback_last_time
+      )
+    values (#{feedbackId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{feedbackState,jdbcType=VARCHAR}, #{feedbackType,jdbcType=VARCHAR}, #{feedbackTime,jdbcType=TIMESTAMP}, 
+      #{feedbackReason,jdbcType=VARCHAR}, #{feedbackCharge,jdbcType=VARCHAR}, #{feedbackTitle,jdbcType=VARCHAR}, 
+      #{feedbackContent,jdbcType=VARCHAR}, #{feedbackAnalyse,jdbcType=VARCHAR}, #{feedbackLastTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.FeedbackBean">
+    insert into feedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="feedbackId != null">
+        feedback_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="feedbackState != null">
+        feedback_state,
+      </if>
+      <if test="feedbackType != null">
+        feedback_type,
+      </if>
+      <if test="feedbackTime != null">
+        feedback_time,
+      </if>
+      <if test="feedbackReason != null">
+        feedback_reason,
+      </if>
+      <if test="feedbackCharge != null">
+        feedback_charge,
+      </if>
+      <if test="feedbackTitle != null">
+        feedback_title,
+      </if>
+      <if test="feedbackContent != null">
+        feedback_content,
+      </if>
+      <if test="feedbackAnalyse != null">
+        feedback_analyse,
+      </if>
+      <if test="feedbackLastTime != null">
+        feedback_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="feedbackId != null">
+        #{feedbackId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackState != null">
+        #{feedbackState,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackType != null">
+        #{feedbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null">
+        #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackReason != null">
+        #{feedbackReason,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackCharge != null">
+        #{feedbackCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTitle != null">
+        #{feedbackTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackContent != null">
+        #{feedbackContent,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackAnalyse != null">
+        #{feedbackAnalyse,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackLastTime != null">
+        #{feedbackLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.FeedbackBean">
+    update feedback
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackState != null">
+        feedback_state = #{feedbackState,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackType != null">
+        feedback_type = #{feedbackType,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null">
+        feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="feedbackReason != null">
+        feedback_reason = #{feedbackReason,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackCharge != null">
+        feedback_charge = #{feedbackCharge,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTitle != null">
+        feedback_title = #{feedbackTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackContent != null">
+        feedback_content = #{feedbackContent,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackAnalyse != null">
+        feedback_analyse = #{feedbackAnalyse,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackLastTime != null">
+        feedback_last_time = #{feedbackLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.FeedbackBean">
+    update feedback
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      feedback_state = #{feedbackState,jdbcType=VARCHAR},
+      feedback_type = #{feedbackType,jdbcType=VARCHAR},
+      feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      feedback_reason = #{feedbackReason,jdbcType=VARCHAR},
+      feedback_charge = #{feedbackCharge,jdbcType=VARCHAR},
+      feedback_title = #{feedbackTitle,jdbcType=VARCHAR},
+      feedback_content = #{feedbackContent,jdbcType=VARCHAR},
+      feedback_analyse = #{feedbackAnalyse,jdbcType=VARCHAR},
+      feedback_last_time = #{feedbackLastTime,jdbcType=TIMESTAMP}
+    where feedback_id = #{feedbackId,jdbcType=VARCHAR}
+  </update>
+</mapper>

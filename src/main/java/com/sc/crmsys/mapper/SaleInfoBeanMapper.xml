@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SaleInfoBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SaleInfoBean">
+    <id column="saleinfo_id" jdbcType="VARCHAR" property="saleinfoId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="saleout_id" jdbcType="VARCHAR" property="saleoutId" />
+    <result column="goods_id" jdbcType="VARCHAR" property="goodsId" />
+    <result column="goods_num" jdbcType="VARCHAR" property="goodsNum" />
+    <result column="goods_price" jdbcType="VARCHAR" property="goodsPrice" />
+    <result column="saleinfo_remarks" jdbcType="VARCHAR" property="saleinfoRemarks" />
+    <result column="saleinfo_last_time" jdbcType="TIMESTAMP" property="saleinfoLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    saleinfo_id, company_id, saleout_id, goods_id, goods_num, goods_price, saleinfo_remarks, 
+    saleinfo_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from saleinfo
+    where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from saleinfo
+    where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SaleInfoBean">
+    insert into saleinfo (saleinfo_id, company_id, saleout_id, 
+      goods_id, goods_num, goods_price, 
+      saleinfo_remarks, saleinfo_last_time)
+    values (#{saleinfoId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{saleoutId,jdbcType=VARCHAR}, 
+      #{goodsId,jdbcType=VARCHAR}, #{goodsNum,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=VARCHAR}, 
+      #{saleinfoRemarks,jdbcType=VARCHAR}, #{saleinfoLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SaleInfoBean">
+    insert into saleinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleinfoId != null">
+        saleinfo_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="saleoutId != null">
+        saleout_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsNum != null">
+        goods_num,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="saleinfoRemarks != null">
+        saleinfo_remarks,
+      </if>
+      <if test="saleinfoLastTime != null">
+        saleinfo_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleinfoId != null">
+        #{saleinfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutId != null">
+        #{saleoutId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null">
+        #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="saleinfoRemarks != null">
+        #{saleinfoRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="saleinfoLastTime != null">
+        #{saleinfoLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SaleInfoBean">
+    update saleinfo
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutId != null">
+        saleout_id = #{saleoutId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null">
+        goods_num = #{goodsNum,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="saleinfoRemarks != null">
+        saleinfo_remarks = #{saleinfoRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="saleinfoLastTime != null">
+        saleinfo_last_time = #{saleinfoLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SaleInfoBean">
+    update saleinfo
+    set company_id = #{companyId,jdbcType=VARCHAR},
+      saleout_id = #{saleoutId,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=VARCHAR},
+      saleinfo_remarks = #{saleinfoRemarks,jdbcType=VARCHAR},
+      saleinfo_last_time = #{saleinfoLastTime,jdbcType=TIMESTAMP}
+    where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}
+  </update>
+</mapper>

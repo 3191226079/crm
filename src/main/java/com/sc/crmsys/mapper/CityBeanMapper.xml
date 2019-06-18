@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.CityBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.CityBean">
+    <id column="city_number" jdbcType="VARCHAR" property="cityNumber" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="city_upper" jdbcType="VARCHAR" property="cityUpper" />
+    <result column="city_grade" jdbcType="VARCHAR" property="cityGrade" />
+    <result column="city_remarks" jdbcType="VARCHAR" property="cityRemarks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    city_number, city_name, city_upper, city_grade, city_remarks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from city
+    where city_number = #{cityNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from city
+    where city_number = #{cityNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.CityBean">
+    insert into city (city_number, city_name, city_upper, 
+      city_grade, city_remarks)
+    values (#{cityNumber,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, #{cityUpper,jdbcType=VARCHAR}, 
+      #{cityGrade,jdbcType=VARCHAR}, #{cityRemarks,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.CityBean">
+    insert into city
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cityNumber != null">
+        city_number,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="cityUpper != null">
+        city_upper,
+      </if>
+      <if test="cityGrade != null">
+        city_grade,
+      </if>
+      <if test="cityRemarks != null">
+        city_remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cityNumber != null">
+        #{cityNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityUpper != null">
+        #{cityUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="cityGrade != null">
+        #{cityGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="cityRemarks != null">
+        #{cityRemarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CityBean">
+    update city
+    <set>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityUpper != null">
+        city_upper = #{cityUpper,jdbcType=VARCHAR},
+      </if>
+      <if test="cityGrade != null">
+        city_grade = #{cityGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="cityRemarks != null">
+        city_remarks = #{cityRemarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where city_number = #{cityNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.CityBean">
+    update city
+    set city_name = #{cityName,jdbcType=VARCHAR},
+      city_upper = #{cityUpper,jdbcType=VARCHAR},
+      city_grade = #{cityGrade,jdbcType=VARCHAR},
+      city_remarks = #{cityRemarks,jdbcType=VARCHAR}
+    where city_number = #{cityNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

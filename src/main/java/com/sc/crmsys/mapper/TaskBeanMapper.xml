@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.TaskBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.TaskBean">
+    <id column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="task_title" jdbcType="VARCHAR" property="taskTitle" />
+    <result column="task_content" jdbcType="VARCHAR" property="taskContent" />
+    <result column="task_person" jdbcType="VARCHAR" property="taskPerson" />
+    <result column="check_point_id" jdbcType="VARCHAR" property="checkPointId" />
+    <result column="task_start_time" jdbcType="TIMESTAMP" property="taskStartTime" />
+    <result column="task_end_time" jdbcType="TIMESTAMP" property="taskEndTime" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+    <result column="task_update_time" jdbcType="TIMESTAMP" property="taskUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    task_id, task_title, task_content, task_person, check_point_id, task_start_time, 
+    task_end_time, company_id, task_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from task
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.TaskBean">
+    insert into task (task_id, task_title, task_content, 
+      task_person, check_point_id, task_start_time, 
+      task_end_time, company_id, task_update_time
+      )
+    values (#{taskId,jdbcType=VARCHAR}, #{taskTitle,jdbcType=VARCHAR}, #{taskContent,jdbcType=VARCHAR}, 
+      #{taskPerson,jdbcType=VARCHAR}, #{checkPointId,jdbcType=VARCHAR}, #{taskStartTime,jdbcType=TIMESTAMP}, 
+      #{taskEndTime,jdbcType=TIMESTAMP}, #{companyId,jdbcType=INTEGER}, #{taskUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.TaskBean">
+    insert into task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="taskTitle != null">
+        task_title,
+      </if>
+      <if test="taskContent != null">
+        task_content,
+      </if>
+      <if test="taskPerson != null">
+        task_person,
+      </if>
+      <if test="checkPointId != null">
+        check_point_id,
+      </if>
+      <if test="taskStartTime != null">
+        task_start_time,
+      </if>
+      <if test="taskEndTime != null">
+        task_end_time,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="taskUpdateTime != null">
+        task_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskTitle != null">
+        #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskContent != null">
+        #{taskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null">
+        #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointId != null">
+        #{checkPointId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStartTime != null">
+        #{taskStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskEndTime != null">
+        #{taskEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="taskUpdateTime != null">
+        #{taskUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.TaskBean">
+    update task
+    <set>
+      <if test="taskTitle != null">
+        task_title = #{taskTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="taskContent != null">
+        task_content = #{taskContent,jdbcType=VARCHAR},
+      </if>
+      <if test="taskPerson != null">
+        task_person = #{taskPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointId != null">
+        check_point_id = #{checkPointId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskStartTime != null">
+        task_start_time = #{taskStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskEndTime != null">
+        task_end_time = #{taskEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="taskUpdateTime != null">
+        task_update_time = #{taskUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.TaskBean">
+    update task
+    set task_title = #{taskTitle,jdbcType=VARCHAR},
+      task_content = #{taskContent,jdbcType=VARCHAR},
+      task_person = #{taskPerson,jdbcType=VARCHAR},
+      check_point_id = #{checkPointId,jdbcType=VARCHAR},
+      task_start_time = #{taskStartTime,jdbcType=TIMESTAMP},
+      task_end_time = #{taskEndTime,jdbcType=TIMESTAMP},
+      company_id = #{companyId,jdbcType=INTEGER},
+      task_update_time = #{taskUpdateTime,jdbcType=TIMESTAMP}
+    where task_id = #{taskId,jdbcType=VARCHAR}
+  </update>
+</mapper>

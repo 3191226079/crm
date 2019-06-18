@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.DepartmentBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.DepartmentBean">
+    <id column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="dept_remarks" jdbcType="VARCHAR" property="deptRemarks" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="dept_last_time" jdbcType="TIMESTAMP" property="deptLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dept_number, dept_name, dept_remarks, company_id, dept_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from department
+    where dept_number = #{deptNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from department
+    where dept_number = #{deptNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.DepartmentBean">
+    insert into department (dept_number, dept_name, dept_remarks, 
+      company_id, dept_last_time)
+    values (#{deptNumber,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{deptRemarks,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{deptLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.DepartmentBean">
+    insert into department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deptNumber != null">
+        dept_number,
+      </if>
+      <if test="deptName != null">
+        dept_name,
+      </if>
+      <if test="deptRemarks != null">
+        dept_remarks,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="deptLastTime != null">
+        dept_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deptNumber != null">
+        #{deptNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null">
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptRemarks != null">
+        #{deptRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLastTime != null">
+        #{deptLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.DepartmentBean">
+    update department
+    <set>
+      <if test="deptName != null">
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptRemarks != null">
+        dept_remarks = #{deptRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptLastTime != null">
+        dept_last_time = #{deptLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dept_number = #{deptNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.DepartmentBean">
+    update department
+    set dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_remarks = #{deptRemarks,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      dept_last_time = #{deptLastTime,jdbcType=TIMESTAMP}
+    where dept_number = #{deptNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

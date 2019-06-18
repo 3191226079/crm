@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.CustomerBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.CustomerBean">
+    <id column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_up_department" jdbcType="VARCHAR" property="customerUpDepartment" />
+    <result column="customer_contact_person" jdbcType="VARCHAR" property="customerContactPerson" />
+    <result column="customer_state" jdbcType="VARCHAR" property="customerState" />
+    <result column="customer_address" jdbcType="VARCHAR" property="customerAddress" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="customer_fax" jdbcType="VARCHAR" property="customerFax" />
+    <result column="customer_email" jdbcType="VARCHAR" property="customerEmail" />
+    <result column="customer_contact_time" jdbcType="TIMESTAMP" property="customerContactTime" />
+    <result column="customer_info" jdbcType="VARCHAR" property="customerInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="customer_update_time" jdbcType="TIMESTAMP" property="customerUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    customer_id, customer_name, customer_up_department, customer_contact_person, customer_state, 
+    customer_address, customer_phone, customer_fax, customer_email, customer_contact_time, 
+    customer_info, company_id, customer_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customer
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.CustomerBean">
+    insert into customer (customer_id, customer_name, customer_up_department, 
+      customer_contact_person, customer_state, customer_address, 
+      customer_phone, customer_fax, customer_email, 
+      customer_contact_time, customer_info, company_id, 
+      customer_update_time)
+    values (#{customerId,jdbcType=VARCHAR}, #{customerName,jdbcType=VARCHAR}, #{customerUpDepartment,jdbcType=VARCHAR}, 
+      #{customerContactPerson,jdbcType=VARCHAR}, #{customerState,jdbcType=VARCHAR}, #{customerAddress,jdbcType=VARCHAR}, 
+      #{customerPhone,jdbcType=VARCHAR}, #{customerFax,jdbcType=VARCHAR}, #{customerEmail,jdbcType=VARCHAR}, 
+      #{customerContactTime,jdbcType=TIMESTAMP}, #{customerInfo,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{customerUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.CustomerBean">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerUpDepartment != null">
+        customer_up_department,
+      </if>
+      <if test="customerContactPerson != null">
+        customer_contact_person,
+      </if>
+      <if test="customerState != null">
+        customer_state,
+      </if>
+      <if test="customerAddress != null">
+        customer_address,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="customerFax != null">
+        customer_fax,
+      </if>
+      <if test="customerEmail != null">
+        customer_email,
+      </if>
+      <if test="customerContactTime != null">
+        customer_contact_time,
+      </if>
+      <if test="customerInfo != null">
+        customer_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="customerUpdateTime != null">
+        customer_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerUpDepartment != null">
+        #{customerUpDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContactPerson != null">
+        #{customerContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="customerState != null">
+        #{customerState,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFax != null">
+        #{customerFax,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContactTime != null">
+        #{customerContactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerInfo != null">
+        #{customerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerUpdateTime != null">
+        #{customerUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CustomerBean">
+    update customer
+    <set>
+      <if test="customerName != null">
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerUpDepartment != null">
+        customer_up_department = #{customerUpDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContactPerson != null">
+        customer_contact_person = #{customerContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="customerState != null">
+        customer_state = #{customerState,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null">
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="customerFax != null">
+        customer_fax = #{customerFax,jdbcType=VARCHAR},
+      </if>
+      <if test="customerEmail != null">
+        customer_email = #{customerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContactTime != null">
+        customer_contact_time = #{customerContactTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerInfo != null">
+        customer_info = #{customerInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerUpdateTime != null">
+        customer_update_time = #{customerUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.CustomerBean">
+    update customer
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_up_department = #{customerUpDepartment,jdbcType=VARCHAR},
+      customer_contact_person = #{customerContactPerson,jdbcType=VARCHAR},
+      customer_state = #{customerState,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      customer_phone = #{customerPhone,jdbcType=VARCHAR},
+      customer_fax = #{customerFax,jdbcType=VARCHAR},
+      customer_email = #{customerEmail,jdbcType=VARCHAR},
+      customer_contact_time = #{customerContactTime,jdbcType=TIMESTAMP},
+      customer_info = #{customerInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      customer_update_time = #{customerUpdateTime,jdbcType=TIMESTAMP}
+    where customer_id = #{customerId,jdbcType=VARCHAR}
+  </update>
+</mapper>

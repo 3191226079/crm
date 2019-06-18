@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.RoleBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.RoleBean">
+    <id column="role_number" jdbcType="VARCHAR" property="roleNumber" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_describe" jdbcType="VARCHAR" property="roleDescribe" />
+    <result column="role_upper_number" jdbcType="VARCHAR" property="roleUpperNumber" />
+    <result column="role_person" jdbcType="VARCHAR" property="rolePerson" />
+    <result column="role_last_time" jdbcType="TIMESTAMP" property="roleLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_number, role_name, role_describe, role_upper_number, role_person, role_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from role
+    where role_number = #{roleNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from role
+    where role_number = #{roleNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.RoleBean">
+    insert into role (role_number, role_name, role_describe, 
+      role_upper_number, role_person, role_last_time
+      )
+    values (#{roleNumber,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleDescribe,jdbcType=VARCHAR}, 
+      #{roleUpperNumber,jdbcType=VARCHAR}, #{rolePerson,jdbcType=VARCHAR}, #{roleLastTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.RoleBean">
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleNumber != null">
+        role_number,
+      </if>
+      <if test="roleName != null">
+        role_name,
+      </if>
+      <if test="roleDescribe != null">
+        role_describe,
+      </if>
+      <if test="roleUpperNumber != null">
+        role_upper_number,
+      </if>
+      <if test="rolePerson != null">
+        role_person,
+      </if>
+      <if test="roleLastTime != null">
+        role_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleNumber != null">
+        #{roleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDescribe != null">
+        #{roleDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUpperNumber != null">
+        #{roleUpperNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rolePerson != null">
+        #{rolePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="roleLastTime != null">
+        #{roleLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.RoleBean">
+    update role
+    <set>
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleDescribe != null">
+        role_describe = #{roleDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="roleUpperNumber != null">
+        role_upper_number = #{roleUpperNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="rolePerson != null">
+        role_person = #{rolePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="roleLastTime != null">
+        role_last_time = #{roleLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where role_number = #{roleNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.RoleBean">
+    update role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_describe = #{roleDescribe,jdbcType=VARCHAR},
+      role_upper_number = #{roleUpperNumber,jdbcType=VARCHAR},
+      role_person = #{rolePerson,jdbcType=VARCHAR},
+      role_last_time = #{roleLastTime,jdbcType=TIMESTAMP}
+    where role_number = #{roleNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

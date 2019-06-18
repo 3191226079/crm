@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.PermissionInformationBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.PermissionInformationBean">
+    <id column="permission_number" jdbcType="VARCHAR" property="permissionNumber" />
+    <result column="permission_name" jdbcType="VARCHAR" property="permissionName" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="subfield_number" jdbcType="VARCHAR" property="subfieldNumber" />
+    <result column="information_remarks" jdbcType="VARCHAR" property="informationRemarks" />
+    <result column="information_last_time" jdbcType="TIMESTAMP" property="informationLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    permission_number, permission_name, permission, subfield_number, information_remarks, 
+    information_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission_information
+    where permission_number = #{permissionNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_information
+    where permission_number = #{permissionNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
+    insert into permission_information (permission_number, permission_name, 
+      permission, subfield_number, information_remarks, 
+      information_last_time)
+    values (#{permissionNumber,jdbcType=VARCHAR}, #{permissionName,jdbcType=VARCHAR}, 
+      #{permission,jdbcType=VARCHAR}, #{subfieldNumber,jdbcType=VARCHAR}, #{informationRemarks,jdbcType=VARCHAR}, 
+      #{informationLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
+    insert into permission_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionNumber != null">
+        permission_number,
+      </if>
+      <if test="permissionName != null">
+        permission_name,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="subfieldNumber != null">
+        subfield_number,
+      </if>
+      <if test="informationRemarks != null">
+        information_remarks,
+      </if>
+      <if test="informationLastTime != null">
+        information_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionNumber != null">
+        #{permissionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionName != null">
+        #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldNumber != null">
+        #{subfieldNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="informationRemarks != null">
+        #{informationRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="informationLastTime != null">
+        #{informationLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
+    update permission_information
+    <set>
+      <if test="permissionName != null">
+        permission_name = #{permissionName,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="subfieldNumber != null">
+        subfield_number = #{subfieldNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="informationRemarks != null">
+        information_remarks = #{informationRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="informationLastTime != null">
+        information_last_time = #{informationLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where permission_number = #{permissionNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
+    update permission_information
+    set permission_name = #{permissionName,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR},
+      subfield_number = #{subfieldNumber,jdbcType=VARCHAR},
+      information_remarks = #{informationRemarks,jdbcType=VARCHAR},
+      information_last_time = #{informationLastTime,jdbcType=TIMESTAMP}
+    where permission_number = #{permissionNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

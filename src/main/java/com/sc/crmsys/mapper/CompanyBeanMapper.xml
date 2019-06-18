@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.CompanyBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.CompanyBean">
+    <id column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_code" jdbcType="VARCHAR" property="companyCode" />
+    <result column="company_email" jdbcType="VARCHAR" property="companyEmail" />
+    <result column="company_contact" jdbcType="VARCHAR" property="companyContact" />
+    <result column="company_address" jdbcType="VARCHAR" property="companyAddress" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_fax" jdbcType="VARCHAR" property="companyFax" />
+    <result column="company_state" jdbcType="VARCHAR" property="companyState" />
+    <result column="company_info" jdbcType="VARCHAR" property="companyInfo" />
+    <result column="company_register_time" jdbcType="TIMESTAMP" property="companyRegisterTime" />
+    <result column="company_update_time" jdbcType="TIMESTAMP" property="companyUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    company_id, company_name, company_code, company_email, company_contact, company_address, 
+    company_phone, company_fax, company_state, company_info, company_register_time, company_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{companyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from company
+    where company_id = #{companyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.CompanyBean">
+    insert into company (company_id, company_name, company_code, 
+      company_email, company_contact, company_address, 
+      company_phone, company_fax, company_state, 
+      company_info, company_register_time, company_update_time
+      )
+    values (#{companyId,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, 
+      #{companyEmail,jdbcType=VARCHAR}, #{companyContact,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{companyFax,jdbcType=VARCHAR}, #{companyState,jdbcType=VARCHAR}, 
+      #{companyInfo,jdbcType=VARCHAR}, #{companyRegisterTime,jdbcType=TIMESTAMP}, #{companyUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.CompanyBean">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="companyCode != null">
+        company_code,
+      </if>
+      <if test="companyEmail != null">
+        company_email,
+      </if>
+      <if test="companyContact != null">
+        company_contact,
+      </if>
+      <if test="companyAddress != null">
+        company_address,
+      </if>
+      <if test="companyPhone != null">
+        company_phone,
+      </if>
+      <if test="companyFax != null">
+        company_fax,
+      </if>
+      <if test="companyState != null">
+        company_state,
+      </if>
+      <if test="companyInfo != null">
+        company_info,
+      </if>
+      <if test="companyRegisterTime != null">
+        company_register_time,
+      </if>
+      <if test="companyUpdateTime != null">
+        company_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyContact != null">
+        #{companyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null">
+        #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyState != null">
+        #{companyState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null">
+        #{companyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRegisterTime != null">
+        #{companyRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyUpdateTime != null">
+        #{companyUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CompanyBean">
+    update company
+    <set>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        company_code = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null">
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyContact != null">
+        company_contact = #{companyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null">
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null">
+        company_phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyFax != null">
+        company_fax = #{companyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyState != null">
+        company_state = #{companyState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyInfo != null">
+        company_info = #{companyInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRegisterTime != null">
+        company_register_time = #{companyRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyUpdateTime != null">
+        company_update_time = #{companyUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.CompanyBean">
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_code = #{companyCode,jdbcType=VARCHAR},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_contact = #{companyContact,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_phone = #{companyPhone,jdbcType=VARCHAR},
+      company_fax = #{companyFax,jdbcType=VARCHAR},
+      company_state = #{companyState,jdbcType=VARCHAR},
+      company_info = #{companyInfo,jdbcType=VARCHAR},
+      company_register_time = #{companyRegisterTime,jdbcType=TIMESTAMP},
+      company_update_time = #{companyUpdateTime,jdbcType=TIMESTAMP}
+    where company_id = #{companyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

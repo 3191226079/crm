@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.EmployBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.EmployBean">
+    <id column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="employ_name" jdbcType="VARCHAR" property="employName" />
+    <result column="employ_sex" jdbcType="VARCHAR" property="employSex" />
+    <result column="employ_img" jdbcType="VARCHAR" property="employImg" />
+    <result column="employ_salary" jdbcType="VARCHAR" property="employSalary" />
+    <result column="employ_identify" jdbcType="VARCHAR" property="employIdentify" />
+    <result column="employ_address" jdbcType="VARCHAR" property="employAddress" />
+    <result column="employ_education" jdbcType="VARCHAR" property="employEducation" />
+    <result column="employ_politic" jdbcType="VARCHAR" property="employPolitic" />
+    <result column="employ_school" jdbcType="VARCHAR" property="employSchool" />
+    <result column="employ_phone" jdbcType="VARCHAR" property="employPhone" />
+    <result column="check_state" jdbcType="VARCHAR" property="checkState" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="employ_state" jdbcType="VARCHAR" property="employState" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="employ_update_time" jdbcType="TIMESTAMP" property="employUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    employ_id, employ_name, employ_sex, employ_img, employ_salary, employ_identify, employ_address, 
+    employ_education, employ_politic, employ_school, employ_phone, check_state, job_id, 
+    employ_state, company_id, employ_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employ
+    where employ_id = #{employId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from employ
+    where employ_id = #{employId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.EmployBean">
+    insert into employ (employ_id, employ_name, employ_sex, 
+      employ_img, employ_salary, employ_identify, 
+      employ_address, employ_education, employ_politic, 
+      employ_school, employ_phone, check_state, 
+      job_id, employ_state, company_id, 
+      employ_update_time)
+    values (#{employId,jdbcType=VARCHAR}, #{employName,jdbcType=VARCHAR}, #{employSex,jdbcType=VARCHAR}, 
+      #{employImg,jdbcType=VARCHAR}, #{employSalary,jdbcType=VARCHAR}, #{employIdentify,jdbcType=VARCHAR}, 
+      #{employAddress,jdbcType=VARCHAR}, #{employEducation,jdbcType=VARCHAR}, #{employPolitic,jdbcType=VARCHAR}, 
+      #{employSchool,jdbcType=VARCHAR}, #{employPhone,jdbcType=VARCHAR}, #{checkState,jdbcType=VARCHAR}, 
+      #{jobId,jdbcType=VARCHAR}, #{employState,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{employUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.EmployBean">
+    insert into employ
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="employId != null">
+        employ_id,
+      </if>
+      <if test="employName != null">
+        employ_name,
+      </if>
+      <if test="employSex != null">
+        employ_sex,
+      </if>
+      <if test="employImg != null">
+        employ_img,
+      </if>
+      <if test="employSalary != null">
+        employ_salary,
+      </if>
+      <if test="employIdentify != null">
+        employ_identify,
+      </if>
+      <if test="employAddress != null">
+        employ_address,
+      </if>
+      <if test="employEducation != null">
+        employ_education,
+      </if>
+      <if test="employPolitic != null">
+        employ_politic,
+      </if>
+      <if test="employSchool != null">
+        employ_school,
+      </if>
+      <if test="employPhone != null">
+        employ_phone,
+      </if>
+      <if test="checkState != null">
+        check_state,
+      </if>
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="employState != null">
+        employ_state,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="employUpdateTime != null">
+        employ_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="employId != null">
+        #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="employName != null">
+        #{employName,jdbcType=VARCHAR},
+      </if>
+      <if test="employSex != null">
+        #{employSex,jdbcType=VARCHAR},
+      </if>
+      <if test="employImg != null">
+        #{employImg,jdbcType=VARCHAR},
+      </if>
+      <if test="employSalary != null">
+        #{employSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="employIdentify != null">
+        #{employIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="employAddress != null">
+        #{employAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="employEducation != null">
+        #{employEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="employPolitic != null">
+        #{employPolitic,jdbcType=VARCHAR},
+      </if>
+      <if test="employSchool != null">
+        #{employSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employPhone != null">
+        #{employPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="employState != null">
+        #{employState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="employUpdateTime != null">
+        #{employUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.EmployBean">
+    update employ
+    <set>
+      <if test="employName != null">
+        employ_name = #{employName,jdbcType=VARCHAR},
+      </if>
+      <if test="employSex != null">
+        employ_sex = #{employSex,jdbcType=VARCHAR},
+      </if>
+      <if test="employImg != null">
+        employ_img = #{employImg,jdbcType=VARCHAR},
+      </if>
+      <if test="employSalary != null">
+        employ_salary = #{employSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="employIdentify != null">
+        employ_identify = #{employIdentify,jdbcType=VARCHAR},
+      </if>
+      <if test="employAddress != null">
+        employ_address = #{employAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="employEducation != null">
+        employ_education = #{employEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="employPolitic != null">
+        employ_politic = #{employPolitic,jdbcType=VARCHAR},
+      </if>
+      <if test="employSchool != null">
+        employ_school = #{employSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="employPhone != null">
+        employ_phone = #{employPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="checkState != null">
+        check_state = #{checkState,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null">
+        job_id = #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="employState != null">
+        employ_state = #{employState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="employUpdateTime != null">
+        employ_update_time = #{employUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where employ_id = #{employId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.EmployBean">
+    update employ
+    set employ_name = #{employName,jdbcType=VARCHAR},
+      employ_sex = #{employSex,jdbcType=VARCHAR},
+      employ_img = #{employImg,jdbcType=VARCHAR},
+      employ_salary = #{employSalary,jdbcType=VARCHAR},
+      employ_identify = #{employIdentify,jdbcType=VARCHAR},
+      employ_address = #{employAddress,jdbcType=VARCHAR},
+      employ_education = #{employEducation,jdbcType=VARCHAR},
+      employ_politic = #{employPolitic,jdbcType=VARCHAR},
+      employ_school = #{employSchool,jdbcType=VARCHAR},
+      employ_phone = #{employPhone,jdbcType=VARCHAR},
+      check_state = #{checkState,jdbcType=VARCHAR},
+      job_id = #{jobId,jdbcType=VARCHAR},
+      employ_state = #{employState,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      employ_update_time = #{employUpdateTime,jdbcType=TIMESTAMP}
+    where employ_id = #{employId,jdbcType=VARCHAR}
+  </update>
+</mapper>

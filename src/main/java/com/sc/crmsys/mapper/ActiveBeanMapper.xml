@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.ActiveBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.ActiveBean">
+    <id column="active_id" jdbcType="VARCHAR" property="activeId" />
+    <result column="active_type" jdbcType="VARCHAR" property="activeType" />
+    <result column="active_title" jdbcType="VARCHAR" property="activeTitle" />
+    <result column="active_start_time" jdbcType="TIMESTAMP" property="activeStartTime" />
+    <result column="acitve_describe" jdbcType="VARCHAR" property="acitveDescribe" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="active_update_time" jdbcType="TIMESTAMP" property="activeUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    active_id, active_type, active_title, active_start_time, acitve_describe, company_id, 
+    active_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from active
+    where active_id = #{activeId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from active
+    where active_id = #{activeId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.ActiveBean">
+    insert into active (active_id, active_type, active_title, 
+      active_start_time, acitve_describe, company_id, 
+      active_update_time)
+    values (#{activeId,jdbcType=VARCHAR}, #{activeType,jdbcType=VARCHAR}, #{activeTitle,jdbcType=VARCHAR}, 
+      #{activeStartTime,jdbcType=TIMESTAMP}, #{acitveDescribe,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{activeUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.ActiveBean">
+    insert into active
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activeId != null">
+        active_id,
+      </if>
+      <if test="activeType != null">
+        active_type,
+      </if>
+      <if test="activeTitle != null">
+        active_title,
+      </if>
+      <if test="activeStartTime != null">
+        active_start_time,
+      </if>
+      <if test="acitveDescribe != null">
+        acitve_describe,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="activeUpdateTime != null">
+        active_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activeId != null">
+        #{activeId,jdbcType=VARCHAR},
+      </if>
+      <if test="activeType != null">
+        #{activeType,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTitle != null">
+        #{activeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activeStartTime != null">
+        #{activeStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acitveDescribe != null">
+        #{acitveDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="activeUpdateTime != null">
+        #{activeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.ActiveBean">
+    update active
+    <set>
+      <if test="activeType != null">
+        active_type = #{activeType,jdbcType=VARCHAR},
+      </if>
+      <if test="activeTitle != null">
+        active_title = #{activeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activeStartTime != null">
+        active_start_time = #{activeStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="acitveDescribe != null">
+        acitve_describe = #{acitveDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="activeUpdateTime != null">
+        active_update_time = #{activeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where active_id = #{activeId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.ActiveBean">
+    update active
+    set active_type = #{activeType,jdbcType=VARCHAR},
+      active_title = #{activeTitle,jdbcType=VARCHAR},
+      active_start_time = #{activeStartTime,jdbcType=TIMESTAMP},
+      acitve_describe = #{acitveDescribe,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      active_update_time = #{activeUpdateTime,jdbcType=TIMESTAMP}
+    where active_id = #{activeId,jdbcType=VARCHAR}
+  </update>
+</mapper>

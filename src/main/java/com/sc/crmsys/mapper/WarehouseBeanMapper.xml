@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.WarehouseBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.WarehouseBean">
+    <id column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+    <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
+    <result column="warehouse_info" jdbcType="VARCHAR" property="warehouseInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="warehouse_last_time" jdbcType="TIMESTAMP" property="warehouseLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    warehouse_number, warehouse_name, warehouse_info, company_id, warehouse_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from warehouse
+    where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from warehouse
+    where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.WarehouseBean">
+    insert into warehouse (warehouse_number, warehouse_name, warehouse_info, 
+      company_id, warehouse_last_time)
+    values (#{warehouseNumber,jdbcType=VARCHAR}, #{warehouseName,jdbcType=VARCHAR}, #{warehouseInfo,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{warehouseLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.WarehouseBean">
+    insert into warehouse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="warehouseNumber != null">
+        warehouse_number,
+      </if>
+      <if test="warehouseName != null">
+        warehouse_name,
+      </if>
+      <if test="warehouseInfo != null">
+        warehouse_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="warehouseLastTime != null">
+        warehouse_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="warehouseNumber != null">
+        #{warehouseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseName != null">
+        #{warehouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseInfo != null">
+        #{warehouseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseLastTime != null">
+        #{warehouseLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.WarehouseBean">
+    update warehouse
+    <set>
+      <if test="warehouseName != null">
+        warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseInfo != null">
+        warehouse_info = #{warehouseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseLastTime != null">
+        warehouse_last_time = #{warehouseLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.WarehouseBean">
+    update warehouse
+    set warehouse_name = #{warehouseName,jdbcType=VARCHAR},
+      warehouse_info = #{warehouseInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      warehouse_last_time = #{warehouseLastTime,jdbcType=TIMESTAMP}
+    where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

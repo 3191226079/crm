@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.JobBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.JobBean">
+    <id column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="job_name" jdbcType="VARCHAR" property="jobName" />
+    <result column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+    <result column="job_remarks" jdbcType="VARCHAR" property="jobRemarks" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="job_last_time" jdbcType="TIMESTAMP" property="jobLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    job_id, job_name, dept_number, job_remarks, company_id, job_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job
+    where job_id = #{jobId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from job
+    where job_id = #{jobId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.JobBean">
+    insert into job (job_id, job_name, dept_number, 
+      job_remarks, company_id, job_last_time
+      )
+    values (#{jobId,jdbcType=VARCHAR}, #{jobName,jdbcType=VARCHAR}, #{deptNumber,jdbcType=VARCHAR}, 
+      #{jobRemarks,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{jobLastTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.JobBean">
+    insert into job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="jobId != null">
+        job_id,
+      </if>
+      <if test="jobName != null">
+        job_name,
+      </if>
+      <if test="deptNumber != null">
+        dept_number,
+      </if>
+      <if test="jobRemarks != null">
+        job_remarks,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="jobLastTime != null">
+        job_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="jobId != null">
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null">
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptNumber != null">
+        #{deptNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRemarks != null">
+        #{jobRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobLastTime != null">
+        #{jobLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.JobBean">
+    update job
+    <set>
+      <if test="jobName != null">
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptNumber != null">
+        dept_number = #{deptNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="jobRemarks != null">
+        job_remarks = #{jobRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobLastTime != null">
+        job_last_time = #{jobLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.JobBean">
+    update job
+    set job_name = #{jobName,jdbcType=VARCHAR},
+      dept_number = #{deptNumber,jdbcType=VARCHAR},
+      job_remarks = #{jobRemarks,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      job_last_time = #{jobLastTime,jdbcType=TIMESTAMP}
+    where job_id = #{jobId,jdbcType=VARCHAR}
+  </update>
+</mapper>

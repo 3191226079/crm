@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SaleOutBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SaleOutBean">
+    <id column="saleout_id" jdbcType="VARCHAR" property="saleoutId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="saleout_time" jdbcType="TIMESTAMP" property="saleoutTime" />
+    <result column="saleout_invoce" jdbcType="VARCHAR" property="saleoutInvoce" />
+    <result column="saleout_price" jdbcType="VARCHAR" property="saleoutPrice" />
+    <result column="saleout_state" jdbcType="VARCHAR" property="saleoutState" />
+    <result column="sale_state" jdbcType="VARCHAR" property="saleState" />
+    <result column="saleout_remarks" jdbcType="VARCHAR" property="saleoutRemarks" />
+    <result column="saleout_last_time" jdbcType="TIMESTAMP" property="saleoutLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    saleout_id, customer_id, company_id, saleout_time, saleout_invoce, saleout_price, 
+    saleout_state, sale_state, saleout_remarks, saleout_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from saleout
+    where saleout_id = #{saleoutId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from saleout
+    where saleout_id = #{saleoutId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SaleOutBean">
+    insert into saleout (saleout_id, customer_id, company_id, 
+      saleout_time, saleout_invoce, saleout_price, 
+      saleout_state, sale_state, saleout_remarks, 
+      saleout_last_time)
+    values (#{saleoutId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{saleoutTime,jdbcType=TIMESTAMP}, #{saleoutInvoce,jdbcType=VARCHAR}, #{saleoutPrice,jdbcType=VARCHAR}, 
+      #{saleoutState,jdbcType=VARCHAR}, #{saleState,jdbcType=VARCHAR}, #{saleoutRemarks,jdbcType=VARCHAR}, 
+      #{saleoutLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SaleOutBean">
+    insert into saleout
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="saleoutId != null">
+        saleout_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="saleoutTime != null">
+        saleout_time,
+      </if>
+      <if test="saleoutInvoce != null">
+        saleout_invoce,
+      </if>
+      <if test="saleoutPrice != null">
+        saleout_price,
+      </if>
+      <if test="saleoutState != null">
+        saleout_state,
+      </if>
+      <if test="saleState != null">
+        sale_state,
+      </if>
+      <if test="saleoutRemarks != null">
+        saleout_remarks,
+      </if>
+      <if test="saleoutLastTime != null">
+        saleout_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="saleoutId != null">
+        #{saleoutId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutTime != null">
+        #{saleoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleoutInvoce != null">
+        #{saleoutInvoce,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutPrice != null">
+        #{saleoutPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutState != null">
+        #{saleoutState,jdbcType=VARCHAR},
+      </if>
+      <if test="saleState != null">
+        #{saleState,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutRemarks != null">
+        #{saleoutRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutLastTime != null">
+        #{saleoutLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SaleOutBean">
+    update saleout
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutTime != null">
+        saleout_time = #{saleoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleoutInvoce != null">
+        saleout_invoce = #{saleoutInvoce,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutPrice != null">
+        saleout_price = #{saleoutPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutState != null">
+        saleout_state = #{saleoutState,jdbcType=VARCHAR},
+      </if>
+      <if test="saleState != null">
+        sale_state = #{saleState,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutRemarks != null">
+        saleout_remarks = #{saleoutRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="saleoutLastTime != null">
+        saleout_last_time = #{saleoutLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where saleout_id = #{saleoutId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SaleOutBean">
+    update saleout
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      saleout_time = #{saleoutTime,jdbcType=TIMESTAMP},
+      saleout_invoce = #{saleoutInvoce,jdbcType=VARCHAR},
+      saleout_price = #{saleoutPrice,jdbcType=VARCHAR},
+      saleout_state = #{saleoutState,jdbcType=VARCHAR},
+      sale_state = #{saleState,jdbcType=VARCHAR},
+      saleout_remarks = #{saleoutRemarks,jdbcType=VARCHAR},
+      saleout_last_time = #{saleoutLastTime,jdbcType=TIMESTAMP}
+    where saleout_id = #{saleoutId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.UserBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.UserBean">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="user_state" jdbcType="VARCHAR" property="userState" />
+    <result column="user_register_time" jdbcType="TIMESTAMP" property="userRegisterTime" />
+    <result column="user_update_time" jdbcType="TIMESTAMP" property="userUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_password, employ_id, company_id, user_state, user_register_time, 
+    user_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.UserBean">
+    insert into user (user_id, user_name, user_password, 
+      employ_id, company_id, user_state, 
+      user_register_time, user_update_time)
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
+      #{employId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}, 
+      #{userRegisterTime,jdbcType=TIMESTAMP}, #{userUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.UserBean">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPassword != null">
+        user_password,
+      </if>
+      <if test="employId != null">
+        employ_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="userState != null">
+        user_state,
+      </if>
+      <if test="userRegisterTime != null">
+        user_register_time,
+      </if>
+      <if test="userUpdateTime != null">
+        user_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null">
+        #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegisterTime != null">
+        #{userRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdateTime != null">
+        #{userUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.UserBean">
+    update user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null">
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        employ_id = #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userState != null">
+        user_state = #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userRegisterTime != null">
+        user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userUpdateTime != null">
+        user_update_time = #{userUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.UserBean">
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_password = #{userPassword,jdbcType=VARCHAR},
+      employ_id = #{employId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      user_state = #{userState,jdbcType=VARCHAR},
+      user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},
+      user_update_time = #{userUpdateTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

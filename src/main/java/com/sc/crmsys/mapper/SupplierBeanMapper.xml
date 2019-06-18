@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SupplierBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SupplierBean">
+    <id column="supplier_id" jdbcType="VARCHAR" property="supplierId" />
+    <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+    <result column="supplier_contact" jdbcType="VARCHAR" property="supplierContact" />
+    <result column="supplier_phone" jdbcType="VARCHAR" property="supplierPhone" />
+    <result column="supplier_fax" jdbcType="VARCHAR" property="supplierFax" />
+    <result column="supplier_email" jdbcType="VARCHAR" property="supplierEmail" />
+    <result column="supplier_state" jdbcType="VARCHAR" property="supplierState" />
+    <result column="supplier_person" jdbcType="VARCHAR" property="supplierPerson" />
+    <result column="supplier_info" jdbcType="VARCHAR" property="supplierInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="supplier_update_time" jdbcType="TIMESTAMP" property="supplierUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    supplier_id, supplier_name, supplier_contact, supplier_phone, supplier_fax, supplier_email, 
+    supplier_state, supplier_person, supplier_info, company_id, supplier_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from supplier
+    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from supplier
+    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SupplierBean">
+    insert into supplier (supplier_id, supplier_name, supplier_contact, 
+      supplier_phone, supplier_fax, supplier_email, 
+      supplier_state, supplier_person, supplier_info, 
+      company_id, supplier_update_time)
+    values (#{supplierId,jdbcType=VARCHAR}, #{supplierName,jdbcType=VARCHAR}, #{supplierContact,jdbcType=VARCHAR}, 
+      #{supplierPhone,jdbcType=VARCHAR}, #{supplierFax,jdbcType=VARCHAR}, #{supplierEmail,jdbcType=VARCHAR}, 
+      #{supplierState,jdbcType=VARCHAR}, #{supplierPerson,jdbcType=VARCHAR}, #{supplierInfo,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{supplierUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SupplierBean">
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        supplier_id,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact,
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone,
+      </if>
+      <if test="supplierFax != null">
+        supplier_fax,
+      </if>
+      <if test="supplierEmail != null">
+        supplier_email,
+      </if>
+      <if test="supplierState != null">
+        supplier_state,
+      </if>
+      <if test="supplierPerson != null">
+        supplier_person,
+      </if>
+      <if test="supplierInfo != null">
+        supplier_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="supplierUpdateTime != null">
+        supplier_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="supplierId != null">
+        #{supplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierFax != null">
+        #{supplierFax,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierEmail != null">
+        #{supplierEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierState != null">
+        #{supplierState,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPerson != null">
+        #{supplierPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierInfo != null">
+        #{supplierInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierUpdateTime != null">
+        #{supplierUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SupplierBean">
+    update supplier
+    <set>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContact != null">
+        supplier_contact = #{supplierContact,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPhone != null">
+        supplier_phone = #{supplierPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierFax != null">
+        supplier_fax = #{supplierFax,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierEmail != null">
+        supplier_email = #{supplierEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierState != null">
+        supplier_state = #{supplierState,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierPerson != null">
+        supplier_person = #{supplierPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierInfo != null">
+        supplier_info = #{supplierInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierUpdateTime != null">
+        supplier_update_time = #{supplierUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SupplierBean">
+    update supplier
+    set supplier_name = #{supplierName,jdbcType=VARCHAR},
+      supplier_contact = #{supplierContact,jdbcType=VARCHAR},
+      supplier_phone = #{supplierPhone,jdbcType=VARCHAR},
+      supplier_fax = #{supplierFax,jdbcType=VARCHAR},
+      supplier_email = #{supplierEmail,jdbcType=VARCHAR},
+      supplier_state = #{supplierState,jdbcType=VARCHAR},
+      supplier_person = #{supplierPerson,jdbcType=VARCHAR},
+      supplier_info = #{supplierInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      supplier_update_time = #{supplierUpdateTime,jdbcType=TIMESTAMP}
+    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+  </update>
+</mapper>

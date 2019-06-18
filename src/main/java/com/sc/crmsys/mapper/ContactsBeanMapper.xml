@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.ContactsBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.ContactsBean">
+    <id column="contacts_id" jdbcType="VARCHAR" property="contactsId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="contacts_name" jdbcType="VARCHAR" property="contactsName" />
+    <result column="contacts_post" jdbcType="VARCHAR" property="contactsPost" />
+    <result column="contacts_department" jdbcType="VARCHAR" property="contactsDepartment" />
+    <result column="contacts_phone" jdbcType="VARCHAR" property="contactsPhone" />
+    <result column="contacts_ofice_phone" jdbcType="VARCHAR" property="contactsOficePhone" />
+    <result column="contacts_email" jdbcType="VARCHAR" property="contactsEmail" />
+    <result column="contacts_address" jdbcType="VARCHAR" property="contactsAddress" />
+    <result column="contacts_remarks" jdbcType="VARCHAR" property="contactsRemarks" />
+    <result column="contacts_time" jdbcType="TIMESTAMP" property="contactsTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contacts_id, customer_id, company_id, contacts_name, contacts_post, contacts_department, 
+    contacts_phone, contacts_ofice_phone, contacts_email, contacts_address, contacts_remarks, 
+    contacts_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contacts
+    where contacts_id = #{contactsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from contacts
+    where contacts_id = #{contactsId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.ContactsBean">
+    insert into contacts (contacts_id, customer_id, company_id, 
+      contacts_name, contacts_post, contacts_department, 
+      contacts_phone, contacts_ofice_phone, contacts_email, 
+      contacts_address, contacts_remarks, contacts_time
+      )
+    values (#{contactsId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{contactsName,jdbcType=VARCHAR}, #{contactsPost,jdbcType=VARCHAR}, #{contactsDepartment,jdbcType=VARCHAR}, 
+      #{contactsPhone,jdbcType=VARCHAR}, #{contactsOficePhone,jdbcType=VARCHAR}, #{contactsEmail,jdbcType=VARCHAR}, 
+      #{contactsAddress,jdbcType=VARCHAR}, #{contactsRemarks,jdbcType=VARCHAR}, #{contactsTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.ContactsBean">
+    insert into contacts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contactsId != null">
+        contacts_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="contactsName != null">
+        contacts_name,
+      </if>
+      <if test="contactsPost != null">
+        contacts_post,
+      </if>
+      <if test="contactsDepartment != null">
+        contacts_department,
+      </if>
+      <if test="contactsPhone != null">
+        contacts_phone,
+      </if>
+      <if test="contactsOficePhone != null">
+        contacts_ofice_phone,
+      </if>
+      <if test="contactsEmail != null">
+        contacts_email,
+      </if>
+      <if test="contactsAddress != null">
+        contacts_address,
+      </if>
+      <if test="contactsRemarks != null">
+        contacts_remarks,
+      </if>
+      <if test="contactsTime != null">
+        contacts_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contactsId != null">
+        #{contactsId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsName != null">
+        #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPost != null">
+        #{contactsPost,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsDepartment != null">
+        #{contactsDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null">
+        #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsOficePhone != null">
+        #{contactsOficePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null">
+        #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsAddress != null">
+        #{contactsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsRemarks != null">
+        #{contactsRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsTime != null">
+        #{contactsTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.ContactsBean">
+    update contacts
+    <set>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsName != null">
+        contacts_name = #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPost != null">
+        contacts_post = #{contactsPost,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsDepartment != null">
+        contacts_department = #{contactsDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsPhone != null">
+        contacts_phone = #{contactsPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsOficePhone != null">
+        contacts_ofice_phone = #{contactsOficePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsEmail != null">
+        contacts_email = #{contactsEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsAddress != null">
+        contacts_address = #{contactsAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsRemarks != null">
+        contacts_remarks = #{contactsRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsTime != null">
+        contacts_time = #{contactsTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where contacts_id = #{contactsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.ContactsBean">
+    update contacts
+    set customer_id = #{customerId,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      contacts_name = #{contactsName,jdbcType=VARCHAR},
+      contacts_post = #{contactsPost,jdbcType=VARCHAR},
+      contacts_department = #{contactsDepartment,jdbcType=VARCHAR},
+      contacts_phone = #{contactsPhone,jdbcType=VARCHAR},
+      contacts_ofice_phone = #{contactsOficePhone,jdbcType=VARCHAR},
+      contacts_email = #{contactsEmail,jdbcType=VARCHAR},
+      contacts_address = #{contactsAddress,jdbcType=VARCHAR},
+      contacts_remarks = #{contactsRemarks,jdbcType=VARCHAR},
+      contacts_time = #{contactsTime,jdbcType=TIMESTAMP}
+    where contacts_id = #{contactsId,jdbcType=VARCHAR}
+  </update>
+</mapper>

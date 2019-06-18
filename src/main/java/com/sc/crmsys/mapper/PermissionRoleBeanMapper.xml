@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.PermissionRoleBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.PermissionRoleBean">
+    <id column="permission_role_number" jdbcType="VARCHAR" property="permissionRoleNumber" />
+    <result column="permission_number" jdbcType="VARCHAR" property="permissionNumber" />
+    <result column="role_number" jdbcType="VARCHAR" property="roleNumber" />
+    <result column="permission_role_operator" jdbcType="VARCHAR" property="permissionRoleOperator" />
+    <result column="permission_role_last_time" jdbcType="TIMESTAMP" property="permissionRoleLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    permission_role_number, permission_number, role_number, permission_role_operator, 
+    permission_role_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from permission_role
+    where permission_role_number = #{permissionRoleNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from permission_role
+    where permission_role_number = #{permissionRoleNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.PermissionRoleBean">
+    insert into permission_role (permission_role_number, permission_number, 
+      role_number, permission_role_operator, permission_role_last_time
+      )
+    values (#{permissionRoleNumber,jdbcType=VARCHAR}, #{permissionNumber,jdbcType=VARCHAR}, 
+      #{roleNumber,jdbcType=VARCHAR}, #{permissionRoleOperator,jdbcType=VARCHAR}, #{permissionRoleLastTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.PermissionRoleBean">
+    insert into permission_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="permissionRoleNumber != null">
+        permission_role_number,
+      </if>
+      <if test="permissionNumber != null">
+        permission_number,
+      </if>
+      <if test="roleNumber != null">
+        role_number,
+      </if>
+      <if test="permissionRoleOperator != null">
+        permission_role_operator,
+      </if>
+      <if test="permissionRoleLastTime != null">
+        permission_role_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="permissionRoleNumber != null">
+        #{permissionRoleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionNumber != null">
+        #{permissionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null">
+        #{roleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionRoleOperator != null">
+        #{permissionRoleOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionRoleLastTime != null">
+        #{permissionRoleLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.PermissionRoleBean">
+    update permission_role
+    <set>
+      <if test="permissionNumber != null">
+        permission_number = #{permissionNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null">
+        role_number = #{roleNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionRoleOperator != null">
+        permission_role_operator = #{permissionRoleOperator,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionRoleLastTime != null">
+        permission_role_last_time = #{permissionRoleLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where permission_role_number = #{permissionRoleNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.PermissionRoleBean">
+    update permission_role
+    set permission_number = #{permissionNumber,jdbcType=VARCHAR},
+      role_number = #{roleNumber,jdbcType=VARCHAR},
+      permission_role_operator = #{permissionRoleOperator,jdbcType=VARCHAR},
+      permission_role_last_time = #{permissionRoleLastTime,jdbcType=TIMESTAMP}
+    where permission_role_number = #{permissionRoleNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

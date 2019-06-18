@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.DetailPurchaseBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.DetailPurchaseBean">
+    <id column="detail_purchase_id" jdbcType="VARCHAR" property="detailPurchaseId" />
+    <result column="order_purchase_id" jdbcType="VARCHAR" property="orderPurchaseId" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="product_num" jdbcType="VARCHAR" property="productNum" />
+    <result column="product_price" jdbcType="VARCHAR" property="productPrice" />
+    <result column="detail_purchase_state" jdbcType="VARCHAR" property="detailPurchaseState" />
+    <result column="detail_purchase_person" jdbcType="VARCHAR" property="detailPurchasePerson" />
+    <result column="detail_purchase_info" jdbcType="VARCHAR" property="detailPurchaseInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="detail_purchase_update_time" jdbcType="TIMESTAMP" property="detailPurchaseUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    detail_purchase_id, order_purchase_id, product_id, product_num, product_price, detail_purchase_state, 
+    detail_purchase_person, detail_purchase_info, company_id, detail_purchase_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from detail_purchase
+    where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from detail_purchase
+    where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.DetailPurchaseBean">
+    insert into detail_purchase (detail_purchase_id, order_purchase_id, 
+      product_id, product_num, product_price, 
+      detail_purchase_state, detail_purchase_person, 
+      detail_purchase_info, company_id, detail_purchase_update_time
+      )
+    values (#{detailPurchaseId,jdbcType=VARCHAR}, #{orderPurchaseId,jdbcType=VARCHAR}, 
+      #{productId,jdbcType=VARCHAR}, #{productNum,jdbcType=VARCHAR}, #{productPrice,jdbcType=VARCHAR}, 
+      #{detailPurchaseState,jdbcType=VARCHAR}, #{detailPurchasePerson,jdbcType=VARCHAR}, 
+      #{detailPurchaseInfo,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.DetailPurchaseBean">
+    insert into detail_purchase
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="detailPurchaseId != null">
+        detail_purchase_id,
+      </if>
+      <if test="orderPurchaseId != null">
+        order_purchase_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="productNum != null">
+        product_num,
+      </if>
+      <if test="productPrice != null">
+        product_price,
+      </if>
+      <if test="detailPurchaseState != null">
+        detail_purchase_state,
+      </if>
+      <if test="detailPurchasePerson != null">
+        detail_purchase_person,
+      </if>
+      <if test="detailPurchaseInfo != null">
+        detail_purchase_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="detailPurchaseUpdateTime != null">
+        detail_purchase_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="detailPurchaseId != null">
+        #{detailPurchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseId != null">
+        #{orderPurchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        #{productNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        #{productPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseState != null">
+        #{detailPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchasePerson != null">
+        #{detailPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseInfo != null">
+        #{detailPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseUpdateTime != null">
+        #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.DetailPurchaseBean">
+    update detail_purchase
+    <set>
+      <if test="orderPurchaseId != null">
+        order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseState != null">
+        detail_purchase_state = #{detailPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchasePerson != null">
+        detail_purchase_person = #{detailPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseInfo != null">
+        detail_purchase_info = #{detailPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseUpdateTime != null">
+        detail_purchase_update_time = #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.DetailPurchaseBean">
+    update detail_purchase
+    set order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR},
+      product_id = #{productId,jdbcType=VARCHAR},
+      product_num = #{productNum,jdbcType=VARCHAR},
+      product_price = #{productPrice,jdbcType=VARCHAR},
+      detail_purchase_state = #{detailPurchaseState,jdbcType=VARCHAR},
+      detail_purchase_person = #{detailPurchasePerson,jdbcType=VARCHAR},
+      detail_purchase_info = #{detailPurchaseInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      detail_purchase_update_time = #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP}
+    where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
+  </update>
+</mapper>

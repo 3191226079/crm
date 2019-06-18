@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.StockBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.StockBean">
+    <id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
+    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
+    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
+    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
+    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    commodity_number, commodity_name, commodity_type, description, unit, warehouse_number, 
+    stock_number, cost_price, retail_price, sale_price, postscript, company_id, stock_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from stock
+    where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from stock
+    where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.StockBean">
+    insert into stock (commodity_number, commodity_name, commodity_type, 
+      description, unit, warehouse_number, 
+      stock_number, cost_price, retail_price, 
+      sale_price, postscript, company_id, 
+      stock_last_time)
+    values (#{commodityNumber,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, #{commodityType,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{warehouseNumber,jdbcType=VARCHAR}, 
+      #{stockNumber,jdbcType=VARCHAR}, #{costPrice,jdbcType=VARCHAR}, #{retailPrice,jdbcType=VARCHAR}, 
+      #{salePrice,jdbcType=VARCHAR}, #{postscript,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
+      #{stockLastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.StockBean">
+    insert into stock
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityNumber != null">
+        commodity_number,
+      </if>
+      <if test="commodityName != null">
+        commodity_name,
+      </if>
+      <if test="commodityType != null">
+        commodity_type,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="warehouseNumber != null">
+        warehouse_number,
+      </if>
+      <if test="stockNumber != null">
+        stock_number,
+      </if>
+      <if test="costPrice != null">
+        cost_price,
+      </if>
+      <if test="retailPrice != null">
+        retail_price,
+      </if>
+      <if test="salePrice != null">
+        sale_price,
+      </if>
+      <if test="postscript != null">
+        postscript,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="stockLastTime != null">
+        stock_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityNumber != null">
+        #{commodityNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityName != null">
+        #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null">
+        #{commodityType,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseNumber != null">
+        #{warehouseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNumber != null">
+        #{stockNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costPrice != null">
+        #{costPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="retailPrice != null">
+        #{retailPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null">
+        #{salePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="postscript != null">
+        #{postscript,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockLastTime != null">
+        #{stockLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.StockBean">
+    update stock
+    <set>
+      <if test="commodityName != null">
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null">
+        commodity_type = #{commodityType,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseNumber != null">
+        warehouse_number = #{warehouseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNumber != null">
+        stock_number = #{stockNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costPrice != null">
+        cost_price = #{costPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="retailPrice != null">
+        retail_price = #{retailPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null">
+        sale_price = #{salePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="postscript != null">
+        postscript = #{postscript,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockLastTime != null">
+        stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.StockBean">
+    update stock
+    set commodity_name = #{commodityName,jdbcType=VARCHAR},
+      commodity_type = #{commodityType,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      warehouse_number = #{warehouseNumber,jdbcType=VARCHAR},
+      stock_number = #{stockNumber,jdbcType=VARCHAR},
+      cost_price = #{costPrice,jdbcType=VARCHAR},
+      retail_price = #{retailPrice,jdbcType=VARCHAR},
+      sale_price = #{salePrice,jdbcType=VARCHAR},
+      postscript = #{postscript,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP}
+    where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

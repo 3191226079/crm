@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.TaskDetailBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.TaskDetailBean">
+    <id column="task_detail_id" jdbcType="VARCHAR" property="taskDetailId" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="task_detail_state" jdbcType="VARCHAR" property="taskDetailState" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="task_detail_update_time" jdbcType="TIMESTAMP" property="taskDetailUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    task_detail_id, task_id, employ_id, task_detail_state, company_id, task_detail_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task_detail
+    where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from task_detail
+    where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.TaskDetailBean">
+    insert into task_detail (task_detail_id, task_id, employ_id, 
+      task_detail_state, company_id, task_detail_update_time
+      )
+    values (#{taskDetailId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{employId,jdbcType=VARCHAR}, 
+      #{taskDetailState,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{taskDetailUpdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.TaskDetailBean">
+    insert into task_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskDetailId != null">
+        task_detail_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="employId != null">
+        employ_id,
+      </if>
+      <if test="taskDetailState != null">
+        task_detail_state,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="taskDetailUpdateTime != null">
+        task_detail_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskDetailId != null">
+        #{taskDetailId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDetailState != null">
+        #{taskDetailState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDetailUpdateTime != null">
+        #{taskDetailUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.TaskDetailBean">
+    update task_detail
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        employ_id = #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDetailState != null">
+        task_detail_state = #{taskDetailState,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDetailUpdateTime != null">
+        task_detail_update_time = #{taskDetailUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.TaskDetailBean">
+    update task_detail
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      employ_id = #{employId,jdbcType=VARCHAR},
+      task_detail_state = #{taskDetailState,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      task_detail_update_time = #{taskDetailUpdateTime,jdbcType=TIMESTAMP}
+    where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}
+  </update>
+</mapper>

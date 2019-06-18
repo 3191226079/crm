@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.CheckPointBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.CheckPointBean">
+    <id column="check_point_id" jdbcType="VARCHAR" property="checkPointId" />
+    <result column="check_point_target" jdbcType="VARCHAR" property="checkPointTarget" />
+    <result column="check_point_info" jdbcType="VARCHAR" property="checkPointInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="check_point_update_time" jdbcType="TIMESTAMP" property="checkPointUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    check_point_id, check_point_target, check_point_info, company_id, check_point_update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from check_point
+    where check_point_id = #{checkPointId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from check_point
+    where check_point_id = #{checkPointId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.CheckPointBean">
+    insert into check_point (check_point_id, check_point_target, check_point_info, 
+      company_id, check_point_update_time)
+    values (#{checkPointId,jdbcType=VARCHAR}, #{checkPointTarget,jdbcType=VARCHAR}, #{checkPointInfo,jdbcType=VARCHAR}, 
+      #{companyId,jdbcType=VARCHAR}, #{checkPointUpdateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.CheckPointBean">
+    insert into check_point
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="checkPointId != null">
+        check_point_id,
+      </if>
+      <if test="checkPointTarget != null">
+        check_point_target,
+      </if>
+      <if test="checkPointInfo != null">
+        check_point_info,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="checkPointUpdateTime != null">
+        check_point_update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="checkPointId != null">
+        #{checkPointId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointTarget != null">
+        #{checkPointTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointInfo != null">
+        #{checkPointInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointUpdateTime != null">
+        #{checkPointUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CheckPointBean">
+    update check_point
+    <set>
+      <if test="checkPointTarget != null">
+        check_point_target = #{checkPointTarget,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointInfo != null">
+        check_point_info = #{checkPointInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkPointUpdateTime != null">
+        check_point_update_time = #{checkPointUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where check_point_id = #{checkPointId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.CheckPointBean">
+    update check_point
+    set check_point_target = #{checkPointTarget,jdbcType=VARCHAR},
+      check_point_info = #{checkPointInfo,jdbcType=VARCHAR},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      check_point_update_time = #{checkPointUpdateTime,jdbcType=TIMESTAMP}
+    where check_point_id = #{checkPointId,jdbcType=VARCHAR}
+  </update>
+</mapper>

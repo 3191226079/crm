@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.JournalBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.JournalBean">
+    <id column="journal_number" jdbcType="VARCHAR" property="journalNumber" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="visit_ip" jdbcType="VARCHAR" property="visitIp" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    journal_number, user_id, visit_ip, permission, visit_time, company_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from journal
+    where journal_number = #{journalNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from journal
+    where journal_number = #{journalNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.JournalBean">
+    insert into journal (journal_number, user_id, visit_ip, 
+      permission, visit_time, company_id
+      )
+    values (#{journalNumber,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{visitIp,jdbcType=VARCHAR}, 
+      #{permission,jdbcType=VARCHAR}, #{visitTime,jdbcType=TIMESTAMP}, #{companyId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.JournalBean">
+    insert into journal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="journalNumber != null">
+        journal_number,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="visitIp != null">
+        visit_ip,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="visitTime != null">
+        visit_time,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="journalNumber != null">
+        #{journalNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="visitIp != null">
+        #{visitIp,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null">
+        #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.JournalBean">
+    update journal
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="visitIp != null">
+        visit_ip = #{visitIp,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="visitTime != null">
+        visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where journal_number = #{journalNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.JournalBean">
+    update journal
+    set user_id = #{userId,jdbcType=VARCHAR},
+      visit_ip = #{visitIp,jdbcType=VARCHAR},
+      permission = #{permission,jdbcType=VARCHAR},
+      visit_time = #{visitTime,jdbcType=TIMESTAMP},
+      company_id = #{companyId,jdbcType=VARCHAR}
+    where journal_number = #{journalNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>
