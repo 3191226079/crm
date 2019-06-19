@@ -1,6 +1,11 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.StockBean;
+
 
 public interface StockBeanMapper {
     int deleteByPrimaryKey(String commodityNumber);
@@ -14,4 +19,7 @@ public interface StockBeanMapper {
     int updateByPrimaryKeySelective(StockBean record);
 
     int updateByPrimaryKey(StockBean record);
+    
+    List<StockBean> getPermissionByUserId(@Param("commodityNumber")String commodityNumber); 
+
 }
