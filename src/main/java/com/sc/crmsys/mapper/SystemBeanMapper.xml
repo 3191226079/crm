@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SystemBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SystemBean">
+    <id column="system_id" jdbcType="VARCHAR" property="systemId" />
+    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="system_title" jdbcType="VARCHAR" property="systemTitle" />
+    <result column="system_content" jdbcType="VARCHAR" property="systemContent" />
+    <result column="system_time" jdbcType="TIMESTAMP" property="systemTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    system_id, employ_id, system_title, system_content, system_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from system
+    where system_id = #{systemId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from system
+    where system_id = #{systemId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SystemBean">
+    insert into system (system_id, employ_id, system_title, 
+      system_content, system_time)
+    values (#{systemId,jdbcType=VARCHAR}, #{employId,jdbcType=VARCHAR}, #{systemTitle,jdbcType=VARCHAR}, 
+      #{systemContent,jdbcType=VARCHAR}, #{systemTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SystemBean">
+    insert into system
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="systemId != null">
+        system_id,
+      </if>
+      <if test="employId != null">
+        employ_id,
+      </if>
+      <if test="systemTitle != null">
+        system_title,
+      </if>
+      <if test="systemContent != null">
+        system_content,
+      </if>
+      <if test="systemTime != null">
+        system_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="systemId != null">
+        #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="employId != null">
+        #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTitle != null">
+        #{systemTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="systemContent != null">
+        #{systemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTime != null">
+        #{systemTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SystemBean">
+    update system
+    <set>
+      <if test="employId != null">
+        employ_id = #{employId,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTitle != null">
+        system_title = #{systemTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="systemContent != null">
+        system_content = #{systemContent,jdbcType=VARCHAR},
+      </if>
+      <if test="systemTime != null">
+        system_time = #{systemTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where system_id = #{systemId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SystemBean">
+    update system
+    set employ_id = #{employId,jdbcType=VARCHAR},
+      system_title = #{systemTitle,jdbcType=VARCHAR},
+      system_content = #{systemContent,jdbcType=VARCHAR},
+      system_time = #{systemTime,jdbcType=TIMESTAMP}
+    where system_id = #{systemId,jdbcType=VARCHAR}
+  </update>
+</mapper>
