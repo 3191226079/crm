@@ -15,8 +15,8 @@ public class WarehouseServiceImpl implements WarehouseService {
 	
 	@Override
 	public WarehouseBean getWarehouseName(String warehouseNumber) {
-		
-		return null;
+		WarehouseBean warehouseBean = warehouseBeanMapper.selectByPrimaryKey(warehouseNumber);
+		return warehouseBean;
 	}
 
 }

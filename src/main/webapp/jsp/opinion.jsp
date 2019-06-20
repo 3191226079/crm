@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,9 +24,17 @@
 		<div class="page">
 			<!-- opinion 页面样式 -->
 			<div class="opinion">
+				
 				<!-- opinion 表格 显示 -->
+				
 				<div class="opShow">
+					<div class="butrr">
+						<div class="buttopr">
+							<a href="jsp/banneradd.jsp" >添加</a>
+						</div>	
+					</div>
 					<table border="0" cellspacing="0" cellpadding="0">
+						
 						<tr>
 							<td width="186px" class="tdColor tdC">补货编号</td>
 							<td width="330px" class="tdColor">产品编号</td>
@@ -37,23 +46,24 @@
 							<td width="160px" class="tdColor">补货状态</td>
 							<td width="180px" class="tdColor">操作</td>
 						</tr>
+						<c:forEach items="${purchaseList }" var="p">
 						<tr height="40px">
-							<td>snnfni1</td>
-							<td>SBRI300003</td>
-							<td>日用品</td>
-							<td>牙膏</td>
-							<td>500g</td>
-							<td>1号仓库</td>
-							<td>8</td>
-							<td>补货中</td>
+							<td>p.purchaseId</td>
+							<td>p.productId</td>
+							<td>p.stockBean.commodityType</td>
+							<td>p.stockBean.commodityName</td>
+							<td>p.stockBean.description</td>
+							<td>p.warehouse.warehouseName</td>
+							<td>p.detailPurchase.productNum</td>
+							<td>p.purchaseState</td>
 							<td><a href="banneradd.html"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
 								src="img/delete.png"></td>
 						</tr>
-						
+						</c:forEach>
 						
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging">第一页共1页</div>
 				</div>
 				<!-- opinion 表格 显示 end-->
 			</div>

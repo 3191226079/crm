@@ -240,7 +240,6 @@ td {
 
 .bbD {
 	margin-top: 20px;
-
 }
 
 .bbD .bbDP {
@@ -282,6 +281,7 @@ td {
 	width: 300px;
     height: 40px;
     border: 1px solid #ccc;
+    
     text-indent: 15px;
 }
 
@@ -540,7 +540,6 @@ td {
 	min-width: 670px;
 	max-height: 120px;
 	min-height: 120px;
-	padding-top: 10px;
 	color: #333;
 	text-indent: 15px;
 }

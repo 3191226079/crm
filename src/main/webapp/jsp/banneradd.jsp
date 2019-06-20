@@ -27,47 +27,49 @@
 				<div class="baTop">
 					
 				</div>
+				<form action="purchase/add" method="post">
 				<div class="baBody">
 					<div class="bbD">
-						<span class="nar">产品编号：</span><input type="text" class="input1" />
+						<span class="nar">产品编号：</span><input type="text" class="input1" name="productId"/>
 					</div>
 					<div class="bbD">
-						<span class="nar">产品名称：</span><input type="text" class="input1" />
+						<span class="nar">产品名称：</span><input type="text" class="input1"  />
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">数量：</span><input type="text" class="input1" />
+						<span class="blankr"></span><span class="nar">数量：</span><input type="text" class="input1" name="productNum" />
 					</div>
 					<div class="bbD">
 						<span class="blankr"></span><span class="nar">单位：</span><input type="text" class="input1" />
 					</div>
 					<div class="bbD">
-						<span class="nar">交货时间：</span><input type="text" class="input1" />
+						<span class="nar">交货时间：</span><input type="text" class="input1" name="orderPurchaseBusinessTime"/>
 					</div>
 					<div class="bbD">
-						<span class="nar">采购人员：</span><input type="text" class="input1" />
+						<span class="nar">采购人员：</span><input type="text" class="input1" name="orderPurchasePerson"/>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">状态：</span><input type="text" class="input1" />
+						<span class="blankr"></span><span class="nar">状态：</span><input type="text" class="input1" name="purchaseState"/>
 					</div>
 					<div class="bbD">
 						<span class="blankr"></span><span>备注：</span>
 						<div class="btextr">
-							<textarea class="text2"></textarea>
+							<textarea class="text2" name="purchaseInfo"></textarea>
 						</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">录入人员：</span><input type="text" class="input1" />
+						<span class="nar">录入人员：</span><input type="text" class="input1" name="purchasePerson"/>
 					</div>
 					<div class="bbD">
-						<span class="nar">添加时间：</span><input type="text" class="input1" />
+						<span class="nar">添加时间：</span><input type="text" class="input1" name="purchaseUpdateTime" />
 					</div>
 					<div class="bbD">
 						<p class="bbDP">
-							<button class="btn_ok btn_yes" href="#">提交</button>
-							<a class="btn_ok btn_no" href="#">取消</a>
+							<input type="submit" class="btn_ok btn_yes" value="提交">
+							<a class="btn_ok btn_no" href="jsp/banneradd.jsp">取消</a>
 						</p>
 					</div>
 				</div>
+				</form>
 			</div>
 
 			<!-- 上传广告页面样式end -->

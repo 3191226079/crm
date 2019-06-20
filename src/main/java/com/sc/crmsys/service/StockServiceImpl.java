@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.mapper.StockBeanMapper;
 
-@Service("purchaseService")
+@Service("stockService")
 public class StockServiceImpl implements  StockService{
 
 	@Resource
@@ -17,8 +17,8 @@ public class StockServiceImpl implements  StockService{
 	
 	@Override
 	public List<StockBean> getPurchase(String companyId) {
-		List<StockBean> list = stockBeanMapper.getByPrimaryKey(companyId);
-		return list;
+		/*List<StockBean> list = stockBeanMapper.getByPrimaryKey(companyId);*/
+		return null;
 	}
 
 }
