@@ -185,4 +185,8 @@
       stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP}
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </update>
+  <select id="getByPrimaryKey" parameterType="com.sc.crmsys.bean.StockBean" resultMap="BaseResultMap">
+  	SELECT * FROM stock WHERE p.company_id = #{companyId}
+  
+  </select>
 </mapper>

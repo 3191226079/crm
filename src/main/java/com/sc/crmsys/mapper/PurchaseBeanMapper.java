@@ -14,4 +14,6 @@ public interface PurchaseBeanMapper {
     int updateByPrimaryKeySelective(PurchaseBean record);
 
     int updateByPrimaryKey(PurchaseBean record);
+    
+    PurchaseBean getByPrimaryKey(String purchaseId,String productId);
 }

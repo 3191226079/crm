@@ -126,4 +126,7 @@
       purchase_update_time = #{purchaseUpdateTime,jdbcType=TIMESTAMP}
     where purchase_id = #{purchaseId,jdbcType=VARCHAR}
   </update>
+  <select id="getByPrimaryKey" parameterType="com.sc.crmsys.bean.PurchaseBean" resultMap="BaseResultMap">
+  select * from purchase where purchase_id = #{purchaseId} and product_id = #{productId}
+  </select>
 </mapper>

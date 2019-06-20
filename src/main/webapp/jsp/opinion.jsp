@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>    
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<base href="<%=basePath%>"> 
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="css/css.css" />
+</head>
+
+<body>
+	<div id="pageAll">
+		<div class="pageTop">
+			<div class="page">
+				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+			</div>
+		</div>
+		<div class="page">
+			<!-- opinion 页面样式 -->
+			<div class="opinion">
+				<!-- opinion 表格 显示 -->
+				<div class="opShow">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="186px" class="tdColor tdC">补货编号</td>
+							<td width="330px" class="tdColor">产品编号</td>
+							<td width="330px" class="tdColor">产品类别</td>
+							<td width="330px" class="tdColor">产品名称</td>
+							<td width="230px" class="tdColor">规格</td>
+							<td width="330px" class="tdColor">所属仓库</td>
+							<td width="280px" class="tdColor">补货数量</td>
+							<td width="160px" class="tdColor">补货状态</td>
+							<td width="180px" class="tdColor">操作</td>
+						</tr>
+						<tr height="40px">
+							<td>snnfni1</td>
+							<td>SBRI300003</td>
+							<td>日用品</td>
+							<td>牙膏</td>
+							<td>500g</td>
+							<td>1号仓库</td>
+							<td>8</td>
+							<td>补货中</td>
+							<td><a href="banneradd.html"><img class="operation"
+									src="img/update.png"></a> <img class="operation delban"
+								src="img/delete.png"></td>
+						</tr>
+						
+						
+					</table>
+					<div class="paging">此处是分页</div>
+				</div>
+				<!-- opinion 表格 显示 end-->
+			</div>
+			<!-- 页面样式end -->
+		</div>
+	</div>
+</body>
+</html>
