@@ -19,6 +19,8 @@ public class UserBean {
 
     private Date userUpdateTime;
 
+    private String userSalt;
+
     public String getUserId() {
         return userId;
     }
@@ -81,5 +83,13 @@ public class UserBean {
 
     public void setUserUpdateTime(Date userUpdateTime) {
         this.userUpdateTime = userUpdateTime;
+    }
+
+    public String getUserSalt() {
+        return userSalt;
+    }
+
+    public void setUserSalt(String userSalt) {
+        this.userSalt = userSalt == null ? null : userSalt.trim();
     }
 }

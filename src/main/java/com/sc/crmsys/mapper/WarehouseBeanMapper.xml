@@ -90,4 +90,5 @@
       warehouse_last_time = #{warehouseLastTime,jdbcType=TIMESTAMP}
     where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
   </update>
+  
 </mapper>

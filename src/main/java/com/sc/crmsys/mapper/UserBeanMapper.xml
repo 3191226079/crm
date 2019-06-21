@@ -10,10 +10,11 @@
     <result column="user_state" jdbcType="VARCHAR" property="userState" />
     <result column="user_register_time" jdbcType="TIMESTAMP" property="userRegisterTime" />
     <result column="user_update_time" jdbcType="TIMESTAMP" property="userUpdateTime" />
+    <result column="user_salt" jdbcType="VARCHAR" property="userSalt" />
   </resultMap>
   <sql id="Base_Column_List">
     user_id, user_name, user_password, employ_id, company_id, user_state, user_register_time, 
-    user_update_time
+    user_update_time, user_salt
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -28,10 +29,12 @@
   <insert id="insert" parameterType="com.sc.crmsys.bean.UserBean">
     insert into user (user_id, user_name, user_password, 
       employ_id, company_id, user_state, 
-      user_register_time, user_update_time)
+      user_register_time, user_update_time, user_salt
+      )
     values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, 
       #{employId,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{userState,jdbcType=VARCHAR}, 
-      #{userRegisterTime,jdbcType=TIMESTAMP}, #{userUpdateTime,jdbcType=TIMESTAMP})
+      #{userRegisterTime,jdbcType=TIMESTAMP}, #{userUpdateTime,jdbcType=TIMESTAMP}, #{userSalt,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.sc.crmsys.bean.UserBean">
     insert into user
@@ -60,6 +63,9 @@
       <if test="userUpdateTime != null">
         user_update_time,
       </if>
+      <if test="userSalt != null">
+        user_salt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -85,6 +91,9 @@
       </if>
       <if test="userUpdateTime != null">
         #{userUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userSalt != null">
+        #{userSalt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -112,6 +121,9 @@
       <if test="userUpdateTime != null">
         user_update_time = #{userUpdateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="userSalt != null">
+        user_salt = #{userSalt,jdbcType=VARCHAR},
+      </if>
     </set>
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
@@ -123,7 +135,8 @@
       company_id = #{companyId,jdbcType=VARCHAR},
       user_state = #{userState,jdbcType=VARCHAR},
       user_register_time = #{userRegisterTime,jdbcType=TIMESTAMP},
-      user_update_time = #{userUpdateTime,jdbcType=TIMESTAMP}
+      user_update_time = #{userUpdateTime,jdbcType=TIMESTAMP},
+      user_salt = #{userSalt,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 </mapper>
