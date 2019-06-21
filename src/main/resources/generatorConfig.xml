@@ -49,7 +49,6 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-<!-- 
 		<table tableName="active" domainObjectName="ActiveBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 		<table tableName="check_point" domainObjectName="CheckPointBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 		<table tableName="city" domainObjectName="CityBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
@@ -78,7 +77,10 @@
 		<table tableName="supplier" domainObjectName="SupplierBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 		<table tableName="task" domainObjectName="TaskBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 		<table tableName="task_detail" domainObjectName="TaskDetailBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="user" domainObjectName="UserBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />   -->   
 		<table tableName="question" domainObjectName="QuestionBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+		<table tableName="user" domainObjectName="UserBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+		<table tableName="user_role" domainObjectName="UserRoleBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+		<table tableName="system" domainObjectName="SystemBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+
 	</context>
 </generatorConfiguration>
