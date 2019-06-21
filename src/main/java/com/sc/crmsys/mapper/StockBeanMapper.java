@@ -3,7 +3,6 @@ package com.sc.crmsys.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
-
 import com.github.pagehelper.Page;
 import com.sc.crmsys.bean.StockBean;
 
@@ -20,8 +19,5 @@ public interface StockBeanMapper {
     int updateByPrimaryKeySelective(StockBean record);
 
     int updateByPrimaryKey(StockBean record);
-    
-    
-  
     
 }

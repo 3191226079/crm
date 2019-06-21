@@ -28,8 +28,13 @@ public class StockBean {
     private String companyId;
 
     private Date stockLastTime;
+    
 
-    public String getCommodityNumber() {
+    
+    
+
+
+	public String getCommodityNumber() {
         return commodityNumber;
     }
 

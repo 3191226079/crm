@@ -1,5 +1,9 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.QuestionBean;
 
 public interface QuestionBeanMapper {
@@ -14,4 +18,6 @@ public interface QuestionBeanMapper {
     int updateByPrimaryKeySelective(QuestionBean record);
 
     int updateByPrimaryKey(QuestionBean record);
+    
+    List<QuestionBean> selectOne(@Param("content")String content);
 }
