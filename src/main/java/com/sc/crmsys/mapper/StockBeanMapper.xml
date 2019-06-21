@@ -16,6 +16,9 @@
     <result column="company_id" jdbcType="VARCHAR" property="companyId" />
     <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
   </resultMap>
+  
+  
+ 
   <sql id="Base_Column_List">
     commodity_number, commodity_name, commodity_type, description, unit, warehouse_number, 
     stock_number, cost_price, retail_price, sale_price, postscript, company_id, stock_last_time
@@ -185,4 +188,5 @@
       stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP}
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </update>
+  
 </mapper>

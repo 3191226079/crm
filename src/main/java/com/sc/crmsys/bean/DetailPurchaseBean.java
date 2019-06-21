@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class DetailPurchaseBean {
     private String detailPurchaseId;
 
@@ -21,6 +23,7 @@ public class DetailPurchaseBean {
 
     private String companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date detailPurchaseUpdateTime;
 
     public String getDetailPurchaseId() {
