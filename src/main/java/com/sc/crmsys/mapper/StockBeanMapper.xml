@@ -42,34 +42,9 @@
       #{salePrice,jdbcType=VARCHAR}, #{postscript,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
       #{stockLastTime,jdbcType=TIMESTAMP})
   </insert>
+
   
   
-  <insert id="addStock" parameterType="com.sc.crmsys.bean.StockBean">
-  	insert into stock (commodity_number, commodity_name, commodity_type, 
-      description, unit, warehouse_number, 
-      stock_number, cost_price, retail_price, 
-      sale_price, postscript, company_id, 
-      stock_last_time)
-    values (#{commodityNumber,jdbcType=VARCHAR}, #{commodityName,jdbcType=VARCHAR}, #{commodityType,jdbcType=VARCHAR}, 
-      #{description,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, #{warehouseNumber,jdbcType=VARCHAR}, 
-      #{stockNumber,jdbcType=VARCHAR}, #{costPrice,jdbcType=VARCHAR}, #{retailPrice,jdbcType=VARCHAR}, 
-      #{salePrice,jdbcType=VARCHAR}, #{postscript,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
-      #{stockLastTime,jdbcType=TIMESTAMP})
-  </insert>
-  <delete id="deleteStock" parameterType="java.lang.String">
-  	 delete from stock
-    where commodity_number = #{commodityNumber}
-  </delete>
-  <update id="updateStock" parameterType="java.lang.String">
-  	update stock set commodity_number=#{commodityNumber} 
-  </update>
-  <select id="getStock" parameterType="java.lang.String">
-  	select * from stock where commodity_number=#{commodityNumber}
-  </select>
-  <select id="stockList" parameterType="java.lang.String">
-  	select * from stock 
-  </select>
- 
   
   
   <insert id="insertSelective" parameterType="com.sc.crmsys.bean.StockBean">

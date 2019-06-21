@@ -14,4 +14,6 @@ public interface WarehouseBeanMapper {
     int updateByPrimaryKeySelective(WarehouseBean record);
 
     int updateByPrimaryKey(WarehouseBean record);
+    
+    public void selectWarehouseName(String warehouseName);
 }
