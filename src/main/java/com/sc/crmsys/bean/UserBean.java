@@ -82,4 +82,12 @@ public class UserBean {
     public void setUserUpdateTime(Date userUpdateTime) {
         this.userUpdateTime = userUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", employId=" + employId + ", companyId=" + companyId + ", userState=" + userState
+				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + "]";
+	}
+    
 }

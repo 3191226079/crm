@@ -23,14 +23,10 @@ public class PurchaseBean {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date purchaseUpdateTime;
     
-    private WarehouseBean warehouseBean;
-    
     private StockBean stockBean;
     
     private DetailPurchaseBean detailPurchaseBean;
     
-    
-
     public DetailPurchaseBean getDetailPurchaseBean() {
 		return detailPurchaseBean;
 	}
@@ -39,13 +35,7 @@ public class PurchaseBean {
 		this.detailPurchaseBean = detailPurchaseBean;
 	}
 
-	public WarehouseBean getWarehouseBean() {
-		return warehouseBean;
-	}
-
-	public void setWarehouseBean(WarehouseBean warehouseBean) {
-		this.warehouseBean = warehouseBean;
-	}
+	
 
 	public StockBean getStockBean() {
 		return stockBean;

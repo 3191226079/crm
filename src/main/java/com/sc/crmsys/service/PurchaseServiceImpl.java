@@ -1,8 +1,10 @@
 package com.sc.crmsys.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -22,17 +24,21 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Resource
 	private DetailPurchaseBeanMapper detailPurchaseBeanMapper;
 	
+	@Resource
 	private OrderPurchaseBeanMapper orderPurchaseBeanMapper;
 
 	@Override
 	public List<PurchaseBean> getPurchase(String companyId) {
-		List<PurchaseBean> list = purchaseBeanMapper.getByPrimaryKey(companyId);
-		return list;
+		List<PurchaseBean> purchaselist = purchaseBeanMapper.getByPrimaryKey(companyId);
+		return purchaselist;
 	}
 
 	@Override
 	public void addPurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean)
  {
+		
+		
+		//插入数据
 		purchaseBeanMapper.insert(purchaseBean);
 		
 		detailPurchaseBeanMapper.insert(detailPurchaseBean);
@@ -40,6 +46,16 @@ public class PurchaseServiceImpl implements PurchaseService{
 		orderPurchaseBeanMapper.insert(orderPurchaseBean);
 		
 	}
+
+	
+
+	@Override
+	public List<PurchaseBean> findPurchase(String purchaseId) {
+		List<PurchaseBean> list = purchaseBeanMapper.findByPrimaryKey(purchaseId);
+		return list;
+	}
+
+
 	
 	
 

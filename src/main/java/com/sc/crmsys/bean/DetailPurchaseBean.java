@@ -25,8 +25,18 @@ public class DetailPurchaseBean {
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date detailPurchaseUpdateTime;
+    
+    private OrderPurchaseBean orderPurchaseBean; 
 
-    public String getDetailPurchaseId() {
+    public OrderPurchaseBean getOrderPurchaseBean() {
+		return orderPurchaseBean;
+	}
+
+	public void setOrderPurchaseBean(OrderPurchaseBean orderPurchaseBean) {
+		this.orderPurchaseBean = orderPurchaseBean;
+	}
+
+	public String getDetailPurchaseId() {
         return detailPurchaseId;
     }
 
@@ -105,4 +115,15 @@ public class DetailPurchaseBean {
     public void setDetailPurchaseUpdateTime(Date detailPurchaseUpdateTime) {
         this.detailPurchaseUpdateTime = detailPurchaseUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "DetailPurchaseBean [detailPurchaseId=" + detailPurchaseId + ", orderPurchaseId=" + orderPurchaseId
+				+ ", productId=" + productId + ", productNum=" + productNum + ", productPrice=" + productPrice
+				+ ", detailPurchaseState=" + detailPurchaseState + ", detailPurchasePerson=" + detailPurchasePerson
+				+ ", detailPurchaseInfo=" + detailPurchaseInfo + ", companyId=" + companyId
+				+ ", detailPurchaseUpdateTime=" + detailPurchaseUpdateTime + ", orderPurchaseBean=" + orderPurchaseBean
+				+ "]";
+	}
+    
 }
