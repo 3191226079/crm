@@ -49,23 +49,25 @@
 				<p class="p1" style="display: block;text-align:center;">登录</p>
 				
 			</div>
-			<div class="lgD">
-				<img class="img1" src="img/coin02.png" /><input type="text" v-model="companyCode"
-					placeholder="输入公司代码" @blur="sp1"/><span>{{spll1}}</span>
-			</div>
-			<!-- 输入框 -->
-			<div class="lgD">
-				<img class="img1" src="img/logName.png" /><input type="text" v-model="userName"
-					placeholder="输入用户名" @blur="sp2"/><span>{{spll2}}</span>
-			</div>
-			<div class="lgD">
-				<img class="img1" src="img/logPwd.png" /><input type="text"  v-model="userPassword"
-					placeholder="输入用户密码" @blur="sp3"/><span>{{spll3}}</span>
-			</div>
-			<div class="lgD">
-				<div id="mpanel2"></div><span>{{spll4}}</span>
-				 <!-- <button type="button" id="check-btn" class="verify-btn">确定</button>  -->
-			</div>
+			<form action="login" method="post" id="myformll123">
+				<div class="lgD">
+					<img class="img1" src="img/coin02.png" /><input type="text" v-model="companyCode"
+						placeholder="输入公司代码" @blur="sp1"/><span>{{spll1}}</span>
+				</div>
+				<!-- 输入框 -->
+				<div class="lgD">
+					<img class="img1" src="img/logName.png" /><input type="text" v-model="userName"
+						placeholder="输入用户名" @blur="sp2"/><span>{{spll2}}</span>
+				</div>
+				<div class="lgD">
+					<img class="img1" src="img/logPwd.png" /><input type="text"  v-model="userPassword"
+						placeholder="输入用户密码" @blur="sp3"/><span>{{spll3}}</span>
+				</div>
+				<div class="lgD">
+					<div id="mpanel2"></div><span>{{spll4}}</span>
+					 <!-- <button type="button" id="check-btn" class="verify-btn">确定</button>  -->
+				</div>
+			</form>
 			<div class="logC">
 				<button id="check-btn" v-on:click="juge">登 录</button>
 			</div>
