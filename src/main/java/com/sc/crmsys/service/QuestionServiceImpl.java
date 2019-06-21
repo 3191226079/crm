@@ -16,11 +16,6 @@ public class QuestionServiceImpl implements QuestionService{
 	@Resource
 	private QuestionBeanMapper questionMapper;
 
-	@Override
-	public List<QuestionBean> selectQuestion() {
-		List<QuestionBean> question = questionMapper.selectQuestion();
-		return question;
-	}
 
 	@Override
 	public List<QuestionBean> selectOne(String content) {
@@ -30,7 +25,7 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Override
 	public void addQuestion(QuestionBean question) {
-		 questionMapper.insert(question);
+		 questionMapper.insertSelective(question);
 	}
 
 }

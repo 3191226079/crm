@@ -25,31 +25,24 @@ public class QuestionController {
 	private QuestionService questionService;
 	
 	@RequestMapping("/info")
-	public String selectQuestions(Map map)
+	public String selectQuestions(Map map,String content)
 	{
-		List<QuestionBean> question = questionService.selectQuestion();
+		List<QuestionBean> question = questionService.selectOne(content);
 		map.put("questionList", question);
 		return "forward:/jsp/index.jsp";
 	}
 
-	
-	@RequestMapping("/select")
-	@ResponseBody
-	public List<QuestionBean> selectOne(String content)
-	{
-		List<QuestionBean> questionone = questionService.selectOne(content);
-		return questionone;
-	}
-	
+
 	@RequestMapping("/add")
-	public String add(Map map,QuestionBean question)
+	public String add(QuestionBean question)
 	{
+		System.out.println(question.getQuestionContent());
 		String questionId = UUID.randomUUID().toString();
 		Date date = new Date();
 		question.setQuestionId(questionId);
 		question.setQuestionTime(date);
 		questionService.addQuestion(question);
-		return "forward:/jsp/index.jsp";
+		return "forward:/question/info";
 	}
 
 }

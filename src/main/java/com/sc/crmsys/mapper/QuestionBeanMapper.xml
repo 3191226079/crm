@@ -15,12 +15,15 @@
     answer_popular
   </sql>
   
-  <select id="selectQuestion" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select * from question where question_state =1
-  </select>
   
   <select id="selectOne" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select * from question where question_content like '%${_parameter}%'
+    select * from question
+    <where>
+    	 question_state = 1 
+    	 <if test="content != null">
+    	 	and question_content like '%${content}%'
+    	 </if>
+    </where>
   </select>
   
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
