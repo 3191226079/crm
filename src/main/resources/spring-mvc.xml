@@ -14,6 +14,13 @@
 	
 	<!-- 请求适配器 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
+	<!-- json配置 -->
+	<mvc:annotation-driven>
+     <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+   </mvc:message-converters>
+   </mvc:annotation-driven>
 	
 	<!-- 视图解析器 -->
 	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
@@ -56,5 +63,8 @@
 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/img/" mapping="/img/**"></mvc:resources>
 	<mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>
+	<mvc:resources location="/qqjs/" mapping="/qqjs/**"></mvc:resources>
+	<mvc:resources location="/qqcss/" mapping="/qqcss/**"></mvc:resources>
+	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
 		
 </beans>

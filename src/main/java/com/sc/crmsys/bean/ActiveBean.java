@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class ActiveBean {
     private String activeId;
 
@@ -9,15 +11,18 @@ public class ActiveBean {
 
     private String activeTitle;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date activeStartTime;
 
     private String acitveDescribe;
 
     private String companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date activeUpdateTime;
+    
 
-    public String getActiveId() {
+	public String getActiveId() {
         return activeId;
     }
 
