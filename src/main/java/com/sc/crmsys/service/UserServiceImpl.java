@@ -24,5 +24,12 @@ public class UserServiceImpl implements UserService{
 		UserBean userBean = userBeanMapper.selectByPrimaryKey(userId);
 		return userBean;
 	}
+
+	@Override
+	public int updateByPrimaryKeySelective(UserBean userBean) {
+		userBeanMapper.updateByPrimaryKeySelective(userBean);
+		return 0;
+	}
+
 	
 }
