@@ -19,7 +19,9 @@
   <select id="selectOne" parameterType="java.lang.String" resultMap="BaseResultMap">
     select * from question
     <where>
-    	 question_state = 1 
+    	<if test="state != null">
+    		question_state = #{state} 
+    	</if>
     	 <if test="content != null">
     	 	and question_content like '%${content}%'
     	 </if>
@@ -93,6 +95,7 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.QuestionBean">
     update question
     <set>

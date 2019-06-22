@@ -72,4 +72,18 @@ public class QuestionBean {
     public void setAnswerPopular(String answerPopular) {
         this.answerPopular = answerPopular == null ? null : answerPopular.trim();
     }
+
+	@Override
+	public String toString() {
+		return "QuestionBean [questionId=" + questionId + ", questionContent=" + questionContent + ", questionState="
+				+ questionState + ", questionTime=" + questionTime + ", answerContent=" + answerContent
+				+ ", answerTime=" + answerTime + ", answerPopular=" + answerPopular + ", getQuestionId()="
+				+ getQuestionId() + ", getQuestionContent()=" + getQuestionContent() + ", getQuestionState()="
+				+ getQuestionState() + ", getQuestionTime()=" + getQuestionTime() + ", getAnswerContent()="
+				+ getAnswerContent() + ", getAnswerTime()=" + getAnswerTime() + ", getAnswerPopular()="
+				+ getAnswerPopular() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+    
+    
 }

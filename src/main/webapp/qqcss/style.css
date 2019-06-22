@@ -25,12 +25,23 @@ p {line-height: 22px}
 {
 	font-size: 15px;
     color: rgb(0,0,0);
-	width: 100%;
+	width: 88%;
     height: 35px;
-    background-color: rgb(200,200,200);
+    background-color: white;
+    border: 1px rgba(0,0,0,0.6) solid;
+   
+}
+.select
+{
+	width: 8%;
+    height: 35px;
     border: 1px rgba(0,0,0,0.6) solid;
     border-bottom:none;
+    background-color: rgb(120,120,120);
+    color: white;
+    font-size: 15px;
 }
+
 .questions
 {
     border: 1px rgba(0,0,0,0.6) solid;
@@ -89,6 +100,7 @@ p {line-height: 22px}
     vertical-align: middle;
     outline: none;
 }
+
 .submit:hover
 {
     background-color: rgb(87,36,68);
