@@ -50,6 +50,14 @@
 		<property name="resolveLazily" value="true" ></property>
 	</bean>
 	
+	 <!-- 模拟拦截器 -->
+	<!--<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.sc.crmsys.interceptor.MoNiSessionInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors> -->
+	
 	<!-- 静态资源 -->
 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
 	<mvc:resources location="/css/" mapping="/css/**"></mvc:resources>

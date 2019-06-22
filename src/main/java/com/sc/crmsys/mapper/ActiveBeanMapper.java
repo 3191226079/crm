@@ -1,17 +1,26 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.ActiveBean;
+import com.sc.crmsys.bean.CheckPointBean;
 
 public interface ActiveBeanMapper {
-    int deleteByPrimaryKey(String activeId);
+    void deleteByPrimaryKey(String activeId);
 
-    int insert(ActiveBean record);
+    void insert(ActiveBean active);
 
     int insertSelective(ActiveBean record);
 
-    ActiveBean selectByPrimaryKey(String activeId);
+    List<ActiveBean> selectAll(@Param("t")String activeTitle);
 
-    int updateByPrimaryKeySelective(ActiveBean record);
+    void updateByPrimaryKeySelective(ActiveBean activeBean);
 
     int updateByPrimaryKey(ActiveBean record);
+    
+    List<ActiveBean> selectByTitle(@Param("title")String activeTilte);
+    
+    ActiveBean selectByPrimaryKey(String activeId);
 }

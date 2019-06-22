@@ -146,4 +146,17 @@ public class OrderPurchaseBean {
     public void setOrderPurchaseUpdateTime(Date orderPurchaseUpdateTime) {
         this.orderPurchaseUpdateTime = orderPurchaseUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "OrderPurchaseBean [orderPurchaseId=" + orderPurchaseId + ", orderPurchaseTitle=" + orderPurchaseTitle
+				+ ", orderPurchaseTime=" + orderPurchaseTime + ", supplierId=" + supplierId + ", orderPurchaseMoney="
+				+ orderPurchaseMoney + ", orderPurchaseNumber=" + orderPurchaseNumber + ", orderPurchaseState="
+				+ orderPurchaseState + ", orderPurchaseBusinessTime=" + orderPurchaseBusinessTime
+				+ ", orderPurchaseBusinessAddress=" + orderPurchaseBusinessAddress + ", orderPurchaseBusinessType="
+				+ orderPurchaseBusinessType + ", orderPurchasePerson=" + orderPurchasePerson + ", orderPurchaseInfo="
+				+ orderPurchaseInfo + ", companyId=" + companyId + ", orderPurchaseUpdateTime="
+				+ orderPurchaseUpdateTime + "]";
+	}
+    
 }

@@ -56,7 +56,7 @@
 							<td>p.warehouse.warehouseName</td>
 							<td>p.detailPurchase.productNum</td>
 							<td>p.purchaseState</td>
-							<td><a href="banneradd.html"><img class="operation"
+							<td><a href="banner.jsp?purchaseId=${p.purchaseId }"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
 								src="img/delete.png"></td>
 						</tr>

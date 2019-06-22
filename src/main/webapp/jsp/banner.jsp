@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,9 +10,8 @@
 <head>
 	<base href="<%=basePath%>"> 
 	<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/css.css" />
+	<link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
-<script type="text/javascript"  src=""></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 <body>
@@ -28,49 +28,48 @@
 				<div class="baTop">
 					
 				</div>
-				<form action="purchase/add" method="get">
+				<c:forEach items="${purchaseList}" var="p">
 				<div class="baBody">
 					<div class="bbD">
-						<span class="nar">产品编号：</span><input type="text" class="input1" name="productId" onblur="function a(this)"/>
+						<span class="nar">产品编号：</span><div class="input1">${p.productId }</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">产品名称：</span><input type="text" class="input1"  />
+						<span class="nar">产品名称：</span><div class="input1">${p.stockBean.commodityName }</div>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">数量：</span><input type="text" class="input1" name="productNum" />
+						<span class="blankr"></span><span class="nar">数量：</span><div class="input1">${p.detailPurchaseBean.productNum }</div>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">单位：</span><input type="text" class="input1" />
+						<span class="blankr"></span><span class="nar">单位：</span><div class="input1">${p.stockBean.unit }</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">交货时间：</span><input type="text" class="input1" name="orderPurchaseBusinessTime"/>
+						<span class="nar">交货时间：</span><div class="input1">${p.detailPurchaseBean.orderPurchaseBean.orderPurchaseBusinessTime }</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">采购人员：</span><input type="text" class="input1" name="orderPurchasePerson"/>
+						<span class="nar">采购人员：</span><div class="input1">${p.detailPurchaseBean.orderPurchaseBean.orderPurchasePerson }</div>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">状态：</span><input type="text" class="input1" name="purchaseState"/>
+						<span class="blankr"></span><span class="nar">状态：</span><div class="input1">${p.purchase_state }</div>
 					</div>
 					<div class="bbD">
 						<span class="blankr"></span><span>备注：</span>
 						<div class="btextr">
-							<textarea class="text2" name="purchaseInfo"></textarea>
+							<div class="text2">${p.purchaseInfo }</div>
 						</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">录入人员：</span><input type="text" class="input1" name="purchasePerson"/>
+						<span class="nar">录入人员：</span><div class="input1">${p.purchasePerson }</div>
 					</div>
 					<div class="bbD">
-						<span class="nar">添加时间：</span><input type="text" class="input1" name="purchaseUpdateTime" />
+						<span class="nar">添加时间：</span><div class="input1">${p.purchaseUpdateTime }</div>
 					</div>
 					<div class="bbD">
 						<p class="bbDP">
-							<input type="submit" class="btn_ok btn_yes" value="提交">
-							<a class="btn_ok btn_no" href="jsp/banneradd.jsp">取消</a>
+							<a class="btn_ok btn_no" href="jsp/banner.jsp">返回</a>
 						</p>
 					</div>
 				</div>
-				</form>
+				</c:forEach>
 			</div>
 
 			<!-- 上传广告页面样式end -->

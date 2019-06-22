@@ -92,4 +92,11 @@ public class UserBean {
     public void setUserSalt(String userSalt) {
         this.userSalt = userSalt == null ? null : userSalt.trim();
     }
+    @Override
+	public String toString() {
+		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", employId=" + employId + ", companyId=" + companyId + ", userState=" + userState
+				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + "]";
+	}
+
 }
