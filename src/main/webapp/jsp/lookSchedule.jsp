@@ -120,13 +120,6 @@
 		}
 		function addNode()
 		{
-			//创建节点
-            // var a = document.createElement('a');
-            // a.innerHTML = '百度';
-            // a.href = 'https://www.baidu.com';
-            //把节点添加到页面
-            // document.body.appendChild(a);
-
             var td = document.getElementById('addtd');
             if(${activeBean1.pageNum} != 1)
            	{
@@ -134,8 +127,8 @@
             	a.innerHTML = '首页';
             	a.href = 'active/selectActive?pn=1';
             	td.appendChild(a);
-            	a.style.display = 'block';
-				a.style.float = 'left';
+            	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+            	a.style.float = 'left';
            	}
             
             if(${activeBean1.pageNum} <= 6)
@@ -148,8 +141,7 @@
 						a.innerHTML = i + 1;
 						a.href = 'active/selectActive?pn=' + (i + 1);
 						td.appendChild(a);
-						a.style.display = 'block';
-						a.style.width = '30px';
+						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
 						
 						if(${activeBean1.pageNum} == i+1)
@@ -172,8 +164,7 @@
 						a.innerHTML = ${activeBean1.pageNum}+i-5;
 						a.href = 'active/selectActive?pn=' + (${activeBean1.pageNum}+i-5);
 						td.appendChild(a);
-						a.style.display = 'block';
-						a.style.width = '30px';
+						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
 						
 						if(${activeBean1.pageNum} == (${activeBean1.pageNum}+i-5))
@@ -192,8 +183,8 @@
             	a.innerHTML = '尾页';
             	a.href = 'active/selectActive?pn=' + ${activeBean1.pages};
             	td.appendChild(a);
-            	a.style.display = 'block';
-				a.style.float = 'left';
+            	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+            	a.style.float = 'left';
            	}
 		}
 	</script>

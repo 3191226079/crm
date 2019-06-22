@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.sc.crmsys.bean.InfoDetailBean;
 
 public interface InfoDetailBeanMapper {
-    int deleteByPrimaryKey(String infoDetailId);
+    void deleteByinfoDetailId(String infoDetailId);
 
     int insert(InfoDetailBean infoDetailBean);
 

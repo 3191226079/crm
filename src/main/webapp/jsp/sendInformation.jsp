@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,7 +23,7 @@
 			</div>
 		</div>
 		<form action="info/insertInfo">
-			<div class="page ">
+			<div class="page">
 				<!-- 上传广告页面样式 -->
 				<div class="bor"  style="margin-top:10px;">
 					<div class="baTopNo">
@@ -35,11 +36,11 @@
 						</div>
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收用户：
-							<select class="input3">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<select class="input3" name="employId">
+								<c:forEach items="${employList }" var="employBean">
+									<option value="1" disabled selected hidden>请选择</option>
+									<option value="${employBean.employId }">${employBean.employName }</option>
+								</c:forEach>
 							</select>
 						</div>
 						<div class="bbD">
@@ -62,3 +63,4 @@
 	</div>
 </body>
 </html>
+

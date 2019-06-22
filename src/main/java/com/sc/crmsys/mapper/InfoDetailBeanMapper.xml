@@ -23,13 +23,13 @@
   	SELECT * FROM info_detail id INNER JOIN info ins ON id.info_id = ins.info_id INNER JOIN employ em on id.employ_id = em.employ_id 
   	<where>
   		<if test="i.infoBean.infoTitle != null">
-  			info_title = #{i.infoBean.infoTitle}
+  			info_title like '%${i.infoBean.infoTitle}%'
   		</if>
-  		<if test="i.infoBean.infoPerson != null">
-  			and info_person = #{i.infoBean.infoPerson}
+  		<if test="i.employBean.employName != null">
+  			or employ_name like '%${i.employBean.employName}%'
   		</if>
   		<if test="i.employBean.employPhone != null">
-  			and employ_phone = #{i.employBean.employPhone}
+  			or employ_phone like '%${i.employBean.employPhone}%'
   		</if>
   	</where>
   </select>
@@ -66,7 +66,7 @@
 	  	<result column="employ_update_time" property="employUpdateTime"/>
     </association>
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByinfoDetailId" parameterType="java.lang.String">
     delete from info_detail
     where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
   </delete>

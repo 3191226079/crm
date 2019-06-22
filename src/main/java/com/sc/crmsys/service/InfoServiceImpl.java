@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.InfoBean;
 import com.sc.crmsys.bean.InfoDetailBean;
 import com.sc.crmsys.mapper.InfoBeanMapper;
@@ -20,19 +22,28 @@ public class InfoServiceImpl implements InfoService{
 	private InfoBeanMapper infoBeanMapper;
 	
 	@Override
-	public List<InfoDetailBean> selectAll(InfoDetailBean infoDetailBean) {
+	public PageInfo<InfoDetailBean> selectAll(Integer pn,Integer size,InfoDetailBean infoDetailBean) {
+		PageHelper.startPage(pn, size);
 		List<InfoDetailBean> InfoDetailBean = infoDetailBeanMapper.selectAll(infoDetailBean);
-		return InfoDetailBean;
+		PageInfo<InfoDetailBean> pageInfo = new PageInfo<InfoDetailBean>(InfoDetailBean);
+		return pageInfo;
 	}
 
 	@Override
-	public void insert(InfoDetailBean infoDetailBean) {
+	public void insert(InfoDetailBean infoDetailBean,InfoBean infoBean) {
+		infoBeanMapper.insert(infoBean);
 		infoDetailBeanMapper.insert(infoDetailBean);
 	}
 
 	@Override
-	public void insert(InfoBean infoBean) {
-		infoBeanMapper.insert(infoBean);
+	public void deleteByinfoDetailId(String infoDetailId) 
+	{
+		infoDetailBeanMapper.deleteByinfoDetailId(infoDetailId);
+	}
+
+	@Override
+	public void deleteByinfoId(String infoId) {
+		infoBeanMapper.deleteByinfoId(infoId);
 	}
 
 }

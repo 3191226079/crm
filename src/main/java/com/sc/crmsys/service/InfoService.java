@@ -1,15 +1,16 @@
 package com.sc.crmsys.service;
 
-import java.util.List;
-
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.InfoBean;
 import com.sc.crmsys.bean.InfoDetailBean;
 
 public interface InfoService {
 
-	public List<InfoDetailBean> selectAll(InfoDetailBean infoDetailBean);
+	public PageInfo<InfoDetailBean> selectAll(Integer pn,Integer size,InfoDetailBean infoDetailBean);
 	
-	public void insert(InfoDetailBean infoDetailBean);
+	public void insert(InfoDetailBean infoDetailBean,InfoBean infoBean);
 	
-	public void insert(InfoBean infoBean);
+	public void deleteByinfoDetailId(String infoDetailId);
+	
+	public void deleteByinfoId(String infoId);
 }
