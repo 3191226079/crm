@@ -19,5 +19,5 @@ public interface QuestionBeanMapper {
 
     int updateByPrimaryKey(QuestionBean record);
     
-    List<QuestionBean> selectOne(@Param("content")String content);
+    List<QuestionBean> selectOne(@Param("content")String content,@Param("state")String state);
 }
