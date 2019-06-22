@@ -1,0 +1,22 @@
+package com.sc.crmsys.service;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.sc.crmsys.bean.UserBean;
+import com.sc.crmsys.mapper.UserBeanMapper;
+
+@Service("userServiceImpl")
+public class UserServiceImpl implements UserService{
+
+	@Resource 
+	private UserBeanMapper userBeanMapper;
+	
+	@Override
+	public UserBean selectByUserName(String userName) {
+		UserBean userBean = userBeanMapper.selectByUserName(userName);
+		return userBean;
+	}
+	
+}

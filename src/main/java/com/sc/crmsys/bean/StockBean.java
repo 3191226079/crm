@@ -32,9 +32,15 @@ public class StockBean {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date stockLastTime;
     
+    private WarehouseBean warehouseBean;
+    
+    public WarehouseBean getWarehouseBean() {
+		return warehouseBean;
+	}
 
-    
-    
+	public void setWarehouseBean(WarehouseBean warehouseBean) {
+		this.warehouseBean = warehouseBean;
+	}
 
 
 	public String getCommodityNumber() {

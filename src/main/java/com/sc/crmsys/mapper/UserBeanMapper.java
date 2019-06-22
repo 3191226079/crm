@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.UserBean;
 
 public interface UserBeanMapper {
@@ -14,4 +16,6 @@ public interface UserBeanMapper {
     int updateByPrimaryKeySelective(UserBean record);
 
     int updateByPrimaryKey(UserBean record);
+    
+    UserBean selectByUserName(@Param("uname")String userName);
 }

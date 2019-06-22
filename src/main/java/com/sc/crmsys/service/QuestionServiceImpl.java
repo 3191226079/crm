@@ -6,9 +6,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.sc.crmsys.bean.CustomerBean;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.QuestionBean;
 import com.sc.crmsys.mapper.QuestionBeanMapper;
+
 
 @Service
 public class QuestionServiceImpl implements QuestionService{
@@ -18,14 +20,21 @@ public class QuestionServiceImpl implements QuestionService{
 
 
 	@Override
-	public List<QuestionBean> selectOne(String content) {
-		List<QuestionBean> question = questionMapper.selectOne(content);
-		return question;
+	public PageInfo<QuestionBean> selectOne(String content,String state,int pn,int size) {
+		PageHelper.startPage(pn, size);
+		List<QuestionBean> selectOne = questionMapper.selectOne(content, state);
+		PageInfo<QuestionBean> pageInfo = new PageInfo<>(selectOne);
+		return pageInfo;
 	}
-
+	
 	@Override
 	public void addQuestion(QuestionBean question) {
 		 questionMapper.insertSelective(question);
+	}
+
+	@Override
+	public void addAnswer(QuestionBean question) {
+		questionMapper.updateByPrimaryKeySelective(question);
 	}
 
 }
