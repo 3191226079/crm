@@ -19,6 +19,7 @@ public class MyRealm extends AuthorizingRealm{
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		// TODO Auto-generated method stub
 		return null;
+		
 	}
 
 }
