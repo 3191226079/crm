@@ -21,4 +21,17 @@ public class StockServiceImpl implements  StockService{
 		return null;
 	}
 
+	@Override
+	public void addStock(StockBean stockBean) {
+		stockBeanMapper.insert(stockBean);
+		
+	}
+
+	@Override
+	public List<StockBean> selectStock() {
+		List<StockBean> selectStock = stockBeanMapper.selectStock();
+		return selectStock;
+	}
+
+	
 }

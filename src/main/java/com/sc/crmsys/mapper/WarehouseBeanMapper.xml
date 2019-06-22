@@ -19,11 +19,16 @@
   </select>
   
   
-  <select id="selectWarehouseName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectWarehouseNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from warehouse
-    where warehouse_name = #{warehouseName,jdbcType=VARCHAR}
+    where warehouse_number = #{warehouseNumber,jdbcType=VARCHAR}
+  </select>
+  	<!-- 查询仓库 -->
+  <select id="selectWarehouse" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from warehouse
+
   </select>
   
   

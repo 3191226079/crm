@@ -29,6 +29,13 @@
     from stock
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectStock" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from stock
+  </select>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from stock
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}

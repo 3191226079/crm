@@ -19,5 +19,7 @@ public interface StockBeanMapper {
     int updateByPrimaryKeySelective(StockBean record);
 
     int updateByPrimaryKey(StockBean record);
+    //查询库存
+    List<StockBean> selectStock();
     
 }

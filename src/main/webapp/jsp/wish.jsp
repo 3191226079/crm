@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>"> 
-    <link rel="stylesheet" type="text/css" href="css/css.css" />   
+    <link rel="stylesheet" type="text/css" href="css/css.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>   
     <title>添加</title>        
  </head>
  <body>
@@ -30,16 +32,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<input class="vinput" type="text" /> --> <input class="addUser"
 								type="text" placeholder="请输入产品信息" />
 							<button class="button">搜索</button>
+							<a class="addA addA1" href="addgd/selectAll">添加商品</a>
 						</div>
 					</form>
 				</div>
 				<!-- wish 表格 显示 -->
+			
 				<div class="wishShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="66px" class="tdColor tdC">产品编号</td>
 							<td width="200px" class="tdColor">产品名称</td>
 							<td width="175px" class="tdColor">产品类型</td>
+							<td width="185px" class="tdColor">规格说明</td>
 							<td width="185px" class="tdColor">单位</td>
 							<td width="180px" class="tdColor">仓库编号</td>
 							<td width="175px" class="tdColor">仓库数量</td>
@@ -49,33 +54,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td width="130px" class="tdColor">备注信息</td>
 							<td width="130px" class="tdColor">公司编号</td>
 							<td width="130px" class="tdColor">最后修改时间</td>
+							<td width="130px" class="tdColor">删除</td>
+							<td width="130px" class="tdColor">修改</td>
 						</tr>
-						<!-- <tr>
-							<td>A001</td>
-							<td><div class="onsImg wishImgv">
-									<img src="img/userPICS.png">
-								</div></td>
-							<td>冰箱</td>
-							<td>家电</td>
-							<td>75L</td>
-							<td>京东襄阳店</td>
-							<td><div class="onsImg">
-									<img src="img/userPICS.png">
-								</div>
-									
-								襄阳F001</td>
-							<td>35台</td>
-							<td>1200元</td>
-							<td>1750元</td>
-							<td>1550元</td>
-							<td>备注信息</td>
-							<td>jdA01</td>
-							<td>2019-03-02</td>
+					<c:forEach items="${selectStock}" var="stock"> 
+						<tr>
+							<td>${stock.commodityNumber}</td>
+							<td>${stock.commodityName}</td>
+							<td>${stock.commodityType}</td>
+							<td>${stock.description}</td>
+							<td>${stock.unit}</td>
+							<td>${stock.warehouseNumber}</td>
+							<td>${stock.stockNumber}</td>
+							<td>${stock.costPrice}</td>
+							<td>${stock.retailPrice}</td>
+							<td>${stock.salePrice}</td>
+							<td>${stock.postscript}</td>
+							<td>${stock.companyId}</td>
+							<td>${stock.stockLastTime}</td>
 							<td><img class="operation delban" src="img/delete.png"></td>
-						</tr> -->
+							<td>
+								<a href="banneradd.html">
+								<img class="operation" src="img/update.png">
+								</a>
+							</td>
+						</tr>
+					</c:forEach>
+						
+						
 					</table>
 					<div class="paging">此处是分页</div>
 				</div>
+				
 				<!-- wish 表格 显示 end-->
 			</div>
 			<!-- wish页面样式end -->

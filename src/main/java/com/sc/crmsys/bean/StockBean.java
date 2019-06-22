@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class StockBean {
     private String commodityNumber;
 
@@ -26,7 +28,8 @@ public class StockBean {
     private String postscript;
 
     private String companyId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date stockLastTime;
     
 

@@ -1,5 +1,7 @@
 package com.sc.crmsys.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +20,24 @@ public class WarehouseServiceImpl implements WarehouseService {
 		WarehouseBean warehouseBean = warehouseBeanMapper.selectByPrimaryKey(warehouseNumber);
 		return warehouseBean;
 	}
+
+	@Override
+	public WarehouseBean selectWarehouseNumber(String warehouseNumber) {
+		WarehouseBean selectWarehouseNumber = warehouseBeanMapper.selectWarehouseNumber(warehouseNumber);
+		return selectWarehouseNumber;
+	}
+
+	@Override
+	public List<WarehouseBean> selectWarehouse()
+	{
+		List<WarehouseBean> selectWarehouse = warehouseBeanMapper.selectWarehouse();
+		return selectWarehouse;
+	}
+
+
+	
+
+
+	
 
 }
