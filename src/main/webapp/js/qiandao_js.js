@@ -1,8 +1,9 @@
 $(function() {
     var signFun = function() {
-
-        var dateArray = [1, 2, 4, 6] // 假设已经签到的
-        
+    	
+    	
+        /*var dateArray = $(".signDays").val();*/ // 假设已经签到的
+    	var dateArray = [];
         var $dateBox = $("#js-qiandao-list"),
             $currentDate = $(".current-date"),
             $qiandaoBnt = $("#js-just-qiandao"),
@@ -43,9 +44,24 @@ $(function() {
         $qiandaoBnt.on("click", function() {
             if (_handle) {
                 qiandaoFun();
-            }
-        }); //签到
-
+           //传输签到信息息
+                $.ajax({
+                    type:'post',
+                    URL:'sign/add',
+                    data:{},
+                    dataType:'json',
+                    success:function(result)
+                    {
+                    	location.href="sign/info";
+                    },
+                    error:function()
+                    {
+                        alert('系统繁忙');
+                    }
+                    
+                });
+                }
+            }); //签到
         function qiandaoFun() {
             $qiandaoBnt.addClass('actived');
             openLayer("qiandao-active", qianDao);

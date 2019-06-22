@@ -7,8 +7,8 @@ img{vertical-align:top}
 .qiandao-sprits{background-image:url(../images/qiandao_sprits.png);background-repeat:no-repeat}
 .qiandao-tran{-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;-o-transition:all .3s ease-out;transition:all .3s ease-out;-ms-transition:all .3s ease-out}
 .qiandao-radius{-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px}
-.qiandao-warp{height:1306px;background:url(../images/qiandao_warp_bg.jpg) no-repeat top center}
-.qiandap-box{margin:0 auto;width:70pc;height:1306px;background-color:#4d56a3}
+.qiandao-warp{height:720px;}
+.qiandap-box{margin:0 auto;width:70pc;height:720px;background-color:#4d56a3}
 .qiandao-con{margin:0 auto;width:1035px;height:684px;background-image:url(../images/qiandao_con.jpg)}
 .qiandao-left{float:left;padding:20px 42px 0 39px;width:603px}
 .qiandao-right{float:right;padding:0 20px;width:290px}

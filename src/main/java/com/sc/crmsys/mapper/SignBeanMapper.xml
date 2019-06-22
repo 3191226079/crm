@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SignBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SignBean">
+    <id column="sign_id" jdbcType="VARCHAR" property="signId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="sign_time" jdbcType="TIMESTAMP" property="signTime" />
+    <result column="sign_num" jdbcType="VARCHAR" property="signNum" />
+    <result column="sign_days" jdbcType="VARCHAR" property="signDays" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sign_id, user_id, sign_time, sign_num, sign_days
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectSignInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from sign
+    where user_id = #{userId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SignBean">
+    insert into sign (sign_id, user_id, sign_time, 
+      sign_num, sign_days)
+    values (#{signId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, 
+      #{signNum,jdbcType=VARCHAR}, #{signDays,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SignBean">
+    insert into sign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        sign_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="signTime != null">
+        sign_time,
+      </if>
+      <if test="signNum != null">
+        sign_num,
+      </if>
+      <if test="signDays != null">
+        sign_days,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        #{signId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signNum != null">
+        #{signNum,jdbcType=VARCHAR},
+      </if>
+      <if test="signDays != null">
+        #{signDays,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SignBean">
+    update sign
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signNum != null">
+        sign_num = #{signNum,jdbcType=VARCHAR},
+      </if>
+      <if test="signDays != null">
+        sign_days = #{signDays,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SignBean">
+    update sign
+    set user_id = #{userId,jdbcType=VARCHAR},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      sign_num = #{signNum,jdbcType=VARCHAR},
+      sign_days = #{signDays,jdbcType=VARCHAR}
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="insertSignNum" parameterType="com.sc.crmsys.bean.SignBean">
+    update sign
+    set sign_num = #{signNum,jdbcType=VARCHAR},
+    where user_id = #{userId}
+  </update>
+  
+</mapper>
