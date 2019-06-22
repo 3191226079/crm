@@ -14,42 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="css/css.css" />
 	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 	<!-- <script type="text/javascript" src="js/page.js" ></script> -->
-	<!-- <style>
-		  .page
-        {
-            height: 50px;
-            margin-top: 30px;
-            line-height: 50px;
-            border-bottom:1px solid grey;
-        }
-
-        .page a
-        {
-            display: inline-block;
-            margin-right: 5px;
-            width: 80px;
-            height: 30px;
-            text-align: center;
-            line-height: 30px;
-            text-decoration: none;
-            background-color: white;
-            border:1px solid rgb(4,129,255);
-
-        }
-        .page a:hover
-        {
-            background-color: rgb(4,129,255);
-            color: white;
-        }
-		
-	</style> -->
 </head>
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
 				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;咨询回复
 			</div>
 		</div>
 
@@ -57,12 +28,11 @@
 			<!-- answer页面样式 -->
 			<div class="wish">
 				<div class="conform">
-					<form>
+					<form action="question/answer" method="post">
 						<div class="cfD">
-							时间：<input class="vinput" type="text" />&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input class="vinput" type="text" /> <input class="addUser"
-								type="text" placeholder="请输入您的心愿" />
-							<button class="button">搜索</button>
+							&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
+							<input class="addUser" type="text" placeholder="请输入要查找的咨询...." name="content"/>
+							<button class="button" type="submit">搜索</button>
 						</div>
 					</form>
 				</div>

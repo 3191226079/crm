@@ -53,7 +53,6 @@ public class QuestionController {
 	public String answerInfo(Map map,String content,String state,@RequestParam(defaultValue="1")int pn,@RequestParam(defaultValue="5")int size)
 	{
 		PageInfo<QuestionBean> question = questionService.selectOne(content, state, pn, size);
-		System.out.println(question);
 		map.put("questionList", question);
 		return "forward:/jsp/answer.jsp";
 	}

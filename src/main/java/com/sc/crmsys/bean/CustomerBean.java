@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CustomerBean {
     private String customerId;
 
@@ -21,6 +23,7 @@ public class CustomerBean {
 
     private String customerEmail;
 
+    @DateTimeFormat(pattern="yyyy/MM/dd")
     private Date customerContactTime;
 
     private String customerInfo;
@@ -132,4 +135,16 @@ public class CustomerBean {
     public void setCustomerUpdateTime(Date customerUpdateTime) {
         this.customerUpdateTime = customerUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "CustomerBean [customerId=" + customerId + ", customerName=" + customerName + ", customerUpDepartment="
+				+ customerUpDepartment + ", customerContactPerson=" + customerContactPerson + ", customerState="
+				+ customerState + ", customerAddress=" + customerAddress + ", customerPhone=" + customerPhone
+				+ ", customerFax=" + customerFax + ", customerEmail=" + customerEmail + ", customerContactTime="
+				+ customerContactTime + ", customerInfo=" + customerInfo + ", companyId=" + companyId
+				+ ", customerUpdateTime=" + customerUpdateTime + "]";
+	}
+    
+    
 }

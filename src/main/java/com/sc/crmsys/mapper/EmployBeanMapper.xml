@@ -30,6 +30,11 @@
     from employ
     where employ_id = #{employId,jdbcType=VARCHAR}
   </select>
+  <select id="selectAllEmploy" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from employ
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from employ
     where employ_id = #{employId,jdbcType=VARCHAR}
