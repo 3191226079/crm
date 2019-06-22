@@ -2,11 +2,14 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class OrderPurchaseBean {
     private String orderPurchaseId;
 
     private String orderPurchaseTitle;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseTime;
 
     private String supplierId;
@@ -17,6 +20,7 @@ public class OrderPurchaseBean {
 
     private String orderPurchaseState;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseBusinessTime;
 
     private String orderPurchaseBusinessAddress;
@@ -142,4 +146,17 @@ public class OrderPurchaseBean {
     public void setOrderPurchaseUpdateTime(Date orderPurchaseUpdateTime) {
         this.orderPurchaseUpdateTime = orderPurchaseUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "OrderPurchaseBean [orderPurchaseId=" + orderPurchaseId + ", orderPurchaseTitle=" + orderPurchaseTitle
+				+ ", orderPurchaseTime=" + orderPurchaseTime + ", supplierId=" + supplierId + ", orderPurchaseMoney="
+				+ orderPurchaseMoney + ", orderPurchaseNumber=" + orderPurchaseNumber + ", orderPurchaseState="
+				+ orderPurchaseState + ", orderPurchaseBusinessTime=" + orderPurchaseBusinessTime
+				+ ", orderPurchaseBusinessAddress=" + orderPurchaseBusinessAddress + ", orderPurchaseBusinessType="
+				+ orderPurchaseBusinessType + ", orderPurchasePerson=" + orderPurchasePerson + ", orderPurchaseInfo="
+				+ orderPurchaseInfo + ", companyId=" + companyId + ", orderPurchaseUpdateTime="
+				+ orderPurchaseUpdateTime + "]";
+	}
+    
 }

@@ -19,6 +19,8 @@ public class UserBean {
 
     private Date userUpdateTime;
 
+    private String userSalt;
+
     public String getUserId() {
         return userId;
     }
@@ -82,4 +84,19 @@ public class UserBean {
     public void setUserUpdateTime(Date userUpdateTime) {
         this.userUpdateTime = userUpdateTime;
     }
+
+    public String getUserSalt() {
+        return userSalt;
+    }
+
+    public void setUserSalt(String userSalt) {
+        this.userSalt = userSalt == null ? null : userSalt.trim();
+    }
+    @Override
+	public String toString() {
+		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
+				+ ", employId=" + employId + ", companyId=" + companyId + ", userState=" + userState
+				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + "]";
+	}
+
 }

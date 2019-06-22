@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.StockBean;
 
 public interface StockBeanMapper {
@@ -14,4 +16,6 @@ public interface StockBeanMapper {
     int updateByPrimaryKeySelective(StockBean record);
 
     int updateByPrimaryKey(StockBean record);
+    
+    /*List<StockBean> getByPrimaryKey(String companyId);*/
 }

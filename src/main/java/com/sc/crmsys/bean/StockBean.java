@@ -28,8 +28,19 @@ public class StockBean {
     private String companyId;
 
     private Date stockLastTime;
+    
+    private WarehouseBean warehouseBean;
+    
+    public WarehouseBean getWarehouseBean() {
+		return warehouseBean;
+	}
 
-    public String getCommodityNumber() {
+	public void setWarehouseBean(WarehouseBean warehouseBean) {
+		this.warehouseBean = warehouseBean;
+	}
+
+
+	public String getCommodityNumber() {
         return commodityNumber;
     }
 

@@ -61,9 +61,7 @@ td {
 	color: #438eb9;
 }
 
-.tdC {
-	color: #333;
-}
+
 
 .paging {
 	width: 100%;
@@ -243,7 +241,8 @@ td {
 }
 
 .bbD .bbDP {
-	
+	text-align: left;
+	padding-left: 25px;
 }
 
 .bbD .bbDP .btn_ok {
@@ -280,6 +279,7 @@ td {
 	width: 300px;
     height: 40px;
     border: 1px solid #ccc;
+    
     text-indent: 15px;
 }
 
@@ -287,6 +287,7 @@ td {
 	width: 300px;
 	height: 40px;
 	border: 1px solid #ccc;
+	margin-left: 20px;
 	text-indent: 15px;
 }
 

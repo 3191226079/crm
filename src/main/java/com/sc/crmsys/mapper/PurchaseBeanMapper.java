@@ -1,6 +1,9 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.PurchaseBean;
+
 
 public interface PurchaseBeanMapper {
     int deleteByPrimaryKey(String purchaseId);
@@ -14,4 +17,12 @@ public interface PurchaseBeanMapper {
     int updateByPrimaryKeySelective(PurchaseBean record);
 
     int updateByPrimaryKey(PurchaseBean record);
+    
+    PurchaseBean getByPrimaryKey(String purchaseId,String productId);
+    
+    List<PurchaseBean> getByPrimaryKey(String companyId);
+    
+    List<PurchaseBean> findByPrimaryKey(String purchaseId);
+    
+    
 }

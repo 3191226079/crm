@@ -2,11 +2,14 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class PurchaseBean {
     private String purchaseId;
 
     private String productId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date purchaseTime;
 
     private String purchaseState;
@@ -17,9 +20,32 @@ public class PurchaseBean {
 
     private String companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date purchaseUpdateTime;
+    
+    private StockBean stockBean;
+    
+    private DetailPurchaseBean detailPurchaseBean;
+    
+    public DetailPurchaseBean getDetailPurchaseBean() {
+		return detailPurchaseBean;
+	}
 
-    public String getPurchaseId() {
+	public void setDetailPurchaseBean(DetailPurchaseBean detailPurchaseBean) {
+		this.detailPurchaseBean = detailPurchaseBean;
+	}
+
+	
+
+	public StockBean getStockBean() {
+		return stockBean;
+	}
+
+	public void setStockBean(StockBean stockBean) {
+		this.stockBean = stockBean;
+	}
+
+	public String getPurchaseId() {
         return purchaseId;
     }
 

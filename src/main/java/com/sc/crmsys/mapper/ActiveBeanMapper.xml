@@ -14,12 +14,29 @@
     active_id, active_type, active_title, active_start_time, acitve_describe, company_id, 
     active_update_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from active 
+    <where>
+    	<if test="t != null">
+    		active_title like '%${t}%'
+    	</if>
+    </where>
+    order by active_start_time asc 
+  </select>
+  
+   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from active
     where active_id = #{activeId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectByTitle" resultMap="BaseResultMap">
+    SELECT * FROM active WHERE active_title LIKE '%${title}%'
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from active
     where active_id = #{activeId,jdbcType=VARCHAR}
@@ -115,4 +132,5 @@
       active_update_time = #{activeUpdateTime,jdbcType=TIMESTAMP}
     where active_id = #{activeId,jdbcType=VARCHAR}
   </update>
+  
 </mapper>
