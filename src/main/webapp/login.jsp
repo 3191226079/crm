@@ -32,7 +32,7 @@
 }
 </style>
 </head>
-<body>
+<body onload="myfunc('${param.fail}')">
 
 	<!-- 登录页面头部 -->
 	<div class="logHead">
@@ -43,24 +43,20 @@
 	<!-- 登录body -->
 	<div class="logDiv" id="myvuell">
 		<img class="logBanner" src="img/logBanner.png" />
-		<div class="logGet" style="top:5%;right:16%;height:448px;">
+		<div class="logGet" style="top:5%;right:16%;">
 			<!-- 头部提示信息 -->
 			<div class="logD logDtip">
 				<p class="p1" style="display: block;text-align:center;">登录</p>
 				
 			</div>
 			<form action="login" method="post" id="myformll123">
-				<div class="lgD">
-					<img class="img1" src="img/coin02.png" /><input type="text" v-model="companyCode"
-						placeholder="输入公司代码" @blur="sp1"/><span>{{spll1}}</span>
-				</div>
 				<!-- 输入框 -->
 				<div class="lgD">
-					<img class="img1" src="img/logName.png" /><input type="text" v-model="userName"
+					<img class="img1" src="img/logName.png" /><input type="text" v-model="userName" name="username"
 						placeholder="输入用户名" @blur="sp2"/><span>{{spll2}}</span>
 				</div>
 				<div class="lgD">
-					<img class="img1" src="img/logPwd.png" /><input type="text"  v-model="userPassword"
+					<img class="img1" src="img/logPwd.png" /><input type="password"  v-model="userPassword" name="password"
 						placeholder="输入用户密码" @blur="sp3"/><span>{{spll3}}</span>
 				</div>
 				<div class="lgD">
@@ -82,6 +78,7 @@
 	</div>
 	<!-- 登录页面底部end -->
 <script type="text/javascript">
+	var tempaa = 0;
 	var v = new Vue({
 		el:'#myvuell',
 		data:
@@ -89,7 +86,6 @@
 			companyCode:'',
 			userName:'',
 			userPassword:'',
-			spll1:'',
 			spll2:'',
 			spll3:'',
 			spll4:''
@@ -98,18 +94,7 @@
 		{
 			juge:function()
 			{
-				if(this.companyCode == '')
-				{
-					this.spll1 = '* 公司代码不能为空';
-				}
-				else if(!/^[a-zA-Z][A-Za-z0-9]{3,10}$/.test(this.companyCode))
-				{
-					this.spll1 = '* 公司代码格式不正确';
-				}
-				else
-				{
-					this.spll1 = '';
-				}
+				tempaa = 0;
 				
 				if(this.userName == '')
 				{
@@ -121,6 +106,7 @@
 				}
 				else
 				{
+					tempaa++;
 					this.spll2 = '';
 				}
 				
@@ -134,22 +120,8 @@
 				}
 				else
 				{
+					tempaa++;
 					this.spll3 = '';
-				}
-			},
-			sp1()
-			{
-				if(this.companyCode == '')
-				{
-					this.spll1 = '* 公司代码不能为空';
-				}
-				else if(!/^[a-zA-Z][A-Za-z0-9]{3,10}$/.test(this.companyCode))
-				{
-					this.spll1 = '* 公司代码格式不正确';
-				}
-				else
-				{
-					this.spll1 = '';
 				}
 			},
 			sp2()
@@ -185,9 +157,9 @@
 		}
 		
 	});
-	function sp4()
+	function myfunc(fail)
 	{
-		$('#check-btn').click();
+		v.spll2 = fail;
 	}
 	$('#mpanel2').codeVerify({
 		type : 1,
@@ -200,6 +172,10 @@
 		},
 		success : function() {
 			v.spll4 = '验证成功';
+			if(tempaa == 2)
+			{
+				document.getElementById('myformll123').submit();
+			}
 		},
 		error : function() {
 			if($('#yanzhenll').val() == '')
