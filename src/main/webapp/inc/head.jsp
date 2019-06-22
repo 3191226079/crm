@@ -27,8 +27,8 @@
 				欢迎，<c:if test="${not empty requestScope.username }">${requestScope.username }</c:if>
 			</p>
 			<p class="p2">
-				<a href="#" class="resetPWD">重置密码</a>&nbsp;&nbsp;<a
-					href="{:U('Admin/Index/exit')}" class="goOut">退出</a>
+				<a href="user/updatepass" target="main" class="resetPWD" style="font-size:12px;">修改密码</a>&nbsp;&nbsp;<a
+					href="user/logout" target="_parent" class="goOut" style="font-size:12px;">退出</a>
 			</p>
 		</div>
 		<!-- onclick="{if(confirm(&quot;确定退出吗&quot;)){return true;}return false;}" -->

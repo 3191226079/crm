@@ -90,7 +90,7 @@
 				
 				/logout.do = logout
 				
-				/** = anon
+				/** = authc
 			</value>
 		</property>
 	</bean>

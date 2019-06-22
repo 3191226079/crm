@@ -17,7 +17,7 @@
 	<!-- 引用左边和主体部分 --> 
 		<frameset rows="100*" cols="220,*" scrolling="No" framespacing="0" frameborder="no" border="0"> 
 			<frame src="inc/left.jsp" name="leftmenu" id="mainFrame" title="mainFrame">
-			<frame src="jsp/index.jsp" name="main" scrolling="yes" noresize="noresize" id="rightFrame" title="rightFrame">
+			<frame src="question/info" name="main" scrolling="yes" noresize="noresize" id="rightFrame" title="rightFrame">
 		</frameset>
 	</frameset>
 </html>

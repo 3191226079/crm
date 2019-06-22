@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,8 +26,9 @@
 			<!-- 修改密码页面样式 -->
 			<div class="bacen">
 				<div class="bbD">
-					&nbsp;&nbsp;&nbsp;&nbsp;管理员UID：&nbsp;&nbsp;&nbsp;&nbsp;123</div>
-				<div class="bbD">管理员用户名：&nbsp;&nbsp;&nbsp;&nbsp;123456789</div>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：&nbsp;&nbsp;&nbsp;&nbsp;${requestScope.userBean.userName }</div>
+				<div class="bbD">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				注册时间：&nbsp;&nbsp;&nbsp;&nbsp;<fmt:formatDate value="${requestScope.userBean.userRegisterTime }" pattern="yyyy年MM月dd日"/></div>
 				<div class="bbD">
 					&nbsp;&nbsp;&nbsp;&nbsp;输入旧密码：<input type="password" class="input3"
 						onblur="checkpwd1()" id="pwd1" /> <img class="imga"
@@ -38,7 +40,7 @@
 						src="img/ok.png" /><img class="imgb" src="img/no.png" />
 				</div>
 				<div class="bbD">
-					再次确认密码：<input type="password" class="input3" onblur="checkpwd3()"
+					&nbsp;再次确认密码：<input type="password" class="input3" onblur="checkpwd3()"
 						id="pwd3" /> <img class="imga" src="img/ok.png" /><img
 						class="imgb" src="img/no.png" />
 				</div>

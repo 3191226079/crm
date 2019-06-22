@@ -18,5 +18,11 @@ public class UserServiceImpl implements UserService{
 		UserBean userBean = userBeanMapper.selectByUserName(userName);
 		return userBean;
 	}
+
+	@Override
+	public UserBean selectByPrimaryKey(String userId) {
+		UserBean userBean = userBeanMapper.selectByPrimaryKey(userId);
+		return userBean;
+	}
 	
 }
