@@ -139,4 +139,7 @@
       user_salt = #{userSalt,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
+  <select id="selectByUserName" resultMap="BaseResultMap">
+  	select * from user where user_name = #{uname}
+  </select>
 </mapper>

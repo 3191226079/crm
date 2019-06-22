@@ -3,9 +3,9 @@ package com.sc.crmsys.config;
 public interface Config {
 	
 	/**
-	 *  session���û���Ϣ�ļ�
+	 *  session
 	 */
-	public static final String LOGIN = "user";
+	public static final String LOGIN = "userBean";
 	
 	/**
 	 * 是否处于开发状态
