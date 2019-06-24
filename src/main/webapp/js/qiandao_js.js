@@ -52,6 +52,12 @@ $(function() {
                     dataType:'json',
                     success:function(result)
                     {
+                    	var vuenum = new Vue({
+                    		el:'#signum',
+                    		data:{
+                    			number:result.signNum
+                    		}
+                    	})
                     	location.href="sign/info";
                     },
                     error:function()

@@ -19,8 +19,8 @@ public interface SignBeanMapper {
 
     int updateByPrimaryKey(SignBean record);
     
-    public void insertSignNum(@Param("userId")String userId);
-    
     public List<SignBean> selectSignInfo(@Param("userId")String userId);
+    
+    Integer signNum(@Param("userId")String userId);
 		
 }

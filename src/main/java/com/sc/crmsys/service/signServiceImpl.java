@@ -19,7 +19,7 @@ public class signServiceImpl implements SignService{
 	@Override
 	public void addSign(SignBean sign) {
 		signMapper.insertSelective(sign);
-		signMapper.insertSignNum(sign.getUserId());
+		
 	}
 
 	@Override
@@ -27,5 +27,13 @@ public class signServiceImpl implements SignService{
 		List<SignBean> signInfo = signMapper.selectSignInfo(userId);
 		return signInfo;
 	}
+	
 
+	@Override
+	public Integer signNum(String userId) {
+		Integer signNum = signMapper.signNum(userId);
+		return signNum;
+	}
+	
+	
 }

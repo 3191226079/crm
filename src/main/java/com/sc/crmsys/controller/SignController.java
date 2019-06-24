@@ -55,8 +55,9 @@ public class SignController {
 		sign.setSignId(signId);
 		sign.setSignTime(signTime);
 		signService.addSign(sign);
+		Integer signNum = signService.signNum(userId);
 		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("result", "操作成功");
+		hashMap.put("signNum", signNum);
 		return hashMap;
 	}
 	

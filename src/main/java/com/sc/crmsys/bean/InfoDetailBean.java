@@ -14,6 +14,26 @@ public class InfoDetailBean {
     private String companyId;
 
     private Date infoDetailUpdateTime;
+    
+    private EmployBean employBean = new EmployBean();
+    
+    private InfoBean infoBean = new InfoBean();
+    
+    public InfoBean getInfoBean() {
+		return infoBean;
+	}
+
+	public void setInfoBean(InfoBean infoBean) {
+		this.infoBean = infoBean;
+	}
+
+	public EmployBean getEmployBean() {
+		return employBean;
+	}
+
+	public void setEmployBean(EmployBean employBean) {
+		this.employBean = employBean;
+	}
 
     public String getInfoDetailId() {
         return infoDetailId;

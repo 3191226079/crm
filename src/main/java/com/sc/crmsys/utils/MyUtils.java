@@ -1,5 +1,8 @@
 package com.sc.crmsys.utils;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -43,6 +46,96 @@ public class MyUtils {
 	public static String getSalt()
 	{
 		return getStringByLength(6);
+	}
+	
+	
+	
+	public static Date setearly()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		
+		
+		Date time = calendar.getTime();
+				
+		return time;
+	}
+	
+	public static Date setlater()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		
+		
+		Date time = calendar.getTime();
+				
+		return time;
+	}
+	
+
+	public static Date setthreeearly()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.get(calendar.DAY_OF_MONTH)-3);
+		Date time = calendar.getTime();
+		
+		return time;
+	}
+	
+	
+	public static Date setthreelater()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.get(calendar.DAY_OF_MONTH)-3);
+		Date time = calendar.getTime();
+		
+		return time;
+	}
+	
+	public static Date setsevenearly()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.get(calendar.DAY_OF_MONTH)-7);
+		Date time = calendar.getTime();
+		
+		return time;
+	}
+	public static Date setsevenlater()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,23);
+		calendar.set(Calendar.MINUTE, 59);
+		calendar.set(Calendar.SECOND, 59);
+		calendar.set(Calendar.DAY_OF_MONTH, calendar.get(calendar.DAY_OF_MONTH)-7);
+		Date time = calendar.getTime();
+		
+		return time;
+	}
+	
+	public static Date setonemonthearly()
+	{
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY,0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.add(Calendar.MONTH,-1);
+		Date time = calendar.getTime();
+		
+		
+		return time;
 	}
 	
 }

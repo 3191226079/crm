@@ -3,9 +3,9 @@ package com.sc.crmsys.mapper;
 import com.sc.crmsys.bean.InfoBean;
 
 public interface InfoBeanMapper {
-    int deleteByPrimaryKey(String infoId);
+    void deleteByinfoId(String infoId);
 
-    int insert(InfoBean record);
+    int insert(InfoBean infoBean);
 
     int insertSelective(InfoBean record);
 
@@ -14,4 +14,5 @@ public interface InfoBeanMapper {
     int updateByPrimaryKeySelective(InfoBean record);
 
     int updateByPrimaryKey(InfoBean record);
+    
 }

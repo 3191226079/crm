@@ -12,6 +12,7 @@
 	<base href="<%=basePath%>"> 
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="css/qiandao_style.css">
+	<script type="text/javascript" src="qqjs/vue.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +59,7 @@
     </div>
     <!-- 我的签到 layer start -->
     <div class="qiandao-layer qiandao-history-layer">
-        <div class="qiandao-layer-con qiandao-radius">
+        <div class="qiandao-layer-con qiandao-radius" id="signum">
             <a href="javascript:;" class="close-qiandao-layer qiandao-sprits"></a>
             <ul class="qiandao-history-inf clear">
                 <li>
@@ -67,7 +68,7 @@
                 </li>
                 <li>
                     <p>本月签到</p>
-                    <h4>17</h4>
+                    <h4>{{number}}</h4>
                 </li>
                 <li>
                     <p>总共签到数</p>

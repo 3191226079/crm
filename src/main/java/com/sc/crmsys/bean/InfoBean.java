@@ -14,8 +14,8 @@ public class InfoBean {
     private String companyId;
 
     private Date infoUpdateTime;
-
-    public String getInfoId() {
+    
+	public String getInfoId() {
         return infoId;
     }
 

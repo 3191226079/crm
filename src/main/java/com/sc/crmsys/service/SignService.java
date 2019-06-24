@@ -10,4 +10,5 @@ public interface SignService {
 	
 	public List<SignBean> signInfo(String userId);
 	
+	public Integer signNum(String userId);
 }

@@ -24,6 +24,12 @@
     where user_id = #{userId}
   </select>
   
+  <select id="signNum" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select count(*)
+    from sign
+    where user_id = #{userId} and sign_days < 31
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from sign
     where sign_id = #{signId,jdbcType=VARCHAR}
@@ -98,10 +104,6 @@
     where sign_id = #{signId,jdbcType=VARCHAR}
   </update>
   
-  <update id="insertSignNum" parameterType="com.sc.crmsys.bean.SignBean">
-    update sign
-    set sign_num = #{signNum,jdbcType=VARCHAR},
-    where user_id = #{userId}
-  </update>
+  
   
 </mapper>
