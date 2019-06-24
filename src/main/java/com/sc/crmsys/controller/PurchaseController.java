@@ -1,5 +1,6 @@
 package com.sc.crmsys.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -46,16 +47,13 @@ public class PurchaseController {
 		HttpSession session = req.getSession();
 		session.setAttribute("userBean", userBean2);
 		
+		
+		
 		UserBean userBean = (UserBean)req.getSession().getAttribute("userBean");
-		System.out.println(userBean.getCompanyId());
 		List<PurchaseBean> purchaseList = purchaseService.getPurchase(userBean.getCompanyId());
-		for (int i = 0; i < purchaseList.size(); i++) {
-			System.out.println(purchaseList.get(i));;
-			System.out.println("aaa");
-		}
 		data.put("purchaseList", purchaseList);
 		
-		return "redirect:/jsp/opinion.jsp";
+		return "forward:/jsp/opinion.jsp";
 	}
 	
 	/**
@@ -78,7 +76,7 @@ public class PurchaseController {
 		String setOrderPurchaseId = UUID.randomUUID().toString();
 		
 	
-		//插入唯一标识主键
+		//插入唯一标识主键和外键
 		purchaseBean.setPurchaseId(purchaseId);
 		orderPurchaseBean.setOrderPurchaseId(setOrderPurchaseId);
 		detailPurchaseBean.setDetailPurchaseId(DetailPurchaseId);
@@ -95,12 +93,44 @@ public class PurchaseController {
 		return "redirect:/purchase/select";
 	}
 	
+	
+	/**
+	 * 查看需补货产品详情
+	 * @param purchaseId
+	 * @param data
+	 * @return
+	 */
+	@RequestMapping("/find")
 	public String findPurchase(String purchaseId,Map<String, Object> data)
 	{
-		List<PurchaseBean> purchaseList = purchaseService.findPurchase(purchaseId);
 		
-		data.put("purchaseList","purchaseList");
+		List<PurchaseBean> purchaseList = purchaseService.findPurchase(purchaseId);
+		data.put("purchaseList",purchaseList);
 	
-		return "redirect:/jsp/banner.jsp";
+		return "forward:/jsp/banner.jsp";
+	}
+	
+	/**
+	 * 修改需补给产品详情表信息
+	 * @param data
+	 * @param purchaseBean
+	 * @param detailPurchaseBean
+	 * @param orderPurchaseBean
+	 * @return
+	 */
+	@RequestMapping("/update")
+	public String updatePurchase(Map<String, Object> data,PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean)
+	{
+		System.out.println("aaa");
+		purchaseService.updatePurchase(purchaseBean, detailPurchaseBean, orderPurchaseBean);
+		data.put("purchaseId", purchaseBean.getPurchaseId());
+		return "redirect:/purchase/find";
+	}
+	
+	@RequestMapping("/del")
+	public String delPurchase(String purchaseId)
+	{
+		purchaseService.updatePurchaseState(purchaseId,new Date());
+		return "redirect:/purchase/select";
 	}
 }
