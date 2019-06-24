@@ -38,9 +38,7 @@
                         </div>
                         <p class="qiandao-notic">请每天按时签到</p>
                     </div>
-                    <c:forEach items="${signInfo }" var="signInfo">
-                    	<input type="hidden" value="${signDays}" class="signDays">
-                    </c:forEach>
+                    
                     <div class="qiandao-bottom">
                         <div class="qiandao-rule-list">
                             <h4>签到规则</h4>
@@ -58,8 +56,8 @@
         </div>
     </div>
     <!-- 我的签到 layer start -->
-    <div class="qiandao-layer qiandao-history-layer">
-        <div class="qiandao-layer-con qiandao-radius" id="signum">
+    <div class="qiandao-layer qiandao-history-layer" >
+        <div class="qiandao-layer-con qiandao-radius" >
             <a href="javascript:;" class="close-qiandao-layer qiandao-sprits"></a>
             <ul class="qiandao-history-inf clear">
                 <li>
@@ -68,69 +66,38 @@
                 </li>
                 <li>
                     <p>本月签到</p>
-                    <h4>{{number}}</h4>
+                    <h4 id="signNum1"></h4>
                 </li>
-                <li>
-                    <p>总共签到数</p>
-                    <h4>28</h4>
-                </li>
+               
                 <li>
                     <p>签到累计奖励</p>
                     <h4>30</h4>
                 </li>
             </ul>
-            <div class="qiandao-history-table">
+            <div>
+	            <c:forEach items="${signInfo}" var="sign">
+	                 <input type="hidden" value="${sign.signDays}" class="signDays">       	
+	            </c:forEach>
+            </div>
+            <div class="qiandao-history-table" style="overflow-y:auto;height:300px;">
                 <table>
                     <thead>
                         <tr>
                             <th>签到日期</th>
-                            <th>奖励</th>
                             <th>说明</th>
                         </tr>
                     </thead>
-                    <table>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>分享奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
-                        <tr>
-                            <td>2016-1-6 14:23:45</td>
-                            <td>0.20</td>
-                            <td>连续签到19天奖励</td>
-                        </tr>
+                    <tbody>
+                        <c:forEach items="${signInfo}" var="sign">
+                        	<tr class="signss">
+                        		<td>
+                        		<fmt:formatDate value="${sign.signTime}" pattern="yyyy年MM月dd日  HH:MM:ss"/>
+                        		</td>
+                        		<td>签到成功</td>
+                        	</tr>
+                        </c:forEach>
                     </table>
-                </table>
+                </tbody>
             </div>
         </div>
         <div class="qiandao-layer-bg"></div>
@@ -141,10 +108,11 @@
         <div class="qiandao-layer-con qiandao-radius">
             <a href="javascript:;" class="close-qiandao-layer qiandao-sprits"></a>
             <div class="yiqiandao clear">
-                <div class="yiqiandao-icon qiandao-sprits"></div>您本月已签到<span>2</span>天
+                <div class="yiqiandao-icon qiandao-sprits"></div>您本月已签到
+                <span id="sign_num"></span>天
             </div>
             
-            <a href="#" class="qiandao-share qiandao-tran">分享获取双倍收益</a>
+            <a href="sign/info" class="qiandao-share qiandao-tran">确定</a>
         </div>
         <div class="qiandao-layer-bg"></div>
     </div>

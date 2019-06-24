@@ -48,17 +48,17 @@
 						</tr>
 						<c:forEach items="${purchaseList }" var="p">
 						<tr height="40px">
-							<td>p.purchaseId</td>
-							<td>p.productId</td>
-							<td>p.stockBean.commodityType</td>
-							<td>p.stockBean.commodityName</td>
-							<td>p.stockBean.description</td>
-							<td>p.warehouse.warehouseName</td>
-							<td>p.detailPurchase.productNum</td>
-							<td>p.purchaseState</td>
-							<td><a href="banner.jsp?purchaseId=${p.purchaseId }"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
+							<td>${p.purchaseId }</td>
+							<td>${p.productId }</td>
+							<td>${p.stockBean.commodityType }</td>
+							<td>${p.stockBean.commodityName }</td>
+							<td>${p.stockBean.description }</td>
+							<td>${p.stockBean.warehouseBean.warehouseName }</td>
+							<td>${p.detailPurchaseBean.productNum }</td>
+							<td>${p.purchaseState }</td>
+							<td><a href="purchase/find?purchaseId=${p.purchaseId }"><img class="operation"
+									src="img/update.png"></a> <a href="purchase/del?purchaseId=${p.purchaseId }"><img class="operation delban"
+								src="img/delete.png"></a></td>
 						</tr>
 						</c:forEach>
 						

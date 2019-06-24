@@ -34,6 +34,8 @@ public class EmployBean {
     private String companyId;
 
     private Date employUpdateTime;
+    
+    private JobBean jobBean;
 
     public String getEmployId() {
         return employId;
@@ -158,8 +160,47 @@ public class EmployBean {
     public Date getEmployUpdateTime() {
         return employUpdateTime;
     }
+    
+    
 
-    public void setEmployUpdateTime(Date employUpdateTime) {
+    public EmployBean(String employId, String employName, String employSex, String employImg, String employSalary,
+			String employIdentify, String employAddress, String employEducation, String employPolitic,
+			String employSchool, String employPhone, String checkState, String jobId, String employState,
+			String companyId, Date employUpdateTime, JobBean jobBean) {
+		super();
+		this.employId = employId;
+		this.employName = employName;
+		this.employSex = employSex;
+		this.employImg = employImg;
+		this.employSalary = employSalary;
+		this.employIdentify = employIdentify;
+		this.employAddress = employAddress;
+		this.employEducation = employEducation;
+		this.employPolitic = employPolitic;
+		this.employSchool = employSchool;
+		this.employPhone = employPhone;
+		this.checkState = checkState;
+		this.jobId = jobId;
+		this.employState = employState;
+		this.companyId = companyId;
+		this.employUpdateTime = employUpdateTime;
+		this.jobBean = jobBean;
+	}
+
+	public JobBean getJobBean() {
+		return jobBean;
+	}
+
+	public void setJobBean(JobBean jobBean) {
+		this.jobBean = jobBean;
+	}
+
+	public void setEmployUpdateTime(Date employUpdateTime) {
         this.employUpdateTime = employUpdateTime;
     }
+
+	public EmployBean() {
+		super();
+	}
+	
 }

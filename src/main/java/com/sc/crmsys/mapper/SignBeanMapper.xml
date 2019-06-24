@@ -24,10 +24,10 @@
     where user_id = #{userId}
   </select>
   
-  <select id="signNum" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="signNum" parameterType="java.lang.String" resultType="java.lang.Integer">
     select count(*)
     from sign
-    where user_id = #{userId} and sign_days < 31
+    where user_id = #{userId} and sign_days &lt;= 31
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

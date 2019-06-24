@@ -61,5 +61,9 @@ public class SignBean {
 		this.signNum = signNum;
 		this.signDays = signDays;
 	}
+
+	public SignBean() {
+		super();
+	}
     
 }

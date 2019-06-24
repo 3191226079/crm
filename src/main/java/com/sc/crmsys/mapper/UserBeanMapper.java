@@ -18,4 +18,5 @@ public interface UserBeanMapper {
     int updateByPrimaryKey(UserBean record);
     
     UserBean selectByUserName(@Param("uname")String userName);
+    
 }

@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.EmployBean;
 import com.sc.crmsys.mapper.EmployBeanMapper;
 
@@ -18,6 +20,13 @@ public class EmployServiceImpl implements EmployService{
 	public List<EmployBean> selectAllEmploy() {
 		List<EmployBean> employList = employBeanMapper.selectAllEmploy();
 		return employList;
+	}
+	@Override
+	public PageInfo<EmployBean> eamployInfo(int pn,int size,String content) {
+		PageHelper.startPage(pn, size);
+		List<EmployBean> employInfo = employBeanMapper.employInfo(content);
+		PageInfo<EmployBean> pageInfo = new PageInfo<>(employInfo);
+		return pageInfo;
 	}
 
 }

@@ -65,7 +65,7 @@ img{vertical-align:top}
 .qiandao-history-inf{margin-top:25px;color:#666;text-align:center;font-size:14px}
 .qiandao-history-inf li{float:left;width:25%}
 .qiandao-history-inf li h4{color:#33b23f;font-size:40px;line-height:50px}
-.qiandao-history-table{overflow:hidden;margin:20px;-webkit-border-radius:5px 5px 0 0;-moz-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;-o-border-radius:5px 5px 0 0;-ms-border-radius:5px 5px 0 0}
+.qiandao-history-table{margin:20px;-webkit-border-radius:5px 5px 0 0;-moz-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;-o-border-radius:5px 5px 0 0;-ms-border-radius:5px 5px 0 0}
 .qiandao-history-table table{width:100%;color:#666;text-align:center;font-size:1pc;border-spacing:0}
 .qiandao-history-table table th{width:33.3%;background-color:#f2f2f2;text-align:center;line-height:40px}
 .qiandao-history-table td{width:33.3%;border-bottom:1px #e5e5e5 dashed;line-height:34px}

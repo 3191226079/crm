@@ -13,8 +13,10 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.SignBean;
 import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.service.SignService;
@@ -54,9 +56,13 @@ public class SignController {
 		sign.setSignDays(signDays);
 		sign.setSignId(signId);
 		sign.setSignTime(signTime);
+		
 		signService.addSign(sign);
+		
 		Integer signNum = signService.signNum(userId);
 		HashMap<String, Object> hashMap = new HashMap<>();
+		
+		System.out.println(signNum);
 		hashMap.put("signNum", signNum);
 		return hashMap;
 	}

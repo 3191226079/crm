@@ -1,9 +1,17 @@
 $(function() {
+	
+	var sig = document.getElementsByClassName("signss").length;
+	$("#signNum1").html(sig);
     var signFun = function() {
     	
-    	
-        /*var dateArray = $(".signDays").val();*/ // 假设已经签到的
     	var dateArray = [];
+    	 // 假设已经签到的
+    	var dateArrays = $(".signDays");
+    	dateArrays.each(function(){
+    		var v = $(this).val();
+    		dateArray.push(v);
+    	});
+    	console.log(dateArray);
         var $dateBox = $("#js-qiandao-list"),
             $currentDate = $(".current-date"),
             $qiandaoBnt = $("#js-just-qiandao"),
@@ -40,25 +48,19 @@ $(function() {
                     qiandaoFun();
                 }
             }) //签到
-
+      
         $qiandaoBnt.on("click", function() {
             if (_handle) {
                 qiandaoFun();
            //传输签到信息息
                 $.ajax({
                     type:'post',
-                    URL:'sign/add',
+                    url:'sign/add',
                     data:{},
                     dataType:'json',
                     success:function(result)
                     {
-                    	var vuenum = new Vue({
-                    		el:'#signum',
-                    		data:{
-                    			number:result.signNum
-                    		}
-                    	})
-                    	location.href="sign/info";
+                    	$("#sign_num").html(result.signNum);
                     },
                     error:function()
                     {
@@ -81,6 +83,8 @@ $(function() {
 
     function openLayer(a, Fun) {
         $('.' + a).fadeIn(Fun)
+        
+        
     } //打开弹窗
 
     var closeLayer = function() {

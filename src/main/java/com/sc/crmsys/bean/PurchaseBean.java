@@ -108,4 +108,13 @@ public class PurchaseBean {
     public void setPurchaseUpdateTime(Date purchaseUpdateTime) {
         this.purchaseUpdateTime = purchaseUpdateTime;
     }
+
+	@Override
+	public String toString() {
+		return "PurchaseBean [purchaseId=" + purchaseId + ", productId=" + productId + ", purchaseTime=" + purchaseTime
+				+ ", purchaseState=" + purchaseState + ", purchasePerson=" + purchasePerson + ", purchaseInfo="
+				+ purchaseInfo + ", companyId=" + companyId + ", purchaseUpdateTime=" + purchaseUpdateTime
+				+ ", stockBean=" + stockBean + ", detailPurchaseBean=" + detailPurchaseBean + "]";
+	}
+    
 }
