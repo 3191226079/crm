@@ -20,6 +20,11 @@
     from contact_logs
     where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="getcontactrecord" resultMap="BaseResultMap" >
+  select * from contact_logs
+  
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from contact_logs
     where contact_logs_id = #{contactLogsId,jdbcType=VARCHAR}

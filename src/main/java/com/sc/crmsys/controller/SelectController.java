@@ -38,7 +38,6 @@ public class SelectController {
 	
 		List<CustomerBean> selectToday = todayService.selectToday();
 		System.out.println(selectToday);
-		System.out.println("wwwwwwwww");
 		map.put("selectToday", selectToday);
 		return "forward:/jsp/today.jsp";
 		

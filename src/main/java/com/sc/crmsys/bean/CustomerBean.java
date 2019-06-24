@@ -23,7 +23,7 @@ public class CustomerBean {
 
     private String customerEmail;
 
-    @DateTimeFormat(pattern="yyyy/MM/dd")
+    @DateTimeFormat(pattern="yyyy/MM/dd HH:mm:ss")
     private Date customerContactTime;
 
     private String customerInfo;
