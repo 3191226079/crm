@@ -1,5 +1,6 @@
 package com.sc.crmsys.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,6 +55,30 @@ public class PurchaseServiceImpl implements PurchaseService{
 		List<PurchaseBean> list = purchaseBeanMapper.findByPrimaryKey(purchaseId);
 		return list;
 	}
+
+	@Override
+	public void updatePurchase(PurchaseBean purchaseBean, DetailPurchaseBean detailPurchaseBean,
+			OrderPurchaseBean orderPurchaseBean) {
+		purchaseBeanMapper.update(purchaseBean);
+		
+		detailPurchaseBeanMapper.updateByPrimaryKey(detailPurchaseBean);
+	
+		orderPurchaseBeanMapper.updateByPrimaryKey(orderPurchaseBean);
+		
+	}
+
+	@Override
+	public void updatePurchaseState(String purchaseId,Date purchaseUpdateTime) {
+		purchaseBeanMapper.update(purchaseId,purchaseUpdateTime);
+		
+	}
+
+
+
+
+
+
+	
 
 
 	

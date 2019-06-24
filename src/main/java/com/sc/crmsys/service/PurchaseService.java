@@ -1,5 +1,6 @@
 package com.sc.crmsys.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,5 +17,9 @@ public interface PurchaseService {
 	void addPurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean);
 	
 	List<PurchaseBean> findPurchase(String purchaseId);
+	
+	void updatePurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean);
+	
+	void updatePurchaseState(String purchaseId,Date purchaseUpdateTime);
 	
 }
