@@ -18,11 +18,12 @@
     from info
     where info_id = #{infoId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  
+  <delete id="deleteByinfoId" parameterType="java.lang.String">
     delete from info
     where info_id = #{infoId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.sc.crmsys.bean.InfoBean">
+  <insert id="insert" parameterType="com.sc.crmsys.bean.InfoBean" keyProperty="infoId" useGeneratedKeys="true">
     insert into info (info_id, info_title, info_content, 
       info_person, company_id, info_update_time
       )

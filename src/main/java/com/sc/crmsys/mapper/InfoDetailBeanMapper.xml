@@ -18,7 +18,55 @@
     from info_detail
     where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  
+  <select id="selectAll" resultMap="infoDetailMap">
+  	SELECT * FROM info_detail id INNER JOIN info ins ON id.info_id = ins.info_id INNER JOIN employ em on id.employ_id = em.employ_id 
+  	<where>
+  		<if test="i.infoBean.infoTitle != null">
+  			info_title like '%${i.infoBean.infoTitle}%'
+  		</if>
+  		<if test="i.employBean.employName != null">
+  			or employ_name like '%${i.employBean.employName}%'
+  		</if>
+  		<if test="i.employBean.employPhone != null">
+  			or employ_phone like '%${i.employBean.employPhone}%'
+  		</if>
+  	</where>
+  </select>
+  
+  <resultMap type="com.sc.crmsys.bean.InfoDetailBean" id="infoDetailMap">
+  	<id column="info_detail_id" property="infoDetailId"/>
+  	<result column="info_detail_state" property="infoDetailState"/>
+  	<result column="company_id" property="companyId"/>
+  	<result column="info_detail_update_time" property="infoDetailUpdateTime"/>
+  	<association property="infoBean" javaType="com.sc.crmsys.bean.InfoBean" column="info_id">
+	  	<id column="info_id" property="infoId"/>
+	  	<result column="info_title" property="infoTitle"/>
+	  	<result column="info_content" property="infoContent"/>
+	  	<result column="info_person" property="infoPerson"/>
+	  	<result column="company_id" property="companyId"/>
+	  	<result column="info_update_time" property="infoUpdateTime"/>
+  	</association>
+    <association property="employBean" javaType="com.sc.crmsys.bean.EmployBean" column="employ_id">	
+    	<id column="employ_id" property="employId"/>
+	  	<result column="employ_name" property="employName"/>
+	  	<result column="employ_sex" property="employSex"/>
+	  	<result column="employ_img" property="employImg"/>
+	  	<result column="employ_salary" property="employSalary"/>
+	  	<result column="employ_identify" property="employIdentify"/>
+	  	<result column="employ_address" property="employAddress"/>
+	  	<result column="employ_education" property="employEducation"/>
+	  	<result column="employ_politic" property="employPolitic"/>
+	  	<result column="employ_school" property="employSchool"/>
+	  	<result column="employ_phone" property="employPhone"/>
+	  	<result column="check_state" property="checkState"/>
+	  	<result column="job_id" property="jobId"/>
+	  	<result column="employ_state" property="employState"/>
+	  	<result column="company_id" property="companyId"/>
+	  	<result column="employ_update_time" property="employUpdateTime"/>
+    </association>
+  </resultMap>
+  <delete id="deleteByinfoDetailId" parameterType="java.lang.String">
     delete from info_detail
     where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
   </delete>
@@ -30,6 +78,7 @@
       #{infoDetailState,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, #{infoDetailUpdateTime,jdbcType=TIMESTAMP}
       )
   </insert>
+  
   <insert id="insertSelective" parameterType="com.sc.crmsys.bean.InfoDetailBean">
     insert into info_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
