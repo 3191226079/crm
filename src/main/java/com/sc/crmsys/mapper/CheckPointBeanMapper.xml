@@ -17,6 +17,19 @@
     from check_point
     where check_point_id = #{checkPointId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+	select 
+    <include refid="Base_Column_List" />
+    from check_point
+    <where>
+    	<if test="c != null">
+    		check_point_target like '%${c}%'
+    	</if>
+    </where>
+    order by check_point_update_time asc 
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from check_point
     where check_point_id = #{checkPointId,jdbcType=VARCHAR}
