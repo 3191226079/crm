@@ -50,7 +50,7 @@
     		var panelHtml = '<div class="cerify-code-panel">\
                 <div class="verify-code-area">\
                     <div class="verify-input-area">\
-                        <input type="text" id="yanzhenll" class="varify-input-code"/>\
+                        <input type="text" id="yanzhenll" autocomplete="off" class="varify-input-code"/>\
                     </div>\
                 </div>\
                 <div class="verify-code"></div>\
