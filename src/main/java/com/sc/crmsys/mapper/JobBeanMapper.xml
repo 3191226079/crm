@@ -12,6 +12,13 @@
   <sql id="Base_Column_List">
     job_id, job_name, dept_number, job_remarks, company_id, job_last_time
   </sql>
+  
+  <select id="selectJobId" parameterType="java.lang.String" resultType="java.lang.String">
+    select job_id
+    from job
+    where job_name = #{jobName}
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

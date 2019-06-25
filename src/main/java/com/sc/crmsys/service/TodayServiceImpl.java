@@ -25,11 +25,12 @@ public class TodayServiceImpl implements TodayService{
 		
 		
 		Date setearly = MyUtils.setearly();
-		System.out.println(setearly);
+		
 		Date setlater = MyUtils.setlater();
+		
+	
 		List<CustomerBean> selectToday = customerBeanMapper.selectToday(setearly, setlater);
-		  
-		System.out.println("ssssssssss");
+	
 		
 		return selectToday;
 	}

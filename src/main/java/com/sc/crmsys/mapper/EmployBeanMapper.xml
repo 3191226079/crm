@@ -157,6 +157,7 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.EmployBean">
     update employ
     <set>
@@ -231,7 +232,7 @@
   <select id="employInfo" resultMap="employInfoMap">
   	SELECT * FROM employ e INNER JOIN job j ON e.job_id = j.job_id
 	INNER JOIN department d on j.dept_number = d.dept_number
-	<if test="content != nunll">
+	<if test="content != null">
 		WHERE e.employ_name = #{content}
 	</if>
   </select>

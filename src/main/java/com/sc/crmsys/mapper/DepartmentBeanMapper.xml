@@ -11,6 +11,7 @@
   <sql id="Base_Column_List">
     dept_number, dept_name, dept_remarks, company_id, dept_last_time
   </sql>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -18,7 +18,7 @@ img{vertical-align:top}
 .qiandao-top{padding-top:70px;height:13pc}
 .just-qiandao{margin:0 auto 20px;width:212px;height:67px;cursor:pointer}
 .just-qiandao.actived,.just-qiandao:active{background-position:0 -68px}
-.qiandao-notic{color:#b25d06;text-align:center;font-size:18px}
+.qiandao-notic{color:#b25d06;font-size:18px}
 .qiandao-rule-list{margin-bottom:35px;color:#8d8ebb;font-size:1pc;line-height:26px}
 .qiandao-rule-list h4{font-weight:bolder;font-size:1pc}
 .qiandao-main{overflow:hidden;width:603px}

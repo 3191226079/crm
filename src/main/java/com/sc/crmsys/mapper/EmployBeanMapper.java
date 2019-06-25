@@ -22,4 +22,5 @@ public interface EmployBeanMapper {
     List<EmployBean> selectAllEmploy();
     
     List<EmployBean> employInfo(@Param("content")String content);
+    
 }
