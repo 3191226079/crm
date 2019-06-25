@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -71,11 +72,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<td>${stock.salePrice}</td>
 							<td>${stock.postscript}</td>
 							<td>${stock.companyId}</td>
-							<td>${stock.stockLastTime}</td>
-							<td><img class="operation delban" src="img/delete.png"></td>
 							<td>
-								<a href="banneradd.html">
-								<img class="operation" src="img/update.png">
+								<!--jsp中 修改时间格式 -->
+								<fmt:formatDate value="${stock.stockLastTime}" pattern="yyyy-MM-dd"/>
+							</td>
+							<td>
+								<!-- 删除 -->
+									<img class="operation delban" src="img/delete.png" onclick="setPath('${stock.commodityNumber }')">
+							</td>
+							<td>
+								<!-- 修改 -->
+								<a href="stock/selectId?id=${stock.commodityNumber }">
+									<img class="operation" src="img/update.png">
 								</a>
 							</td>
 						</tr>
@@ -102,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+				<a href="javascipt:;" id="del" class="ok yes">确定</a><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -120,6 +128,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(".no").click(function(){
 		  $(".banDel").hide();
 		});
+		
+		function setPath(id)
+		{
+			console.log(id);
+			var path = 'stock/deleteId?commodityNumber='+id;
+			document.getElementById('del').href = path;
+		}
 // 广告弹出框 end
 </script>
 </html>

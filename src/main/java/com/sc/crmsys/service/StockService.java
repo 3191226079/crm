@@ -11,6 +11,12 @@ public interface StockService {
 	public void addStock(StockBean stockBean);
 	//查询库存
 	public List<StockBean> selectStock();
+	//查询Id
+	public StockBean selectByPrimaryKey(String commodityNumber);
+	//通过Id删除商品信息
+	public void deleteByPrimaryKey(String commodityNumber);
+	//修改
+	public void updateStockId(StockBean stockBean);
 	
 	
 	

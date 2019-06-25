@@ -39,6 +39,30 @@ public class StockController {
 		return "forward:/jsp/wish.jsp";
 		
 	}
+	@RequestMapping("selectId")
+	public String selectStockId(String id,Map<String, Object> map)
+	{
+		StockBean selectByPrimaryKey = stockService.selectByPrimaryKey(id);
+		map.put("selectByPrimaryKey", selectByPrimaryKey);
+		return "forward:/jsp/updategoods.jsp";	
+	}
+	@RequestMapping("deleteId")
+	public String deleteStockId(String commodityNumber)
+	{
+		System.out.println(commodityNumber);
+		stockService.deleteByPrimaryKey(commodityNumber);
+		return "redirect:select";
+		
+	}
+	@RequestMapping("updateId")
+	public String updateStockId(StockBean stockBean, Map<String, Object> map)
+	{
+		stockService.updateStockId(stockBean);
+		return "redirect:/stock/select";
+		
+	}
+	
+	
 	
 
 }

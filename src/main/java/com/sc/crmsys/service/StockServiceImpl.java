@@ -33,5 +33,25 @@ public class StockServiceImpl implements  StockService{
 		return selectStock;
 	}
 
+	@Override
+	public StockBean selectByPrimaryKey(String commodityNumber) {
+		StockBean selectByPrimaryKey = stockBeanMapper.selectByPrimaryKey(commodityNumber);
+		return selectByPrimaryKey;
+	}
+
+	@Override
+	public void deleteByPrimaryKey(String commodityNumber) {
+		stockBeanMapper.deleteByPrimaryKey(commodityNumber);
+	}
+
+	@Override
+	public void updateStockId(StockBean stockBean) {
+		stockBeanMapper.updateByPrimaryKeySelective(stockBean);
+		
+	}
+
+	
+
+	
 	
 }
