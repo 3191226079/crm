@@ -38,18 +38,26 @@ public class SelectController {
 	
 		List<CustomerBean> selectToday = todayService.selectToday();
 		System.out.println(selectToday);
-		System.out.println("wwwwwwwww");
 		map.put("selectToday", selectToday);
 		return "forward:/jsp/today.jsp";
 		
 	}
 	
+	
+
 	@RequestMapping("/getthreeday")
 	public String getthreeday(Map<String, Object> map)
 	{
 		List<CustomerBean> getthreeday = threeDayService.getthreeday();
 		map.put("getthreeday", getthreeday);
 		return "forward:/jsp/threeday.jsp";
+	}
+	
+	@RequestMapping("/delthreeday")
+	public String delthreeday(String customerId)
+	{
+		threeDayService.delthreeday(customerId);
+		  return "redirect:getthreeday";
 	}
 	
 	@RequestMapping("/getsevenday")
@@ -60,12 +68,33 @@ public class SelectController {
 		return "forward:/jsp/sevenday.jsp";
 	}
 	
+	@RequestMapping("/delsevenday")
+	public String delsevenday(String customerId)
+	{
+		sevenDayService.delsevenday(customerId);
+		return "redirect:getsevenday";
+	}
+	
 	@RequestMapping("/getonemonthday")
 	public String getonemonthday(Map<String , Object> map)
 	{
 		List<CustomerBean> getonemonth = oneMonthService.getonemonth();
 		map.put("getonemonth", getonemonth);
 		return "forward:/jsp/onemonth.jsp";
+	}
+	
+	@RequestMapping("/delmm")
+	public String delmm(String customerId)
+	{
+		oneMonthService.delom(customerId);
+		return "redirect:getonemonthday";
+	}
+	
+	@RequestMapping("deltoday")
+	public String delToday(String customerId)
+	{
+		todayService.deltoday(customerId);
+	  return "redirect:gettoday";
 	}
 	
 }

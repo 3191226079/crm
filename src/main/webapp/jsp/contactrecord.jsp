@@ -1,19 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 
+ 
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>"> 
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>3天内需要联系</title>
+<title>联系记录表</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
@@ -26,50 +26,52 @@
 			<div class="banner">
 		
 				<!-- banner 表格 显示 -->
+				
+				
 				<div class="banShow">
+				<div class="butrr">
+				<div></div>
+				<div></div>
+				<div></div>
+						<div class="buttopr">
+							<a href="jsp/addcontactrecord.jsp" >添加</a>
+						</div>	
+					</div>
+					<form>
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
-					
-							<td width="200px" class="tdColor">客户姓名</td>
-							<td width="200px" class="tdColor">上级单位</td>
-							<td width="200px" class="tdColor">负责人</td>
-							<td width="200px" class="tdColor">客户状态</td>
-							<td width="200px" class="tdColor">客户地址</td>
-							<td width="200px" class="tdColor">客户电话</td>
-							<td width="300px" class="tdColor">客户传真</td>
-							<td width="300px" class="tdColor">客户邮箱</td>
-							<td width="300px" class="tdColor">联系时间</td>
-							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
-							<td width="300px" class="tdColor">修改时间</td>
-							<td width="300px" class="tdColor">修改</td>
+							<td width="66px" class="tdColor tdC">联系记录ID</td>
+							<td width="200px" class="tdColor">联系标题</td>
+							<td width="235px" class="tdColor">联系时间</td>
+							<td width="200px" class="tdColor">客户编号</td>
+							<td width="200px" class="tdColor">联系内容</td>
+							<td width="200px" class="tdColor">公司编号</td>
+							<td width="200px" class="tdColor">最后修改时间</td>
+							<td width="200px" class="tdColor">操作</td>
+							
 						</tr>
-						<c:forEach items="${getthreeday}" var="today1">		
-				 		<tr>
-				 		<td>${today1.customerId}</td>
-				 		<td>${today1.customerName}</td>
-				 		<td>${today1.customerUpDepartment}</td>
-				 		<td>${today1.customerContactPerson}</td>
-				 		<td>${today1.customerState}</td>
-				 		<td>${today1.customerAddress}</td>
-				 		<td>${today1.customerPhone}</td>
-				 		<td>${today1.customerFax}</td>
-				 		<td>${today1.customerEmail}</td>
-				 		<td>
-				 			<fmt:formatDate value="${today1.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+						<c:forEach items="${getcontactrecord}" var="getcontactrecord">
+						<tr>
+						<td>${getcontactrecord.contactLogsId}</td>
+						<td>${getcontactrecord.contactLogsTitle}</td>
+						<td>
+				 			<fmt:formatDate value="${getcontactrecord.contactLogsTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
-				 		<td>${today1.customerInfo}</td>
-				 		<td>${today1.companyId}</td>
-				 		<td>
-				 			<fmt:formatDate value="${today1.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-				 		</td>
-				 		<td> <img class="operation delban" src="img/delete.png" onclick="deleteSa('${today1.customerId}')"></td>
-				 		</tr>
-				 		</c:forEach>
 						
-		
-	
+						<td>${getcontactrecord.customerId}</td>
+						<td>${getcontactrecord.contactLogsContent}</td>
+						<td>${getcontactrecord.companyId}</td>
+						<td>
+				 			<fmt:formatDate value="${getcontactrecord.contactLogsLastTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+				 		</td>
+				 		<td>
+						<a href="getcontactrecord/get1?contactLogsId=${getcontactrecord.contactLogsId }">
+									<img class="operation" src="img/update.png"></a> 
+						<img class="operation delban" src="img/delete.png" onclick="deleteSa('${getcontactrecord.contactLogsId}')">
+						</td>
+						
+						</tr>
+						</c:forEach>				
 					</table>
 					<div class="paging">此处是分页</div>
 				
@@ -113,10 +115,10 @@ $(document).ready(function(){
 	
 // 广告弹出框 end
 
-	function deleteSa(customerId) 
+	function deleteSa(contactLogsId) 
 	{
-		console.log(customerId);
-		document.getElementById("sure").href = 'today/delthreeday?customerId=' + customerId;	
+	
+		document.getElementById("sure").href = 'getcontactrecord/del?contactLogsId=' + contactLogsId;	
 	}
 </script>
 </html>
