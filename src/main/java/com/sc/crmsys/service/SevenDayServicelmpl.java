@@ -27,6 +27,14 @@ public class SevenDayServicelmpl implements SevenDayService{
 		
 		return selectseven;
 	}
+
+
+
+	@Override
+	public void delsevenday(String customerId) {
+		customerBeanMapper.deleteByPrimaryKey(customerId);
+		
+	}
 	
 
 }

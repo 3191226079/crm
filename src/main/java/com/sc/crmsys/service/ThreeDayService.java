@@ -6,4 +6,5 @@ import com.sc.crmsys.bean.CustomerBean;
 
 public interface ThreeDayService {
      public List<CustomerBean> getthreeday();
+     public void delthreeday(String customerId);
 }

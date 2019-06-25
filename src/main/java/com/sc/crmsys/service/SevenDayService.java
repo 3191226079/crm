@@ -6,5 +6,7 @@ import com.sc.crmsys.bean.CustomerBean;
 
 public interface SevenDayService {
 	public List<CustomerBean> getsevenday();
+	
+	public void delsevenday(String customerId);
 
 }

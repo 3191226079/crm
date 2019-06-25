@@ -30,30 +30,26 @@
   
   <select id="selectToday"  resultMap="BaseResultMap">
   select * from customer
-   where   customer_contact_time &gt; #{a} and customer_contact_time &lt; #{b}
-  
+   where  customer_contact_time &gt;=  #{a} and customer_contact_time &lt; #{b}
   </select>
   
   <select id="selectthree"  resultMap="BaseResultMap">
   select * from customer
-   where   customer_contact_time &gt; #{c} and customer_contact_time &lt; #{d}
+   where   customer_contact_time &gt;= #{c} and customer_contact_time &lt; #{d}
   
   </select>
     <select id="selectseven"  resultMap="BaseResultMap">
   select * from customer
-   where   customer_contact_time &gt; #{c} and customer_contact_time &lt; #{d}
+   where   customer_contact_time &gt;= #{c} and customer_contact_time &lt; #{d}
   
   </select>
   
   <select id="selectonemonth"  resultMap="BaseResultMap">
   select * from customer
-   where   customer_contact_time &gt; #{c} and customer_contact_time &lt; #{d}
+   where   customer_contact_time &gt;= #{c} and customer_contact_time &lt; #{d}
   
   </select>
-  <insert id="add" parameterType="com.sc.crmsys.bean.CustomerBean">
-  	insert into
-  
-  </insert>
+ 
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
