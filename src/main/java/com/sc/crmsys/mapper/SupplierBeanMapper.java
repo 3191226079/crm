@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.SupplierBean;
 
 public interface SupplierBeanMapper {
@@ -14,4 +16,6 @@ public interface SupplierBeanMapper {
     int updateByPrimaryKeySelective(SupplierBean record);
 
     int updateByPrimaryKey(SupplierBean record);
+    
+    List<SupplierBean> getSupplier();
 }

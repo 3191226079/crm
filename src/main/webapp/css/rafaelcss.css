@@ -13,6 +13,11 @@
 	width: 50px;
 	margin-left: 28px;
 }
+.blankr2
+{
+	width: 50px;
+	margin-left: 15px;
+}
 .btextr
 {
 	margin-top: -15px;
@@ -32,3 +37,68 @@
 {
 	color: rgb(171,177,186);
 }
+.baBody_r
+{
+	width: 100%;
+	height: 2000px;
+	margin-top: 20px;
+	margin-left: 90px;
+}
+.table_r
+{
+	width: 87%;
+	height: 500px;
+	border:none;
+
+}
+.table_r td
+{
+	border: none;
+}
+.input1
+{
+	width: 300px;
+	height: 40px;
+	border: 1px solid #ccc;
+	margin-left: 20px;
+	text-indent: 15px;
+}
+
+.cfD label
+{
+	cursor: pointer;
+
+}
+.wsh
+{
+	color:  #6c6c6c;
+}
+.wsh:hover
+{
+	color: #f40;
+}
+.ytg
+{
+	color:  #6c6c6c;
+}
+.ytg:hover
+{
+	color: #f40;
+}
+.btg
+{
+	color:  #6c6c6c;
+}
+.btg:hover
+{
+	color: #f40;
+}
+.pagerr
+{
+	width: 100px;
+	height: 50px;
+	margin: 5px;
+	
+}
+
+

@@ -143,4 +143,14 @@ public class StockBean {
     public void setStockLastTime(Date stockLastTime) {
         this.stockLastTime = stockLastTime;
     }
+
+	@Override
+	public String toString() {
+		return "StockBean [commodityNumber=" + commodityNumber + ", commodityName=" + commodityName + ", commodityType="
+				+ commodityType + ", description=" + description + ", unit=" + unit + ", warehouseNumber="
+				+ warehouseNumber + ", stockNumber=" + stockNumber + ", costPrice=" + costPrice + ", retailPrice="
+				+ retailPrice + ", salePrice=" + salePrice + ", postscript=" + postscript + ", companyId=" + companyId
+				+ ", stockLastTime=" + stockLastTime + ", warehouseBean=" + warehouseBean + "]";
+	}
+    
 }
