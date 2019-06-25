@@ -1,17 +1,21 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.SaleInfoBean;
 
 public interface SaleInfoBeanMapper {
-    int deleteByPrimaryKey(String saleinfoId);
+    void deleteByPrimaryKey(String saleinfoId);
 
-    int insert(SaleInfoBean record);
+    void insert(SaleInfoBean record);
 
     int insertSelective(SaleInfoBean record);
 
     SaleInfoBean selectByPrimaryKey(String saleinfoId);
 
-    int updateByPrimaryKeySelective(SaleInfoBean record);
+    void updateByPrimaryKeySelective(SaleInfoBean record);
 
     int updateByPrimaryKey(SaleInfoBean record);
+    
+    public List<SaleInfoBean> getsaleinfo();
 }

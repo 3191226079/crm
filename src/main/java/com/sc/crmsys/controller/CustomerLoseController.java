@@ -56,6 +56,8 @@ public class CustomerLoseController {
 		 customerLoseService.updatecustomerlose(customer);
 		return "redirect:getcustomerlose";
 	}
+	
+	
 	@RequestMapping("/update1")
 	public String update1(CustomerLoseBean customer)
 	{

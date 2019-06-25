@@ -12,5 +12,7 @@ public interface CustomerLoseService {
 	public void updatecustomerlose(CustomerLoseBean customerLoseBean);
 	
 	public List<CustomerLoseBean> confirmationofloss(); 
+	
+
 
 }

@@ -11,7 +11,7 @@ import com.sc.crmsys.bean.CustomerBean;
 
 public interface CustomerBeanMapper {
 	
-    int deleteByPrimaryKey(String customerId);
+    void deleteByPrimaryKey(String customerId);
 
    public void insert(CustomerBean customer);
 

@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>潜在客户</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -51,57 +51,45 @@ $(function (){
 			<div class="connoisseur">
 				
 				<!-- banner 表格 显示 -->
-				<form action="customerlose/update1" method="post">
+				<form action="getcontactrecord/update" method="post">
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
-						<!-- <tr>
-							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="170px" class="tdColor">头像</td>
-							<td width="135px" class="tdColor">姓名</td>
-							<td width="145px" class="tdColor">手机号码</td>
-							<td width="140px" class="tdColor">所在城市</td>
-							<td width="140px" class="tdColor">任职机构</td>
-							<td width="145px" class="tdColor">行家头衔</td>
-							<td width="150px" class="tdColor">本周预约次数</td>
-							<td width="140px" class="tdColor">可约时段</td>
-							<td width="140px" class="tdColor">审核状态</td>
-							<td width="150px" class="tdColor">是否推荐</td>
-							<td width="130px" class="tdColor">操作</td>
-						</tr> -->
-						<tr>
-						</tr>
+					
 						<tr>
 							
-							<td width="135px" class="tdColor" colspan="4">更改流失客户信息</td>
+							<td width="135px" class="tdColor" colspan="4">添加销售联系人表</td>
 						</tr>
 						<tr>
-							<td width="135px" class="tdColor">流失客户编码</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerLoseId" readonly value="${selectcustomerlose.customerLoseId }" >
+							<td width="135px" class="tdColor">联系记录ID</td>
+							<td width="370px"><input type="text" style="width: 210px" name="contactLogsId" readonly value="${record.contactLogsId}" >
 							</td>
-							<td width="135px" class="tdColor"  >客户编码</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerId" value="${selectcustomerlose.customerId }"></td>
-						</tr>
+							<td width="135px" class="tdColor"  >联系标题</td>
+							<td width="370px"><input type="text" style="width: 210px" name="contactLogsTitle" value="${record.contactLogsTitle}"></td>
+						</tr>					
 						<tr>
-							<td width="110px" class="tdColor">操作人员编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerLoseOperation" value="${selectcustomerlose.customerLoseOperation }"></td>
-							<td width="110px" class="tdColor">处理方式</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerLosePromethods" value="${selectcustomerlose.customerLosePromethods}" ></td>
+							<td width="110px" class="tdColor">联系时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="contactLogsTime" value="${record.contactLogsTime}"></td>
+							<td width="110px" class="tdColor">客户编号</td>
+							<td width="300px"><input type="text" style="width: 210px" name="customerId" value="${record.customerId}" ></td>
 						</tr>
 						<tr>
 							
-							<td width="110px" class="tdColor">流失状态</td>
-							<td width="30px"><input type="text" style="width: 210px" name="customerLoseSate" value="${selectcustomerlose.customerLoseSate }"></td>
+							<td width="110px" class="tdColor">联系内容</td>
+							<td width="30px"><input type="text" style="width: 210px" name="contactLogsContent" value="${record.contactLogsContent}"></td>
 							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${selectcustomerlose.companyId }"></td>
+							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${record.companyId}"></td>
 						</tr>
-						<tr>
-							<td width="110px" class="tdColor">最后更改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="customerLoseLastTime" value="${selectcustomerlose.customerLoseLastTime}"></td>
 						
+						
+						<tr>
+							
+							<td width="110px" class="tdColor">最后修改时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="contactLogsLastTime" value="${record.contactLogsLastTime}"></td>
+							
 						</tr>
-				
+							
 					</table>
-					<input type="submit" value="确认" style="width: 
+					<input type="submit" value="添加" style="width: 
 				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
 
 					<div class="paging">此处是分页</div>

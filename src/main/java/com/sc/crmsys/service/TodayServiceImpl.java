@@ -35,4 +35,11 @@ public class TodayServiceImpl implements TodayService{
 		return selectToday;
 	}
 
+
+	@Override
+	public void deltoday(String customerId) {
+		customerBeanMapper.deleteByPrimaryKey(customerId);
+		
+	}
+
 }

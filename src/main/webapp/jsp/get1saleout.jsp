@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title></title>
+<title>添加销售单</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -51,59 +51,55 @@ $(function (){
 			<div class="connoisseur">
 				
 				<!-- banner 表格 显示 -->
-				<form action="customerlose/update1" method="post">
+				<form action="saleout/update" method="post">
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
-						<!-- <tr>
-							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="170px" class="tdColor">头像</td>
-							<td width="135px" class="tdColor">姓名</td>
-							<td width="145px" class="tdColor">手机号码</td>
-							<td width="140px" class="tdColor">所在城市</td>
-							<td width="140px" class="tdColor">任职机构</td>
-							<td width="145px" class="tdColor">行家头衔</td>
-							<td width="150px" class="tdColor">本周预约次数</td>
-							<td width="140px" class="tdColor">可约时段</td>
-							<td width="140px" class="tdColor">审核状态</td>
-							<td width="150px" class="tdColor">是否推荐</td>
-							<td width="130px" class="tdColor">操作</td>
-						</tr> -->
-						<tr>
-						</tr>
-						<tr>
-							
-							<td width="135px" class="tdColor" colspan="4">更改流失客户信息</td>
-						</tr>
-						<tr>
-							<td width="135px" class="tdColor">流失客户编码</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerLoseId" readonly value="${selectcustomerlose.customerLoseId }" >
-							</td>
-							<td width="135px" class="tdColor"  >客户编码</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerId" value="${selectcustomerlose.customerId }"></td>
-						</tr>
-						<tr>
-							<td width="110px" class="tdColor">操作人员编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerLoseOperation" value="${selectcustomerlose.customerLoseOperation }"></td>
-							<td width="110px" class="tdColor">处理方式</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerLosePromethods" value="${selectcustomerlose.customerLosePromethods}" ></td>
-						</tr>
-						<tr>
-							
-							<td width="110px" class="tdColor">流失状态</td>
-							<td width="30px"><input type="text" style="width: 210px" name="customerLoseSate" value="${selectcustomerlose.customerLoseSate }"></td>
-							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${selectcustomerlose.companyId }"></td>
-						</tr>
-						<tr>
-							<td width="110px" class="tdColor">最后更改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="customerLoseLastTime" value="${selectcustomerlose.customerLoseLastTime}"></td>
 						
+						<tr>
+							
+							<td width="135px" class="tdColor" colspan="4">添加销售单</td>
+						</tr>
+						<tr>
+							<td width="135px" class="tdColor">销售单编号</td>
+							<td width="370px"><input type="text" style="width: 210px" readonly  name="saleoutId" value="${saleout.saleoutId}" >
+							</td>
+							<td width="135px" class="tdColor"  >客户编号</td>
+							<td width="370px"><input type="text" style="width: 210px" name="customerId" value="${saleout.customerId}"></td>
+						</tr>
+						<tr>
+							<td width="110px" class="tdColor">公司编号</td>
+							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${saleout.companyId}"></td>
+							<td width="110px" class="tdColor">制单日期</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="saleoutTime" value="${saleout.saleoutTime}"></td>
+						</tr>
+						<tr>
+							
+							<td width="110px" class="tdColor">发票号码</td>
+							<td width="30px"><input type="text" style="width: 210px" name="saleoutInvoce" value="${saleout.saleoutInvoce}"></td>
+							<td width="110px" class="tdColor">最后修改时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="saleoutLastTime" value="${saleout.saleoutLastTime}"></td>
+						</tr>
+						
+						<tr>
+							<td width="110px" class="tdColor">销售金额</td>
+							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleoutPrice" value="${saleout.saleoutPrice}"></td>
+						
+			
+							<td width="110px" class="tdColor">出库状态</td>
+							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleoutState" value="${saleout.saleoutState}"></td>
+						
+						</tr>
+
+						<tr>
+							<td width="110px" class="tdColor">订单状态</td>
+							<td width="300px"><input type="text" style="width: 210px" name="saleState" value="${saleout.saleState}"></td>
+							<td width="110px" class="tdColor">备注</td>
+							<td width="300px"><input type="text" style="width: 210px" name="saleoutRemarks" value="${saleout.saleoutRemarks}"></td>
 						</tr>
 				
 					</table>
-					<input type="submit" value="确认" style="width: 
+					<input type="submit" value="确定" style="width: 
 				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
-
 					<div class="paging">此处是分页</div>
 				</div>
 			</form>
@@ -148,4 +144,7 @@ $(".no").click(function(){
 });
 // 广告弹出框 end
 </script>
+</html>
+
+</body>
 </html>

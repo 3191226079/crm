@@ -26,4 +26,10 @@ public class ThreeDayServicelmpl implements ThreeDayService{
 		return selectthree;
 	}
 
+	@Override
+	public void delthreeday(String customerId) {
+		customerBeanMapper.deleteByPrimaryKey(customerId);
+		
+	}
+
 }
