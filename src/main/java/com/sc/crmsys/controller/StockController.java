@@ -22,6 +22,7 @@ public class StockController {
 	public String addStock(StockBean stockBean)
 	{
 		//使用UUID设置主键
+		//ceshi
 		String id = UUID.randomUUID().toString();
 		//stockBean.setStockNumber(id);
 		stockBean.setCommodityNumber(id);
