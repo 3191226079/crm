@@ -43,6 +43,12 @@ public class CheckPointServiceImpl implements CheckPointService{
 	public void deleteByPrimaryKey(String checkPointId) {
 		checkPointBeanMapper.deleteByPrimaryKey(checkPointId);
 	}
+
+	@Override
+	public List<CheckPointBean> selectAllCheckPoint() {
+		List<CheckPointBean> CheckPointBean = checkPointBeanMapper.selectAllCheckPoint();
+		return CheckPointBean;
+	}
 	
 	
 	

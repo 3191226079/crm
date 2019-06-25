@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+
+import java.util.Date;
 import java.util.List;
 
 import com.sc.crmsys.bean.PurchaseBean;
@@ -23,6 +25,13 @@ public interface PurchaseBeanMapper {
     List<PurchaseBean> getByPrimaryKey(String companyId);
     
     List<PurchaseBean> findByPrimaryKey(String purchaseId);
+    
+    void update(String purchaseId,Date purchaseUpdateTime);
+    
+    void update(PurchaseBean purchaseBean);
+    
+    
+    
     
     
 }

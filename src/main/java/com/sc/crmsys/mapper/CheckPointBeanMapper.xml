@@ -18,6 +18,9 @@
     where check_point_id = #{checkPointId,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectAllCheckPoint" resultMap="BaseResultMap">
+  	select * from check_point
+  </select>
   <select id="selectAll" resultMap="BaseResultMap">
 	select 
     <include refid="Base_Column_List" />

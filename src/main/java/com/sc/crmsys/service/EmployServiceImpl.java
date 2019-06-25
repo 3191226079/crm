@@ -19,5 +19,11 @@ public class EmployServiceImpl implements EmployService{
 		List<EmployBean> employList = employBeanMapper.selectAllEmploy();
 		return employList;
 	}
+	
+	@Override
+	public EmployBean selectByPrimaryKey(String employId) {
+		EmployBean employBean = employBeanMapper.selectByPrimaryKey(employId);
+		return employBean;
+	}
 
 }

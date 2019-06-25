@@ -20,4 +20,6 @@ public interface CheckPointBeanMapper {
     int updateByPrimaryKey(CheckPointBean record);
     
     List<CheckPointBean> selectAll(@Param("c")String checkPointTarget);
+    
+    List<CheckPointBean> selectAllCheckPoint();
 }

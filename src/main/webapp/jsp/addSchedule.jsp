@@ -58,7 +58,7 @@
 							</select>
 					</div>
 					<div class="bbD">
-						开始时间：<input name="activeStartTime" class="vinput mh_date" type="text" readonly="true" style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;" />
+						开始时间：<input name="activeStartTime" class="vinput mh_date" type="text" readonly style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;" />
 					</div>
 					<div class="bbD">
 						日程描述：
