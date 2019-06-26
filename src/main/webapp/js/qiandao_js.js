@@ -8,10 +8,9 @@ $(function() {
     	 // 假设已经签到的
     	var dateArrays = $(".signDays");
     	dateArrays.each(function(){
-    		var v = $(this).val();
+    		var v = parseInt($(this).val())-1;
     		dateArray.push(v);
     	});
-    	console.log(dateArray);
         var $dateBox = $("#js-qiandao-list"),
             $currentDate = $(".current-date"),
             $qiandaoBnt = $("#js-just-qiandao"),
@@ -48,6 +47,15 @@ $(function() {
                     qiandaoFun();
                 }
             }) //签到
+            
+        var state = $('#sign_state').val();
+        console.log(state);
+        if(state == '2')
+        {
+        	_handle = false;
+        	$qiandaoBnt.addClass('actived');
+        }
+            
       
         $qiandaoBnt.on("click", function() {
             if (_handle) {
@@ -75,7 +83,7 @@ $(function() {
             openLayer("qiandao-active", qianDao);
             _handle = false;
         }
-
+        
         function qianDao() {
             $(".date" + myDate.getDate()).addClass('qiandao');
         }
@@ -86,7 +94,7 @@ $(function() {
         
         
     } //打开弹窗
-
+   
     var closeLayer = function() {
             $("body").on("click", ".close-qiandao-layer", function() {
                 $(this).parents(".qiandao-layer").fadeOut()

@@ -13,6 +13,27 @@ public class SignBean {
 
     private String signDays;
 
+    private String signState;
+
+    private String signYear;
+
+    private String signMonth;
+
+    public SignBean(String signId, String userId, Date signTime, String signNum, String signDays, String signState, String signYear, String signMonth) {
+        this.signId = signId;
+        this.userId = userId;
+        this.signTime = signTime;
+        this.signNum = signNum;
+        this.signDays = signDays;
+        this.signState = signState;
+        this.signYear = signYear;
+        this.signMonth = signMonth;
+    }
+
+    public SignBean() {
+        super();
+    }
+
     public String getSignId() {
         return signId;
     }
@@ -53,17 +74,27 @@ public class SignBean {
         this.signDays = signDays == null ? null : signDays.trim();
     }
 
-	public SignBean(String signId, String userId, Date signTime, String signNum, String signDays) {
-		super();
-		this.signId = signId;
-		this.userId = userId;
-		this.signTime = signTime;
-		this.signNum = signNum;
-		this.signDays = signDays;
-	}
+    public String getSignState() {
+        return signState;
+    }
 
-	public SignBean() {
-		super();
-	}
-    
+    public void setSignState(String signState) {
+        this.signState = signState == null ? null : signState.trim();
+    }
+
+    public String getSignYear() {
+        return signYear;
+    }
+
+    public void setSignYear(String signYear) {
+        this.signYear = signYear == null ? null : signYear.trim();
+    }
+
+    public String getSignMonth() {
+        return signMonth;
+    }
+
+    public void setSignMonth(String signMonth) {
+        this.signMonth = signMonth == null ? null : signMonth.trim();
+    }
 }

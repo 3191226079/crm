@@ -231,7 +231,8 @@
  
   <select id="employInfo" resultMap="employInfoMap">
   	SELECT * FROM employ e INNER JOIN job j ON e.job_id = j.job_id
-	INNER JOIN department d on j.dept_number = d.dept_number
+	INNER JOIN department d on j.dept_number = d.dept_number inner join
+	`user` u on u.employ_id = e.employ_id
 	<if test="content != null">
 		WHERE e.employ_name = #{content}
 	</if>
@@ -270,6 +271,17 @@
 	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
 	    <result column="dept_last_time" jdbcType="TIMESTAMP" property="deptLastTime" />
     </association>
+  	</association>
+  	<association property="userBean" javaType="com.sc.crmsys.bean.UserBean" column="employ_id">
+  		<id column="user_id" jdbcType="VARCHAR" property="userId" />
+	    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+	    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="user_state" jdbcType="VARCHAR" property="userState" />
+	    <result column="user_register_time" jdbcType="TIMESTAMP" property="userRegisterTime" />
+	    <result column="user_update_time" jdbcType="TIMESTAMP" property="userUpdateTime" />
+	    <result column="user_salt" jdbcType="VARCHAR" property="userSalt" />
   	</association>
     
   </resultMap>

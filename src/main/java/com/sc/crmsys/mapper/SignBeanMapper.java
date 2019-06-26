@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.sc.crmsys.bean.SignBean;
 
+
 public interface SignBeanMapper {
     int deleteByPrimaryKey(String signId);
 
@@ -19,8 +20,13 @@ public interface SignBeanMapper {
 
     int updateByPrimaryKey(SignBean record);
     
-    public List<SignBean> selectSignInfo(@Param("userId")String userId);
+    public List<SignBean> selectSignInfo(SignBean sign);
     
-    Integer signNum(@Param("userId")String userId);
-		
+    Integer signNum(@Param( "userId")String userId,@Param( "signYear")String signYear,@Param( "signMonth")String signMonth);
+   
+    public SignBean getYerterDay(SignBean sign);
+    
+    public Integer getEmpty(SignBean sign);
+
+
 }

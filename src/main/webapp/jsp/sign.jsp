@@ -16,6 +16,14 @@
 </head>
 
 <body>
+	
+	<div class="pageTop">
+		<div class="page">
+			<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+			href="#">人事管理</a>&nbsp;-</span>&nbsp;工资核算
+		</div>
+	</div>
+
     <div class="qiandao-warp">
         <div class="qiandap-box">
             <!-- <div class="qiandao-banner">
@@ -62,17 +70,14 @@
             <ul class="qiandao-history-inf clear">
                 <li>
                     <p>连续签到</p>
-                    <h4>5</h4>
+                    <h4>${conutInfo.signCounts}</h4>
+                    <input type="hidden" value="${state}" id="sign_state">       	
                 </li>
                 <li>
                     <p>本月签到</p>
                     <h4 id="signNum1"></h4>
                 </li>
                
-                <li>
-                    <p>签到累计奖励</p>
-                    <h4>30</h4>
-                </li>
             </ul>
             <div>
 	            <c:forEach items="${signInfo}" var="sign">

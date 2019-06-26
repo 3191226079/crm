@@ -57,6 +57,13 @@
 			<bean class="com.sc.crmsys.interceptor.MoNiSessionInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors> -->
+	<!-- 日志管理拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.sc.crmsys.interceptor.JournalInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	<!-- 静态资源 -->
 	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>

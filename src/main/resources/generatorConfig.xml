@@ -23,8 +23,8 @@
 		</javaTypeResolver>
  
 		<!-- targetProject:生成Entity类的位置 -->
-		<javaModelGenerator targetPackage="com.baidu.mybatis.bean"
-			targetProject="Mybatis_T4/src">
+		<javaModelGenerator targetPackage="com.sc.crmsys.bean"
+			targetProject="crmsys/src/main/java">
 			 <!--  for MyBatis3/MyBatis3Simple
 		            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
 		         -->
@@ -36,22 +36,21 @@
 		</javaModelGenerator>
 		
         <!-- targetProject:mapper映射文件生成的位置 -->
-		<sqlMapGenerator targetPackage="com.baidu.mybatis.mapper" 
-			targetProject="Mybatis_T4/src">
+		<sqlMapGenerator targetPackage="com.sc.crmsys.mapper" 
+			targetProject="crmsys/src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</sqlMapGenerator>
 		<!-- targetPackage：mapper接口生成的位置 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.baidu.mybatis.mapper" 
-			targetProject="Mybatis_T4/src">
+			targetPackage="com.sc.crmsys.mapper" 
+			targetProject="crmsys/src/main/java">
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
 
-		<table tableName="user" domainObjectName="UserBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="area" domainObjectName="AreaBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-			
+		<table tableName="sign_count" domainObjectName="SignCountBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+		
 	</context>
 </generatorConfiguration>

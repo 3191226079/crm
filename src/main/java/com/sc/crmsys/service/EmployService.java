@@ -9,7 +9,7 @@ public interface EmployService {
 
 	public  List<EmployBean> selectAllEmploy();
 	
-	public PageInfo<EmployBean> eamployInfo(int pn,int size,String content);
+	public PageInfo<EmployBean> employInfo(int pn,int size,String content);
 	
 	public String selectJobId(String jobName);
 	
