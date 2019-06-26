@@ -77,43 +77,43 @@ $(function (){
 							<td width="370px"><input type="text" style="width: 210px" name="customerId" value="" >
 							</td>
 							<td width="135px" class="tdColor"  >客户名字</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerName" value=""></td>
+							<td width="370px"><input type="text" style="width: 210px" name="customerName" autocomplete="off" value=""></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">上级单位</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerUpDepartment" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerUpDepartment" value=""></td>
 							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerContactPerson" value="" ></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off"  name="customerContactPerson" value="" ></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">客户状态</td>
 							<td width="30px"><input type="text" style="width: 210px" name="customerState" value=""></td>
 							<td width="110px" class="tdColor">客户电话</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerPhone" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerPhone" value=""></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">客户地址</td>
-							<td width="300px" colspan="3"><input type="text" style="width: 710px;border: 1px solid none;padding-left: 5px;" name="customerAddress" value=""></td>
+							<td width="300px" colspan="3"><input type="text" autocomplete="off" style="width: 710px;border: 1px solid none;padding-left: 5px;" name="customerAddress" value=""></td>
 						
 						</tr>
 
 						<tr>
 							<td width="110px" class="tdColor">客户传真</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerFax" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerFax" value=""></td>
 							<td width="110px" class="tdColor">客户邮箱</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" autocomplete="off" value=""></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">联系时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="customerContactTime"></td>
+							<td width="300px"><input type="text" class="vinput mh_date" autocomplete="off" readonly="true" style="width: 210px"  name="customerContactTime"></td>
 							<td width="110px" class="tdColor">备注信息</td>
 							<td width="300px"><input type="text" style="width: 210px" name="customerInfo" value=""></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px" name="companyId" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="companyId" value=""></td>
 							<td width="110px" class="tdColor">修改时间</td>
 							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px" name="customerUpdateTime"></td>
 						</tr>

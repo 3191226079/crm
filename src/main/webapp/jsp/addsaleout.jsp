@@ -61,28 +61,28 @@ $(function (){
 						</tr>
 						<tr>
 							<td width="135px" class="tdColor">销售单编号</td>
-							<td width="370px"><input type="text" style="width: 210px" name="saleoutId" value="" >
+							<td width="370px"><input type="text" autocomplete="off" style="width: 210px" name="saleoutId" value="" >
 							</td>
 							<td width="135px" class="tdColor"  >客户编号</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerId" value=""></td>
+							<td width="370px"><input type="text" autocomplete="off" style="width: 210px" name="customerId" value=""></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value=""></td>
+							<td width="300px"><input type="text" autocomplete="off" style="width: 210px"  name="companyId" value=""></td>
 							<td width="110px" class="tdColor">制单日期</td>
 							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="saleoutTime"></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">发票号码</td>
-							<td width="30px"><input type="text" style="width: 210px" name="saleoutInvoce" value=""></td>
+							<td width="30px"><input type="text" style="width: 210px" autocomplete="off" name="saleoutInvoce" value=""></td>
 							<td width="110px" class="tdColor">最后修改时间</td>
 							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="saleoutLastTime"></td>
 						</tr>
 						
 						<tr>
 							<td width="110px" class="tdColor">销售金额</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleoutPrice" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleoutPrice" value=""></td>
 						
 			
 							<td width="110px" class="tdColor">出库状态</td>
@@ -94,7 +94,7 @@ $(function (){
 							<td width="110px" class="tdColor">订单状态</td>
 							<td width="300px"><input type="text" style="width: 210px" name="saleState" value=""></td>
 							<td width="110px" class="tdColor">备注</td>
-							<td width="300px"><input type="text" style="width: 210px" name="saleoutRemarks" value=""></td>
+							<td width="300px"><input type="text" autocomplete="off" style="width: 210px" name="saleoutRemarks" value=""></td>
 						</tr>
 				
 					</table>

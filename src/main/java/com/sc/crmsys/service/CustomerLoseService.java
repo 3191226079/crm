@@ -13,6 +13,8 @@ public interface CustomerLoseService {
 	
 	public List<CustomerLoseBean> confirmationofloss(); 
 	
+	public void del(String customerLoseId);
+	
 
 
 }

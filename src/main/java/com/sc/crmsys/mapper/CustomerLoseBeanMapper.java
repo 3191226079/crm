@@ -5,7 +5,7 @@ import java.util.List;
 import com.sc.crmsys.bean.CustomerLoseBean;
 
 public interface CustomerLoseBeanMapper {
-    int deleteByPrimaryKey(String customerLoseId);
+    void deleteByPrimaryKey(String customerLoseId);
 
     int insert(CustomerLoseBean record);
 

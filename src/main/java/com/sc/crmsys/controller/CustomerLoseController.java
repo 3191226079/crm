@@ -72,5 +72,13 @@ public class CustomerLoseController {
 		map.put("confirmationofloss", confirmationofloss);
 		return "forward:/jsp/confirmationofloss.jsp";
 	}
+	
+	
+	@RequestMapping("/del")
+	public String del(String customerLoseId)
+	{
+		customerLoseService.del(customerLoseId);
+		return "redirect:getconfirmationofloss";
+	}
 
 }

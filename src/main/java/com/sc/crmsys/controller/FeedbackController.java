@@ -37,4 +37,26 @@ public class FeedbackController {
 		return "redirect:getfeedback";
 	}
 
+	@RequestMapping("/get1")
+	public String get1feedback(String feedbackId,Map<String, Object> map)
+	{
+		FeedbackBean get1feedback = feedbackService.get1feedback(feedbackId);
+		map.put("get1feedback", get1feedback);
+		return "forward:/jsp/get1feedback.jsp";
+	}
+	
+	@RequestMapping("/update")
+	public String updatefeedback(FeedbackBean feedbackBean)
+	{
+		feedbackService.updatefeedback(feedbackBean);
+		return "redirect:getfeedback";
+	}
+	
+	
+	@RequestMapping("/del")
+	public String delfeedback(String feedbackId)
+	{
+		feedbackService.delfeedback(feedbackId);
+		return "redirect:getfeedback";
+	}
 }

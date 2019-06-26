@@ -48,6 +48,13 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 	}
 
 
+	@Override
+	public void del(String customerLoseId) {
+		customerLoseBeanMapper.deleteByPrimaryKey(customerLoseId);
+		
+	}
+
+
 	
 
 

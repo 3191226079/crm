@@ -39,25 +39,22 @@ $(function (){
 			
 		
 			<div>
-				<a href="jsp/addfeedback.jsp">添加
-				<!-- <input type="button" value="添加" style="width: 100px;height: 40px">  -->
-				</a>
+			
+			<div class="butrr">
+						<div class="buttopr">
+							<a href="jsp/addfeedback.jsp" >添加</a>
+						</div>	
+				</div>				
 			</div>
 		
 		<div class="page">
-			
-			
-				
-				<!-- vip 表格 显示 -->
+			<!-- vip 表格 显示 -->
 				<div class="conShow">
-					<table border="1" cellspacing="0" cellpadding="0">
-						
-						
+					<table border="1" cellspacing="0" cellpadding="0">						
 						<tr>
 							<td width="235px" class="tdColor ">反馈编号</td>
 							<td width="200px" class="tdColor">客户编号</td>
-							
-						
+
 							<td width="235px" class="tdColor">公司编号</td>
 							
 							<td width="200px" class="tdColor">反馈状态</td>
@@ -77,8 +74,8 @@ $(function (){
 							<td width="200px" class="tdColor">反馈内容</td>
 							
 							<td  class="tdColor" width="200px" >分析</td>
-							
 							<td width="200px" class="tdColor" >最后修改时间</td>
+							<td width="200px" class="tdColor" >操作</td>
 							</tr>
 							
 							<c:forEach items="${getfeedback}" var="getfeed">
@@ -102,19 +99,26 @@ $(function (){
 				 			<fmt:formatDate value="${getfeed.feedbackLastTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 			</td>
 						
-							
+							<td>
+						<a href="feedback/get1?feedbackId=${getfeed.feedbackId }">
+						<img class="operation" src="img/update.png"></a> 
+						
+						
+						<img class="operation delban" src="img/delete.png" onclick="deleteSa('${getfeed.feedbackId}')">
+						</td>
 							</tr>
 							
 							</c:forEach>
 						
-					</table>
+				</table>
 					<div class="paging">此处是分页</div>
+				
 				</div>
-				<!-- vip 表格 显示 end-->
-			
-			<!-- vip页面样式end -->
+				<!-- user 表格 显示 end-->
+			</div>
+			<!-- user页面样式end -->
 		</div>
- 
+
 	</div>
 
 
@@ -126,7 +130,7 @@ $(function (){
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+				<a href="javascript:;" class="ok yes" id="sure">确定</a><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -135,15 +139,24 @@ $(function (){
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
+$(document).ready(function(){
+	$(".delban").click(function(){
+		  $(".banDel").show();
+		});
+		$(".close").click(function(){
+		  $(".banDel").hide();
+		});
+		$(".no").click(function(){
+		  $(".banDel").hide();
+		});
 });
-$(".close").click(function(){
-  $(".banDel").hide();
-});
-$(".no").click(function(){
-  $(".banDel").hide();
-});
+	
 // 广告弹出框 end
+
+	function deleteSa(feedbackId) 
+	{
+		
+		document.getElementById("sure").href = 'feedback/del?feedbackId=' + feedbackId;	
+	}
 </script>
 </html>

@@ -28,10 +28,10 @@
 			<!-- topic页面样式 -->
 			<div class="topic">
 				<div class="conform">
-					<form>
+					
 						
 						
-					</form>
+					
 				</div>
 				<!-- topic表格 显示 -->
 				<div class="conShow">
@@ -70,6 +70,8 @@
 							<a href="customerlose/select1?customerLoseId=${customerlose.customerLoseId }">
 								<img class="operation" src="img/update.png">
 							</a>
+						 <img class="operation delban" src="img/delete.png" onclick="deleteSa('${customerlose.customerLoseId }')">
+							
 						</td>
 						</tr>
 						
@@ -77,35 +79,13 @@
 						
 						</c:forEach>
 						
-						
-						<!-- <tr>
-							<td>1</td>
-							<td>
-								<div class="onsImg">
-									<img src="img/banimg.png">
-								</div>
-								<p class="topicP">
-									某某话题<img class="topicImg" src="img/topic.png">
-								</p>
-							</td>
-							<td>山下就只</td>
-							<td>CEO</td>
-							<td>南京设疑网络科技公司哈哈哈</td>
-							<td>110W</td>
-							<td>总监</td>
-							<td>2015-12-12 12.12</td>
-							<td>未审核</td>
-							<td>否</td>
-							<td><a href="connoisseuradd.html"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
-						</tr> -->
 					</table>
 					<div class="paging">此处是分页</div>
+				
 				</div>
-				<!-- topic 表格 显示 end-->
+				<!-- user 表格 显示 end-->
 			</div>
-			<!-- topic页面样式end -->
+			<!-- user页面样式end -->
 		</div>
 
 	</div>
@@ -119,7 +99,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+				<a href="javascript:;" class="ok yes" id="sure">确定</a><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -128,15 +108,24 @@
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
+$(document).ready(function(){
+	$(".delban").click(function(){
+		  $(".banDel").show();
+		});
+		$(".close").click(function(){
+		  $(".banDel").hide();
+		});
+		$(".no").click(function(){
+		  $(".banDel").hide();
+		});
 });
-$(".close").click(function(){
-  $(".banDel").hide();
-});
-$(".no").click(function(){
-  $(".banDel").hide();
-});
+	
 // 广告弹出框 end
+
+	function deleteSa(customerLoseId) 
+	{
+
+		document.getElementById("sure").href = 'customerlose/del?customerLoseId=' + customerLoseId;	
+	}
 </script>
 </html>

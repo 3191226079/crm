@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>潜在客户</title>
+<title>添加联系记录</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -61,23 +61,23 @@ $(function (){
 						</tr>
 						<tr>
 							<td width="135px" class="tdColor">联系记录ID</td>
-							<td width="370px"><input type="text" style="width: 210px" name="contactLogsId" value="" >
+							<td width="370px"><input type="text" style="width: 210px" autocomplete="off"  name="contactLogsId" value="" >
 							</td>
 							<td width="135px" class="tdColor"  >联系标题</td>
 							<td width="370px"><input type="text" style="width: 210px" name="contactLogsTitle" value=""></td>
 						</tr>					
 						<tr>
 							<td width="110px" class="tdColor">联系时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="contactLogsTime"></td>
+							<td width="300px"><input type="text" class="vinput mh_date"  readonly="true" style="width: 210px"  name="contactLogsTime"></td>
 							<td width="110px" class="tdColor">客户编号</td>
 							<td width="300px"><input type="text" style="width: 210px" name="customerId" value="" ></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">联系内容</td>
-							<td width="30px"><input type="text" style="width: 210px" name="contactLogsContent" value=""></td>
+							<td width="30px"><input type="text" style="width: 210px" autocomplete="off" name="contactLogsContent" value=""></td>
 							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off"  name="companyId" value=""></td>
 						</tr>
 						
 						

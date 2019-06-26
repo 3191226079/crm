@@ -26,4 +26,23 @@ public class FeedbackServiceImpl implements FeedbackService{
 		feedbackBeanMapper.insertSelective(feedbackbean);
 	}
 
+	@Override
+	public FeedbackBean get1feedback(String feedbackId) {
+		FeedbackBean selectByPrimaryKey = feedbackBeanMapper.selectByPrimaryKey(feedbackId);
+		
+		return selectByPrimaryKey;
+	}
+
+	@Override
+	public void updatefeedback(FeedbackBean feedbackBean) {
+		feedbackBeanMapper.updateByPrimaryKeySelective(feedbackBean);
+		
+	}
+
+	@Override
+	public void delfeedback(String feedbackId) {
+		feedbackBeanMapper.deleteByPrimaryKey(feedbackId);
+		
+	}
+
 }
