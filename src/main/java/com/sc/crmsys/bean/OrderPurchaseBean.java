@@ -34,8 +34,20 @@ public class OrderPurchaseBean {
     private String companyId;
 
     private Date orderPurchaseUpdateTime;
+    
+    private SupplierBean supplierBean;
+    
+    
 
-    public String getOrderPurchaseId() {
+    public SupplierBean getSupplierBean() {
+		return supplierBean;
+	}
+
+	public void setSupplierBean(SupplierBean supplierBean) {
+		this.supplierBean = supplierBean;
+	}
+
+	public String getOrderPurchaseId() {
         return orderPurchaseId;
     }
 
