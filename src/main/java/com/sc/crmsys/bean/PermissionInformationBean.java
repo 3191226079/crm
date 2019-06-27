@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class PermissionInformationBean {
     private String permissionNumber;
@@ -15,11 +16,29 @@ public class PermissionInformationBean {
 
     private Date informationLastTime;
 
+    private String parent;
+    
+    private List<PermissionInformationBean> pmsInfoBean;
+
     public String getPermissionNumber() {
         return permissionNumber;
     }
 
-    public void setPermissionNumber(String permissionNumber) {
+
+
+	public List<PermissionInformationBean> getPmsInfoBean() {
+		return pmsInfoBean;
+	}
+
+
+
+	public void setPmsInfoBean(List<PermissionInformationBean> pmsInfoBean) {
+		this.pmsInfoBean = pmsInfoBean;
+	}
+
+
+
+	public void setPermissionNumber(String permissionNumber) {
         this.permissionNumber = permissionNumber == null ? null : permissionNumber.trim();
     }
 
@@ -61,5 +80,13 @@ public class PermissionInformationBean {
 
     public void setInformationLastTime(Date informationLastTime) {
         this.informationLastTime = informationLastTime;
+    }
+
+    public String getParent() {
+        return parent;
+    }
+
+    public void setParent(String parent) {
+        this.parent = parent == null ? null : parent.trim();
     }
 }
