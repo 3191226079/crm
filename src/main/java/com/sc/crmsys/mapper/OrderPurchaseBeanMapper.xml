@@ -17,6 +17,36 @@
     <result column="company_id" jdbcType="VARCHAR" property="companyId" />
     <result column="order_purchase_update_time" jdbcType="TIMESTAMP" property="orderPurchaseUpdateTime" />
   </resultMap>
+  
+  <resultMap id="BRMap" type="com.sc.crmsys.bean.OrderPurchaseBean">
+    <id column="order_purchase_id" jdbcType="VARCHAR" property="orderPurchaseId" />
+    <result column="order_purchase_title" jdbcType="VARCHAR" property="orderPurchaseTitle" />
+    <result column="order_purchase_time" jdbcType="TIMESTAMP" property="orderPurchaseTime" />
+    <result column="order_purchase_money" jdbcType="VARCHAR" property="orderPurchaseMoney" />
+    <result column="order_purchase_number" jdbcType="VARCHAR" property="orderPurchaseNumber" />
+    <result column="order_purchase_state" jdbcType="VARCHAR" property="orderPurchaseState" />
+    <result column="order_purchase_business_time" jdbcType="TIMESTAMP" property="orderPurchaseBusinessTime" />
+    <result column="order_purchase_business_address" jdbcType="VARCHAR" property="orderPurchaseBusinessAddress" />
+    <result column="order_purchase_business_type" jdbcType="VARCHAR" property="orderPurchaseBusinessType" />
+    <result column="order_purchase_person" jdbcType="VARCHAR" property="orderPurchasePerson" />
+    <result column="order_purchase_info" jdbcType="VARCHAR" property="orderPurchaseInfo" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="order_purchase_update_time" jdbcType="TIMESTAMP" property="orderPurchaseUpdateTime" />
+    <association property="supplierBean" javaType="com.sc.crmsys.bean.SupplierBean"  column="supplier_id">
+    	<id column="supplier_id" jdbcType="VARCHAR" property="supplierId" />
+	    <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+	    <result column="supplier_contact" jdbcType="VARCHAR" property="supplierContact" />
+	    <result column="supplier_phone" jdbcType="VARCHAR" property="supplierPhone" />
+	    <result column="supplier_fax" jdbcType="VARCHAR" property="supplierFax" />
+	    <result column="supplier_email" jdbcType="VARCHAR" property="supplierEmail" />
+	    <result column="supplier_state" jdbcType="VARCHAR" property="supplierState" />
+	    <result column="supplier_person" jdbcType="VARCHAR" property="supplierPerson" />
+	    <result column="supplier_info" jdbcType="VARCHAR" property="supplierInfo" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="supplier_update_time" jdbcType="TIMESTAMP" property="supplierUpdateTime" />
+    </association>
+  </resultMap>
+  
   <sql id="Base_Column_List">
     order_purchase_id, order_purchase_title, order_purchase_time, supplier_id, order_purchase_money, 
     order_purchase_number, order_purchase_state, order_purchase_business_time, order_purchase_business_address, 
@@ -202,4 +232,62 @@
       order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP}
     where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
   </update>
+  <update id="update" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    update order_purchase
+    <set>
+      <if test="orderPurchaseTitle != null">
+        order_purchase_title = #{orderPurchaseTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseTime != null">
+        order_purchase_time = #{orderPurchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierId != null">
+        supplier_id = #{supplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseMoney != null">
+        order_purchase_money = #{orderPurchaseMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseNumber != null">
+        order_purchase_number = #{orderPurchaseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseState != null">
+        order_purchase_state = #{orderPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessTime != null">
+        order_purchase_business_time = #{orderPurchaseBusinessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderPurchaseBusinessAddress != null">
+        order_purchase_business_address = #{orderPurchaseBusinessAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseBusinessType != null">
+        order_purchase_business_type = #{orderPurchaseBusinessType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchasePerson != null">
+        order_purchase_person = #{orderPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseInfo != null">
+        order_purchase_info = #{orderPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPurchaseUpdateTime != null">
+        order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </update>
+  
+    <update id="updateState" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    update order_purchase
+    set 
+      order_purchase_state = 10,
+      order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP}
+    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="getPurchaseOrder" parameterType="com.sc.crmsys.bean.OrderPurchaseBean" resultMap="BRMap">
+  	SELECT * from order_purchase op 
+  	INNER JOIN supplier s ON op.supplier_id = s.supplier_id WHERE op.company_id = #{companyId}
+  </select>
 </mapper>

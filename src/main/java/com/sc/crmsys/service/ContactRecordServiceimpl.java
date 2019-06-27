@@ -26,4 +26,27 @@ public class ContactRecordServiceimpl  implements ContactRecordService{
 		return getcontactrecord;
 	}
 
+	@Override
+	public void addcontactrecord(ContactLogsBean contactLogsBean) {
+		contactLogsBeanMapper.insert(contactLogsBean);
+	}
+
+	@Override
+	public ContactLogsBean get1contactrecord(String contactLogsId) {
+		ContactLogsBean selectByPrimaryKey = contactLogsBeanMapper.selectByPrimaryKey(contactLogsId);
+		return selectByPrimaryKey;
+	}
+
+	@Override
+	public void update(ContactLogsBean contactLogsBean) {
+		contactLogsBeanMapper.updateByPrimaryKeySelective(contactLogsBean);
+		
+	}
+
+	@Override
+	public void delcontactrecord(String contactLogsId) {
+		
+		contactLogsBeanMapper.deleteByPrimaryKey(contactLogsId);
+	}
+
 }

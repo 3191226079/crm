@@ -235,7 +235,7 @@
   	INNER JOIN stock s on s.commodity_number = p.product_id 
   	INNER JOIN warehouse w ON w.warehouse_number = s.warehouse_number 
   	INNER JOIN detail_purchase dp ON dp.product_id = s.commodity_number
-  	WHERE p.company_id = #{companyId} 
+  	WHERE p.company_id = #{companyId} AND p.purchase_state!=0
   
   </select>
   <select id="findByPrimaryKey" parameterType="com.sc.crmsys.bean.PurchaseBean" resultMap="BRMap">
@@ -244,9 +244,36 @@
   	INNER JOIN warehouse w ON w.warehouse_number = s.warehouse_number 
   	INNER JOIN detail_purchase dp ON dp.product_id = p.product_id
   	INNER JOIN order_purchase op ON dp.order_purchase_id = op.order_purchase_id
-  	WHERE p.purchase_id = #{purchaseId} AND p.purchase_state!=0
+  	WHERE p.purchase_id = #{purchaseId} 
   </select>
   <update id="update" parameterType="com.sc.crmsys.bean.PurchaseBean">
+   update purchase
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseTime != null">
+        purchase_time = #{purchaseTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="purchaseState != null">
+        purchase_state = #{purchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="purchasePerson != null">
+        purchase_person = #{purchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseInfo != null">
+        purchase_info = #{purchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseUpdateTime != null">
+        purchase_update_time = #{purchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where purchase_id = #{purchaseId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateState" parameterType="com.sc.crmsys.bean.PurchaseBean">
     update purchase
     set 
       purchase_state = 0,

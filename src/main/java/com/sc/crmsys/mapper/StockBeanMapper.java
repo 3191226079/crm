@@ -18,4 +18,6 @@ public interface StockBeanMapper {
     int updateByPrimaryKey(StockBean record);
     
     /*List<StockBean> getByPrimaryKey(String companyId);*/
+    
+    void update(StockBean record);
 }

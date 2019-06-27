@@ -15,6 +15,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>七天未联系</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
 <body>
@@ -46,6 +47,7 @@
 							<td width="300px" class="tdColor">备注信息</td>
 							<td width="300px" class="tdColor">公司编号</td>
 							<td width="300px" class="tdColor">修改时间</td>
+							<td width="300px" class="tdColor">操作</td>
 						</tr>
 						<c:forEach items="${getsevenday}" var="today1">		
 				 		<tr>
@@ -66,34 +68,57 @@
 				 		<td>
 				 			<fmt:formatDate value="${today1.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
-				 		
+				 		<td> <img class="operation delban" src="img/delete.png" onclick="deleteSa('${today1.customerId}')"></td>
 				 		</tr>
 				 		</c:forEach>
-						<!-- <tr height="40px">
-							<td>1</td>
-							<td>2015年11月11日 13:23</td>
-							<td>山下救治</td>
-							<td>用起来还不错，很实用用起来还不错，很实用用起来还不错，很实用</td>
-						</tr>
-						<tr height="40px">
-							<td>1</td>
-							<td>2015年11月11日 13:23</td>
-							<td>山下救治</td>
-							<td>用起来还不错，很实用用起来还不错，很实用用起来还不错，很实用</td>
-						</tr>
-						<tr height="40px">
-							<td>1</td>
-							<td>2015年11月11日 13:23</td>
-							<td>山下救治</td>
-							<td>用起来还不错，很实用用起来还不错，很实用用起来还不错，很实用</td>
-						</tr> -->
+						
 					</table>
 					<div class="paging">此处是分页</div>
+				
 				</div>
-				<!-- opinion 表格 显示 end-->
+				<!-- user 表格 显示 end-->
 			</div>
-			<!-- 页面样式end -->
+			<!-- user页面样式end -->
+		</div>
+
+	</div>
+
+
+	<!-- 删除弹出框 -->
+	<div class="banDel">
+		<div class="delete">
+			<div class="close">
+				<a><img src="img/shanchu.png" /></a>
+			</div>
+			<p class="delP1">你确定要删除此条记录吗？</p>
+			<p class="delP2">
+				<a href="javascript:;" class="ok yes" id="sure">确定</a><a class="ok no">取消</a>
+			</p>
 		</div>
 	</div>
+	<!-- 删除弹出框  end-->
 </body>
+
+<script type="text/javascript">
+// 广告弹出框
+$(document).ready(function(){
+	$(".delban").click(function(){
+		  $(".banDel").show();
+		});
+		$(".close").click(function(){
+		  $(".banDel").hide();
+		});
+		$(".no").click(function(){
+		  $(".banDel").hide();
+		});
+});
+	
+// 广告弹出框 end
+
+	function deleteSa(customerId) 
+	{
+		console.log(customerId);
+		document.getElementById("sure").href = 'today/delsevenday?customerId=' + customerId;	
+	}
+</script>
 </html>
