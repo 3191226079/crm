@@ -47,13 +47,14 @@
 					</div>
 					<div class="baBody">
 						<div class="bbD">
-							任务标题：<input type="text" name="taskTitle" class="input3" />
+							任务标题：<input type="text" autocomplete="off"
+							 name="taskTitle" class="input3" />
 						</div>
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;接收者：
-							<select class="input3" name="employId" readonly>
+							<select class="input3" name="employId">
 								<c:forEach items="${EmployBean }" var="employBean">
-									<option value="1" disabled selected hidden>请选择</option>
+									<option value="1" disabled selected hidden="true">请选择</option>
 									<option value="${employBean.employId }">${employBean.employName }</option>
 								</c:forEach>
 							</select>
@@ -62,7 +63,7 @@
 							考核指标：
 							<select class="input3" name="checkPointId">
 								<c:forEach items="${CheckPointBean }" var="checkPointBean">
-									<option value="1" disabled selected hidden>请选择</option>
+									<option value="1" disabled selected hidden="true">请选择</option>
 									<option value="${checkPointBean.checkPointId }">${checkPointBean.checkPointTarget }</option>
 								</c:forEach>
 							</select>

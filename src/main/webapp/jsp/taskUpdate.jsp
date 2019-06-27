@@ -40,7 +40,7 @@
 		<div class="pageTop">
 			<div class="page">
 				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;任务发布管理
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;任务更新管理
 			</div>
 		</div>
 		<form action="task/updateTask" method="post">
@@ -50,7 +50,7 @@
 				<!-- 上传广告页面样式 -->
 				<div class="bor" style="margin-top:10px;">
 					<div class="baTopNo">
-						<span>任务发布管理</span>
+						<span>任务更新管理</span>
 					</div>
 					<div class="baBody">
 						<div class="bbD">
@@ -70,13 +70,13 @@
 						<%
 							TaskDetailBean taskDetailBean = (TaskDetailBean)request.getAttribute("taskDetailBean");
 							Date StartTime = taskDetailBean.getTaskBean().getTaskStartTime();
-							SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
 							String dateStart = simpleDateFormat1.format(StartTime);
 						%>
 						<%
 							TaskDetailBean taskDetailBean1 = (TaskDetailBean)request.getAttribute("taskDetailBean");
 							Date EndTime = taskDetailBean1.getTaskBean().getTaskEndTime();
-							SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+							SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 							String dateEnd = simpleDateFormat1.format(EndTime);
 						%> 
 						<div class="bbD">

@@ -46,19 +46,25 @@
 				</div>
 				<div class="baBody">
 					<div class="bbD">
-						日程主题：<input type="text" name="activeTitle" class="input3" />
+						日程主题：<input type="text" autocomplete="off"
+						 name="activeTitle" class="input3" />
 					</div>
 					<div class="bbD">
 						日程类别：
 							<select class="input3" name="activeType">
-								<option value="1" disabled selected hidden>请选择</option>
-								<option value="1">会议</option>
+								<option value="1" disabled selected hidden="true">请选择</option>
+								<option value="1">开会</option>
 								<option value="2">聚会</option>
 								<option value="3">工作</option>
+								<option value="4">商务</option>
+								<option value="5">投简</option>
+								<option value="6">公关</option>
+								<option value="7">销售</option>
 							</select>
 					</div>
 					<div class="bbD">
-						开始时间：<input name="activeStartTime" class="vinput mh_date" type="text" readonly style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;" />
+						开始时间：<input name="activeStartTime" class="vinput mh_date" type="text" autocomplete="off"
+						 style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;" />
 					</div>
 					<div class="bbD">
 						日程描述：
@@ -78,6 +84,5 @@
 			<!-- 上传广告页面样式end -->
 		</div> 
 
-	</div>
 </body>
 </html>

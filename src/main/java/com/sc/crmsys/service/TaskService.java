@@ -16,5 +16,5 @@ public interface TaskService {
 	
 	public void updateByPrimaryKeySelective(TaskBean taskBean,TaskDetailBean taskDetailBean);
 	
-	
+	public PageInfo<TaskDetailBean> selectAllTask(Integer pn,Integer size,TaskBean taskBean);
 }

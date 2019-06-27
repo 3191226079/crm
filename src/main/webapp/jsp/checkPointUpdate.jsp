@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@page import="com.sc.crmsys.bean.CheckPointBean" %>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -27,18 +30,27 @@
 				<!-- 上传广告页面样式 -->
 				<div class="bor" style="margin-top:10px;">
 					<div class="baTopNo">
-						<span>添加指标</span>
+						<span>修改指标</span>
 					</div>
 					<div class="baBody">
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考核指标名称：
-							 <input type="text" name="checkPointTarget" value="${checkPointBean.checkPointTarget }" class="input3" />
+							 <input type="text" autocomplete="off" name="checkPointTarget" value="${checkPointBean.checkPointTarget }" class="input3" />
 						</div>
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考核指标描述：
-							<div class="btext2">
-								<textarea class="text2" name="checkPointInfo" style="margin-left: 25px">${checkPointBean.checkPointInfo }</textarea>
-							</div>
+						<div class="btext2">
+							<textarea class="text2" name="checkPointInfo" style="margin-left: 25px">${checkPointBean.checkPointInfo }</textarea>
+						</div>
+						<%
+							CheckPointBean checkPointBean = (CheckPointBean)request.getAttribute("checkPointBean");
+							Date Time = checkPointBean.getCheckPointUpdateTime();
+							SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+							String date = simpleDateFormat1.format(Time);
+						%>
+						<div class="bbD">
+							发布时间：<input  name="taskStartTime" value="<%=date %>" type="text" readonly style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;"/>
+						</div>
 						</div>
 						<div class="bbD">
 							<p class="bbDP">

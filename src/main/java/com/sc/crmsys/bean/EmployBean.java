@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class EmployBean {
     private String employId;
@@ -34,8 +35,19 @@ public class EmployBean {
     private String companyId;
 
     private Date employUpdateTime;
+    
+    private List<InfoDetailBean> infoDetailBeanList;
+    
 
-    public String getEmployId() {
+	public List<InfoDetailBean> getInfoDetailBeanList() {
+		return infoDetailBeanList;
+	}
+
+	public void setInfoDetailBeanList(List<InfoDetailBean> infoDetailBeanList) {
+		this.infoDetailBeanList = infoDetailBeanList;
+	}
+
+	public String getEmployId() {
         return employId;
     }
 

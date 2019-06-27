@@ -11,10 +11,25 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<base href="<%=basePath%>"> 
-	<title>任务发布管理</title>
+	<title>查询任务</title>
 	<link rel="stylesheet" type="text/css" href="css/css.css" />
+	<link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/manhuaDate.1.0.js"></script>
 	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-	<!-- <script type="text/javascript" src="js/page.js" ></script> -->
+	<script type="text/javascript">
+	$(function (){
+	  $("input.mh_date").manhuaDate({
+	    Event : "click",//可选               
+	    Left : 0,//弹出时间停靠的左边位置
+	    Top : -16,//弹出时间停靠的顶部边位置
+	    fuhao : "-",//日期连接符默认为-
+	    isTime : false,//是否开启时间值默认为false
+	    beginY : 1949,//年份的开始默认为1949
+	    endY :2100//年份的结束默认为2049
+	  });
+	});
+</script>
 </head>
 
 <body onload="page()">
@@ -22,7 +37,7 @@
 		<div class="pageTop">
 			<div class="page">
 				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;任务发布管理
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;查询任务
 			</div>
 		</div>
 
@@ -32,57 +47,68 @@
 				<div class="conform">
 					<form id="forms" action="task/selectTask" method="post">
 						<div class="cfD">
+							时间：
+							<input type="text" name="taskStartTime" class="vinput mh_date" autocomplete="off"/>&nbsp;-&nbsp;
+							<input type="text" name="taskEndTime" class="vinput mh_date" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;
 							<input autocomplete="off" name="taskTitle"  type="hidden" v-model="myresult">
 							<input class="addUser" autocomplete="off" name="checkPointBean.checkPointTarget" type="text" v-model="myresult" placeholder="任务标题/任务指标" />
-							<button class="button" onclick="javascript:function(){document.getElementById('forms').submit()};">搜索</button>
+							<!-- <button class="button" onclick="javascript:function(){document.getElementById('forms').submit()};">搜索</button> -->
+							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1 addA2" href="task/jumpToAdd">添加任务</a>
-						</div>
+							<!-- <a class="addA addA1 addA2" href="task/selectTask">查询任务</a>
+ -->						</div>
 					</form>
 				</div>
+				<form action="task/selectTask?state=1" method="post">
 				<!-- vip 表格 显示 -->
-				<div class="conShow">
-					<table border="1" cellspacing="0" cellpadding="0">
-						<tr>
-							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="150px" class="tdColor">发布人</td>
-							<td width="290px" class="tdColor">接收人</td>
-							<td width="188px" class="tdColor">任务标题</td>
-							<td width="235px" class="tdColor">任务内容</td>
-							<td width="220px" class="tdColor">任务指标</td>
-							<td width="290px" class="tdColor">开始时间</td>
-							<td width="282px" class="tdColor">结束时间</td>
-							<td width="130px" class="tdColor">完成状态</td>
-							<td width="130px" class="tdColor">操作</td>
-						</tr>
-						<c:forEach items="${TaskDetailBean.list }" var="taskDetailBean" varStatus="s">
+					<div class="conShow">
+						<table border="1" cellspacing="0" cellpadding="0">
 							<tr>
-								<td>${s.index + 1}</td>
-								<td>${taskDetailBean.taskBean.taskPerson}</td>
-								<td>${taskDetailBean.employBean.employName}</td>
-								<td>${taskDetailBean.taskBean.taskTitle}</td>
-								<td>${taskDetailBean.taskBean.taskContent}</td>
-								<td>${taskDetailBean.taskBean.checkPointBean.checkPointTarget}</td>
-								<td>
-									<fmt:formatDate value="${taskDetailBean.taskBean.taskStartTime}" pattern="yyyy-MM-dd"/>
-								</td>
-								<td>
-									<fmt:formatDate value="${taskDetailBean.taskBean.taskEndTime}" pattern="yyyy-MM-dd"/>
-								</td>
-								<td>
-									<c:if test="${taskDetailBean.taskDetailState eq 1}">已读</c:if>
-									<c:if test="${taskDetailBean.taskDetailState eq 0}">未读</c:if>
-								</td>
-								<td>
-									<a href="task/jumpToUpdate?taskDetailId=${taskDetailBean.taskDetailId}&taskId=${taskDetailBean.taskId}&employId=${taskDetailBean.employId}&checkPointId=${taskDetailBean.taskBean.checkPointId}">
-										<img class="operation" src="img/update.png">
-									</a> 
-										<img class="operation delban" src="img/delete.png" onclick="deleteTask('${taskDetailBean.taskId}','${taskDetailBean.taskDetailId}') "> 
-								</td>
+								<td width="66px" class="tdColor tdC">序号</td>
+								<td width="120px" class="tdColor">发布人</td>
+								<td width="120px" class="tdColor">接收人</td>
+								<td width="150px" class="tdColor">任务标题</td>
+								<td width="300px" class="tdColor">任务内容</td>
+								<td width="120px" class="tdColor">任务指标</td>
+								<td width="150px" class="tdColor">开始时间</td>
+								<td width="150px" class="tdColor">结束时间</td>
+								<td width="150px" class="tdColor">发布时间</td>
+								<td width="100px" class="tdColor">完成状态</td>
+								<td width="130px" class="tdColor">操作</td>
 							</tr>
-						</c:forEach>
-					</table>
-					<div class="paging" id="div"></div>
-				</div>
+							<c:forEach items="${TaskDetailBean.list }" var="taskDetailBean" varStatus="s">
+								<tr>
+									<td>${s.index + 1}</td>
+									<td>${taskDetailBean.taskBean.taskPerson}</td>
+									<td>${taskDetailBean.employBean.employName}</td>
+									<td>${taskDetailBean.taskBean.taskTitle}</td>
+									<td>${taskDetailBean.taskBean.taskContent}</td>
+									<td>${taskDetailBean.taskBean.checkPointBean.checkPointTarget}</td>
+									<td>
+										<fmt:formatDate value="${taskDetailBean.taskBean.taskStartTime}" pattern="yyyy-MM-dd"/>
+									</td>
+									<td>
+										<fmt:formatDate value="${taskDetailBean.taskBean.taskEndTime}" pattern="yyyy-MM-dd"/>
+									</td>
+									<td>
+										<fmt:formatDate value="${taskDetailBean.taskBean.taskUpdateTime}" pattern="yyyy-MM-dd"/>
+									</td>
+									<td>
+										<c:if test="${taskDetailBean.taskDetailState eq 1}">已读</c:if>
+										<c:if test="${taskDetailBean.taskDetailState eq 0}">未读</c:if>
+									</td>
+									<td>
+										<a href="task/jumpToUpdate?taskDetailId=${taskDetailBean.taskDetailId}&taskId=${taskDetailBean.taskId}&employId=${taskDetailBean.employId}&checkPointId=${taskDetailBean.taskBean.checkPointId}">
+											<img class="operation" src="img/update.png">
+										</a> 
+											<img class="operation delban" src="img/delete.png" onclick="deleteTask('${taskDetailBean.taskId}','${taskDetailBean.taskDetailId}') "> 
+									</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<div class="paging" id="div"></div>
+					</div>
+				</form>
 				<!-- vip 表格 显示 end-->
 			</div>
 			<!-- vip页面样式end -->
@@ -129,7 +155,6 @@
 	});
 	function deleteTask(taskId,taskDetailId) 
 	{
-		console.log(taskDetailId);
 		document.getElementById('read').href = "task/delete?taskId=" + taskId + "&taskDetailId=" + taskDetailId;
 	}
 	function page()

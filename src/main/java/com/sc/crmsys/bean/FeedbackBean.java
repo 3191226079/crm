@@ -122,4 +122,14 @@ public class FeedbackBean {
     public void setFeedbackLastTime(Date feedbackLastTime) {
         this.feedbackLastTime = feedbackLastTime;
     }
+
+	@Override
+	public String toString() {
+		return "FeedbackBean [feedbackId=" + feedbackId + ", customerId=" + customerId + ", companyId=" + companyId
+				+ ", feedbackState=" + feedbackState + ", feedbackType=" + feedbackType + ", feedbackTime="
+				+ feedbackTime + ", feedbackReason=" + feedbackReason + ", feedbackCharge=" + feedbackCharge
+				+ ", feedbackTitle=" + feedbackTitle + ", feedbackContent=" + feedbackContent + ", feedbackAnalyse="
+				+ feedbackAnalyse + ", feedbackLastTime=" + feedbackLastTime + "]";
+	}
+    
 }

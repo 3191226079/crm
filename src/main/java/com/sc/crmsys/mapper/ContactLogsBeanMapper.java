@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.ContactLogsBean;
 
 public interface ContactLogsBeanMapper {
@@ -14,4 +16,6 @@ public interface ContactLogsBeanMapper {
     int updateByPrimaryKeySelective(ContactLogsBean record);
 
     int updateByPrimaryKey(ContactLogsBean record);
+    
+    public List<ContactLogsBean> getcontactrecord();
 }

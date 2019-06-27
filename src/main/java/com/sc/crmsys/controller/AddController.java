@@ -19,7 +19,7 @@ public class AddController {
 	@RequestMapping("/add1")
 	public String add(CustomerBean customer)
 	{
-		System.out.println(customer);
+	
 		addservice.add(customer);
 		return "forward:/jsp/add.jsp";
 		

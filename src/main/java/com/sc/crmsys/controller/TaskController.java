@@ -1,5 +1,7 @@
 package com.sc.crmsys.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -53,19 +55,48 @@ public class TaskController {
 		String taskDetailId = UUID.randomUUID().toString();
 		taskDetailBean.setTaskId(taskId);
 		taskDetailBean.setTaskDetailId(taskDetailId);
-		taskDetailBean.setTaskDetailState("1");
+		taskDetailBean.setTaskDetailState("0");
 		taskDetailBean.setTaskDetailUpdateTime(new Date());
 		
 		taskService.insert(taskBean, taskDetailBean);
 		return "redirect:selectTask";
 	}
-	
-	@RequestMapping("/selectTask")
-	public String selectTask(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean)
+	/*
+	@RequestMapping("/selectAll")
+	public String selectAll(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean)
 	{
 		PageInfo<TaskDetailBean> TaskDetailBean = taskService.selectAll(pn, size, taskBean);
 		map.put("TaskDetailBean", TaskDetailBean);
 		return "forward:/jsp/TaskLook.jsp";
+	}
+	*/
+	
+	
+	@RequestMapping("/selectTask")
+	public String selectTask(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean)
+	{
+		if(taskBean.getTaskStartTime() != null)
+		{
+			PageInfo<TaskDetailBean> TaskDetailBean = taskService.selectAllTask(pn, size, taskBean);
+			map.put("TaskDetailBean", TaskDetailBean);
+			return "forward:/jsp/TaskLook.jsp";
+		}
+		else
+		{
+			TaskBean taskBean2 = new TaskBean();
+			SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd");
+			String format = time.format(new Date());
+			Date date = null;
+			try {
+				date = time.parse(format);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			taskBean2.setTaskStartTime(date);
+			PageInfo<TaskDetailBean> TaskDetailBean = taskService.selectAllTask(pn, size, taskBean2);
+			map.put("TaskDetailBean", TaskDetailBean);
+			return "forward:/jsp/TaskLook.jsp";
+		}
 	}
 	
 	@RequestMapping("/jumpToAdd")

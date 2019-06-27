@@ -21,4 +21,6 @@ public interface TaskDetailBeanMapper {
     int updateByPrimaryKey(TaskDetailBean record);
     
     List<TaskDetailBean> selectAll(@Param("t")TaskBean taskBean);
+    
+    List<TaskDetailBean> selectAllTask(@Param("t")TaskBean taskBean);
 }

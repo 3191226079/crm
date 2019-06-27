@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.CustomerLoseBean;
 
 public interface CustomerLoseBeanMapper {
@@ -11,7 +13,12 @@ public interface CustomerLoseBeanMapper {
 
     CustomerLoseBean selectByPrimaryKey(String customerLoseId);
 
-    int updateByPrimaryKeySelective(CustomerLoseBean record);
+    void updateByPrimaryKeySelective(CustomerLoseBean customerLoseBean);
 
     int updateByPrimaryKey(CustomerLoseBean record);
+   
+    public List<CustomerLoseBean> getcustomerlose();
+    
+    
+    public List<CustomerLoseBean> confirmationofloss();
 }

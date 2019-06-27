@@ -31,7 +31,7 @@
 					<div class="baBody">
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考核指标名称：
-							 <input type="text" name="checkPointTarget" class="input3" autocomplete="off"/>
+							 <input type="text" name="checkPointTarget" autocomplete="off" class="input3" autocomplete="off"/>
 						</div>
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考核指标描述：

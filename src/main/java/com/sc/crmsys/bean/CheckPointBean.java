@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class CheckPointBean {
     private String checkPointId;
 
@@ -10,7 +12,8 @@ public class CheckPointBean {
     private String checkPointInfo;
 
     private String companyId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd  HH:mm:ss")
     private Date checkPointUpdateTime;
 
     public String getCheckPointId() {

@@ -66,15 +66,20 @@
 				</div>
 				<div class="baBody">
 					<div class="bbD">
-						日程主题：<input type="text" name="activeTitle" value="${activeBean1.activeTitle }" class="input3" />
+						日程主题：<input type="text" name="activeTitle" autocomplete="off"
+						 value="${activeBean1.activeTitle }" class="input3" />
 					</div>
 					<div class="bbD">
 						日程类别：
 							<select class="input3" name="activeType" id="myselectll">
 								<option value="0" disabled selected hidden>请选择</option>
-								<option value="1">会议</option>
+								<option value="1">开会</option>
 								<option value="2">聚会</option>
 								<option value="3">工作</option>
+								<option value="4">商务</option>
+								<option value="5">投简</option>
+								<option value="6">公关</option>
+								<option value="7">销售</option>
 							</select>
 					</div>
 					<%
@@ -84,7 +89,7 @@
 						String date = simpleDateFormat1.format(activeStartTime);
 					%>
 					<div class="bbD">
-						修改时间：
+						更新时间：
 							<input name="activeStartTime" autocomplete="off" value="<%=date %>" class="vinput mh_date" type="text" style="width: 260px;height: 40px;border: 1px solid #ccc;text-indent: 15px;margin-left: 10px;" />
 					</div> 
 					<div class="bbD">

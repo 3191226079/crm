@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.TaskBean;
@@ -52,6 +53,14 @@ public class TaskServiceImpl implements TaskService{
 	public TaskBean selectByPrimaryKey(String taskId) {
 		TaskBean taskBean = taskBeanMapper.selectByPrimaryKey(taskId);
 		return taskBean;
+	}
+
+	@Override
+	public PageInfo<TaskDetailBean> selectAllTask(Integer pn, Integer size, TaskBean taskBean) {
+		PageHelper.startPage(pn, size);
+		List<TaskDetailBean> selectAllTaskList = taskDetailBeanMapper.selectAllTask(taskBean);
+		PageInfo<TaskDetailBean> pageInfo = new PageInfo<TaskDetailBean>(selectAllTaskList);
+		return pageInfo;
 	}
 
 	

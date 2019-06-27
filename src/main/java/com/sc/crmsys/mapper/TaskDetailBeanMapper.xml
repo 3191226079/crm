@@ -22,14 +22,26 @@
   <select id="selectAll" resultMap="TaskDetailMap">
 	SELECT * FROM task t INNER JOIN check_point cp ON t.check_point_id = cp.check_point_id INNER JOIN task_detail td
 	on t.task_id = td.task_id INNER JOIN employ e ON td.employ_id = e.employ_id
+	where t.task_update_time &gt;= date(now())
+	and t.task_update_time  &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) 
+  </select>
+  		
+		
+  <select id="selectAllTask" resultMap="TaskDetailMap">
+  	SELECT * FROM task t INNER JOIN check_point cp ON t.check_point_id = cp.check_point_id INNER JOIN task_detail td
+	on t.task_id = td.task_id INNER JOIN employ e ON td.employ_id = e.employ_id
 	<where>
-		<if test="t.taskTitle != null">
-			task_title like '%${t.taskTitle}%'
+		<if test="t.taskStartTime != null">
+			task_start_time &gt;= #{t.taskStartTime}
 		</if>
-		<if test="t.checkPointBean.checkPointTarget != null">
-			or check_point_target like '%${t.checkPointBean.checkPointTarget}%'
+		<if test="t.taskEndTime != null">
+			and task_start_time &lt;= #{t.taskEndTime}
+		</if>
+		<if test="t.taskTitle != null">
+			and (task_title like '%${t.taskTitle}%' or check_point_target like '%${t.taskTitle}%')
 		</if>
 	</where>
+	order by task_update_time DESC
   </select>
   
   <resultMap type="com.sc.crmsys.bean.TaskDetailBean" id="TaskDetailMap">
