@@ -6,5 +6,7 @@ import com.sc.crmsys.bean.CustomerBean;
 
 public interface OneMonthService {
 	public List<CustomerBean> getonemonth();
+	
+	public void delom(String customerId);
 
 }

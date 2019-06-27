@@ -49,9 +49,6 @@
 						<span class="nar">采购人员：</span><input type="text" class="input1" name="orderPurchasePerson"/>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">状态：</span><input type="text" class="input1" name="purchaseState"/>
-					</div>
-					<div class="bbD">
 						<span class="blankr"></span><span>备注：</span>
 						<div class="btextr">
 							<textarea class="text2" name="purchaseInfo"></textarea>
@@ -61,7 +58,7 @@
 						<span class="nar">录入人员：</span><input type="text" class="input1" name="purchasePerson"/>
 					</div>
 					<div class="bbD">
-						<span class="nar">添加时间：</span><input type="text" class="input1" name="purchaseUpdateTime" />
+						<span class="nar">添加时间：</span><input type="text" class="input1" name="purchaseUpdateTime" readonly="readonly"/>
 					</div>
 					<div class="bbD">
 						<p class="bbDP">

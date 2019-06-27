@@ -14,4 +14,6 @@ public interface DetailPurchaseBeanMapper {
     int updateByPrimaryKeySelective(DetailPurchaseBean record);
 
     int updateByPrimaryKey(DetailPurchaseBean record);
+    
+    void update(DetailPurchaseBean record);
 }

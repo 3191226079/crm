@@ -21,6 +21,11 @@
     from saleinfo
     where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="getsaleinfo" resultMap="BaseResultMap">
+  select * from saleinfo
+  
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from saleinfo
     where saleinfo_id = #{saleinfoId,jdbcType=VARCHAR}

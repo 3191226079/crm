@@ -152,4 +152,37 @@
       detail_purchase_update_time = #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP}
     where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
   </update>
+  <update id="update" parameterType="com.sc.crmsys.bean.DetailPurchaseBean">
+     update detail_purchase
+    <set>
+      <if test="orderPurchaseId != null">
+        order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="productNum != null">
+        product_num = #{productNum,jdbcType=VARCHAR},
+      </if>
+      <if test="productPrice != null">
+        product_price = #{productPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseState != null">
+        detail_purchase_state = #{detailPurchaseState,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchasePerson != null">
+        detail_purchase_person = #{detailPurchasePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseInfo != null">
+        detail_purchase_info = #{detailPurchaseInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailPurchaseUpdateTime != null">
+        detail_purchase_update_time = #{detailPurchaseUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where detail_purchase_id = #{detailPurchaseId,jdbcType=VARCHAR}
+  </update>
 </mapper>

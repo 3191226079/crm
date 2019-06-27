@@ -26,7 +26,17 @@
 			<div class="banner">
 		
 				<!-- banner 表格 显示 -->
+				
+				
 				<div class="banShow">
+				<div class="butrr">
+				<div></div>
+				<div></div>
+				<div></div>
+						<div class="buttopr">
+							<a href="jsp/addcontactrecord.jsp" >添加</a>
+						</div>	
+					</div>
 					<form>
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
@@ -37,6 +47,7 @@
 							<td width="200px" class="tdColor">联系内容</td>
 							<td width="200px" class="tdColor">公司编号</td>
 							<td width="200px" class="tdColor">最后修改时间</td>
+							<td width="200px" class="tdColor">操作</td>
 							
 						</tr>
 						<c:forEach items="${getcontactrecord}" var="getcontactrecord">
@@ -53,42 +64,21 @@
 						<td>
 				 			<fmt:formatDate value="${getcontactrecord.contactLogsLastTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
+				 		<td>
+						<a href="getcontactrecord/get1?contactLogsId=${getcontactrecord.contactLogsId }">
+									<img class="operation" src="img/update.png"></a> 
+						<img class="operation delban" src="img/delete.png" onclick="deleteSa('${getcontactrecord.contactLogsId}')">
+						</td>
 						
 						</tr>
 						</c:forEach>				
-						<!-- <tr>
-							<td>1</td>
-							<td><div class="bsImg">
-									<img src="img/banimg.png">
-								</div></td>
-							<td>双十一连天购</td>
-							<td><a class="bsA" href="#">http://www.sdfsdfsdfds.com</a></td>
-							<td>是</td>
-							<td>1</td>
-							<td><a href="banneradd.html"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
-						</tr> -->
-						<!-- <tr>
-							<td>1</td>
-							<td><div class="bsImg">
-									<img src="img/banimg.png">
-								</div></td>
-							<td>双十一连天购</td>
-							<td><a class="bsA" href="#">http://www.sdfsdfsdfds.com</a></td>
-							<td>是</td>
-							<td>1</td>
-							<td><a href="banneradd.html"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
-						</tr> -->
 					</table>
 					<div class="paging">此处是分页</div>
-					</form>
+				
 				</div>
-				<!-- banner 表格 显示 end-->
+				<!-- user 表格 显示 end-->
 			</div>
-			<!-- banner页面样式end -->
+			<!-- user页面样式end -->
 		</div>
 
 	</div>
@@ -102,7 +92,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="#" class="ok yes" onclick="del()">确定</a><a class="ok no">取消</a>
+				<a href="javascript:;" class="ok yes" id="sure">确定</a><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -111,31 +101,24 @@
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
+$(document).ready(function(){
+	$(".delban").click(function(){
+		  $(".banDel").show();
+		});
+		$(".close").click(function(){
+		  $(".banDel").hide();
+		});
+		$(".no").click(function(){
+		  $(".banDel").hide();
+		});
 });
-$(".close").click(function(){
-  $(".banDel").hide();
-});
-$(".no").click(function(){
-  $(".banDel").hide();
-});
+	
 // 广告弹出框 end
 
-function del(){
-    var input=document.getElementsByName("check[]");
-    for(var i=input.length-1; i>=0;i--){
-       if(input[i].checked==true){
-           //获取td节点
-           var td=input[i].parentNode;
-          //获取tr节点
-          var tr=td.parentNode;
-          //获取table
-          var table=tr.parentNode;
-          //移除子节点
-          table.removeChild(tr);
-        }
-    }     
-}
+	function deleteSa(contactLogsId) 
+	{
+	
+		document.getElementById("sure").href = 'getcontactrecord/del?contactLogsId=' + contactLogsId;	
+	}
 </script>
 </html>

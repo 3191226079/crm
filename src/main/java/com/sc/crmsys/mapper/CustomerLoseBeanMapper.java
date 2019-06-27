@@ -21,4 +21,6 @@ public interface CustomerLoseBeanMapper {
     
     
     public List<CustomerLoseBean> confirmationofloss();
+    
+    public void setcustomerlose();
 }

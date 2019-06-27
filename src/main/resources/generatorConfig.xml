@@ -51,6 +51,6 @@
 		<!-- 指定数据库表 -->
 
 		<table tableName="sign_count" domainObjectName="SignCountBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		
+
 	</context>
 </generatorConfiguration>

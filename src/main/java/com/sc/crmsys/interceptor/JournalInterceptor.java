@@ -1,19 +1,30 @@
 package com.sc.crmsys.interceptor;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sc.crmsys.bean.JournalBean;
+import com.sc.crmsys.service.JournalService;
+
 public class JournalInterceptor implements HandlerInterceptor{
 
+	private JournalService journalService;
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		
-		return false;
+	        
+	        JournalBean journalBean = new JournalBean();
+	        journalBean.setVisitIp(request.getServletPath());//得到请求地址，存入Bean
+	        journalService.addJoural(journalBeans);
+	     
+	      return true;
 	}
 
 	@Override

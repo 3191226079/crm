@@ -51,6 +51,7 @@
 							<td width="300px" class="tdColor">备注信息</td>
 							<td width="300px" class="tdColor">公司编号</td>
 							<td width="300px" class="tdColor">修改时间</td>
+							<td width="300px" class="tdColor">操作</td>
 							
 						</tr>
 				 		<c:forEach items="${selectToday}" var="today">		
@@ -73,6 +74,8 @@
 				 			<fmt:formatDate value="${today.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		
+				 		<td> <img class="operation delban" src="img/delete.png" onclick="deleteSa('${today.customerId}')"></td>
+				 		
 				 		</tr>
 				 		</c:forEach>
 				 		
@@ -80,14 +83,7 @@
 				 		
 				 		
 				 		
-						<!-- <tr height="40px">
-							<td>1</td>
-							
-							<td>2015-25-36 12:12</td>
-							<td><a href="connoisseuradd.html"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
-						</tr> -->
+	
 					</table>
 					<div class="paging">此处是分页</div>
 				
@@ -108,7 +104,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="#" class="ok yes">确定</a><a class="ok no">取消</a>
+				<a href="javascript:;" class="ok yes" id="sure">确定</a><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -117,15 +113,24 @@
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
+$(document).ready(function(){
+	$(".delban").click(function(){
+		  $(".banDel").show();
+		});
+		$(".close").click(function(){
+		  $(".banDel").hide();
+		});
+		$(".no").click(function(){
+		  $(".banDel").hide();
+		});
 });
-$(".close").click(function(){
-  $(".banDel").hide();
-});
-$(".no").click(function(){
-  $(".banDel").hide();
-});
+	
 // 广告弹出框 end
+
+	function deleteSa(customerId) 
+	{
+		console.log(customerId);
+		document.getElementById("sure").href = 'today/deltoday?customerId=' + customerId;	
+	}
 </script>
 </html>

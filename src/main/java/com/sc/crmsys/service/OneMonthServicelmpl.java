@@ -24,6 +24,12 @@ public class OneMonthServicelmpl implements OneMonthService{
 		List<CustomerBean> selectonemonth = customerBeanMapper.selectonemonth(setonemonthearly, setlater);
 		return selectonemonth;
 	}
+
+	@Override
+	public void delom(String customerId) {
+		customerBeanMapper.deleteByPrimaryKey(customerId);
+		
+	}
 	
 
 }
