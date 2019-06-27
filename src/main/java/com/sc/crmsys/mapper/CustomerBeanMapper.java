@@ -19,9 +19,17 @@ public interface CustomerBeanMapper {
 
     CustomerBean selectByPrimaryKey(String customerId);
 
-    int updateByPrimaryKeySelective(CustomerBean record);
+    void updateByPrimaryKeySelective(CustomerBean record);
 
     int updateByPrimaryKey(CustomerBean record);
+    
+    
+  
+    
+    
+    
+    
+    List<CustomerBean>  selectall(CustomerBean customerBean);
     
     public List<CustomerBean> selectToday(@Param("a")Date earlytime,@Param("b")Date latetime);
     

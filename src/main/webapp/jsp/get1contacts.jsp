@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>潜在客户</title>
+<title>修改</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -51,71 +51,54 @@ $(function (){
 			<div class="connoisseur">
 				
 				<!-- banner 表格 显示 -->
-				<form action="add1/add2" method="post">
+				<form action="contacts/update" method="post">
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
-						<!-- <tr>
-							<td width="66px" class="tdColor tdC">序号</td>
-							<td width="170px" class="tdColor">头像</td>
-							<td width="135px" class="tdColor">姓名</td>
-							<td width="145px" class="tdColor">手机号码</td>
-							<td width="140px" class="tdColor">所在城市</td>
-							<td width="140px" class="tdColor">任职机构</td>
-							<td width="145px" class="tdColor">行家头衔</td>
-							<td width="150px" class="tdColor">本周预约次数</td>
-							<td width="140px" class="tdColor">可约时段</td>
-							<td width="140px" class="tdColor">审核状态</td>
-							<td width="150px" class="tdColor">是否推荐</td>
-							<td width="130px" class="tdColor">操作</td>
-						</tr> -->
+						
 						<tr>
 							
-							<td width="135px" class="tdColor" colspan="4">添加客户信息</td>
+							<td width="135px" class="tdColor" colspan="4">添加联系人</td>
 						</tr>
 						
 						<tr>
-							<td width="110px" class="tdColor">上级单位</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerUpDepartment" value=""></td>
-							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off"  name="customerContactPerson" value="" ></td>
+							<td width="110px" class="tdColor">联系人电子邮件</td>
+							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" value="${get1.contactsEmail }"></td>
+							<td width="110px" class="tdColor">联系人姓名</td>
+							<td width="300px"><input type="text" style="width: 210px" name="contactsName" value="${get1.contactsName }" ></td>
 						</tr>
 						<tr>
 							
-							<td width="110px" class="tdColor">客户状态</td>
-							<td width="30px"><input type="text" style="width: 210px" name="customerState" value=""></td>
-							<td width="110px" class="tdColor">客户电话</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerPhone" value=""></td>
+							<td width="110px" class="tdColor">联系人职务</td>
+							<td width="30px"><input type="text" style="width: 210px" name="contactsPost" value="${get1.contactsPost }"></td>
+							<td width="110px" class="tdColor">联系人部门</td>
+							<td width="30px"><input type="text" style="width: 210px" name="contactsDepartment" value="${get1.contactsDepartment }"></td>
 						</tr>
+						
 						<tr>
-							<td width="110px" class="tdColor">客户地址</td>
-							<td width="250px" colspan="3"><input type="text" autocomplete="off" style="width: 650px;border: 1px solid none;padding-left: 5px;" name="customerAddress" value=""></td>
+							<td width="110px" class="tdColor">联系人手机</td>
+							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" value="${get1.contactsPhone }"></td>
+						
+			
+							<td width="110px" class="tdColor">联系人办公电话</td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" value="${get1.contactsOficePhone }"></td>
 						
 						</tr>
 
 						<tr>
-							<td width="110px" class="tdColor">客户传真</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerFax" value=""></td>
-							<td width="110px" class="tdColor">客户邮箱</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" autocomplete="off" value=""></td>
+							
+							<td width="110px" class="tdColor" >联系人地址</td>
+							<td width="300px" colspan="3"><input type="text" style="width: 210px" name="contactsAddress" value="${get1.contactsAddress }"></td>
 						</tr>
 						<tr>
 							
-							<td width="110px" class="tdColor">联系时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" autocomplete="off" readonly="true" style="width: 210px"  name="customerContactTime"></td>
-							<td width="110px" class="tdColor">备注信息</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerInfo" value=""></td>
+							<td width="110px" class="tdColor">最后修改时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="contactsTime" value="${get1.contactsTime }"></td>
+							<td width="110px" class="tdColor">备注</td>
+							<td width="300px"><input type="text" autocomplete="off" style="width: 210px" name="contactsRemarks" value="${get1.contactsRemarks }"></td>
 						</tr>
-						<tr>
-							<td width="135px" class="tdColor"  >客户名字</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerName" autocomplete="off" value=""></td>
-							<td width="110px" class="tdColor">修改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px" name="customerUpdateTime"></td>
-						</tr>
-					
 					</table>
 					<input type="submit" value="添加" style="width: 
 				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
-
 					<div class="paging">此处是分页</div>
 				</div>
 			</form>

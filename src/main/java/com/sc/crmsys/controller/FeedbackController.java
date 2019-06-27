@@ -8,7 +8,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageInfo;
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.FeedbackBean;
 import com.sc.crmsys.service.FeedbackService;
 
@@ -21,7 +24,7 @@ public class FeedbackController {
 	
 	
 	
-	@RequestMapping("/getfeedback")
+/*	@RequestMapping("/getfeedback")
 	public String getfeedback1(Map<String , Object> map)
 	{
 		List<FeedbackBean> getfeedback = feedbackService.getfeedback();
@@ -29,6 +32,23 @@ public class FeedbackController {
 	
 		return "forward:/jsp/feedback.jsp";
 	}
+	*/
+	@RequestMapping("/getfeedback")
+	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,FeedbackBean feedbackBean,Map<String, Object> map)
+	{
+		if(feedbackBean == null)
+		{
+			feedbackBean = new FeedbackBean();
+		}
+		
+		 PageInfo<FeedbackBean> getfeedback = feedbackService.selectAll(pn, size, feedbackBean);
+		
+		 map.put("getfeedback", getfeedback);
+		 return "forward:/jsp/feedback.jsp";
+	}
+	
+	
+	
 	
 	@RequestMapping("/addfeedback")
 	public String addfeedback(FeedbackBean feedbackBean)
@@ -58,5 +78,18 @@ public class FeedbackController {
 	{
 		feedbackService.delfeedback(feedbackId);
 		return "redirect:getfeedback";
+	}
+	
+	
+	
+	@RequestMapping("/zhuan")
+	public String zhaun(String customerId,Map<String, Object> map)
+	{
+	FeedbackBean feedbackBean = new FeedbackBean();
+	feedbackBean.setCustomerId(customerId);
+	map.put("feedbackBean", feedbackBean);
+	
+	return "forward:/jsp/addfeedback.jsp";	
+		
 	}
 }

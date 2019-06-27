@@ -23,16 +23,52 @@ public class CustomerBean {
 
     private String customerEmail;
 
-    @DateTimeFormat(pattern="yyyy/MM/dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy/MM/dd")
     private Date customerContactTime;
 
     private String customerInfo;
 
     private String companyId;
 
+    @DateTimeFormat(pattern="yyyy/MM/dd")
     private Date customerUpdateTime;
+    
+    private String companyName;
 
-    public String getCustomerId() {
+    public CustomerBean() {
+		super();
+	}
+
+	public CustomerBean(String customerId, String customerName, String customerUpDepartment,
+			String customerContactPerson, String customerState, String customerAddress, String customerPhone,
+			String customerFax, String customerEmail, Date customerContactTime, String customerInfo, String companyId,
+			Date customerUpdateTime, String companyName) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerUpDepartment = customerUpDepartment;
+		this.customerContactPerson = customerContactPerson;
+		this.customerState = customerState;
+		this.customerAddress = customerAddress;
+		this.customerPhone = customerPhone;
+		this.customerFax = customerFax;
+		this.customerEmail = customerEmail;
+		this.customerContactTime = customerContactTime;
+		this.customerInfo = customerInfo;
+		this.companyId = companyId;
+		this.customerUpdateTime = customerUpdateTime;
+		this.companyName = companyName;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getCustomerId() {
         return customerId;
     }
 

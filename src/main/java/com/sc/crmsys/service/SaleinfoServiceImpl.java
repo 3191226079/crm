@@ -1,6 +1,7 @@
 package com.sc.crmsys.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
@@ -24,7 +25,9 @@ public class SaleinfoServiceImpl implements SaleinfoService{
 
 	@Override
 	public void addsaleinfo(SaleInfoBean saleInfoBean) {
-		saleInfoBeanMapper.insert(saleInfoBean);
+		String token = UUID.randomUUID().toString();
+		saleInfoBean.setSaleinfoId(token);
+		saleInfoBeanMapper.insertSelective(saleInfoBean);
 		
 	}
 

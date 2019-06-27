@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerLoseBean;
 import com.sc.crmsys.mapper.CustomerLoseBeanMapper;
 
@@ -52,6 +54,24 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 	public void del(String customerLoseId) {
 		customerLoseBeanMapper.deleteByPrimaryKey(customerLoseId);
 		
+	}
+
+
+	@Override
+	public PageInfo<CustomerLoseBean> selectAll(Integer pn, Integer size, CustomerLoseBean customerLoseBean) {
+		PageHelper.startPage(pn, size);
+		List<CustomerLoseBean> getcustomerlose = customerLoseBeanMapper.getcustomerlose();
+		PageInfo<CustomerLoseBean> pageInfo = new PageInfo<CustomerLoseBean>(getcustomerlose);	
+		return pageInfo;
+	}
+
+
+	@Override
+	public PageInfo<CustomerLoseBean> selectAll1(Integer pn, Integer size, CustomerLoseBean customerLoseBean) {
+		PageHelper.startPage(pn, size);
+		List<CustomerLoseBean> getcustomerlose = customerLoseBeanMapper.confirmationofloss();
+		PageInfo<CustomerLoseBean> pageInfo = new PageInfo<CustomerLoseBean>(getcustomerlose);	
+		return pageInfo;
 	}
 
 

@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>潜在客户</title>
+<title>添加联系人</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -40,7 +40,10 @@ $(function (){
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
-			
+			<div class="page">
+				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+			</div>
 		</div>
 
 		<div class="page">
@@ -48,62 +51,67 @@ $(function (){
 			<div class="connoisseur">
 				
 				<!-- banner 表格 显示 -->
-				<form action="feedback/update" method="post">
+				<form action="contacts/add1" method="post">
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						
 						<tr>
 							
-							<td width="135px" class="tdColor" colspan="4">添加客户反馈信息</td>
-						</tr>
-						<tr>
-							<td width="135px" class="tdColor" type="hidden">反馈编号</td>
-							<td width="370px"><input type="hidden" style="width: 210px" readonly name="feedbackId" value="${get1feedback.feedbackId }" >
-							</td>
-							<td width="135px" class="tdColor"  type="hidden">客户编号</td>
-							<td width="370px"><input type="hidden" style="width: 210px" name="customerId" value="${get1feedback.customerId }"></td>
-						</tr>
-						<tr>
-							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${get1feedback.companyId }"></td>
-							<td width="110px" class="tdColor">反馈状态</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackState" value="${get1feedback.feedbackState }" ></td>
+							<td width="135px" class="tdColor" colspan="4">添加联系人</td>
 						</tr>
 						<tr>
 							
-							<td width="110px" class="tdColor">反馈类型</td>
-							<td width="30px"><input type="text" style="width: 210px" name="feedbackType" value="${get1feedback.feedbackType }"></td>
-							<td width="110px" class="tdColor">反馈时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackTime" value="${get1feedback.feedbackTime }"></td>
+							<td width="370px" colspan="2"><input type="hidden" style="width: 210px" name="contactsId" value="${contactsBean.contactsId }" >
+							</td>
+						
+							<td width="370px" colspan="2"><input type="hidden" autocomplete="off" style="width: 210px" name="customerId" value="${contactsBean.customerId }"></td>
+						</tr>
+						<tr>
+						<td width="370px" colspan="2"><input type="hidden" style="width: 210px" name="companyId" value="${contactsBean.companyId }" >
+							</td>
+						</tr>
+						<tr>
+							
+							<td width="110px" class="tdColor">联系人姓名</td>
+							<td width="300px"><input type="text" style="width: 210px" name="contactsName" value="" ></td>
+							<td width="110px" class="tdColor">联系人电子邮件</td>
+							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" value=""></td>
+						</tr>
+						<tr>
+							
+							<td width="110px" class="tdColor">联系人职务</td>
+							<td width="30px"><input type="text" style="width: 210px" name="contactsPost" value=""></td>
+							<td width="110px" class="tdColor">联系人部门</td>
+							<td width="30px"><input type="text" style="width: 210px" name="contactsDepartment" value=""></td>
 						</tr>
 						
 						<tr>
-							<td width="110px" class="tdColor">反馈内容</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackContent" value="${get1feedback.feedbackContent }"></td>
+							<td width="110px" class="tdColor">联系人手机</td>
+							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" value=""></td>
 						
 			
-							<td width="110px" class="tdColor">反馈原因</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackReason" value="${get1feedback.feedbackReason }"></td>
+							<td width="110px" class="tdColor">联系人办公电话</td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" value=""></td>
 						
 						</tr>
 
-						<tr>
-							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackCharge" value="${get1feedback.feedbackCharge }"></td>
-							<td width="110px" class="tdColor">反馈主题</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackTitle" value="${get1feedback.feedbackTitle }"></td>
+						<tr><!-- 
+							<td width="110px" class="tdColor">联系人电子邮件</td>
+							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" value=""></td> -->
+							<td width="110px" class="tdColor">联系人地址</td>
+							<td width="300px" colspan="3"><input type="text" style="width: 630px" name="contactsAddress" value=""></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">最后修改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackLastTime" value="${get1feedback.feedbackLastTime }"></td>
-							<td width="110px" class="tdColor">分析</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackAnalyse" value="${get1feedback.feedbackAnalyse }"></td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="contactsTime"></td>
+							<td width="110px" class="tdColor">备注</td>
+							<td width="300px"><input type="text" autocomplete="off" style="width: 210px" name="contactsRemarks" value=""></td>
 						</tr>
 					</table>
-					<input type="submit" value="确认" style="width: 
-				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
-					<div class="paging">此处是分页</div>
+					<input type="submit" value="添加" style="width: 
+				     200px;height:40px; color: #438eb9; margin-left: 330px"  >
+					
 				</div>
 			</form>
 

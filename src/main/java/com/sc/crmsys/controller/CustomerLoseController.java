@@ -7,7 +7,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
 import com.sc.crmsys.service.CustomerLoseService;
@@ -20,13 +22,7 @@ public class CustomerLoseController {
 	private CustomerLoseService customerLoseService;
 	
 	
-	@RequestMapping("/getcustomerlose")
-	public String getcustomerlose(Map<String, Object> map)
-	{
-		List<CustomerLoseBean> customerlose = customerLoseService.getcustomerlose();
-		map.put("customerlose", customerlose);
-		return "forward:/jsp/customerlose.jsp";
-	}
+
 	
 	@RequestMapping("/select")
 	public String select(String customerLoseId,Map<String, Object> map)
@@ -65,13 +61,21 @@ public class CustomerLoseController {
 		return "redirect:getconfirmationofloss";
 	}
 	
+	
 	@RequestMapping("/getconfirmationofloss")
-	public String getconfirmationofloss(Map<String, Object> map)
+	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
 	{
-		List<CustomerLoseBean> confirmationofloss = customerLoseService.confirmationofloss();
-		map.put("confirmationofloss", confirmationofloss);
-		return "forward:/jsp/confirmationofloss.jsp";
+		if(customerLoseBean == null)
+		{
+			customerLoseBean = new CustomerLoseBean();
+		}
+		
+		 PageInfo<CustomerLoseBean> selectAll = customerLoseService.selectAll1(pn, size, customerLoseBean);
+		 map.put("selectAll", selectAll);
+		 return "forward:/jsp/confirmationofloss.jsp";
 	}
+	
+	
 	
 	
 	@RequestMapping("/del")
@@ -80,5 +84,20 @@ public class CustomerLoseController {
 		customerLoseService.del(customerLoseId);
 		return "redirect:getconfirmationofloss";
 	}
+	
+	
+	@RequestMapping("/getcustomerlose")
+	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
+	{
+		if(customerLoseBean == null)
+		{
+			customerLoseBean = new CustomerLoseBean();
+		}
+		
+		 PageInfo<CustomerLoseBean> selectAll = customerLoseService.selectAll(pn, size, customerLoseBean);
+		 map.put("selectAll", selectAll);
+		 return "forward:/jsp/customerlose.jsp";
+	}
+	
 
 }

@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.mapper.CustomerBeanMapper;
 import com.sc.crmsys.utils.MyUtils;
@@ -29,6 +31,17 @@ public class OneMonthServicelmpl implements OneMonthService{
 	public void delom(String customerId) {
 		customerBeanMapper.deleteByPrimaryKey(customerId);
 		
+	}
+
+	@Override
+	public PageInfo<CustomerBean> selectAll(Integer pn, Integer size, CustomerBean customerBean) {
+		PageHelper.startPage(pn, size);
+       Date setearly = MyUtils.setearly();
+		Date setlater = MyUtils.setlater();
+		Date setonemonthearly = MyUtils.setonemonthearly();
+		List<CustomerBean> CustomerBean = customerBeanMapper.selectToday(setonemonthearly, setlater);
+		PageInfo<CustomerBean> pageInfo = new PageInfo<CustomerBean>(CustomerBean);
+		return pageInfo;
 	}
 	
 

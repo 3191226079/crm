@@ -1,17 +1,22 @@
 package com.sc.crmsys.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.FeedbackBean;
 import com.sc.crmsys.mapper.FeedbackBeanMapper;
 
 @Service("feedbackService")
 public class FeedbackServiceImpl implements FeedbackService{
 	
+	private static final List<FeedbackBean> FeedbackBean = null;
 	@Resource
 	private FeedbackBeanMapper feedbackBeanMapper;
 
@@ -23,6 +28,9 @@ public class FeedbackServiceImpl implements FeedbackService{
 
 	@Override
 	public void addfeedback( FeedbackBean feedbackbean) {
+		
+		String token = UUID.randomUUID().toString();
+		feedbackbean.setFeedbackId(token);
 		feedbackBeanMapper.insertSelective(feedbackbean);
 	}
 
@@ -43,6 +51,14 @@ public class FeedbackServiceImpl implements FeedbackService{
 	public void delfeedback(String feedbackId) {
 		feedbackBeanMapper.deleteByPrimaryKey(feedbackId);
 		
+	}
+
+	@Override
+	public PageInfo<FeedbackBean> selectAll(Integer pn, Integer size, FeedbackBean feedbackBean) {
+	PageHelper.startPage(pn, size);
+	List<FeedbackBean> getfeedback = feedbackBeanMapper.getfeedback();
+
+		return new PageInfo<FeedbackBean>(getfeedback);
 	}
 
 }

@@ -21,11 +21,11 @@
     where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
   </select>
   <select id="getcustomerlose" resultMap="BaseResultMap">
-  select * from customer_lose where customer_lose_sate =1;
+  select * from customer_lose where customer_lose_sate =1
   </select>
   
   <select id="confirmationofloss" resultMap="BaseResultMap" >
-   select * from customer_lose where customer_lose_sate =0;
+   select * from customer_lose where customer_lose_sate =0
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

@@ -18,7 +18,7 @@
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
-<body>
+<body onload="page()">
 	<div id="pageAll">
 		<div >
 			
@@ -53,7 +53,7 @@
 							<td width="150px" class="tdColor">操作</td>
 							
 						</tr>
-						<c:forEach items="${customerlose}" var="customerlose">
+						<c:forEach items="${selectAll.list}" var="customerlose">
 						<tr>
 						<td>${customerlose.customerLoseId }</td>
 						<td>${customerlose.customerId }</td>
@@ -101,7 +101,7 @@
 								src="img/delete.png"></td>
 						</tr> -->
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				</div>
 				<!-- topic 表格 显示 end-->
 			</div>
@@ -138,5 +138,76 @@ $(".no").click(function(){
   $(".banDel").hide();
 });
 // 广告弹出框 end
-</script>
+
+
+function page()
+	{
+        var td = document.getElementById('div');
+        if(${selectAll.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'customerlose/getcustomerlose?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${selectAll.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${selectAll.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'customerlose/getcustomerlose?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${selectAll.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${selectAll.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${selectAll.pageNum}+i-5 <= ${selectAll.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${selectAll.pageNum}+i-5;
+					a.href = 'customerlose/getcustomerlose?pn=' + (${selectAll.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${selectAll.pageNum} == (${selectAll.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${selectAll.pageNum } != ${selectAll.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'customerlose/getcustomerlose?pn=' + ${selectAll.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
 </html>

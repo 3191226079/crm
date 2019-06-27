@@ -34,16 +34,16 @@ $(function (){
 </script>
 </head>
 
-<body>
+<body onload="page()">
 	<div id="pageAll">
 			
 		
 			<div>
 			
 			<div class="butrr">
-						<div class="buttopr">
+					<!-- 	<div class="buttopr">
 							<a href="jsp/addfeedback.jsp" >添加</a>
-						</div>	
+						</div> -->	
 				</div>				
 			</div>
 		
@@ -52,8 +52,8 @@ $(function (){
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">						
 						<tr>
-							<td width="235px" class="tdColor ">反馈编号</td>
-							<td width="200px" class="tdColor">客户编号</td>
+					
+							
 
 							<td width="235px" class="tdColor">公司编号</td>
 							
@@ -78,10 +78,10 @@ $(function (){
 							<td width="200px" class="tdColor" >操作</td>
 							</tr>
 							
-							<c:forEach items="${getfeedback}" var="getfeed">
+							<c:forEach items="${getfeedback.list}" var="getfeed">
 							<tr>
-						    <td>${getfeed.feedbackId}</td> 
-							<td>${getfeed.customerId}</td>
+						
+						
 							<td>${getfeed.companyId}</td>
 							<td>${getfeed.feedbackState}</td>
 							<td>${getfeed.feedbackType}</td>
@@ -111,7 +111,7 @@ $(function (){
 							</c:forEach>
 						
 				</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				
 				</div>
 				<!-- user 表格 显示 end-->
@@ -158,5 +158,75 @@ $(document).ready(function(){
 		
 		document.getElementById("sure").href = 'feedback/del?feedbackId=' + feedbackId;	
 	}
-</script>
+	
+	function page()
+	{
+        var td = document.getElementById('div');
+        if(${getfeedback.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'feedback/getfeedback?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${getfeedback.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${getfeedback.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'feedback/getfeedback?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getfeedback.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${getfeedback.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${getfeedback.pageNum}+i-5 <= ${getfeedback.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${getfeedback.pageNum}+i-5;
+					a.href = 'feedback/getfeedback?pn=' + (${getfeedback.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getfeedback.pageNum} == (${getfeedback.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${getfeedback.pageNum } != ${getfeedback.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'feedback/getfeedback?pn=' + ${getfeedback.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
 </html>

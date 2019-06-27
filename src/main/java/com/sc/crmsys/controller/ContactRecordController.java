@@ -7,8 +7,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.ContactLogsBean;
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.service.ContactRecordService;
 
 @Controller
@@ -18,7 +21,7 @@ public class ContactRecordController
 	@Resource
 	private ContactRecordService contactRecordService;
 
-	@RequestMapping("/get")
+/*	@RequestMapping("/get")
 	public String getcontactrecord(Map<String, Object> map)
 	{
 		List<ContactLogsBean> getcontactrecord = contactRecordService.getcontactrecord();
@@ -26,8 +29,22 @@ public class ContactRecordController
 		
 		
 		return "forward:/jsp/contactrecord.jsp";
-	}
+	}*/
 	
+	
+	@RequestMapping("/get")
+	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ContactLogsBean contactLogsBean,Map<String, Object> map)
+	{
+		if(contactLogsBean == null)
+		{
+			contactLogsBean = new ContactLogsBean();
+		}
+		
+		PageInfo<ContactLogsBean> getcontactrecord = contactRecordService.selectAll(pn, size, contactLogsBean);
+		
+		 map.put("getcontactrecord", getcontactrecord);
+		 return "forward:/jsp/contactrecord.jsp";
+	}
 	
 	
 	@RequestMapping("/add")

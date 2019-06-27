@@ -61,10 +61,10 @@ $(function (){
 						</tr>
 						<tr>
 							<td width="135px" class="tdColor">反馈编号</td>
-							<td width="370px"><input type="text" style="width: 210px" name="feedbackId" value="" >
+							<td width="370px"><input type="hidden" style="width: 210px" name="feedbackId" value="" >
 							</td>
 							<td width="135px" class="tdColor"  >客户编号</td>
-							<td width="370px"><input type="text" autocomplete="off" style="width: 210px" name="customerId" value=""></td>
+							<td width="370px"><input type="hidden" autocomplete="off" style="width: 210px" name="customerId" value="${feedbackBean.customerId }"></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">公司编号</td>

@@ -28,9 +28,20 @@
     where customer_id = #{customerId,jdbcType=VARCHAR}
   </select>
   
+  
+  
   <select id="selectToday"  resultMap="BaseResultMap">
   select * from customer
    where  customer_contact_time &gt;=  #{a} and customer_contact_time &lt; #{b}
+  </select>
+  <select id="selectall"  resultMap="BaseResultMap" >
+  select * from customer
+  
+  
+  </select>
+  
+  <select id="getid"  resultMap="BaseResultMap">
+  select company_id from company where company_name=#{companyName}
   </select>
   
   <select id="selectthree"  resultMap="BaseResultMap">
