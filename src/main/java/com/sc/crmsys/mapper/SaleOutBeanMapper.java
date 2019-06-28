@@ -2,6 +2,7 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.SaleOutBean;
 
 public interface SaleOutBeanMapper {
@@ -18,6 +19,9 @@ public interface SaleOutBeanMapper {
     int updateByPrimaryKey(SaleOutBean record);
     
     public List<SaleOutBean> getsaleout();
+    
+    //查询销售单编号
+    List<SaleOutBean>  getSaleOutId();
     
  
 }

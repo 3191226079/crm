@@ -50,6 +50,17 @@ public class StockServiceImpl implements  StockService{
 		
 	}
 
+	@Override
+	public List<StockBean> getStock() {
+		List<StockBean> getStock = stockBeanMapper.selectStock();
+		return getStock;
+	}
+
+	
+	
+	
+	
+
 	
 
 	

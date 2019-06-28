@@ -17,6 +17,11 @@ public interface StockService {
 	public void deleteByPrimaryKey(String commodityNumber);
 	//修改
 	public void updateStockId(StockBean stockBean);
+	//查询商品到销售详情单
+	public List<StockBean> getStock();
+	
+	
+	
 	
 	
 	

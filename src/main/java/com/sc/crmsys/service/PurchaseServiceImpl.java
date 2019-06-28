@@ -73,6 +73,12 @@ public class PurchaseServiceImpl implements PurchaseService{
 		
 	}
 
+	@Override
+	public List<PurchaseBean> selcetPurchaseAll(PurchaseBean purchaseBean) {
+		List<PurchaseBean> selectPurchase = purchaseBeanMapper.selectPurchase(purchaseBean);
+		return selectPurchase;
+	}
+
 
 
 

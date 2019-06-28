@@ -1,7 +1,9 @@
 package com.sc.crmsys.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
@@ -33,8 +35,16 @@ public class SaleoutController {
 	@RequestMapping("/add")
 	public String addsaleout(SaleOutBean saleOutBean)
 	{
+		//使用UUID设置主键
+		String id = UUID.randomUUID().toString();
+		saleOutBean.setSaleoutId(id);
+		
+		Date date = new Date();
+		saleOutBean.setSaleoutTime(date);
+		
+		System.out.println(saleOutBean.getSaleoutId());
 		saleoutService.addsaleout(saleOutBean);
-		return "redirect:get";
+		return "redirect:/jsp/outsaleinfo.jsp";
 		
 	}
 	
@@ -59,4 +69,22 @@ public class SaleoutController {
 		saleoutService.delsaleout(saleoutId);
 		return "redirect:get";
 	}
+	
+	@RequestMapping("selectSale")
+	public String selectSaleout(Map<String, Object> map)
+	{
+		List<SaleOutBean> saleOutId = saleoutService.getSaleOutId();
+		map.put("saleOutId", saleOutId);
+		return "forward:/jsp/outsaleinfo.jsp";
+		
+	}
+	
+	/*@RequestMapping("getSale")
+	public String getSaleout(Map<String, Object> map)
+	{
+		List<SaleOutBean> getOutId = saleoutService.getSaleOutId();
+		map.put("getOutId", getOutId);
+		return "forward:/jsp/outsaleinfo.jsp";
+		
+	}*/
 }

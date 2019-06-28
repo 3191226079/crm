@@ -23,4 +23,6 @@ public interface CustomerLoseBeanMapper {
     public List<CustomerLoseBean> confirmationofloss();
     
     public void setcustomerlose();
+    //查询客户编号
+    public CustomerLoseBean getcustomerId();
 }

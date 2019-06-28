@@ -18,6 +18,7 @@ public class StockController {
 	
 	@Resource
 	private StockService stockService;
+	
 	@RequestMapping("/add")
 	public String addStock(StockBean stockBean)
 	{
@@ -60,6 +61,15 @@ public class StockController {
 	{
 		stockService.updateStockId(stockBean);
 		return "redirect:/stock/select";
+		
+	}
+	
+	@RequestMapping("/getstock")
+	public String getstocks(Map<String, Object> map)
+	{
+		List<StockBean> getStock = stockService.selectStock();
+		map.put("getStock", getStock);
+		return "forward:/jsp/outsaleinfo.jsp";
 		
 	}
 	

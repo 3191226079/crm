@@ -24,6 +24,10 @@
     where saleout_id = #{saleoutId,jdbcType=VARCHAR}
   </select>
   
+  <select id="getSaleOutId"  resultMap="BaseResultMap">
+  	select * from customer
+  </select>
+  
   <select id="getsaleout" resultMap="BaseResultMap">
   select * from saleout
    

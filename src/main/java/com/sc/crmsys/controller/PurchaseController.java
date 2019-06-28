@@ -133,4 +133,13 @@ public class PurchaseController {
 		purchaseService.updatePurchaseState(purchaseId,new Date());
 		return "redirect:/purchase/select";
 	}
+	
+	@RequestMapping("selectAll")
+	public String selectAll(Map<String, Object> data,PurchaseBean purchaseBean)
+	{
+		List<PurchaseBean> selcetPurchaseAll = purchaseService.selcetPurchaseAll(purchaseBean);
+		data.put("selcetPurchaseAll", selcetPurchaseAll);
+		return null;
+		
+	}
 }

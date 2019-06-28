@@ -49,6 +49,11 @@
    where   customer_contact_time &gt;= #{c} and customer_contact_time &lt; #{d}
   
   </select>
+  
+  <!-- resultType="java.lang.String" -->
+  <select id="getcustomerId"  resultMap="BaseResultMap">
+  	select * from customer
+  </select>
  
   
   

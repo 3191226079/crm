@@ -44,4 +44,16 @@ public class SaleoutServiceImpl implements SaleoutService{
 		saleOutBeanMapper.deleteByPrimaryKey(saleoutId);	
 	}
 
+	@Override
+	public List<SaleOutBean> getSaleOutId() {
+		List<SaleOutBean> saleOutId = saleOutBeanMapper.getSaleOutId();
+		return saleOutId;
+	}
+
+	@Override
+	public List<SaleOutBean> selectSaleOutId() {
+		List<SaleOutBean> selectsaleOutId = saleOutBeanMapper.getSaleOutId();
+		return selectsaleOutId;
+	}
+
 }

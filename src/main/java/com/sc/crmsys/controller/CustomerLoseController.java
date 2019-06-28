@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
@@ -21,6 +22,7 @@ public class CustomerLoseController {
 	
 	
 	@RequestMapping("/getcustomerlose")
+	
 	public String getcustomerlose(Map<String, Object> map)
 	{
 		List<CustomerLoseBean> customerlose = customerLoseService.getcustomerlose();
@@ -71,6 +73,17 @@ public class CustomerLoseController {
 		List<CustomerLoseBean> confirmationofloss = customerLoseService.confirmationofloss();
 		map.put("confirmationofloss", confirmationofloss);
 		return "forward:/jsp/confirmationofloss.jsp";
+	}
+	
+	@RequestMapping("getselectcostom")
+	@ResponseBody
+	//把结果转换成json
+	public Map<String, Object> getAll(Map<String, Object> map)
+	{
+		List<CustomerLoseBean> selectCustomerlose = customerLoseService.getSelectCustomerlose();
+		map.put("selectCustomerlose", selectCustomerlose);
+		return map;
+		
 	}
 
 }

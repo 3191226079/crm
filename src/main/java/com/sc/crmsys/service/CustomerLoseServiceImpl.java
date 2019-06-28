@@ -48,6 +48,13 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 	}
 
 
+	@Override
+	public List<CustomerLoseBean> getSelectCustomerlose() {
+		List<CustomerLoseBean> getcustomerlose = customerLoseBeanMapper.getcustomerlose();
+		return getcustomerlose;
+	}
+
+
 	
 
 
