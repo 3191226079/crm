@@ -58,7 +58,7 @@
 								<td width="100px" class="tdColor">${employ.jobBean.deparmentBean.deptName}</td>
 								<td width="100px" class="tdColor">${employ.jobBean.jobName}</td>
 								<td width="130px" class="tdColor" style="color:black;">
-									<img class="operation delban" src="img/update.png" onclick="change_job(${employ.employId})">
+									<img class="operation delban" src="img/update.png" onclick="change_job()">
 								</td>
 								
 							</tr>
@@ -133,10 +133,9 @@ function send(pn)
 	location.href = 'mangePerson/info?pn='+(pn-1);	
 }
 
-var employId = '';
-function change_job(employ_id)
+var deptdata = null;
+function change_job()
 {
-	employId = employ_id;
 	//查询职务与部门信息
 	$.ajax({
         type:'post',
@@ -145,22 +144,8 @@ function change_job(employ_id)
         dataType:'json',
         success:function(result)
         {
-        	var list = result.jobAndDept;
-        	
-        		
-        		  /* if(val == "主管部门") */
-        		   
-        			for (var i = 0; i < list.length; i++) {
-        				$(".job_change").val(list.deparmentBean.deptName);
-       			    var sec = document.getElementById('second');
-       			    sec.options.length=0; //清空二级菜单项
-       			    sec.options[i] = new Option("list.jobName","list.jobName");
-        			}
-        		  
-			
-        	
-        	
-
+        	showDept(result);
+        	deptdata = result;
         },
         error:function()
         {
@@ -168,8 +153,36 @@ function change_job(employ_id)
         }
 			
         });
-	
 }
+
+function showDept(depts)
+{
+	var first = $('#first');
+	for (var i = 0; i < depts.length; i++) {
+		var dept = depts[i];
+		var op = $('<option value='+dept.deptNumber+' >'+dept.deptName+'</option>');
+		first.append(op);	
+	}
+}
+
+function setSecond(value)
+{
+	for (var i = 0; i < deptdata.length; i++) {
+		var dept = deptdata[i];
+		if(dept.deptNumber == value)
+		{
+			var jobs = dept.jobList;
+			var second = $('#second');
+			second.html('');
+			for (var j = 0; j < jobs.length; j++) {
+				var job = jobs[j];
+				var op = $('<option value='+job.jobId+' >'+job.jobName+'</option>');
+				second.append(op);	
+			} 
+		}
+	}
+}
+
 // 广告弹出框
 $(".delban").click(function(){
 	
@@ -184,11 +197,19 @@ $(".no").click(function(){
 });
 
 $("#smt").click(function(){
-	var jobName = $("select[name='jobName']").val();
+	var employId = $('#first').val();
+	var jobId = $("#second").val();
+	
+   var data = {
+		   jobId:jobId,
+		   employId:employId
+   };
+	console.log(data.jobName);
+
 	 $.ajax({
         type:'post',
         url:'mangePerson/updateJob',
-        data:{jobName:jobName,employId:employId},
+        data:{jobId:jobId,employId:employId},
         dataType:'json',
         success:function()
         {

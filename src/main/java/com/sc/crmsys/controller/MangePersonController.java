@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.EmployBean;
+import com.sc.crmsys.bean.JobBean;
 import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.service.EmployService;
 import com.sc.crmsys.service.SignService;
@@ -38,10 +40,9 @@ public class MangePersonController {
 	
 	@RequestMapping("/updateJob")
 	@ResponseBody
-	public HashMap<String, Object> UpdateJob(String jobName,EmployBean employBean)
+	public HashMap<String, Object> UpdateJob(JobBean jobBean,EmployBean employBean)
 	{
-		String jobId = employ.selectJobId(jobName);
-		employBean.setJobId(jobId);
+		employBean.setJobId(jobBean.getJobId());
 		employ.updateJob(employBean);
 		HashMap<String, Object> hashMap = new HashMap<String,Object>();
 		hashMap.put("result", "操作成功");

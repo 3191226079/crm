@@ -20,4 +20,6 @@ public interface DepartmentBeanMapper {
     int updateByPrimaryKey(DepartmentBean record);
     
     List<DepartmentBean> selectDepAndJob();
+    
+    String selectDeptId(@Param("deptName")String deptName);
 }

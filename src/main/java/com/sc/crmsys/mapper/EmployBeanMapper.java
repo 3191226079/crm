@@ -5,9 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.sc.crmsys.bean.EmployBean;
+import com.sc.crmsys.bean.InfoBean;
 
 public interface EmployBeanMapper {
-    int deleteByPrimaryKey(String employId);
+    void deleteByPrimaryKey(String employId);
 
     int insert(EmployBean record);
 
@@ -23,4 +24,5 @@ public interface EmployBeanMapper {
     
     List<EmployBean> employInfo(@Param("content")String content);
     
+    EmployBean selectInfo(@Param("i")InfoBean infoBean,@Param("e")String employId);
 }

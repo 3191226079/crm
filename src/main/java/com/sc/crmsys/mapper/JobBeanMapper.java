@@ -22,6 +22,7 @@ public interface JobBeanMapper {
     String selectJobId(@Param("jobName")String jobName);
     
     List<JobBean> selectJobAndDept();
-
+    
+    void deleteJobs(String deptNumber);
     
 }

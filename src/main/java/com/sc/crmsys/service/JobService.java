@@ -14,5 +14,11 @@ public interface JobService {
 	void addJob(JobBean jobBean);
 	
 	void deleteJob(String jobId);
+	
+	void addDepartment(DepartmentBean deapt);
+	
+	void delDept(String deptNumber);
+	
+	void update(JobBean jobBean,DepartmentBean deptBean);
 
 }

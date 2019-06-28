@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class EmployBean {
     private String employId;
@@ -41,6 +42,8 @@ public class EmployBean {
     
     private Integer signCount; 
 
+    private List<InfoDetailBean> infoDetailBeanList;
+  
     private int littleCount;
     
     
@@ -66,6 +69,14 @@ public class EmployBean {
 
 	public void setUserBean(UserBean userBean) {
 		this.userBean = userBean;
+	}
+	
+	public List<InfoDetailBean> getInfoDetailBeanList() {
+		return infoDetailBeanList;
+	}
+
+	public void setInfoDetailBeanList(List<InfoDetailBean> infoDetailBeanList) {
+		this.infoDetailBeanList = infoDetailBeanList;
 	}
 
 	public String getEmployId() {

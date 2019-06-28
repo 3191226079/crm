@@ -17,6 +17,11 @@ public class JobServiceImpl implements JobService{
 	@Resource
 	private JobBeanMapper jobMapper;
 	
+
+	@Resource
+	private DepartmentBeanMapper departMentMapper;
+	
+	
 	@Resource
 	private DepartmentBeanMapper departmentMapper;
 	
@@ -42,5 +47,29 @@ public class JobServiceImpl implements JobService{
 		jobMapper.deleteByPrimaryKey(jobId);
 		
 	}
+
+	@Override//添加部门信息
+	public void addDepartment(DepartmentBean deapt) {
+		departMentMapper.insertSelective(deapt);
+		
+	}
+
+	@Override//删除部门信息
+	public void delDept(String deptNumber) {
+		departMentMapper.deleteByPrimaryKey(deptNumber);
+		jobMapper.deleteJobs(deptNumber);
+	}
+
+	@Override//修改职务信息
+	public void update(JobBean jobBean,DepartmentBean deptBean) {
+		if(deptBean.getDeptName() != null)
+		{
+			String deptNumber = departMentMapper.selectDeptId(deptBean.getDeptName());
+			jobBean.setDeptNumber(deptNumber);
+		}
+		jobMapper.updateByPrimaryKeySelective(jobBean);
+		
+	}
+
 
 }

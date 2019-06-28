@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.sc.crmsys.bean.ActiveBean;
-import com.sc.crmsys.bean.CheckPointBean;
 
 public interface ActiveBeanMapper {
     void deleteByPrimaryKey(String activeId);

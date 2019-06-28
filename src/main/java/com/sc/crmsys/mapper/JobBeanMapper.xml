@@ -111,6 +111,10 @@
     where job_id = #{jobId,jdbcType=VARCHAR}
   </update>
   
+   <delete id="deleteJobs" parameterType="java.lang.String">
+    delete from job
+    where dept_number = #{deptNumber}
+  </delete>
   
   <select id="selectJobAndDept" parameterType="java.lang.String" resultMap="jobListMap">
     SELECT * FROM job j INNER JOIN department d ON j.dept_number = d.dept_number

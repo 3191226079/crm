@@ -20,7 +20,7 @@
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
-				<img src="img/coin02.png" /><span><a href="inc/mainll.jsp">首页</a>&nbsp;&nbsp;&nbsp;-</span>&nbsp;咨询回复
+				<img src="img/coin02.png" /><span><a href="inc/mainll.jsp">首页</a>&nbsp;&nbsp;&nbsp;-</span>&nbsp;部门/职务信息
 			</div>
 		</div>
 
@@ -28,19 +28,13 @@
 			<!-- answer页面样式 -->
 			<div class="wish">
 				<div class="conform">
-					<form action="question/answer" method="post">
-						<div class="cfD">
-							&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input class="addUser" type="text" placeholder="请输入要查找的咨询...." name="content"/>
-							<button class="button" type="submit">搜索</button>
-						</div>
-					</form>
 				</div>
 				<!-- wish 表格 显示 -->
 				<div class="wishShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
 							<td width="200px" class="tdColor" style="color:black;">所属部门</td>
+							<td width="200px" class="tdColor" style="color:black;">删除部门</td>
 							<td width="200px" class="tdColor" style="color:black;">添加职务</td>
 							<td width="100px" class="tdColor" style="color:black;">职务</td>
 							<td width="100px" class="tdColor" style="color:black;">修改职务</td>
@@ -50,19 +44,19 @@
 							<tr>
 								<td width="200px" rowspan="${fn:length(jpt.jobList)}" class="tdColor">${jpt.deptName}</td>
 								<td class="tdColor" rowspan="${fn:length(jpt.jobList)}">
-									<img class="operation delban" src="img/update.png" onclick="add('${jpt.deptNumber}')">
+									<img class="operation delban" src="img/shanchu.png" onclick="del_dept('${jpt.deptNumber}')">
+								</td>
+								<td class="tdColor" rowspan="${fn:length(jpt.jobList)}">
+										<img class="operation delban" src="img/update.png" onclick="add('${jpt.deptNumber}')">
 								</td>
 								<c:forEach items="${jpt.jobList}" var="jobList">
 									<td width="200px" class="tdColor">${jobList.jobName}</td>
 									<td class="tdColor">
-									<img class="operation delban" src="img/update.png" onclick="abcdd('${jobList.jobId}')">
+									<img class="operation delban" src="img/update.png" onclick="update('${jobList.jobId}')">
 									</td>
 									<td class="tdColor">
 										<img class="operation delban" src="img/shanchu.png" onclick="delet('${jobList.jobId}')">
 									</td>
-									
-								
-								
 							</tr>
 							</c:forEach>
 						</c:forEach>
@@ -82,7 +76,7 @@
 							<td width="180px"><input type="text" style="width: 150px" name="jobRemarks" id="jobRemarks"></td>
 						</tr>
 					</table>
-					<input type="button" value="提 交"  class="mit" id="sub_job"><input type="button" value="点击添加部门" class="mit"  id="open_dept">
+					<input type="button" value="提 交"  class="mit" id="sub_job"><input type="button" value="点击添加部门"  id="open_dept" style="width:332px;height:40px; color: #438eb9;">
 				</div>
 				<div class="addDept">
 					<table border="1" cellspacing="0" cellpadding="0">
@@ -91,14 +85,30 @@
 						</tr>
 						<tr>
 							<td width="150px" class="tdColor">部门名称</td>
-							<td width="180px"><input type="text" style="width: 150px" name="feedbackId" value="" >
+							<td width="180px"><input type="text" style="width: 150px" name="deptName" id="u_deptName" >
 							</td>
 							<td width="150px" class="tdColor">备注说明</td>
-							<td width="180px"><input type="text" style="width: 150px" name="customerId" value=""></td>
+							<td width="180px"><input type="text" style="width: 150px" name="deptRemarks" id="u_deptRemarks"></td>
 						</tr>
 					</table>
-					<input type="button" value="提 交" style="width:664px;height:40px; color: #438eb9;" >
+					<input type="button" value="提 交"  id="dept_smt" style="width:664px;height:40px; color: #438eb9;" >
 				</div>
+				
+				<div class="updateJob">
+					<table border="1" cellspacing="0" cellpadding="0">
+						<tr>
+							<td width="180px" class="tdColor" colspan="4">修改职务信息</td>
+						</tr>
+						<tr>
+							<td width="150px" class="tdColor">更改名称</td>
+							<td width="180px"><input type="text" style="width: 150px" name="jobName" id="updateName"></td>
+							<td width="150px" class="tdColor">更改所属部门</td>
+							<td width="180px"><input type="text" style="width: 150px" name="deptName" id="updeptName"></td>
+						</tr>
+					</table>
+					<input type="button" value="提 交" id="update_job" style="width:664px;height:40px; color: #438eb9;">
+				</div>
+				
 				<!-- wish 表格 显示 end-->
 			</div>
 			<!-- wish页面样式end -->
@@ -122,18 +132,24 @@
 
 <script type="text/javascript">
 
+	$("#open_dept").click(function(){
+		$(".addDept").css("display","block");
+	});
+		
+
 function send(pn)
 {
 	location.href = 'question/answer?pn='+(pn-1);	
 }
 
+//点击传入部门编号
 var deptNumber = "";
 function add(departNum)
 {
 	deptNumber = departNum
 	$(".addJob").css("display","block");
 }
-	
+	//提交添加的职务信息
 	$("#sub_job").click(function()
 	{
 		var jobName = $("#jobName").val();
@@ -157,6 +173,64 @@ function add(departNum)
 	        });
 	});
 	
+	//点击传入职务编号好
+	var jobId="";
+	function update(job_id)
+	{
+		jobId = job_id;
+		$(".updateJob").css("display","block");//改变 隐藏的div为显示  
+	}
+	//修改职务信息
+	$("#update_job").click(function(){
+		var jobName = $("#updateName").val();
+		var deptName = $("#updeptName").val();
+		$.ajax({
+	        type:'post',
+	        url:'job/updateJob',
+	        data:{jobId:jobId,jobName:jobName,deptName:deptName},
+	        dataType:'json',
+	        success:function(e)
+	        {
+	        	
+	        	console.log(e);
+	        	location.href="job/selectAllInfo";
+	        },
+	        error:function()
+	        {
+	            alert('系统繁忙');
+	        }
+				
+	        });
+	})
+	
+	//添加部门信息
+	$("#dept_smt").click(function()
+	 {
+		var deptRemarks = $("#u_deptRemarks").val();
+		var deptName = $("#u_deptName").val();
+		
+		var jobName = $("#jobName").val();
+		var jobRemarks = $("#jobRemarks").val();
+		$.ajax({
+	        type:'post',
+	        url:'job/addDepartment',
+	        data:{deptRemarks:deptRemarks,deptName:deptName,jobName:jobName,jobRemarks:jobRemarks},
+	        dataType:'json',
+	        success:function(e)
+	        {
+	        	
+	        	console.log(e);
+	        	location.href="job/selectAllInfo";
+	        },
+	        error:function()
+	        {
+	            alert('系统繁忙');
+	        }
+				
+	        });
+	 });
+	
+	//删除职务
 	function delet(id)
 	{
 		var jobId = id;
@@ -164,6 +238,29 @@ function add(departNum)
 	        type:'post',
 	        url:'job/deleteJob',
 	        data:{jobId:jobId},
+	        dataType:'json',
+	        success:function(e)
+	        {
+	        	
+	        	console.log(e);
+	        	location.href="job/selectAllInfo";
+	        },
+	        error:function()
+	        {
+	            alert('系统繁忙');
+	        }
+				
+	        });
+	}
+	
+	//删除部门信息
+	function del_dept(dpt_id)
+	{
+		var deptNumber  = dpt_id;
+		$.ajax({
+	        type:'post',
+	        url:'job/del_dept',
+	        data:{deptNumber:deptNumber},
 	        dataType:'json',
 	        success:function(e)
 	        {

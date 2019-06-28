@@ -1,5 +1,6 @@
 package com.sc.crmsys.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,15 +22,13 @@ public class JobController {
 	
 	@Resource
 	private JobService jobService;
-	
+
 	@RequestMapping("/selectJobAndDept")
 	@ResponseBody
-	public HashMap<Object, Object> selectJobAndDept()
+	public List<DepartmentBean> selectJobAndDept()
 	{
-		HashMap<Object, Object> hashMap = new HashMap<>();
-		List<JobBean> selectJobAndDept = jobService.selectJobInfo();
-		hashMap.put("jobAndDept", selectJobAndDept);
-		return hashMap;
+		List<DepartmentBean> selectJobAndDept = jobService.selectJobAndDept();
+		return selectJobAndDept;
 	}
 	
 	@RequestMapping("/selectAllInfo")
@@ -62,5 +61,40 @@ public class JobController {
 		return hashMap;
 	}
 	
-
+	@RequestMapping("/addDepartment")
+	@ResponseBody
+	public HashMap<Object, Object> addDepartment(JobBean jobBean,DepartmentBean deptBean)
+	{
+		HashMap<Object, Object> hashMap = new HashMap<>();
+		String deptNumber= UUID.randomUUID().toString();
+		String jobId = UUID.randomUUID().toString();
+		jobBean.setJobId(jobId);
+		jobBean.setDeptNumber(deptNumber);
+		jobService.addJob(jobBean);
+		deptBean.setDeptNumber(deptNumber);
+		jobService.addDepartment(deptBean);
+		hashMap.put("depart", "成功");
+		return hashMap;
+	}
+	
+	@RequestMapping("/del_dept")
+	@ResponseBody
+	public HashMap<Object, Object> delDept(String deptNumber)
+	{
+		HashMap<Object, Object> hashMap = new HashMap<>();
+		jobService.delDept(deptNumber);
+		hashMap.put("del", "成功");
+		return hashMap;
+	}
+	
+	@RequestMapping("/updateJob")
+	@ResponseBody
+	public HashMap<Object, Object> updateJob(JobBean jobBean,DepartmentBean deptBean)
+	{
+		HashMap<Object, Object> hashMap = new HashMap<>();
+		jobBean.setJobLastTime(new Date());
+		jobService.update(jobBean,deptBean);
+		hashMap.put("del", "成功");
+		return hashMap;
+	}
 }

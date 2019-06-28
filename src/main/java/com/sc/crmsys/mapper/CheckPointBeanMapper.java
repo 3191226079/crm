@@ -1,17 +1,25 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.CheckPointBean;
 
 public interface CheckPointBeanMapper {
-    int deleteByPrimaryKey(String checkPointId);
+    void deleteByPrimaryKey(String checkPointId);
 
-    int insert(CheckPointBean record);
+    void insert(CheckPointBean record);
 
     int insertSelective(CheckPointBean record);
 
     CheckPointBean selectByPrimaryKey(String checkPointId);
 
-    int updateByPrimaryKeySelective(CheckPointBean record);
+    void updateByPrimaryKeySelective(CheckPointBean checkPointBean);
 
     int updateByPrimaryKey(CheckPointBean record);
+    
+    List<CheckPointBean> selectAll(@Param("c")String checkPointTarget);
+    
+    List<CheckPointBean> selectAllCheckPoint();
 }

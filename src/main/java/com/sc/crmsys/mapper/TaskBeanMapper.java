@@ -3,7 +3,7 @@ package com.sc.crmsys.mapper;
 import com.sc.crmsys.bean.TaskBean;
 
 public interface TaskBeanMapper {
-    int deleteByPrimaryKey(String taskId);
+    void deleteByPrimaryKey(String taskId);
 
     int insert(TaskBean record);
 
@@ -11,7 +11,7 @@ public interface TaskBeanMapper {
 
     TaskBean selectByPrimaryKey(String taskId);
 
-    int updateByPrimaryKeySelective(TaskBean record);
+    void updateByPrimaryKeySelective(TaskBean record);
 
     int updateByPrimaryKey(TaskBean record);
 }

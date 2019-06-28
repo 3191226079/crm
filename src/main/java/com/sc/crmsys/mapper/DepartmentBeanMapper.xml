@@ -92,6 +92,11 @@
     where dept_number = #{deptNumber,jdbcType=VARCHAR}
   </update>
   
+  <select id="selectDeptId" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT dept_number FROM  department where dept_name = #{deptName}
+  </select>
+  
+  
   <select id="selectDepAndJob" parameterType="java.lang.String" resultMap="jpListMap">
     SELECT * FROM job j INNER JOIN department d ON j.dept_number = d.dept_number
   </select>
