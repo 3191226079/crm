@@ -14,8 +14,28 @@ public class TaskDetailBean {
     private String companyId;
 
     private Date taskDetailUpdateTime;
+    
+    private TaskBean taskBean = new TaskBean();
+    
+    private EmployBean employBean = new EmployBean();
 
-    public String getTaskDetailId() {
+    public TaskBean getTaskBean() {
+		return taskBean;
+	}
+
+	public void setTaskBean(TaskBean taskBean) {
+		this.taskBean = taskBean;
+	}
+
+	public EmployBean getEmployBean() {
+		return employBean;
+	}
+
+	public void setEmployBean(EmployBean employBean) {
+		this.employBean = employBean;
+	}
+
+	public String getTaskDetailId() {
         return taskDetailId;
     }
 

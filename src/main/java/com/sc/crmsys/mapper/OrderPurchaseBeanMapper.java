@@ -1,5 +1,8 @@
 package com.sc.crmsys.mapper;
 
+import java.util.Date;
+import java.util.List;
+
 import com.sc.crmsys.bean.OrderPurchaseBean;
 
 public interface OrderPurchaseBeanMapper {
@@ -14,4 +17,10 @@ public interface OrderPurchaseBeanMapper {
     int updateByPrimaryKeySelective(OrderPurchaseBean record);
 
     int updateByPrimaryKey(OrderPurchaseBean record);
+    
+    void update(OrderPurchaseBean record);
+    
+    List<OrderPurchaseBean> getPurchaseOrder(String comapnyId);
+    
+    void updateState(String orderPurchaseId,Date orderPurchaseUpdateTime);
 }

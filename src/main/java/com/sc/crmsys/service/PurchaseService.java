@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.sc.crmsys.bean.DetailPurchaseBean;
 import com.sc.crmsys.bean.OrderPurchaseBean;
 import com.sc.crmsys.bean.PurchaseBean;
+import com.sc.crmsys.bean.StockBean;
 
 
 public interface PurchaseService {

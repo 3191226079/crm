@@ -4,6 +4,9 @@ package com.sc.crmsys.mapper;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.sc.crmsys.bean.PurchaseBean;
 
 
@@ -26,7 +29,7 @@ public interface PurchaseBeanMapper {
     
     List<PurchaseBean> findByPrimaryKey(String purchaseId);
     
-    void update(String purchaseId,Date purchaseUpdateTime);
+    void updateState(@Param("purchaseId")String purchaseId,@Param("purchaseUpdateTime")Date purchaseUpdateTime);
     
     void update(PurchaseBean purchaseBean);
     

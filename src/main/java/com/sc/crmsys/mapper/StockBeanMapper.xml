@@ -208,5 +208,47 @@
       stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP}
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </update>
+  <update id="update" parameterType="com.sc.crmsys.bean.StockBean">
+    update stock
+    <set>
+      <if test="commodityName != null">
+        commodity_name = #{commodityName,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityType != null">
+        commodity_type = #{commodityType,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseNumber != null">
+        warehouse_number = #{warehouseNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="stockNumber != null">
+        stock_number = #{stockNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="costPrice != null">
+        cost_price = #{costPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="retailPrice != null">
+        retail_price = #{retailPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="salePrice != null">
+        sale_price = #{salePrice,jdbcType=VARCHAR},
+      </if>
+      <if test="postscript != null">
+        postscript = #{postscript,jdbcType=VARCHAR},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockLastTime != null">
+        stock_last_time = #{stockLastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
+  </update>
   
 </mapper>

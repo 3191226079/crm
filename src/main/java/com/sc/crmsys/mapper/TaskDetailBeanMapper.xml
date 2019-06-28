@@ -18,6 +18,76 @@
     from task_detail
     where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectAll" resultMap="TaskDetailMap">
+	SELECT * FROM task t INNER JOIN check_point cp ON t.check_point_id = cp.check_point_id INNER JOIN task_detail td
+	on t.task_id = td.task_id INNER JOIN employ e ON td.employ_id = e.employ_id
+	where t.task_update_time &gt;= date(now())
+	and t.task_update_time  &lt; DATE_ADD(date(now()),INTERVAL 1 DAY) 
+  </select>
+  		
+		
+  <select id="selectAllTask" resultMap="TaskDetailMap">
+  	SELECT * FROM task t INNER JOIN check_point cp ON t.check_point_id = cp.check_point_id INNER JOIN task_detail td
+	on t.task_id = td.task_id INNER JOIN employ e ON td.employ_id = e.employ_id
+	<where>
+		<if test="t.taskStartTime != null">
+			task_start_time &gt;= #{t.taskStartTime}
+		</if>
+		<if test="t.taskEndTime != null">
+			and task_start_time &lt;= #{t.taskEndTime}
+		</if>
+		<if test="t.taskTitle != null">
+			and (task_title like '%${t.taskTitle}%' or check_point_target like '%${t.taskTitle}%')
+		</if>
+	</where>
+	order by task_update_time DESC
+  </select>
+  
+  <resultMap type="com.sc.crmsys.bean.TaskDetailBean" id="TaskDetailMap">
+  	<id column="task_detail_id" property="taskDetailId"/>
+  	<result column="task_id" property="taskId"/>
+  	<result column="employ_id" property="employId"/>
+  	<result column="task_detail_state" property="taskDetailState"/>
+  	<result column="company_id" property="companyId"/>
+  	<result column="task_detail_update_time" property="taskDetailUpdateTime"/>
+  	<association property="taskBean" javaType="com.sc.crmsys.bean.TaskBean" column="task_id">
+	  	<id column="task_id" property="taskId"/>
+	  	<result column="task_title" property="taskTitle"/>
+	  	<result column="task_content" property="taskContent"/>
+	  	<result column="task_person" property="taskPerson"/>
+	  	<result column="task_start_time" property="taskStartTime"/>
+	  	<result column="task_end_time" property="taskEndTime"/>
+		<result column="company_id" property="companyId"/>
+	  	<result column="task_update_time" property="taskUpdateTime"/>
+	  	<result column="check_point_id" property="checkPointId"/>
+    	<association property="checkPointBean" javaType="com.sc.crmsys.bean.CheckPointBean" column="check_point_id">
+		  	<id column="check_point_id" property="checkPointId"/>
+		  	<result column="check_point_target" property="checkPointTarget"/>
+		  	<result column="check_point_info" property="checkPointInfo"/>
+		  	<result column="company_id" property="companyId"/>
+		  	<result column="check_point_update_time" property="checkPointUpdateTime"/>
+  		</association>
+  	</association>
+    <association property="employBean" javaType="com.sc.crmsys.bean.EmployBean" column="employ_id">	
+    	<id column="employ_id" property="employId"/>
+	  	<result column="employ_name" property="employName"/>
+	  	<result column="employ_sex" property="employSex"/>
+	  	<result column="employ_img" property="employImg"/>
+	  	<result column="employ_salary" property="employSalary"/>
+	  	<result column="employ_identify" property="employIdentify"/>
+	  	<result column="employ_address" property="employAddress"/>
+	  	<result column="employ_education" property="employEducation"/>
+	  	<result column="employ_politic" property="employPolitic"/>
+	  	<result column="employ_school" property="employSchool"/>
+	  	<result column="employ_phone" property="employPhone"/>
+	  	<result column="check_state" property="checkState"/>
+	  	<result column="job_id" property="jobId"/>
+	  	<result column="employ_state" property="employState"/>
+	  	<result column="company_id" property="companyId"/>
+	  	<result column="employ_update_time" property="employUpdateTime"/>
+    </association>
+  </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from task_detail
     where task_detail_id = #{taskDetailId,jdbcType=VARCHAR}

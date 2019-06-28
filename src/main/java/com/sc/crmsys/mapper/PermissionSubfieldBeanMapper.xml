@@ -79,4 +79,6 @@
       subfield_last_time = #{subfieldLastTime,jdbcType=TIMESTAMP}
     where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
   </update>
+  
+  
 </mapper>

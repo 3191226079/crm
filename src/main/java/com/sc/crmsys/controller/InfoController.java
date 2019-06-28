@@ -58,7 +58,6 @@ public class InfoController {
 	{
 		if(infoDetailBean == null)
 		{
-			System.out.println("aaaa");
 			infoDetailBean = new InfoDetailBean();
 		}
 		PageInfo<InfoDetailBean> InfoDetailBean = infoService.selectAll(pn,size,infoDetailBean);

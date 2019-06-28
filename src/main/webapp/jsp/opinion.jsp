@@ -11,6 +11,7 @@
 	<base href="<%=basePath%>"> 
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="css/css.css" />
+	<link rel="stylesheet" type="text/css" href="css/rafaelcss.css" />
 </head>
 
 <body>
@@ -36,13 +37,13 @@
 					<table border="0" cellspacing="0" cellpadding="0">
 						
 						<tr>
-							<td width="186px" class="tdColor tdC">补货编号</td>
-							<td width="330px" class="tdColor">产品编号</td>
-							<td width="330px" class="tdColor">产品类别</td>
-							<td width="330px" class="tdColor">产品名称</td>
+							<td width="486px" class="tdColor tdC">补货编号</td>
+							<td width="430px" class="tdColor">产品编号</td>
+							<td width="130px" class="tdColor">产品类别</td>
+							<td width="130px" class="tdColor">产品名称</td>
 							<td width="230px" class="tdColor">规格</td>
-							<td width="330px" class="tdColor">所属仓库</td>
-							<td width="280px" class="tdColor">补货数量</td>
+							<td width="130px" class="tdColor">所属仓库</td>
+							<td width="180px" class="tdColor">补货数量</td>
 							<td width="160px" class="tdColor">补货状态</td>
 							<td width="180px" class="tdColor">操作</td>
 						</tr>
@@ -55,7 +56,11 @@
 							<td>${p.stockBean.description }</td>
 							<td>${p.stockBean.warehouseBean.warehouseName }</td>
 							<td>${p.detailPurchaseBean.productNum }</td>
-							<td>${p.purchaseState }</td>
+							<c:choose>
+								<c:when test="${p.purchaseState==1 }">
+									<td>采购中</td>
+								</c:when>
+							</c:choose>
 							<td><a href="purchase/find?purchaseId=${p.purchaseId }"><img class="operation"
 									src="img/update.png"></a> <a href="purchase/del?purchaseId=${p.purchaseId }"><img class="operation delban"
 								src="img/delete.png"></a></td>

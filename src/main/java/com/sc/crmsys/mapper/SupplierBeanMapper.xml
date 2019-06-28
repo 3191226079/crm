@@ -161,4 +161,10 @@
       supplier_update_time = #{supplierUpdateTime,jdbcType=TIMESTAMP}
     where supplier_id = #{supplierId,jdbcType=VARCHAR}
   </update>
+  
+    <select id="getSupplier" parameterType="com.sc.crmsys.bean.SupplierBean" resultMap="BaseResultMap">
+    select * from supplier
+    
+  </select>
+  
 </mapper>

@@ -7,14 +7,17 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import com.sc.crmsys.bean.DetailPurchaseBean;
 import com.sc.crmsys.bean.OrderPurchaseBean;
 import com.sc.crmsys.bean.PurchaseBean;
+import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.mapper.DetailPurchaseBeanMapper;
 import com.sc.crmsys.mapper.OrderPurchaseBeanMapper;
 import com.sc.crmsys.mapper.PurchaseBeanMapper;
+import com.sc.crmsys.mapper.StockBeanMapper;
 
 @Service("purchaseService")
 public class PurchaseServiceImpl implements PurchaseService{
@@ -27,6 +30,9 @@ public class PurchaseServiceImpl implements PurchaseService{
 	
 	@Resource
 	private OrderPurchaseBeanMapper orderPurchaseBeanMapper;
+	
+	@Resource
+	private StockBeanMapper stockBeanMapper;
 
 	@Override
 	public List<PurchaseBean> getPurchase(String companyId) {
@@ -37,6 +43,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Override
 	public void addPurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean)
  {
+		
 		
 		
 		//插入数据
@@ -59,17 +66,20 @@ public class PurchaseServiceImpl implements PurchaseService{
 	@Override
 	public void updatePurchase(PurchaseBean purchaseBean, DetailPurchaseBean detailPurchaseBean,
 			OrderPurchaseBean orderPurchaseBean) {
+		
+		
+		
 		purchaseBeanMapper.update(purchaseBean);
 		
-		detailPurchaseBeanMapper.updateByPrimaryKey(detailPurchaseBean);
+		detailPurchaseBeanMapper.update(detailPurchaseBean);
 	
-		orderPurchaseBeanMapper.updateByPrimaryKey(orderPurchaseBean);
+		orderPurchaseBeanMapper.update(orderPurchaseBean);
 		
 	}
 
 	@Override
-	public void updatePurchaseState(String purchaseId,Date purchaseUpdateTime) {
-		purchaseBeanMapper.update(purchaseId,purchaseUpdateTime);
+	public void updatePurchaseState(String purchaseId,@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")Date purchaseUpdateTime) {
+		purchaseBeanMapper.updateState(purchaseId,purchaseUpdateTime);
 		
 	}
 
