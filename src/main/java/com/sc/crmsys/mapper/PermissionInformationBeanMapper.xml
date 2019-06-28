@@ -8,10 +8,11 @@
     <result column="subfield_number" jdbcType="VARCHAR" property="subfieldNumber" />
     <result column="information_remarks" jdbcType="VARCHAR" property="informationRemarks" />
     <result column="information_last_time" jdbcType="TIMESTAMP" property="informationLastTime" />
+    <result column="parent" jdbcType="VARCHAR" property="parent" />
   </resultMap>
   <sql id="Base_Column_List">
     permission_number, permission_name, permission, subfield_number, information_remarks, 
-    information_last_time
+    information_last_time, parent
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -26,10 +27,10 @@
   <insert id="insert" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
     insert into permission_information (permission_number, permission_name, 
       permission, subfield_number, information_remarks, 
-      information_last_time)
+      information_last_time, parent)
     values (#{permissionNumber,jdbcType=VARCHAR}, #{permissionName,jdbcType=VARCHAR}, 
       #{permission,jdbcType=VARCHAR}, #{subfieldNumber,jdbcType=VARCHAR}, #{informationRemarks,jdbcType=VARCHAR}, 
-      #{informationLastTime,jdbcType=TIMESTAMP})
+      #{informationLastTime,jdbcType=TIMESTAMP}, #{parent,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.sc.crmsys.bean.PermissionInformationBean">
     insert into permission_information
@@ -52,6 +53,9 @@
       <if test="informationLastTime != null">
         information_last_time,
       </if>
+      <if test="parent != null">
+        parent,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="permissionNumber != null">
@@ -71,6 +75,9 @@
       </if>
       <if test="informationLastTime != null">
         #{informationLastTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="parent != null">
+        #{parent,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -92,6 +99,9 @@
       <if test="informationLastTime != null">
         information_last_time = #{informationLastTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="parent != null">
+        parent = #{parent,jdbcType=VARCHAR},
+      </if>
     </set>
     where permission_number = #{permissionNumber,jdbcType=VARCHAR}
   </update>
@@ -101,7 +111,34 @@
       permission = #{permission,jdbcType=VARCHAR},
       subfield_number = #{subfieldNumber,jdbcType=VARCHAR},
       information_remarks = #{informationRemarks,jdbcType=VARCHAR},
-      information_last_time = #{informationLastTime,jdbcType=TIMESTAMP}
+      information_last_time = #{informationLastTime,jdbcType=TIMESTAMP},
+      parent = #{parent,jdbcType=VARCHAR}
     where permission_number = #{permissionNumber,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectAllPermission" resultMap="PermissionListMap">
+  	select p1.permission_number p1pnu, p1.permission_name p1pna, p2.permission_number p2pnu, p2.permission_name p2pna, p3.permission_number p3pnu, p3.permission_name p3pna from permission_information p1 left join permission_information p2 on p1.permission_number = p2.parent
+left join permission_information p3 on p2.permission_number = p3.parent where p1.parent = 'top'
+  </select>
+  
+  <select id="selectPermission" parameterType="java.lang.String" resultType="java.lang.String">
+    select 
+    permission_name
+    from permission_information
+    where information_remarks = #{permission}
+  </select>
+  
+  <resultMap type="com.sc.crmsys.bean.PermissionInformationBean" id="PermissionListMap">
+  	<id column="p1pnu" property="permissionNumber"/>
+  	<result column="p1pna" property="permissionName"/>
+  	<collection property="pmsInfoBean" ofType="com.sc.crmsys.bean.PermissionInformationBean" column="permission_number">
+  		<id column="p2pnu" property="permissionNumber"/>
+	  	<result column="p2pna" property="permissionName"/>
+	  	<collection property="pmsInfoBean" ofType="com.sc.crmsys.bean.PermissionInformationBean" column="permission_number">
+	  		<id column="p3pnu" property="permissionNumber"/>
+		  	<result column="p3pna" property="permissionName"/>
+ 		</collection>
+	 </collection>
+  </resultMap>
+  
 </mapper>

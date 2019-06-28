@@ -14,6 +14,8 @@ public class JobBean {
     private String companyId;
 
     private Date jobLastTime;
+    
+    private DepartmentBean deparmentBean;
 
     public String getJobId() {
         return jobId;
@@ -27,7 +29,15 @@ public class JobBean {
         return jobName;
     }
 
-    public void setJobName(String jobName) {
+    public DepartmentBean getDeparmentBean() {
+		return deparmentBean;
+	}
+
+	public void setDeparmentBean(DepartmentBean deparmentBean) {
+		this.deparmentBean = deparmentBean;
+	}
+
+	public void setJobName(String jobName) {
         this.jobName = jobName == null ? null : jobName.trim();
     }
 

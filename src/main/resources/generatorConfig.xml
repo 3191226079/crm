@@ -9,7 +9,7 @@
 		</commentGenerator>
 		
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-		
+
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost:3306/crm" 
 			userId="root"
@@ -28,7 +28,7 @@
 			 <!--  for MyBatis3/MyBatis3Simple
 		            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
 		         -->
-			<property name="constructorBased" value="false"/>
+			<property name="constructorBased" value="true"/>
 			<!-- enableSubPackages:是否让schema作为包的后缀 -->
 			<property name="enableSubPackages" value="false" />
 			<!-- 从数据库返回的值被清理前后的空格 -->
@@ -49,38 +49,8 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-		<table tableName="active" domainObjectName="ActiveBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="check_point" domainObjectName="CheckPointBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="city" domainObjectName="CityBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="company" domainObjectName="CompanyBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="contact_logs" domainObjectName="ContactLogsBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="contacts" domainObjectName="ContactsBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="customer" domainObjectName="CustomerBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="customer_lose" domainObjectName="CustomerLoseBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="department" domainObjectName="DepartmentBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="detail_purchase" domainObjectName="DetailPurchaseBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="employ" domainObjectName="EmployBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="feedback" domainObjectName="FeedbackBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="info" domainObjectName="InfoBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="info_detail" domainObjectName="InfoDetailBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="job" domainObjectName="JobBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="journal" domainObjectName="JournalBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="order_purchase" domainObjectName="OrderPurchaseBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="permission_information" domainObjectName="PermissionInformationBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="permission_role" domainObjectName="PermissionRoleBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="permission_subfield" domainObjectName="PermissionSubfieldBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="purchase" domainObjectName="PurchaseBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="role" domainObjectName="RoleBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="saleinfo" domainObjectName="SaleInfoBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="saleout" domainObjectName="SaleOutBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="stock" domainObjectName="StockBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="supplier" domainObjectName="SupplierBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="task" domainObjectName="TaskBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="task_detail" domainObjectName="TaskDetailBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="question" domainObjectName="QuestionBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="user" domainObjectName="UserBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="user_role" domainObjectName="UserRoleBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
-		<table tableName="system" domainObjectName="SystemBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
+
+		<table tableName="sign_count" domainObjectName="SignCountBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 
 	</context>
 </generatorConfiguration>

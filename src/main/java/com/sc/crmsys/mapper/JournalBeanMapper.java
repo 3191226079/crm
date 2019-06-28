@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.JournalBean;
 
 public interface JournalBeanMapper {
@@ -14,4 +16,6 @@ public interface JournalBeanMapper {
     int updateByPrimaryKeySelective(JournalBean record);
 
     int updateByPrimaryKey(JournalBean record);
+    
+    List<JournalBean> selectJournal();
 }

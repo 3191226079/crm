@@ -32,13 +32,13 @@
 					<div class="baBody">
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送主题：
-							<input type="text" name="infoTitle" class="input3" />
+							<input type="text" name="infoTitle" class="input3" autocomplete="off"/>
 						</div>
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接收用户：
 							<select class="input3" name="employId">
 								<c:forEach items="${employList }" var="employBean">
-									<option value="1" disabled selected hidden>请选择</option>
+									<option value="1" disabled selected hidden="true">请选择</option>
 									<option value="${employBean.employId }">${employBean.employName }</option>
 								</c:forEach>
 							</select>

@@ -14,8 +14,18 @@ public class JournalBean {
     private Date visitTime;
 
     private String companyId;
+    
+    private UserBean userBean;
+    
+    public UserBean getUserBean() {
+		return userBean;
+	}
 
-    public String getJournalNumber() {
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
+
+	public String getJournalNumber() {
         return journalNumber;
     }
 

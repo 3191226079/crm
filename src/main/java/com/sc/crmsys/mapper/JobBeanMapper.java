@@ -1,5 +1,9 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.JobBean;
 
 public interface JobBeanMapper {
@@ -14,4 +18,11 @@ public interface JobBeanMapper {
     int updateByPrimaryKeySelective(JobBean record);
 
     int updateByPrimaryKey(JobBean record);
+    
+    String selectJobId(@Param("jobName")String jobName);
+    
+    List<JobBean> selectJobAndDept();
+    
+    void deleteJobs(String deptNumber);
+    
 }

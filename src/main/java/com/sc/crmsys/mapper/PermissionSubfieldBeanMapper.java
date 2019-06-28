@@ -1,5 +1,6 @@
 package com.sc.crmsys.mapper;
 
+
 import com.sc.crmsys.bean.PermissionSubfieldBean;
 
 public interface PermissionSubfieldBeanMapper {
@@ -14,4 +15,5 @@ public interface PermissionSubfieldBeanMapper {
     int updateByPrimaryKeySelective(PermissionSubfieldBean record);
 
     int updateByPrimaryKey(PermissionSubfieldBean record);
+    
 }

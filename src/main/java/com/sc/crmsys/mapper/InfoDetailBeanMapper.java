@@ -20,4 +20,6 @@ public interface InfoDetailBeanMapper {
     int updateByPrimaryKey(InfoDetailBean record);
     
     List<InfoDetailBean> selectAll(@Param("i")InfoDetailBean infoDetailBean);
+    
+    void update(@Param("e")String employId);
 }

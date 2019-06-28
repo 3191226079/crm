@@ -24,6 +24,48 @@
     employ_education, employ_politic, employ_school, employ_phone, check_state, job_id, 
     employ_state, company_id, employ_update_time
   </sql>
+  
+  <select id="selectInfo" resultMap="employMap">
+  	SELECT * FROM employ em INNER JOIN info_detail id ON em.employ_id = id.employ_id INNER JOIN info i ON id.info_id = i.info_id
+  	where em.employ_id = #{e}
+  		<if test="i.infoPerson != null">
+  			info_person like '%${i.infoPerson}%'
+  		</if>
+  </select>
+  <resultMap type="com.sc.crmsys.bean.EmployBean" id="employMap">
+  	<id column="employ_id" property="employId"/>
+  	<result column="employ_name" property="employName"/>
+  	<result column="employ_sex" property="employSex"/>
+  	<result column="employ_img" property="employImg"/>
+  	<result column="employ_salary" property="employSalary"/>
+  	<result column="employ_identify" property="employIdentify"/>
+  	<result column="employ_address" property="employAddress"/>
+  	<result column="employ_education" property="employEducation"/>
+  	<result column="employ_politic" property="employPolitic"/>
+  	<result column="employ_school" property="employSchool"/>
+  	<result column="employ_phone" property="employPhone"/>
+  	<result column="check_state" property="checkState"/>
+  	<result column="job_id" property="jobId"/>
+  	<result column="employ_state" property="employState"/>
+  	<result column="company_id" property="companyId"/>
+  	<result column="employ_update_time" property="employUpdateTime"/>
+  	<collection property="infoDetailBeanList" ofType="com.sc.crmsys.bean.InfoDetailBean" column="employ_id">
+	  	<id column="info_detail_id" property="infoDetailId"/>
+	  	<result column="employ_id" property="employId"/>
+	  	<result column="info_detail_state" property="infoDetailState"/>
+	  	<result column="company_id" property="companyId"/>
+	  	<result column="info_detail_update_time" property="infoDetailUpdateTime"/>
+  		<association property="infoBean" javaType="com.sc.crmsys.bean.InfoBean" column="info_id">
+		  	<id column="info_id" property="infoId"/>
+		  	<result column="info_title" property="infoTitle"/>
+		  	<result column="info_content" property="infoContent"/>
+		  	<result column="info_person" property="infoPerson"/>
+		  	<result column="company_id" property="companyId"/>
+		  	<result column="info_update_time" property="infoUpdateTime"/>
+  		</association>
+  	</collection>
+  </resultMap>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -35,6 +77,7 @@
     <include refid="Base_Column_List" />
     from employ
   </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from employ
     where employ_id = #{employId,jdbcType=VARCHAR}
@@ -156,6 +199,7 @@
       </if>
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.EmployBean">
     update employ
     <set>
@@ -226,4 +270,62 @@
       employ_update_time = #{employUpdateTime,jdbcType=TIMESTAMP}
     where employ_id = #{employId,jdbcType=VARCHAR}
   </update>
+ 
+  <select id="employInfo" resultMap="employInfoMap">
+  	SELECT * FROM employ e INNER JOIN job j ON e.job_id = j.job_id
+	INNER JOIN department d on j.dept_number = d.dept_number inner join
+	`user` u on u.employ_id = e.employ_id
+	<if test="content != null">
+		WHERE e.employ_name = #{content}
+	</if>
+  </select>
+  
+  
+  <resultMap type="com.sc.crmsys.bean.EmployBean" id="employInfoMap">
+  	<id column="employ_id" jdbcType="VARCHAR" property="employId" />
+    <result column="employ_name" jdbcType="VARCHAR" property="employName" />
+    <result column="employ_sex" jdbcType="VARCHAR" property="employSex" />
+    <result column="employ_img" jdbcType="VARCHAR" property="employImg" />
+    <result column="employ_salary" jdbcType="VARCHAR" property="employSalary" />
+    <result column="employ_identify" jdbcType="VARCHAR" property="employIdentify" />
+    <result column="employ_address" jdbcType="VARCHAR" property="employAddress" />
+    <result column="employ_education" jdbcType="VARCHAR" property="employEducation" />
+    <result column="employ_politic" jdbcType="VARCHAR" property="employPolitic" />
+    <result column="employ_school" jdbcType="VARCHAR" property="employSchool" />
+    <result column="employ_phone" jdbcType="VARCHAR" property="employPhone" />
+    <result column="check_state" jdbcType="VARCHAR" property="checkState" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="employ_state" jdbcType="VARCHAR" property="employState" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="employ_update_time" jdbcType="TIMESTAMP" property="employUpdateTime" />
+  	<association property="jobBean" javaType="com.sc.crmsys.bean.JobBean" column="job_id">
+	  	<id column="job_id" jdbcType="VARCHAR" property="jobId" />
+	    <result column="job_name" jdbcType="VARCHAR" property="jobName" />
+	    <result column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+	    <result column="job_remarks" jdbcType="VARCHAR" property="jobRemarks" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="job_last_time" jdbcType="TIMESTAMP" property="jobLastTime" />
+	   
+	    <association property="deparmentBean" javaType="com.sc.crmsys.bean.DepartmentBean" column="dept_number">	
+	    	<id column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+		    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+		    <result column="dept_remarks" jdbcType="VARCHAR" property="deptRemarks" />
+		    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		    <result column="dept_last_time" jdbcType="TIMESTAMP" property="deptLastTime" />
+   	    </association>
+  	</association>
+  	<association property="userBean" javaType="com.sc.crmsys.bean.UserBean" column="user_id">
+  		<id column="user_id" jdbcType="VARCHAR" property="userId" />
+	    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+	    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+	    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="user_state" jdbcType="VARCHAR" property="userState" />
+	    <result column="user_register_time" jdbcType="TIMESTAMP" property="userRegisterTime" />
+	    <result column="user_update_time" jdbcType="TIMESTAMP" property="userUpdateTime" />
+	    <result column="user_salt" jdbcType="VARCHAR" property="userSalt" />
+  	</association>
+    
+  </resultMap>
+  
 </mapper>
