@@ -121,6 +121,13 @@
 left join permission_information p3 on p2.permission_number = p3.parent where p1.parent = 'top'
   </select>
   
+  <select id="selectPermission" parameterType="java.lang.String" resultType="java.lang.String">
+    select 
+    permission_name
+    from permission_information
+    where information_remarks = #{permission}
+  </select>
+  
   <resultMap type="com.sc.crmsys.bean.PermissionInformationBean" id="PermissionListMap">
   	<id column="p1pnu" property="permissionNumber"/>
   	<result column="p1pna" property="permissionName"/>

@@ -28,13 +28,6 @@
 			<!-- answer页面样式 -->
 			<div class="wish">
 				<div class="conform">
-					<form action="question/answer" method="post">
-						<div class="cfD">
-							&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;
-							<input class="addUser" type="text" placeholder="请输入要查找的咨询...." name="content"/>
-							<button class="button" type="submit">搜索</button>
-						</div>
-					</form>
 				</div>
 				<!-- wish 表格 显示 -->
 				<div class="wishShow">
@@ -42,7 +35,6 @@
 						<tr>
 							<td width="200px" class="tdColor" style="color:black;">时间</td>
 							<td width="200px" class="tdColor" style="color:black;">用户姓名</td>
-							<td width="200px" class="tdColor" style="color:black;">职务</td>
 							<td width="200px" class="tdColor" style="color:black;">操作内容</td>
 						</tr>
 						<c:forEach items="${pageJournal.list}" var="pageJournal">
@@ -51,23 +43,21 @@
 									<fmt:formatDate value="${pageJournal.visitTime}" pattern="yyyy-MM-dd  HH:MM:ss"/>
 								</td>
 								<td width="200px" class="tdColor">${pageJournal.userBean.userName}</td>
-								<td width="200px" class="tdColor">${question.answerContent}</td>
-								<td width="200px" class="tdColor"></td>
-								<td width="200px" class="tdColor"></td>
+								<td width="200px" class="tdColor">${pageJournal.permission}</td>
 							</tr>
 						</c:forEach>
 					</table>
 					<div class="page" style="height: 50px; margin-top: 30px;line-height: 50px;border-bottom:1px solid grey;">
-				        <a href="question/answer" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
+				        <a href="journal/info" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
 				        	首页
 				        </a>
-				     	<a href="javascript:send(${questionList.pageNum })" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
+				     	<a href="javascript:send(${pageJournal.pageNum })" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
 				        	上一页
 				       	</a>
-				        <a href="question/answer?pn=${questionList.nextPage}" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
+				        <a href="journal/info?pn=${pageJournal.nextPage}" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
 				        	下一页
 				        </a>
-				        <a href="question/answer?pn=${questionList.pages }" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
+				        <a href="journal/info?pn=${pageJournal.pages }" style="display: inline-block;margin-right: 5px;width: 80px;height: 30px;text-align: center;line-height: 30px;text-decoration: none;background-color: white;border:1px solid rgb(4,129,255);">
 				        	尾页
 				        </a>
 				    </div>
@@ -78,18 +68,6 @@
 		</div>
 	</div>
 	<!-- 回复框 -->
-	<div class="banDel">
-		<div class="delete">
-			<div class="close">
-				<a><img src="img/shanchu.png" /></a>
-			</div>
-				<input class="delP1" id="answer_content" type="text" name="answerContent" placeholder="输入回复内容..." style="with:300px!important;height:50px;">
-				<p class="delP2">
-					<input type="button" id="smt" class="ok yes" value="确定"  style="text-align:center;">
-					<a class="ok no">取消</a>
-				</p>
-		</div>
-	</div>
 	<!-- 回复框  end-->
 </body>
 
@@ -100,46 +78,7 @@ function send(pn)
 	location.href = 'question/answer?pn='+(pn-1);	
 }
 
-var myid = '';
-function abcdd(id)
-{
-	myid = id;
-}
-// 广告弹出框
-$(".delban").click(function(){
-	
-  $(".banDel").show();
-  
-});
-$(".close").click(function(){
-  $(".banDel").hide();
-});
-$(".no").click(function(){
-  $(".banDel").hide();
-});
 
-$("#smt").click(function(){
-	var questionId = myid;
-	var answerContent = $("#answer_content").val();
-	$.ajax({
-        type:'post',
-        url:'question/addanswer',
-        data:{questionId:questionId,answerContent:answerContent},
-        dataType:'json',
-        success:function(e)
-        {
-        	
-        	console.dir(e);
-        	location.href="question/answer";
-        },
-        error:function()
-        {
-            alert('系统繁忙');
-        }
-			
-        });
-	 
-  });
 
 
 // 广告弹出框 end

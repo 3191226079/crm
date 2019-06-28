@@ -17,6 +17,7 @@ import com.sc.crmsys.bean.GetTimeBean;
 import com.sc.crmsys.bean.JournalBean;
 import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.mapper.JournalBeanMapper;
+import com.sc.crmsys.mapper.PermissionInformationBeanMapper;
 import com.sc.crmsys.utils.MyUtils;
 
 @Service
@@ -24,6 +25,9 @@ public class JournalServiceImpl implements JournalService{
 	
 	@Resource
 	private JournalBeanMapper journalMapper;
+	
+	@Resource
+	private PermissionInformationBeanMapper permissionMapper;
 
 	@Override
 	public void addJoural(JournalBean journal) {
@@ -36,9 +40,15 @@ public class JournalServiceImpl implements JournalService{
 		Date date = time.getTime();
 		journal.setJournalNumber(journald);
 		journal.setUserId(userId);
-		journal.setPermission(permission);//
 		journal.setVisitTime(date);
-		journalMapper.insertSelective(journal);
+		String permission = permissionMapper.selectPermission(journal.getVisitIp());
+		
+		System.out.println(permission);
+		if (permission != null) {
+			journal.setPermission(permission);//得到权限名
+			journalMapper.insertSelective(journal);
+		}
+		
 	}
 
 	@Override

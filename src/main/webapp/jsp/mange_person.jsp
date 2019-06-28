@@ -19,8 +19,7 @@
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;咨询回复
+				<img src="img/coin02.png" /><span><a href="inc/mainll.jsp">首页</a>&nbsp;&nbsp;&nbsp;-</span>&nbsp;人事管理
 			</div>
 		</div>
 
@@ -91,15 +90,13 @@
 			<div class="close">
 				<a><img src="img/shanchu.png" /></a>
 			</div>
-				<select id="first" name="deptName" onchange="setSecond(this.value)" style="with:120px;height: 30px;margin-left:-50px;margin-top: 20px">
+				<select id="first" name="deptName" class="job_change" onchange="setSecond(this.value)" style="with:120px;height: 30px;margin-left:-50px;margin-top: 20px">
 					<option>部门选择</option>
-					<option value="主管部门">主管部门</option>
-					<option value="开发部门">开发部门</option>
 				</select>
 				<select id="second" name="jobName" style="with:120px;height: 30px;"></select>
 				<p class="delP2">
-					<input type="button" id="smt" class="ok yes" value="确定"  style="text-align:center;">
-					<a class="ok no">取消</a>
+					<input type="button" id="smt" class="ok yes" value="确定"  style="text-align:center;width: 100px;">
+					<a class="ok no" style="text-align:center;width: 100px;">取消</a>
 				</p>
 		</div>
 	</div>
@@ -107,8 +104,8 @@
 </body>
 
 <script type="text/javascript">
-
-function setSecond(value){
+ 
+/* function setSecond(value){
 	  var val = value;
 	  if(val == "主管部门"){
 	    var sec = document.getElementById('second');
@@ -129,7 +126,7 @@ function setSecond(value){
 		  var sec = document.getElementById('second');
 		    sec.options.length=0; //清空二级菜单项
 	  }
-	}
+	} */
 
 function send(pn)
 {
@@ -140,6 +137,38 @@ var employId = '';
 function change_job(employ_id)
 {
 	employId = employ_id;
+	//查询职务与部门信息
+	$.ajax({
+        type:'post',
+        url:'job/selectJobAndDept',
+        data:{},
+        dataType:'json',
+        success:function(result)
+        {
+        	var list = result.jobAndDept;
+        	
+        		
+        		  /* if(val == "主管部门") */
+        		   
+        			for (var i = 0; i < list.length; i++) {
+        				$(".job_change").val(list.deparmentBean.deptName);
+       			    var sec = document.getElementById('second');
+       			    sec.options.length=0; //清空二级菜单项
+       			    sec.options[i] = new Option("list.jobName","list.jobName");
+        			}
+        		  
+			
+        	
+        	
+
+        },
+        error:function()
+        {
+            alert('系统繁忙');
+        }
+			
+        });
+	
 }
 // 广告弹出框
 $(".delban").click(function(){

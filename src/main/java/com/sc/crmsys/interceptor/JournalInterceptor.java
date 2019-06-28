@@ -2,6 +2,7 @@ package com.sc.crmsys.interceptor;
 
 import java.io.IOException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +13,8 @@ import com.sc.crmsys.bean.JournalBean;
 import com.sc.crmsys.service.JournalService;
 
 public class JournalInterceptor implements HandlerInterceptor{
-
+	
+	@Resource
 	private JournalService journalService;
 	
 	@Override
@@ -22,7 +24,7 @@ public class JournalInterceptor implements HandlerInterceptor{
 	        
 	        JournalBean journalBean = new JournalBean();
 	        journalBean.setVisitIp(request.getServletPath());//得到请求地址，存入Bean
-	        journalService.addJoural(journalBeans);
+	        journalService.addJoural(journalBean);
 	     
 	      return true;
 	}
