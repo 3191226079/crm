@@ -75,7 +75,7 @@
 
 function send(pn)
 {
-	location.href = 'question/answer?pn='+(pn-1);	
+	location.href = 'journal/info?pn='+(pn-1);	
 }
 
 
