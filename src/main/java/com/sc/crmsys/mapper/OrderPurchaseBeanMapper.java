@@ -20,7 +20,9 @@ public interface OrderPurchaseBeanMapper {
     
     void update(OrderPurchaseBean record);
     
-    List<OrderPurchaseBean> getPurchaseOrder(String comapnyId);
+    List<OrderPurchaseBean> getPurchaseOrder();
+    
+    OrderPurchaseBean find(String orderPurchaseId);
     
     void updateState(String orderPurchaseId,Date orderPurchaseUpdateTime);
 }

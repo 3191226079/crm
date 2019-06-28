@@ -45,6 +45,10 @@
 	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
 	    <result column="supplier_update_time" jdbcType="TIMESTAMP" property="supplierUpdateTime" />
     </association>
+    <collection property="" ofType="com.sc.crmsys.bean.DetailPurchaseBean"  column="order_purchase_id">
+    	
+    
+    </collection>
   </resultMap>
   
   <sql id="Base_Column_List">
@@ -288,6 +292,11 @@
   
   <select id="getPurchaseOrder" parameterType="com.sc.crmsys.bean.OrderPurchaseBean" resultMap="BRMap">
   	SELECT * from order_purchase op 
-  	INNER JOIN supplier s ON op.supplier_id = s.supplier_id WHERE op.company_id = #{companyId}
+  	INNER JOIN supplier s ON op.supplier_id = s.supplier_id
   </select>
+   <select id="find" parameterType="com.sc.crmsys.bean.OrderPurchaseBean" resultMap="BRMap">
+  	SELECT * from order_purchase op 
+  	INNER JOIN supplier s ON op.supplier_id = s.supplier_id WHERE op.order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+  </select>
+  
 </mapper>

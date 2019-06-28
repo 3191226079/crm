@@ -24,9 +24,27 @@ public class SupplierServiceImpl implements SupplierService{
 	}
 
 	@Override
-	public SupplierBean findSuplier(String supplierId) {
+	public SupplierBean findSupplier(String supplierId) {
 		SupplierBean supplier = supplierBeanMapper.selectByPrimaryKey(supplierId);
 		return supplier;
+	}
+
+	@Override
+	public void updateSupplier(SupplierBean supplierBean) {
+		supplierBeanMapper.updateByPrimaryKeySelective(supplierBean);
+		
+	}
+
+	@Override
+	public void updateSupplierState(String supplierId) {
+		supplierBeanMapper.updateState(supplierId);
+		
+	}
+
+	@Override
+	public void addSupplier(SupplierBean supplierBean) {
+		supplierBeanMapper.insert(supplierBean);
+		
 	}
 
 }

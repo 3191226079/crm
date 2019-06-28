@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,13 +9,11 @@
 <html>
 <head>
 	<base href="<%=basePath%>"> 
-	<title>采购单</title>
+	<title>供应商信息</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
-<script type="text/javascript" src="js/rafael.js"></script>
-<script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
-
+<script type="text/javascript" src="js/rafael.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
@@ -24,8 +21,7 @@
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
+			
 			</div>
 		</div>
 
@@ -33,44 +29,34 @@
 			<!-- topic页面样式 -->
 			<div class="topic">
 				<div class="conform">
-						<div class="butrr">
-							<div class="buttopr">
-								<a href="purchaseOrder/getSuppliers" >添加</a>
-							</div>	
-						</div>
+					<div class="buttopr">
+							<a href="jsp/supplieradd.jsp" >添加</a>
+						</div>	
 				</div>
 				<!-- topic表格 显示 -->
 				<div class="conShow">
-					
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="366px" class="tdColor tdC">编号</td>
-							<td width="300px" class="tdColor">采购内容</td>
-							<td width="150px" class="tdColor">采购日期</td>
-							<td width="150px" class="tdColor">供应商</td>
-							<td width="155px" class="tdColor">交货方式</td>
-							<td width="150px" class="tdColor">交货时间</td>
-							<td width="100px" class="tdColor">付款状态</td>
-							<td width="80px" class="tdColor">操作</td>
+							<td width="56px" class="tdColor tdC">编号</td>
+							<td width="200px" class="tdColor">供应商名称</td>
+							<td width="120px" class="tdColor">联系人</td>
+							<td width="200px" class="tdColor">电话</td>
+							<td width="255px" class="tdColor">传真</td>
+							<td width="250px" class="tdColor">邮箱</td>
+							<td width="220px" class="tdColor">备注</td>
+							<td width="180px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${purchaseOrderList }" var="po">
-						
+						<c:forEach items="${supplierList }" var="s" varStatus="c">
 						<tr>
-							<td>${po.orderPurchaseId }</td>
-							<td>${po.orderPurchaseTitle }</td>
-							<td>
-								<fmt:formatDate value="${po.orderPurchaseTime }" pattern="yyyy-MM-dd  HH:MM:ss"/>
-							</td>
-							<td>${po.supplierBean.supplierName }</td>
-							<td>${po.orderPurchaseBusinessType }</td>
-							<td>
-								<fmt:formatDate value="${po.orderPurchaseBusinessTime }" pattern="yyyy-MM-dd  HH:MM:ss"/>
-							</td>
-							<c:if test="${po.orderPurchaseState !=2 }">
-								<td>未付款</td>
-							</c:if>
 							
-							<td><a href="purchaseOrder/find?orderPurchaseId=${po.orderPurchaseId  }"><img class="operation"
+							<td>${c.count }<input type="hidden" name="supplierId" id="sid" value="${s.supplierId }"></td>
+							<td>${s.supplierName }</td>
+							<td>${s.supplierContact }</td>
+							<td>${s.supplierPhone }</td>
+							<td>${s.supplierFax }</td>
+							<td>${s.supplierEmail }</td>
+							<td>${s.supplierInfo }</td>
+							<td><a href="supplier/find?supplierId=${s.supplierId }"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
 								src="img/delete.png"></td>
 						</tr>
@@ -94,7 +80,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="" class="ok yes">确定</a><a class="ok no">取消</a>
+				<button class="ok yes" id="yesr">确定</button><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>
@@ -113,5 +99,6 @@ $(".no").click(function(){
   $(".banDel").hide();
 });
 // 广告弹出框 end
+
 </script>
 </html>

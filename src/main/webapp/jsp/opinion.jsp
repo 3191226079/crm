@@ -55,10 +55,13 @@
 							<td>${p.stockBean.commodityName }</td>
 							<td>${p.stockBean.description }</td>
 							<td>${p.stockBean.warehouseBean.warehouseName }</td>
-							<td>${p.detailPurchaseBean.productNum }</td>
+							<td>${p.companyId }</td>
 							<c:choose>
 								<c:when test="${p.purchaseState==1 }">
 									<td>采购中</td>
+								</c:when>
+								<c:when test="${p.purchaseState==0 }">
+									<td>待采购</td>
 								</c:when>
 							</c:choose>
 							<td><a href="purchase/find?purchaseId=${p.purchaseId }"><img class="operation"

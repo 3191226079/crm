@@ -235,7 +235,7 @@
   	INNER JOIN stock s on s.commodity_number = p.product_id 
   	INNER JOIN warehouse w ON w.warehouse_number = s.warehouse_number 
   	INNER JOIN detail_purchase dp ON dp.product_id = s.commodity_number
-  	WHERE p.company_id = #{companyId} AND p.purchase_state!=0
+  	where p.purchase_state!=5
   
   </select>
   <select id="findByPrimaryKey" parameterType="com.sc.crmsys.bean.PurchaseBean" resultMap="BRMap">
@@ -276,7 +276,7 @@
   <update id="updateState" parameterType="com.sc.crmsys.bean.PurchaseBean">
     update purchase
     set 
-      purchase_state = 0,
+      purchase_state = 5,
       purchase_update_time = #{purchaseUpdateTime,jdbcType=TIMESTAMP}
     where purchase_id = #{purchaseId,jdbcType=VARCHAR}
   </update>

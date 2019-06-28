@@ -18,4 +18,6 @@ public interface SupplierBeanMapper {
     int updateByPrimaryKey(SupplierBean record);
     
     List<SupplierBean> getSupplier();
+    
+    void updateState(String supplierId);
 }

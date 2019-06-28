@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,9 +38,21 @@ public class OrderPurchaseBean {
     
     private SupplierBean supplierBean;
     
+    private List<DetailPurchaseBean> detailPurchaseList;
+    
+    
+    
     
 
-    public SupplierBean getSupplierBean() {
+    public List<DetailPurchaseBean> getDetailPurchaseList() {
+		return detailPurchaseList;
+	}
+
+	public void setDetailPurchaseList(List<DetailPurchaseBean> detailPurchaseList) {
+		this.detailPurchaseList = detailPurchaseList;
+	}
+
+	public SupplierBean getSupplierBean() {
 		return supplierBean;
 	}
 

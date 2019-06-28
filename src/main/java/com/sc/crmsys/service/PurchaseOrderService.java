@@ -9,15 +9,15 @@ import com.sc.crmsys.bean.SupplierBean;
 
 public interface PurchaseOrderService {
 
-	List<OrderPurchaseBean> getPurchaseOrder(String companyId);
+	List<OrderPurchaseBean> getPurchaseOrder();
 	
 	void delPurchaseOrder(String orderPurchaseId,Date orderPurchaseUpdateTime);
 	
-	void updatePurchaseOrder();
+	void updatePurchaseOrder(OrderPurchaseBean orderPurchaseBean);
 	
+	OrderPurchaseBean find(String orderPurchaseId);
 	
-	
-	void addPurchaseOrder(OrderPurchaseBean orderPurchaseBean,SupplierBean supplierBean,DetailPurchaseBean detailPurchaseBean);
+	void addPurchaseOrder(OrderPurchaseBean orderPurchaseBean);
 
 	
 	

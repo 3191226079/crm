@@ -18,6 +18,21 @@
 	width: 50px;
 	margin-left: 15px;
 }
+.blankr3
+{
+	width: 50px;
+	margin-left: -13px;
+}
+.blankr4
+{
+	width: 50px;
+	margin-left: 10px;
+}
+.bls_g
+{
+	
+	
+}
 .btextr
 {
 	margin-top: -15px;
@@ -40,9 +55,10 @@
 .baBody_r
 {
 	width: 100%;
-	height: 2000px;
+	height: 1500px;
 	margin-top: 20px;
 	margin-left: 90px;
+
 }
 .table_r
 {
@@ -100,5 +116,30 @@
 	margin: 5px;
 	
 }
+.backr
+{
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #3695cc;
+	color: #fff;
+	margin-top: 50px;
+	margin-right: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+	margin-bottom: 160px;
+	border: none;
+	display:show;
+}
+.conShowr {
+	
+	display: none;
+	z-index: 999;
+	
+}
+
+
+
 
 

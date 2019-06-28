@@ -35,24 +35,16 @@ public class PurchaseServiceImpl implements PurchaseService{
 	private StockBeanMapper stockBeanMapper;
 
 	@Override
-	public List<PurchaseBean> getPurchase(String companyId) {
-		List<PurchaseBean> purchaselist = purchaseBeanMapper.getByPrimaryKey(companyId);
+	public List<PurchaseBean> getPurchase() {
+		List<PurchaseBean> purchaselist = purchaseBeanMapper.getByPrimaryKey();
 		return purchaselist;
 	}
 
 	@Override
-	public void addPurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean)
+	public void addPurchase(PurchaseBean purchaseBean)
  {
-		
-		
-		
 		//插入数据
 		purchaseBeanMapper.insert(purchaseBean);
-		
-		detailPurchaseBeanMapper.insert(detailPurchaseBean);
-		
-		orderPurchaseBeanMapper.insert(orderPurchaseBean);
-		
 	}
 
 	
