@@ -35,7 +35,7 @@ $(function (){
 </script>
 </head>
 
-<body>
+<body onload="page()">
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
@@ -54,7 +54,7 @@ $(function (){
 						
 						
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
+						
 					
 							<td width="200px" class="tdColor">客户姓名</td>
 							<td width="200px" class="tdColor">上级单位</td>
@@ -66,13 +66,13 @@ $(function (){
 							<td width="300px" class="tdColor">客户邮箱</td>
 							<td width="300px" class="tdColor">联系时间</td>
 							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
+							
 							<td width="300px" class="tdColor">修改时间</td>
 							<td width="300px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${getonemonth}" var="today1">		
+						<c:forEach items="${getonemonthday.list}" var="today1">		
 				 		<tr>
-				 		<td>${today1.customerId}</td>
+				
 				 		<td>${today1.customerName}</td>
 				 		<td>${today1.customerUpDepartment}</td>
 				 		<td>${today1.customerContactPerson}</td>
@@ -85,7 +85,7 @@ $(function (){
 				 			<fmt:formatDate value="${today1.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		<td>${today1.customerInfo}</td>
-				 		<td>${today1.companyId}</td>
+				 		
 				 		<td>
 				 			<fmt:formatDate value="${today1.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
@@ -95,7 +95,7 @@ $(function (){
 				 		</c:forEach>
 
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				
 				</div>
 				<!-- user 表格 显示 end-->
@@ -139,8 +139,77 @@ $(document).ready(function(){
 
 	function deleteSa(customerId) 
 	{
-		console.log(customerId);
+		
 		document.getElementById("sure").href = 'today/delmm?customerId=' + customerId;	
 	}
-</script>
-</html>
+	function page()
+	{
+        var td = document.getElementById('div');
+        if(${getonemonthday.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'today/getonemonthday?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${getonemonthday.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${getonemonthday.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'today/getonemonthday?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getonemonthday.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${getonemonthday.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${getonemonthday.pageNum}+i-5 <= ${getonemonthday.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${getonemonthday.pageNum}+i-5;
+					a.href = 'today/getonemonthday?pn=' + (${getonemonthday.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getonemonthday.pageNum} == (${getonemonthday.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${getonemonthday.pageNum } != ${getonemonthday.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'today/getonemonthday?pn=' + ${getonemonthday.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
+</html>s

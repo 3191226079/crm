@@ -65,23 +65,23 @@ $(function (){
 							<td width="110px" class="tdColor">商品编号</td>
 							<td width="300px"><input type="text" style="width: 210px"  name="goodsId" value=""></td>
 							<td width="110px" class="tdColor">商品数量</td>
-							<td width="30px"><input type="text" style="width: 210px" name="goodsNum" value=""></td>
+							<td width="30px"><input type="text" style="width: 210px" autocomplete="off" name="goodsNum" value=""></td>
 						</tr>
 						
 						
 						<tr>
 							<td width="110px" class="tdColor">商品价格</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="goodsPrice" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="goodsPrice" value=""></td>
 						
 			
 							<td width="110px" class="tdColor">备注说明</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleinfoRemarks" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="saleinfoRemarks" value=""></td>
 						
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="companyId" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="companyId" value=""></td>
 							<td width="110px" class="tdColor">最后修改时间</td>
 							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="saleinfoLastTime"></td>
 						</tr>

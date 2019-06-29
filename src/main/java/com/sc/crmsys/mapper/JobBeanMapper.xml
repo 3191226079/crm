@@ -110,6 +110,9 @@
       job_last_time = #{jobLastTime,jdbcType=TIMESTAMP}
     where job_id = #{jobId,jdbcType=VARCHAR}
   </update>
+  <select id="selectAllJobll" resultMap="BaseResultMap">
+  	select * from job
+  </select>
   
    <delete id="deleteJobs" parameterType="java.lang.String">
     delete from job

@@ -55,7 +55,7 @@
 									<img class="operation delban" src="img/update.png" onclick="update('${jobList.jobId}')">
 									</td>
 									<td class="tdColor">
-										<img class="operation delban" src="img/shanchu.png" onclick="delet('${jobList.jobId}')">
+										<img class="operation delban" src="img/delete.png" onclick="delet('${jobList.jobId}')">
 									</td>
 							</tr>
 							</c:forEach>

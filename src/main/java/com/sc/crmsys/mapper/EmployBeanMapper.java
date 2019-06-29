@@ -25,4 +25,10 @@ public interface EmployBeanMapper {
     List<EmployBean> employInfo(@Param("content")String content);
     
     EmployBean selectInfo(@Param("i")InfoBean infoBean,@Param("e")String employId);
+    
+    List<EmployBean> selectEmployAndUser();
+    
+    EmployBean selectEmployById(@Param("id")String employId);
+    
+    void updateEmployState(@Param("id")String employId);
 }

@@ -19,7 +19,7 @@
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
-<body>
+<body onload="page()">
 	
 		<div class="page">
 			<!-- banner页面样式 -->
@@ -50,7 +50,7 @@
 							<td width="200px" class="tdColor">操作</td>
 							
 						</tr>
-						<c:forEach items="${getcontactrecord}" var="getcontactrecord">
+						<c:forEach items="${getcontactrecord.list}" var="getcontactrecord">
 						<tr>
 						<td>${getcontactrecord.contactLogsId}</td>
 						<td>${getcontactrecord.contactLogsTitle}</td>
@@ -73,7 +73,7 @@
 						</tr>
 						</c:forEach>				
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				
 				</div>
 				<!-- user 表格 显示 end-->
@@ -120,5 +120,74 @@ $(document).ready(function(){
 	
 		document.getElementById("sure").href = 'getcontactrecord/del?contactLogsId=' + contactLogsId;	
 	}
-</script>
+	function page()
+	{
+        var td = document.getElementById('div');
+        if(${getcontactrecord.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'getcontactrecord/get?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${getcontactrecord.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${getcontactrecord.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'getcontactrecord/get?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getcontactrecord.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${getcontactrecord.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${getcontactrecord.pageNum}+i-5 <= ${getcontactrecord.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${getcontactrecord.pageNum}+i-5;
+					a.href = 'getcontactrecord/get?pn=' + (${getcontactrecord.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getcontactrecord.pageNum} == (${getcontactrecord.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${getcontactrecord.pageNum } != ${getcontactrecord.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'getcontactrecord/get?pn=' + ${getcontactrecord.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
 </html>

@@ -17,6 +17,7 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
+
 <body onload="page()">
 	<div id="pageAll">
 		<div class="pageTop">

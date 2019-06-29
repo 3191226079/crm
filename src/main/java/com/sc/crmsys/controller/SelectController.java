@@ -7,8 +7,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerBean;
+
 import com.sc.crmsys.service.OneMonthService;
 import com.sc.crmsys.service.SevenDayService;
 import com.sc.crmsys.service.ThreeDayService;
@@ -32,7 +35,7 @@ public class SelectController {
 	@Resource
 	private OneMonthService oneMonthService;
 	
-	@RequestMapping("/gettoday")
+/*	@RequestMapping("/gettoday")
 	public String getToday(Map<String, Object> map)
 	{
 	
@@ -41,17 +44,23 @@ public class SelectController {
 		map.put("selectToday", selectToday);
 		return "forward:/jsp/today.jsp";
 		
-	}
+		
+	}*/
 	
-	
-
 	@RequestMapping("/getthreeday")
-	public String getthreeday(Map<String, Object> map)
+	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
-		List<CustomerBean> getthreeday = threeDayService.getthreeday();
-		map.put("getthreeday", getthreeday);
-		return "forward:/jsp/threeday.jsp";
+		if(customerBean == null)
+		{
+			customerBean = new CustomerBean();
+		}
+		
+		 PageInfo<CustomerBean> getthreeday = threeDayService.selectAll(pn, size, customerBean);
+		 map.put("getthreeday", getthreeday);
+		 return "forward:/jsp/threeday.jsp";
 	}
+	
+	
 	
 	@RequestMapping("/delthreeday")
 	public String delthreeday(String customerId)
@@ -61,12 +70,21 @@ public class SelectController {
 	}
 	
 	@RequestMapping("/getsevenday")
-	public String getsevenday(Map<String, Object> map)
+	public String selectInfo2(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
-		List<CustomerBean> getsevenday = sevenDayService.getsevenday();
-		map.put("getsevenday", getsevenday);
-		return "forward:/jsp/sevenday.jsp";
+		if(customerBean == null)
+		{
+			customerBean = new CustomerBean();
+		}
+		
+		 PageInfo<CustomerBean> getsevenday = sevenDayService.selectAll(pn, size, customerBean);
+		 map.put("getsevenday", getsevenday);
+		 return "forward:/jsp/sevenday.jsp";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/delsevenday")
 	public String delsevenday(String customerId)
@@ -76,12 +94,21 @@ public class SelectController {
 	}
 	
 	@RequestMapping("/getonemonthday")
-	public String getonemonthday(Map<String , Object> map)
+	public String selectInfo3(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
-		List<CustomerBean> getonemonth = oneMonthService.getonemonth();
-		map.put("getonemonth", getonemonth);
-		return "forward:/jsp/onemonth.jsp";
+		if(customerBean == null)
+		{
+			customerBean = new CustomerBean();
+		}
+		
+		 PageInfo<CustomerBean> getonemonthday = oneMonthService.selectAll(pn, size, customerBean);
+		 map.put("getonemonthday", getonemonthday);
+		 return "forward:/jsp/onemonth.jsp";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping("/delmm")
 	public String delmm(String customerId)
@@ -97,4 +124,16 @@ public class SelectController {
 	  return "redirect:gettoday";
 	}
 	
+	@RequestMapping("/gettoday")
+	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
+	{
+		if(customerBean == null)
+		{
+			customerBean = new CustomerBean();
+		}
+		
+		 PageInfo<CustomerBean> selectAll = todayService.selectAll(pn, size, customerBean);
+		 map.put("selectAll", selectAll);
+		 return "forward:/jsp/today.jsp";
+	}
 }

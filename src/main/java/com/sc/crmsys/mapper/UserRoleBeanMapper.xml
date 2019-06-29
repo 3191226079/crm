@@ -90,4 +90,7 @@
       user_role_update_time = #{userRoleUpdateTime,jdbcType=TIMESTAMP}
     where user_role_id = #{userRoleId,jdbcType=VARCHAR}
   </update>
+  <update id="updateUserRole">
+  	update user_role set role_number = #{rid} where user_id = #{uid}
+  </update>
 </mapper>

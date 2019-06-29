@@ -16,8 +16,18 @@ public class CustomerLoseBean {
     private String companyId;
 
     private Date customerLoseLastTime;
+    
+    private CustomerBean customerBean;
 
-    public String getCustomerLoseId() {
+    public CustomerBean getCustomerBean() {
+		return customerBean;
+	}
+
+	public void setCustomerBean(CustomerBean customerBean) {
+		this.customerBean = customerBean;
+	}
+
+	public String getCustomerLoseId() {
         return customerLoseId;
     }
 

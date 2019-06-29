@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.RoleBean;
 
 public interface RoleBeanMapper {
@@ -14,4 +16,6 @@ public interface RoleBeanMapper {
     int updateByPrimaryKeySelective(RoleBean record);
 
     int updateByPrimaryKey(RoleBean record);
+    
+    List<RoleBean> selectAllRole();
 }
