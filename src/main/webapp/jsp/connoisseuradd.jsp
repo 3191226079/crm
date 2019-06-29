@@ -79,7 +79,7 @@
 		padding-top: 50px;
 		display: none;
 		position: relative;
-		bottom: 0px;
+		bottom: -55px;
 	}
 	.barBody
 	{
@@ -90,6 +90,7 @@
 		margin: 0 auto;
 		padding-left: 200px;
 		background-color: white;
+		
 	}
 	.bbD_r {
 	margin-top: 20px;
