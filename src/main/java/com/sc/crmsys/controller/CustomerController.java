@@ -23,8 +23,6 @@ public class CustomerController {
 	{
 		
 		List<CustomerBean> list = customerService.getcustomerIdInfo();
-		System.out.println(list.size());
-		//System.out.println(customerId2);
 		map.put("list", list);
 		return "forward:/jsp/outsaleout.jsp";
 		

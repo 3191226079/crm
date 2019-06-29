@@ -12,6 +12,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +39,7 @@ public class SignController {
 	 * 得到所有用户的签到信息
 	 * 返回List<SignBean>的数据集合到sign.jsp页面
 	 */
-	@SuppressWarnings("deprecation")
+	@RequiresPermissions("huguan:sign")
 	@RequestMapping("/info")
 	public String signInfo(Map map,SignBean sign)
 	{

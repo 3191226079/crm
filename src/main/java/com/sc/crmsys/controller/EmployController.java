@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,7 @@ public class EmployController {
 	@Resource
 	private InfoService infoService;
 	
+	@RequiresPermissions("luolu:seepersoninfo")
 	@RequestMapping("/selectEmploy")
 	public String selectInfo(Map<String, Object> map,InfoBean infoBean,EmployBean employBean)
 	{
@@ -50,6 +52,7 @@ public class EmployController {
 		return "forward:/jsp/employLook.jsp";
 	}
 	
+	@RequiresPermissions("luolu:seepersoninfo")
 	@RequestMapping("/deleteInfo")
 	public String delete(String infoDetailId,String infoId)
 	{
@@ -57,6 +60,7 @@ public class EmployController {
 		return "redirect:selectEmploy";
 	}
 	
+	@RequiresPermissions("zhangheng:adduser")
 	@RequestMapping("/jumpToAddEmploy")
 	public String jumpToAddEmploy(Map<String, Object> map)
 	{
@@ -67,6 +71,7 @@ public class EmployController {
 		return "jsp/addEmploy";
 	}
 	
+	@RequiresPermissions("zhangheng:adduser")
 	@RequestMapping("/addEmploy")
 	public String addEmploy(EmployBean employBean, String roleNumber, UserBean userBean,@RequestParam(value="uploadImg")MultipartFile[] uploadImg, HttpServletRequest req)
 	{
@@ -121,6 +126,7 @@ public class EmployController {
 		return "redirect:showEmployll";
 	}
 	
+	@RequiresPermissions("zhangheng:userlist")
 	@RequestMapping("/showEmployll")
 	public String showEmployll(@RequestParam(defaultValue="1")Integer pn, @RequestParam(defaultValue="5")Integer size, Map<String, Object> map)
 	{
@@ -129,6 +135,7 @@ public class EmployController {
 		return "jsp/showEmploy";
 	}
 	
+	@RequiresPermissions("zhangheng:updateuser")
 	@RequestMapping("/jumpToUpdateEmploy")
 	public String jumpToUpdateEmploy(Map<String, Object> map, String employId)
 	{
@@ -141,6 +148,7 @@ public class EmployController {
 		return "jsp/updateEmploy";
 	}
 	
+	@RequiresPermissions("zhangheng:updateuser")
 	@RequestMapping("/updateEmploy")
 	public String updateEmploy(EmployBean employBean, String userIdll, String roleNumber,@RequestParam(value="uploadImg")MultipartFile[] uploadImg, HttpServletRequest req)
 	{
@@ -181,6 +189,7 @@ public class EmployController {
 		return "redirect:showEmployll";
 	}
 	
+	@RequiresPermissions("zhangheng:deleteuser")
 	@RequestMapping("/deleteEmploy")
 	public String deleteEmploy(String employId)
 	{

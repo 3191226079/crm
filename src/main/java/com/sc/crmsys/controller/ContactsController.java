@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class ContactsController {
 	@Resource
 	private ContactsService contactsService;
 	
-
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get")
 	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ContactsBean contactsBean,Map<String, Object> map)
 	{
@@ -38,6 +39,7 @@ public class ContactsController {
 		 return "forward:/jsp/contacts1.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/add1")
 	public String add(ContactsBean contactsBean)
 	{
@@ -45,6 +47,7 @@ public class ContactsController {
 		return "redirect:/add1/get";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get1")
 	public String get1(String contactsId,Map<String, Object> map)
 	{
@@ -52,6 +55,8 @@ public class ContactsController {
 		map.put("get1", get1);
 		return "forward:/jsp/get1contacts.jsp";
 	}
+	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get2")
 	public String get2(String contactsId,Map<String, Object> map)
 	{
@@ -60,6 +65,7 @@ public class ContactsController {
 		return "forward:/jsp/get2contacts.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update")
 	public String update(ContactsBean contactsBean)
 	{
@@ -69,7 +75,7 @@ public class ContactsController {
 	
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update1")
 	public String update1(ContactsBean contactsBean)
 	{
@@ -77,6 +83,7 @@ public class ContactsController {
 		return "redirect:get";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/addzhuan")
 	public String addcontacts1(String customerId,Map<String, Object> map)
 	{
@@ -105,6 +112,7 @@ public class ContactsController {
 		return "forward:/jsp/checkcontacts.jsp";
 	}
 	*/
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/check")
 	public String check(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ContactsBean contactsBean,Map<String, Object> map)
 	{

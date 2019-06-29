@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -24,28 +25,21 @@ public class CustomerLoseController {
 	@Resource
 	private CustomerLoseService customerLoseService;
 	
-	
 
-	
-
-
-
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/select")
 	public String select(String customerLoseId,Map<String, Object> map)
 	{
-			
-		
 		CustomerLoseBean selectcustomerlose = customerLoseService.selectcustomerlose(customerLoseId);
 		map.put("selectcustomerlose", selectcustomerlose);
 		
 		return "forward:/jsp/selectcustomerlose.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/select1")
 	public String select1(String customerLoseId,Map<String, Object> map)
 	{
-			
 		
 		CustomerLoseBean selectcustomerlose = customerLoseService.selectcustomerlose(customerLoseId);
 		map.put("selectcustomerlose", selectcustomerlose);
@@ -53,6 +47,7 @@ public class CustomerLoseController {
 		return "forward:/jsp/selectcustomerlose1.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update")
 	public String update(CustomerLoseBean customer)
 	{
@@ -60,7 +55,7 @@ public class CustomerLoseController {
 		return "redirect:getcustomerlose";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update1")
 	public String update1(CustomerLoseBean customer)
 	{
@@ -68,7 +63,7 @@ public class CustomerLoseController {
 		return "redirect:getconfirmationofloss";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/getconfirmationofloss")
 	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
 	{
@@ -95,7 +90,7 @@ public class CustomerLoseController {
 	}
 
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del")
 	public String del(String customerLoseId)
 	{
@@ -103,7 +98,7 @@ public class CustomerLoseController {
 		return "redirect:getconfirmationofloss";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/getcustomerlose")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
 	{
@@ -117,6 +112,7 @@ public class CustomerLoseController {
 		 return "forward:/jsp/customerlose.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/selectlose")
 	public String selectlose(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
 	{

@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,7 @@ public class AddController {
 	private CustomerService customerService;
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/add2")
 	public String add(CustomerBean customer)
 	{
@@ -47,7 +48,7 @@ public class AddController {
 		
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get")
 	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
@@ -66,7 +67,7 @@ public class AddController {
 	
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get1")
 	public String get1(String customerId,Map<String, Object> map)
 	{
@@ -75,7 +76,7 @@ public class AddController {
 		return "forward:/jsp/get1customer.jsp";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update1")
 	public String updatecu(CustomerBean customerBean)
 	{
@@ -85,13 +86,15 @@ public class AddController {
 	}
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del")
 	public String delss(String customerId)
 	{
 		customerService.del(customerId);
 		return "redirect:get";
 	}
+	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del1")
 	public String delss1(String customerId)
 	{

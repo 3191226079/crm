@@ -68,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</td>
 						</tr>
 						<tr>
-							<td>商品数量</td>
+							<td>商品类型</td>
 							<td><input type="text" name="commodityType"></td>
 						</tr>
 						<tr>
@@ -125,7 +125,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</table>
 				<div class="bbD">
 					<p class="bbDP">
-						<button class="btn_ok btn_yes" href="#">提交</button>
+						<!-- <button class="btn_ok btn_yes" href="#">提交</button> -->
+						<input type="submit" class="btn_ok btn_yes" value="提交">
 						<a class="btn_ok btn_no" href="#">取消</a>
 					</p>
 				</div>

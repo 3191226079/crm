@@ -49,7 +49,6 @@ public class SaleoutController {
 		Date date = new Date();
 		saleOutBean.setSaleoutTime(date);
 		
-		System.out.println(saleOutBean.getSaleoutId());
 		saleoutService.addsaleout(saleOutBean);
 		return "redirect:/jsp/outsaleinfo.jsp";
 		

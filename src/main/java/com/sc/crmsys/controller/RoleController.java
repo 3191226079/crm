@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,7 @@ public class RoleController {
 	@Resource
 	private RoleService roleServiceImpl;
 	
+	@RequiresPermissions("zhangheng:addrole")
 	@RequestMapping("/addrole")
 	public String addrole(Map<String, Object> map)
 	{
@@ -37,6 +39,7 @@ public class RoleController {
 		return "jsp/addrole";
 	}
 	
+	@RequiresPermissions("zhangheng:addrole")
 	@RequestMapping("/insertRole")
 	public String insertRole(RoleBean roleBean, String result[])
 	{
@@ -47,6 +50,7 @@ public class RoleController {
 		return "redirect:showRole";
 	}
 	
+	@RequiresPermissions("zhangheng:rolelist")
 	@RequestMapping("/showRole")
 	public String showRole(@RequestParam(defaultValue="1")Integer pn, @RequestParam(defaultValue="5")Integer size, Map<String, Object> map)
 	{
@@ -55,6 +59,7 @@ public class RoleController {
 		return "jsp/showrole";
 	}
 	
+	@RequiresPermissions("zhangheng:updaterole")
 	@RequestMapping("/jumpToUpdateRole")
 	public String jumpToUpdateRole(Map<String, Object> map, String roleNumber)
 	{
@@ -108,6 +113,7 @@ public class RoleController {
 		return "jsp/updateRole";
 	}
 	
+	@RequiresPermissions("zhangheng:updaterole")
 	@RequestMapping("/updateRole")
 	public String updateRole(RoleBean roleBean, String result[])
 	{
@@ -115,6 +121,7 @@ public class RoleController {
 		roleServiceImpl.updateRole(roleBean, result);
 		return "redirect:showRole";
 	}
+	
 	
 	@RequestMapping("/getUserPMS")
 	public String getUserPMS(Map<String, Object> map)
