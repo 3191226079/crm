@@ -35,6 +35,7 @@ public class ActiveController {
 	public String selectActive(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,String activeTitle,Map<String, Object> data)
 	{
 		PageInfo<ActiveBean> activeBean1 = activeService.selectAll(pn,size,activeTitle);
+		data.put("title", activeTitle);
 		data.put("activeBean1", activeBean1);
 		return "forward:/jsp/lookSchedule.jsp";
 	}

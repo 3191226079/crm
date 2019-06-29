@@ -19,11 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.EmployBean;
 import com.sc.crmsys.bean.InfoBean;
+import com.sc.crmsys.bean.InfoDetailBean;
 import com.sc.crmsys.bean.JobBean;
 import com.sc.crmsys.bean.RoleBean;
 import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.bean.UserRoleBean;
 import com.sc.crmsys.service.EmployService;
+import com.sc.crmsys.service.InfoService;
 import com.sc.crmsys.utils.MyUtils;
 
 @Controller
@@ -33,6 +35,9 @@ public class EmployController {
 	@Resource
 	private EmployService employServiceImpl;
 	
+	@Resource
+	private InfoService infoService;
+	
 	@RequestMapping("/selectEmploy")
 	public String selectInfo(Map<String, Object> map,InfoBean infoBean,EmployBean employBean)
 	{
@@ -40,9 +45,7 @@ public class EmployController {
 		UserBean userBean = (UserBean)subject.getPrincipal();
 		employBean.setEmployId(userBean.getEmployId());
 		employServiceImpl.update(employBean.getEmployId());
-		System.out.println("bbbb");
 		EmployBean selectInfo = employServiceImpl.selectInfo(infoBean,employBean.getEmployId());
-		System.out.println("aaaa");
 		map.put("selectInfo", selectInfo);
 		return "forward:/jsp/employLook.jsp";
 	}

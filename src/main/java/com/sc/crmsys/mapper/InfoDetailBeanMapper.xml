@@ -23,13 +23,7 @@
   	SELECT * FROM info_detail id INNER JOIN info ins ON id.info_id = ins.info_id INNER JOIN employ em on id.employ_id = em.employ_id 
   	<where>
   		<if test="i.infoBean.infoTitle != null">
-  			info_title like '%${i.infoBean.infoTitle}%'
-  		</if>
-  		<if test="i.employBean.employName != null">
-  			or employ_name like '%${i.employBean.employName}%'
-  		</if>
-  		<if test="i.employBean.employPhone != null">
-  			or employ_phone like '%${i.employBean.employPhone}%'
+  			info_title like '%${i.infoBean.infoTitle}%' or employ_name like '%${i.infoBean.infoTitle}%' or employ_phone like '%${i.infoBean.infoTitle}%'
   		</if>
   	</where>
   </select>
@@ -143,18 +137,9 @@
     </set>
     where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.InfoDetailBean">
-    update info_detail
-    set info_id = #{infoId,jdbcType=VARCHAR},
-      employ_id = #{employId,jdbcType=VARCHAR},
-      info_detail_state = #{infoDetailState,jdbcType=VARCHAR},
-      company_id = #{companyId,jdbcType=VARCHAR},
-      info_detail_update_time = #{infoDetailUpdateTime,jdbcType=TIMESTAMP}
-    where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
-  </update>
   
   <update id="update">
-  	update info_detail set info_detail_state = '1' where employ_id = #{e}
+  	update info_detail set info_detail_state = '0' where employ_id = #{e}
   </update>
   
 </mapper>

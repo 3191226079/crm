@@ -32,7 +32,7 @@
 				<div class="conform">
 					<form action="active/selectActive" method="post" id="myll">
 						<div class="cfD">
-							<input class="addUser"  autocomplete="off"  name="activeTitle" type="text" placeholder="日程主题" />
+							<input class="addUser"  autocomplete="off" value="${title }"  name="activeTitle" type="text" placeholder="日程主题" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myll').submit()};" >搜索</button> -->
 							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1" href="jsp/addSchedule.jsp">添加日程</a>

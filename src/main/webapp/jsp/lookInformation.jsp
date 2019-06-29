@@ -31,9 +31,9 @@
 				<div class="conform" id="myll12138">
 					<form action="info/selectInfo" id="forms" method="post">
 						<div class="cfD">
-							<input type="hidden" name="employBean.employPhone" v-model="myresult">
-							<input type="hidden" name="employBean.employName" v-model="myresult">
-							<input class="addUser" name="infoBean.infoTitle"  autocomplete="off" v-model="myresult" type="text" placeholder="输入接收者/主题/联系电话" />
+							<!-- <input type="hidden" name="employBean.employPhone" v-model="myresult">
+							<input type="hidden" name="employBean.employName" v-model="myresult"> -->
+							<input class="addUser" value="${title }" name="infoBean.infoTitle"  autocomplete="off"  type="text" placeholder="输入接收者/主题/联系电话" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('forms').submit()};">搜索</button> -->
 							<input class="button" value="搜索" type="submit">
 							<a class="addA addA1" href="info/jumptosend">发送短信</a>
@@ -99,13 +99,13 @@
 </body>
 	<script type="text/javascript" src="js/vue.min.js"></script>
 	<script type="text/javascript">
-	new Vue({
+	/* new Vue({
 		el:'#myll12138',
 		data:
 		{
 			myresult:''
 		}
-	});
+	}); */
 	// 广告弹出框
 	$(".delban").click(function(){
 	  $(".banDel").show();

@@ -17,7 +17,7 @@ public interface InfoDetailBeanMapper {
 
     int updateByPrimaryKeySelective(InfoDetailBean record);
 
-    int updateByPrimaryKey(InfoDetailBean record);
+    void updateByPrimaryKey(@Param("i")String infoDetailId);
     
     List<InfoDetailBean> selectAll(@Param("i")InfoDetailBean infoDetailBean);
     

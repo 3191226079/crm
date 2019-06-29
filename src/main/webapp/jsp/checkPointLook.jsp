@@ -31,7 +31,7 @@
 				<div class="conform">
 					<form action="checkPoint/selectCheckPoint" method="post" id="myForm">
 						<div class="cfD">
-							<input class="addUser" autocomplete="off" name="checkPointTarget" type="text" placeholder="考核名称" />
+							<input class="addUser" autocomplete="off" name="checkPointTarget" value="${checkPointTarget }" type="text" placeholder="考核名称" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myForm').submit()};">搜索</button> -->
 							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1" href="jsp/checkPointAdd.jsp">添加指标</a>
