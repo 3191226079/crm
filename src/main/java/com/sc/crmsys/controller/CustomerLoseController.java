@@ -26,16 +26,6 @@ public class CustomerLoseController {
 	private CustomerLoseService customerLoseService;
 	
 	
-
-	@RequestMapping("/getcustomerlose")
-	
-	public String getcustomerlose(Map<String, Object> map)
-	{
-		List<CustomerLoseBean> customerlose = customerLoseService.getcustomerlose();
-		map.put("customerlose", customerlose);
-		return "forward:/jsp/customerlose.jsp";
-	}
-
 	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/select")
 	public String select(String customerLoseId,Map<String, Object> map)
