@@ -95,13 +95,6 @@ public class PurchaseOrderController {
 		return map;
 	}
 	
-	public String update()
-	{
-		
-		
-		return "";
-	}
-	
 	@RequestMapping("/find")
 	public String find(Map<String, Object> data,String orderPurchaseId)
 	{
