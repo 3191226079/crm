@@ -123,6 +123,16 @@ public class PurchaseController {
 		return "redirect:/purchase/select";
 	}
 	
+
+	@RequestMapping("selectAll")
+	public String selectAll(Map<String, Object> data,PurchaseBean purchaseBean)
+	{
+		List<PurchaseBean> selcetPurchaseAll = purchaseService.selcetPurchaseAll(purchaseBean);
+		data.put("selcetPurchaseAll", selcetPurchaseAll);
+		return null;
+		
+	}
+
 	@RequestMapping("/getStockes")
 	public String getStockes(Map<String, Object> data)
 	{
@@ -131,5 +141,5 @@ public class PurchaseController {
 		return "forward:/jsp/banneradd.jsp";
 	}
 	
-	
+
 }

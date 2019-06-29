@@ -52,6 +52,12 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 
 
 	@Override
+
+	public List<CustomerLoseBean> getSelectCustomerlose() {
+		List<CustomerLoseBean> getcustomerlose = customerLoseBeanMapper.getcustomerlose();
+		return getcustomerlose;
+	}
+
 	public void del(String customerLoseId) {
 		customerLoseBeanMapper.deleteByPrimaryKey(customerLoseId);
 		
@@ -98,6 +104,7 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 	
 	
 	
+
 
 
 	

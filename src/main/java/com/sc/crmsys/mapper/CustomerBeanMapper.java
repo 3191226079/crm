@@ -46,5 +46,7 @@ public interface CustomerBeanMapper {
     public List<CustomerBean> selectthree(@Param("c")Date earlytime,@Param("d")Date latetime);
     public List<CustomerBean> selectseven(@Param("c")Date earlytime,@Param("d")Date latetime);
     public List<CustomerBean> selectonemonth(@Param("c")Date earlytime,@Param("d")Date latetime);
+    //查询客户编号
+    List<CustomerBean>  getcustomerIdInfo();
    
 }

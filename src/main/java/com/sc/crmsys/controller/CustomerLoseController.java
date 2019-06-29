@@ -8,10 +8,13 @@ import javax.annotation.Resource;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.github.pagehelper.PageInfo;
-import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
 import com.sc.crmsys.service.CustomerLoseService;
 
@@ -23,6 +26,15 @@ public class CustomerLoseController {
 	private CustomerLoseService customerLoseService;
 	
 	
+
+	@RequestMapping("/getcustomerlose")
+	
+	public String getcustomerlose(Map<String, Object> map)
+	{
+		List<CustomerLoseBean> customerlose = customerLoseService.getcustomerlose();
+		map.put("customerlose", customerlose);
+		return "forward:/jsp/customerlose.jsp";
+	}
 
 	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/select")
@@ -78,7 +90,18 @@ public class CustomerLoseController {
 		 return "forward:/jsp/confirmationofloss.jsp";
 	}
 	
-	
+
+	@RequestMapping("getselectcostom")
+	@ResponseBody
+	//把结果转换成json
+	public Map<String, Object> getAll(Map<String, Object> map)
+	{
+		List<CustomerLoseBean> selectCustomerlose = customerLoseService.getSelectCustomerlose();
+		map.put("selectCustomerlose", selectCustomerlose);
+		return map;
+		
+	}
+
 	
 	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del")
@@ -114,5 +137,6 @@ public class CustomerLoseController {
 		 return "forward:/jsp/overtime.jsp";
 	}
 	
+
 
 }

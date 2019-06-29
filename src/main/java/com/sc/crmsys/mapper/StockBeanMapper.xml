@@ -29,10 +29,25 @@
     from stock
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectStock" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from stock
+  </select>
+ 
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from stock
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </delete>
+  
+  <delete id="deleteStockId" parameterType="java.lang.String">
+    delete from stock
+    where commodity_name = #{commodityName,jdbcType=VARCHAR}
+  </delete>
+  
+  
   <insert id="insert" parameterType="com.sc.crmsys.bean.StockBean">
     insert into stock (commodity_number, commodity_name, commodity_type, 
       description, unit, warehouse_number, 
@@ -45,6 +60,11 @@
       #{salePrice,jdbcType=VARCHAR}, #{postscript,jdbcType=VARCHAR}, #{companyId,jdbcType=VARCHAR}, 
       #{stockLastTime,jdbcType=TIMESTAMP})
   </insert>
+
+  
+  
+  
+  
   <insert id="insertSelective" parameterType="com.sc.crmsys.bean.StockBean">
     insert into stock
     <trim prefix="(" suffix=")" suffixOverrides=",">

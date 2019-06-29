@@ -81,9 +81,11 @@ SELECT customer_id FROM saleout WHERE PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'),DATE
   
   </select>
   
+  <!-- resultType="java.lang.String" -->
+  <select id="getcustomerIdInfo"  resultMap="BaseResultMap">
+  	select * from customer
+  </select>
   
-  
- 
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

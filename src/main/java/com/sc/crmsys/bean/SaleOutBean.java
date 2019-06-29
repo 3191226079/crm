@@ -18,10 +18,40 @@ public class SaleOutBean {
     private String saleoutState;
 
     private String saleState;
+    
+    private StockBean stockBean1;
+    
+    private StockBean stockBeanss;
 
-    private String saleoutRemarks;
+    public StockBean getStockBean1() {
+		return stockBean1;
+	}
+
+	public void setStockBean1(StockBean stockBean1) {
+		this.stockBean1 = stockBean1;
+	}
+
+	public StockBean getStockBeanss() {
+		return stockBeanss;
+	}
+
+	public void setStockBeanss(StockBean stockBeanss) {
+		this.stockBeanss = stockBeanss;
+	}
+
+	public StockBean getStockBean() {
+		return stockBean1;
+	}
+
+	public void setStockBean(StockBean stockBean) {
+		this.stockBean1 = stockBean;
+	}
+
+	private String saleoutRemarks;
 
     private Date saleoutLastTime;
+    
+    private StockBean stockBean;
 
     public String getSaleoutId() {
         return saleoutId;
@@ -102,4 +132,14 @@ public class SaleOutBean {
     public void setSaleoutLastTime(Date saleoutLastTime) {
         this.saleoutLastTime = saleoutLastTime;
     }
+
+	@Override
+	public String toString() {
+		return "SaleOutBean [saleoutId=" + saleoutId + ", customerId=" + customerId + ", companyId=" + companyId
+				+ ", saleoutTime=" + saleoutTime + ", saleoutInvoce=" + saleoutInvoce + ", saleoutPrice=" + saleoutPrice
+				+ ", saleoutState=" + saleoutState + ", saleState=" + saleState + ", stockBean1=" + stockBean1
+				+ ", stockBeanss=" + stockBeanss + ", saleoutRemarks=" + saleoutRemarks + ", saleoutLastTime="
+				+ saleoutLastTime + ", stockBean=" + stockBean + "]";
+	}
+    
 }

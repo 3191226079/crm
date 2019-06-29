@@ -24,6 +24,14 @@ public class CustomerServiceImpl  implements CustomerService{
 	private CustomerBeanMapper customerBeanMapper;
 	
 	@Override
+	public List<CustomerBean> getcustomerIdInfo() {
+		List<CustomerBean> getcustomerId = customerBeanMapper.getcustomerIdInfo();
+		return getcustomerId;
+	}
+
+	
+	
+	@Override
 	public PageInfo<CustomerBean> selectAll(Integer pn, Integer size, CustomerBean customerBean) {
 		PageHelper.startPage(pn, size);
 		String token = UUID.randomUUID().toString();

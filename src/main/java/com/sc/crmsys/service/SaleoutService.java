@@ -2,6 +2,7 @@ package com.sc.crmsys.service;
 
 import java.util.List;
 
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.SaleOutBean;
 
 public interface SaleoutService {
@@ -12,5 +13,15 @@ public interface SaleoutService {
 	public void updatesaleout(SaleOutBean saleOutBean);
 	
 	public void delsaleout(String saleoutId);
+	
+	//查销售单编号
+	public List<SaleOutBean>  getSaleOutId();
+	//链表查询
+	public List<SaleOutBean>  selectSaleStock();
+	
+	List<SaleOutBean> selectSaleOutId();
+	
+	List<SaleOutBean> getSSS();
+	
 
 }

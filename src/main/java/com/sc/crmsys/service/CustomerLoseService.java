@@ -13,7 +13,9 @@ public interface CustomerLoseService {
 	
 	public void updatecustomerlose(CustomerLoseBean customerLoseBean);
 	
-	public List<CustomerLoseBean> confirmationofloss(); 
+	public List<CustomerLoseBean> confirmationofloss();
+	
+	public List<CustomerLoseBean> getSelectCustomerlose();
 	
 	public void del(String customerLoseId);
 	

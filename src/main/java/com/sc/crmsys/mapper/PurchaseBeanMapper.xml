@@ -113,6 +113,11 @@
     from purchase
     where purchase_id = #{purchaseId,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectPurchase" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select from purchase
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from purchase
     where purchase_id = #{purchaseId,jdbcType=VARCHAR}

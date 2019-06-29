@@ -23,4 +23,6 @@ public interface PurchaseService {
 	
 	void updatePurchaseState(String purchaseId,Date purchaseUpdateTime);
 	
+	List<PurchaseBean> selcetPurchaseAll(PurchaseBean purchaseBean);
+	
 }

@@ -33,6 +33,8 @@ public interface PurchaseBeanMapper {
     
     void update(PurchaseBean purchaseBean);
     
+    List<PurchaseBean> selectPurchase(PurchaseBean purchaseBean);
+    
     
     
     

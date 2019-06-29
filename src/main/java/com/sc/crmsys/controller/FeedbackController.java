@@ -31,7 +31,7 @@ public class FeedbackController {
 	{
 		List<FeedbackBean> getfeedback = feedbackService.getfeedback();
 		map.put("getfeedback", getfeedback);
-	
+
 		return "forward:/jsp/feedback.jsp";
 	}
 	*/
