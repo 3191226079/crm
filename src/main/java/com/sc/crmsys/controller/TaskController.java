@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +43,7 @@ public class TaskController {
 	@Resource
 	private CheckPointService checkPointService;
 	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/insertTask")
 	public String insertTask(TaskBean taskBean,TaskDetailBean taskDetailBean)
 	{
@@ -71,7 +73,7 @@ public class TaskController {
 	}
 	*/
 	
-	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/selectTask")
 	public String selectTask(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean,String taskStartTime,String taskEndTime,String taskTitle)
 	{
@@ -102,6 +104,7 @@ public class TaskController {
 		}
 	}
 	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/jumpToAdd")
 	public String jumpToAdd(Map<String, Object> map)
 	{
@@ -112,6 +115,7 @@ public class TaskController {
 		return "forward:/jsp/taskAdd.jsp";
 	}
 	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/delete")
 	public String deleteTask(String taskId,String checkPointId,String taskDetailId)
 	{
@@ -119,6 +123,7 @@ public class TaskController {
 		return "redirect:selectTask";
 	}
 	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/jumpToUpdate")
 	public String jumpToUpdate(String taskId,String taskDetailId,String employId,String checkPointId,Map<String, Object> map)
 	{
@@ -136,6 +141,7 @@ public class TaskController {
 		return "forward:/jsp/taskUpdate.jsp";
 	}
 	
+	@RequiresPermissions("luolu:task")
 	@RequestMapping("/updateTask")
 	public String updateTask(TaskBean taskBean,TaskDetailBean taskDetailBean)
 	{

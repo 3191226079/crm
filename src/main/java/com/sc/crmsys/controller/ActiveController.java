@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +25,7 @@ public class ActiveController {
 	@Resource
 	private ActiveService activeService;
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/insertActive")
 	public String insertActive(ActiveBean avtiveBean)
 	{
@@ -33,6 +36,7 @@ public class ActiveController {
 		return "redirect:selectActive";
 	}
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/selectActive")
 	public String selectActive(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ActiveBean activeBean,Map<String, Object> data)
 	{
@@ -42,6 +46,7 @@ public class ActiveController {
 			return "forward:/jsp/lookSchedule.jsp";
 	}
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/search")
 	public String Search(ActiveBean activeBean,Map<String, Object> map)
 	{
@@ -50,6 +55,7 @@ public class ActiveController {
 		return "forward:/jsp/lookSchedule.jsp";
 	}
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/update")
 	public String activeUpdate(ActiveBean activeBean)
 	{
@@ -58,6 +64,7 @@ public class ActiveController {
 		return "redirect:selectActive";
 	}
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/jumpToUpdate")
 	public String jumpToUpdate(String activeId,Map<String, Object> map)
 	{
@@ -66,6 +73,7 @@ public class ActiveController {
 		return "forward:/jsp/activeUpdate.jsp";
 	}
 	
+	@RequiresPermissions("luolu:plan")
 	@RequestMapping("/deleteActive")
 	public String deleteActive(String activeId)
 	{

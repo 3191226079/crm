@@ -31,7 +31,7 @@
 			<div class="topic">
 				<div class="conform">
 					<form action="active/selectActive" method="post" id="myll">
-						<div class="cfD">
+						<div class="cfD" style="margin-left:0px">
 							<input class="addUser" id="input1"  autocomplete="off" value="${title }"  name="activeTitle" type="text" placeholder="日程主题" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myll').submit()};" >搜索</button> -->
 							<input class="button" type="submit" value="搜索">

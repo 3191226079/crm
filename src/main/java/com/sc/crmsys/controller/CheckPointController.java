@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,6 +22,7 @@ public class CheckPointController {
 	@Resource
 	private CheckPointService checkPointService;
 	
+	@RequiresPermissions("luolu:taskcheck")
 	@RequestMapping("/insertTask")
 	public String insertTask(CheckPointBean checkPointBean)
 	{
@@ -31,6 +33,7 @@ public class CheckPointController {
 		return "redirect:selectCheckPoint";
 	}
 	
+	@RequiresPermissions("luolu:taskcheck")
 	@RequestMapping("/selectCheckPoint")
 	public String selectCheckPoint(@RequestParam(defaultValue="1")Integer pn, @RequestParam(defaultValue="5")Integer size,String checkPointTarget,Map<String, Object> map)
 	{
@@ -40,7 +43,7 @@ public class CheckPointController {
 		return "forward:/jsp/checkPointLook.jsp";
 	}
 
-	
+	@RequiresPermissions("luolu:taskcheck")
 	@RequestMapping("/jumpToUpdate")
 	public String jumpToUpdate(String checkPointId,Map<String, Object> map)
 	{
@@ -49,6 +52,7 @@ public class CheckPointController {
 		return "forward:/jsp/checkPointUpdate.jsp";
 	}
 	
+	@RequiresPermissions("luolu:taskcheck")
 	@RequestMapping("/update")
 	public String updateCheckPoint(CheckPointBean checkPointBean)
 	{
@@ -57,6 +61,7 @@ public class CheckPointController {
 		return "redirect:selectCheckPoint";
 	}
 	
+	@RequiresPermissions("luolu:taskcheck")
 	@RequestMapping("/delete")
 	public String deleteCheckPoint(String checkPointId)
 	{

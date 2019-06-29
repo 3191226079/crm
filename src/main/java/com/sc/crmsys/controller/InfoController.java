@@ -10,6 +10,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class InfoController {
 	@Resource
 	private EmployService employServiceImpl;
 	
+	@RequiresPermissions("luolu:info")
 	@RequestMapping("/insertInfo")
 	public String insertInfo(InfoBean infoBean,InfoDetailBean infoDetailBean)
 	{
@@ -54,7 +56,7 @@ public class InfoController {
 		return "redirect:selectInfo";
 	}
 
-	
+	@RequiresPermissions("luolu:info")
 	@RequestMapping("/selectInfo")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,InfoDetailBean infoDetailBean,Map<String, Object> map)
 	{
@@ -64,6 +66,7 @@ public class InfoController {
 			return "forward:/jsp/lookInformation.jsp";
 	}
 	
+	@RequiresPermissions("luolu:info")
 	@RequestMapping("/jumptosend")
 	public String jumptosend(Map<String, Object> map)
 	{
@@ -72,6 +75,7 @@ public class InfoController {
 		return "forward:/jsp/sendInformation.jsp";
 	}
 	
+	@RequiresPermissions("luolu:info")
 	@RequestMapping("/deleteInfo")
 	public String deleteInfo(String infoDetailId,String infoId)
 	{

@@ -31,7 +31,7 @@
 			<div class="connoisseur">
 				<div class="conform" id="myll12138">
 					<form action="info/selectInfo" id="forms" method="post">
-						<div class="cfD">
+						<div class="cfD" style="margin-left:0px">
 							<!-- <input type="hidden" name="employBean.employPhone" v-model="myresult">
 							<input type="hidden" name="employBean.employName" v-model="myresult"> -->
 							<input class="addUser" value="${title }" id="input1" name="infoBean.infoTitle"  autocomplete="off"  type="text" placeholder="输入接收者/主题/联系电话" />

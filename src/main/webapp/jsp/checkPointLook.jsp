@@ -30,7 +30,7 @@
 			<div class="connoisseur">
 				<div class="conform">
 					<form action="checkPoint/selectCheckPoint" method="post" id="myForm">
-						<div class="cfD">
+						<div class="cfD" style="margin-left:0px">
 							<input class="addUser" id="input1" autocomplete="off" name="checkPointTarget" value="${checkPointTarget }" type="text" placeholder="考核名称" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myForm').submit()};">搜索</button> -->
 							<input class="button" type="submit" value="搜索">
