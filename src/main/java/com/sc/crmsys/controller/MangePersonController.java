@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class MangePersonController {
 	@Resource
 	private SignService signService;
 	
-	
+	@RequiresPermissions("huguan:person")
 	@RequestMapping("/info")
 	public String getEmployInfo(Map<Object,Object> map,@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,String content)
 	{
@@ -38,6 +39,7 @@ public class MangePersonController {
 		return "forward:/jsp/mange_person.jsp";
 	}
 	
+	@RequiresPermissions("huguan:person")
 	@RequestMapping("/updateJob")
 	@ResponseBody
 	public HashMap<String, Object> UpdateJob(JobBean jobBean,EmployBean employBean)
@@ -49,7 +51,7 @@ public class MangePersonController {
 		return hashMap;
 	}
 	
-	
+	@RequiresPermissions("huguan:person")
 	@RequestMapping("/salary")
 	public String getSalaryInfo(Map<Object,Object> map,@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,String content)
 	{

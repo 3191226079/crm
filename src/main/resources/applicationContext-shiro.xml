@@ -84,6 +84,7 @@
 				/login.jsp = anon
 				/register.jsp = anon
 				/register = anon
+				/question/info = anon
 				
 <!-- 				/permission/t1 = perms[permission:t1] -->
 				

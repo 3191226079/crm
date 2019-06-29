@@ -73,6 +73,7 @@ public class SignController {
 		return "forward:/jsp/sign.jsp";
 	}
 	
+	@RequiresPermissions("huguan:sign")
 	@RequestMapping("/add")
 	@ResponseBody
 	public HashMap<String, Object> addSign(SignBean sign)

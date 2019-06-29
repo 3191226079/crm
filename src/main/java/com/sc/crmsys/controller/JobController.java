@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +24,7 @@ public class JobController {
 	@Resource
 	private JobService jobService;
 
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/selectJobAndDept")
 	@ResponseBody
 	public List<DepartmentBean> selectJobAndDept()
@@ -31,6 +33,7 @@ public class JobController {
 		return selectJobAndDept;
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/selectAllInfo")
 	public String selectAllInfo(Map map)
 	{
@@ -39,6 +42,7 @@ public class JobController {
 		return "forward:/jsp/job_info.jsp";
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/addJob")
 	@ResponseBody
 	public HashMap<Object, Object> addJob(JobBean jobBean)
@@ -51,6 +55,7 @@ public class JobController {
 		return hashMap;
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/deleteJob")
 	@ResponseBody
 	public HashMap<Object, Object> deleteJob(String jobId)
@@ -61,6 +66,7 @@ public class JobController {
 		return hashMap;
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/addDepartment")
 	@ResponseBody
 	public HashMap<Object, Object> addDepartment(JobBean jobBean,DepartmentBean deptBean)
@@ -77,6 +83,7 @@ public class JobController {
 		return hashMap;
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/del_dept")
 	@ResponseBody
 	public HashMap<Object, Object> delDept(String deptNumber)
@@ -87,6 +94,7 @@ public class JobController {
 		return hashMap;
 	}
 	
+	@RequiresPermissions("huguan:change")
 	@RequestMapping("/updateJob")
 	@ResponseBody
 	public HashMap<Object, Object> updateJob(JobBean jobBean,DepartmentBean deptBean)

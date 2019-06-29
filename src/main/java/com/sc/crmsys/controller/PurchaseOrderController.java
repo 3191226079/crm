@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,7 @@ public class PurchaseOrderController {
 	@Resource
 	private DetailPurchaseService detailPurchaseService;
 	
+	@RequiresPermissions("changzheng:buyGoods")
 	@RequestMapping("/select")
 	public String getPurchaseOrder(Map<String, Object> data)
 	{
@@ -45,6 +47,8 @@ public class PurchaseOrderController {
 		data.put("purchaseOrderList", purchaseOrderList);
 		return "forward:/jsp/purchaseOrder.jsp";
 	}
+	
+	@RequiresPermissions("changzheng:buyGoods")
 	@ResponseBody
 	@RequestMapping("/del")
 	public Map<String, Object> delPurchaseOrder(String orderPurchaseId)
@@ -59,7 +63,7 @@ public class PurchaseOrderController {
 	}
 	
 	
-	
+	@RequiresPermissions("changzheng:buyGoods")
 	@RequestMapping("/getSuppliers")
 	public String getSuppliers(Map<String, Object> data)
 	{
@@ -70,6 +74,7 @@ public class PurchaseOrderController {
 		return "forward:/jsp/connoisseuradd.jsp";
 	}
 	
+	@RequiresPermissions("changzheng:buyGoods")
 	@RequestMapping("/getSupplier")
 	@ResponseBody
 	public Map<String, Object> getSupplier(String supplierId)
@@ -81,6 +86,7 @@ public class PurchaseOrderController {
 		return map;
 	}
 	
+	@RequiresPermissions("changzheng:buyGoods")
 	@ResponseBody
 	@RequestMapping("/getStock")
 	public Map<String, Object> getStock(String commodityNumber)
@@ -91,6 +97,7 @@ public class PurchaseOrderController {
 		return map;
 	}
 	
+	@RequiresPermissions("changzheng:buyGoods")
 	@RequestMapping("/find")
 	public String find(Map<String, Object> data,String orderPurchaseId)
 	{
@@ -99,6 +106,7 @@ public class PurchaseOrderController {
 		return "forward:/jsp/connoisseur.jsp";
 	}
 	
+	@RequiresPermissions("changzheng:buyGoods")
 	@ResponseBody
 	@RequestMapping("/add")
 	public Map<String, Object> addPurchaseOrder(@RequestBody OrderPurchaseBean orderPurchaseBean)
