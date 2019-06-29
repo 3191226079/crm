@@ -9,7 +9,7 @@
 <html>
 <head>
 	<base href="<%=basePath%>"> 
-	<title>Insert title here</title>
+	<title>需补货信息添加</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
 <script type="text/javascript"  src=""></script>
@@ -18,10 +18,6 @@
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
-			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
-			</div>
 		</div>
 		<div class="page ">
 			<!-- 上传广告页面样式 -->

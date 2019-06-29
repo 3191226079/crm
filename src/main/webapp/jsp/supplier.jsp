@@ -15,16 +15,30 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/rafael.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
+<style type="text/css">
+.banDel .delete .delP2 .ok 
+{
+	width:100px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	background-color: #3695cc;
+	color: #fff;
+	margin-top: 65px;
+	margin-left: 25px;
+	margin-right: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 65px;
+}
+
+</style>
 </head>
 
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
-			<div class="page">
-			
-			</div>
 		</div>
-
 		<div class="page">
 			<!-- topic页面样式 -->
 			<div class="topic">
@@ -37,7 +51,7 @@
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="56px" class="tdColor tdC">编号</td>
+							<td width="56px" class="tdColor tdC">序号</td>
 							<td width="200px" class="tdColor">供应商名称</td>
 							<td width="120px" class="tdColor">联系人</td>
 							<td width="200px" class="tdColor">电话</td>
@@ -58,7 +72,7 @@
 							<td>${s.supplierInfo }</td>
 							<td><a href="supplier/find?supplierId=${s.supplierId }"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
+								src="img/delete.png" onclick="delban('${s.supplierId }')"></td>
 						</tr>
 						</c:forEach>
 					</table>
@@ -80,6 +94,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
+				<input type="hidden" id="supid" value="">
 				<button class="ok yes" id="yesr">确定</button><a class="ok no">取消</a>
 			</p>
 		</div>
@@ -89,9 +104,13 @@
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
-});
+function delban(delid)
+{
+	
+	$(".banDel").show();
+	$("#supid").val(delid);
+}
+
 $(".close").click(function(){
   $(".banDel").hide();
 });
