@@ -1,5 +1,9 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.DepartmentBean;
 
 public interface DepartmentBeanMapper {
@@ -14,4 +18,8 @@ public interface DepartmentBeanMapper {
     int updateByPrimaryKeySelective(DepartmentBean record);
 
     int updateByPrimaryKey(DepartmentBean record);
+    
+    List<DepartmentBean> selectDepAndJob();
+    
+    String selectDeptId(@Param("deptName")String deptName);
 }

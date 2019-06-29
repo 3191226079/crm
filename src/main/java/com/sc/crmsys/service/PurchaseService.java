@@ -13,9 +13,9 @@ import com.sc.crmsys.bean.StockBean;
 
 public interface PurchaseService {
 	
-	List<PurchaseBean> getPurchase(String companyId);
+	List<PurchaseBean> getPurchase();
 	
-	void addPurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean);
+	void addPurchase(PurchaseBean purchaseBean);
 	
 	List<PurchaseBean> findPurchase(String purchaseId);
 	

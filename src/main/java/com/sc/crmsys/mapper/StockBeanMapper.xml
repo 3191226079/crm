@@ -250,5 +250,8 @@
     </set>
     where commodity_number = #{commodityNumber,jdbcType=VARCHAR}
   </update>
+  <select id="getStockList" parameterType="com.sc.crmsys.bean.StockBean" resultMap="BaseResultMap">
+  	select * from stock
+  </select>
   
 </mapper>

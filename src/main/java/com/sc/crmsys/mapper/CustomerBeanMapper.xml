@@ -16,6 +16,9 @@
     <result column="company_id" jdbcType="VARCHAR" property="companyId" />
     <result column="customer_update_time" jdbcType="TIMESTAMP" property="customerUpdateTime" />
   </resultMap>
+  
+
+  
   <sql id="Base_Column_List">
     customer_id, customer_name, customer_up_department, customer_contact_person, customer_state, 
     customer_address, customer_phone, customer_fax, customer_email, customer_contact_time, 
@@ -28,9 +31,37 @@
     where customer_id = #{customerId,jdbcType=VARCHAR}
   </select>
   
+  <select id="selectlose" resultMap="BaseResultMap">
+  
+ select * from customer where customer_id in (
+SELECT customer_id FROM saleout WHERE PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'),DATE_FORMAT(saleout_time,'%Y%m')) > 6)
+  
+  </select>
+  
+  
+  <select id="getcustomerid"  resultType="java.lang.String">
+  
+  SELECT customer_id FROM saleout WHERE PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'),DATE_FORMAT(saleout_time,'%Y%m')) > 6
+  </select>
+  
+  
+  
   <select id="selectToday"  resultMap="BaseResultMap">
   select * from customer
    where  customer_contact_time &gt;=  #{a} and customer_contact_time &lt; #{b}
+  </select>
+  <select id="selectall"  resultMap="BaseResultMap" >
+  select * from customer
+  
+  </select>
+  <select id="getcustomerloseid" resultType="java.lang.String" >
+  select customer_id from customer_lose
+  
+  
+  </select>
+  
+  <select id="getid"  resultMap="BaseResultMap">
+  select company_id from company where company_name=#{companyName}
   </select>
   
   <select id="selectthree"  resultMap="BaseResultMap">
@@ -51,10 +82,10 @@
   </select>
   
   <!-- resultType="java.lang.String" -->
-  <select id="getcustomerId"  resultMap="BaseResultMap">
+  <select id="getcustomerIdInfo"  resultMap="BaseResultMap">
   	select * from customer
   </select>
- 
+  
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -157,6 +188,13 @@
         #{customerUpdateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
+  </insert>
+  
+  
+  <insert id="add">
+  INSERT INTO customer_lose(customer_lose_id,customer_id,customer_lose_operation,customer_lose_promethods,customer_lose_sate,company_id,customer_lose_last_time) 
+ 	VALUES(#{b},#{a},null,null,'1',null,NOW())
+  
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.CustomerBean">
     update customer

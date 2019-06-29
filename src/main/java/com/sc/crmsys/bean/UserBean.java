@@ -18,14 +18,42 @@ public class UserBean {
     private Date userRegisterTime;
 
     private Date userUpdateTime;
+    
+    private UserRoleBean userRoleBean;
 
     private String userSalt;
+    
+    private String signCount;
+    
+    
 
-    public String getUserId() {
+    public String getSignCount() {
+		return signCount;
+	}
+
+	public void setSignCount(String signCount) {
+		this.signCount = signCount;
+	}
+
+	public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    
+    
+    public UserRoleBean getUserRoleBean() {
+		return userRoleBean;
+	}
+
+
+
+	public void setUserRoleBean(UserRoleBean userRoleBean) {
+		this.userRoleBean = userRoleBean;
+	}
+
+
+
+	public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
     }
 
@@ -92,11 +120,14 @@ public class UserBean {
     public void setUserSalt(String userSalt) {
         this.userSalt = userSalt == null ? null : userSalt.trim();
     }
-    @Override
+
+	@Override
 	public String toString() {
 		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
 				+ ", employId=" + employId + ", companyId=" + companyId + ", userState=" + userState
-				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + "]";
+				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + ", userSalt="
+				+ userSalt + ", signCount=" + signCount + "]";
 	}
+    
 
 }

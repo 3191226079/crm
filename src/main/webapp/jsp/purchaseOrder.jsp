@@ -13,11 +13,30 @@
 	<title>采购单</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
-<script type="text/javascript" src="js/rafael.js"></script>
+
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/rafael.js"></script>
 
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
+<style type="text/css">
+.banDel .delete .delP2 .ok 
+{
+	width:100px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	background-color: #3695cc;
+	color: #fff;
+	margin-top: 65px;
+	margin-left: 25px;
+	margin-right: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 65px;
+}
+
+</style>
 </head>
 
 <body>
@@ -33,16 +52,9 @@
 			<!-- topic页面样式 -->
 			<div class="topic">
 				<div class="conform">
-						<div class="cfD">
-							<span class="shstate">审核状态：</span><label class="wsh"><input type="radio" checked="checked"
-								name="styleshoice1" v-on:click="ucheck(event)" />&nbsp;未审核</label> <label class="ytg"><input
-								type="radio" name="styleshoice1" />&nbsp;已通过</label> <label class="btg"><input
-								type="radio" name="styleshoice1" />&nbsp;不通过</label><label class="all"><input type="radio" checked="checked"
-								name="styleshoice1"  />&nbsp;全部</label>
-						</div>
 						<div class="butrr">
 							<div class="buttopr">
-								<a href="jsp/connoisseuradd.jsp" >添加</a>
+								<a href="purchaseOrder/getSuppliers" >添加</a>
 							</div>	
 						</div>
 				</div>
@@ -51,20 +63,21 @@
 					
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="166px" class="tdColor tdC">编号</td>
+							<td width="366px" class="tdColor tdC">编号</td>
 							<td width="300px" class="tdColor">采购内容</td>
 							<td width="150px" class="tdColor">采购日期</td>
 							<td width="150px" class="tdColor">供应商</td>
 							<td width="155px" class="tdColor">交货方式</td>
 							<td width="150px" class="tdColor">交货时间</td>
-							<td width="100px" class="tdColor">审核状态</td>
 							<td width="100px" class="tdColor">付款状态</td>
 							<td width="80px" class="tdColor">操作</td>
 						</tr>
 						<c:forEach items="${purchaseOrderList }" var="po">
 						
 						<tr>
-							<td>${po.orderPurchaseId }</td>
+							<td>${po.orderPurchaseId }
+								<input type="hidden" id="opId" name="orderPurchaseId" value="${po.orderPurchaseId }">
+							</td>
 							<td>${po.orderPurchaseTitle }</td>
 							<td>
 								<fmt:formatDate value="${po.orderPurchaseTime }" pattern="yyyy-MM-dd  HH:MM:ss"/>
@@ -74,14 +87,11 @@
 							<td>
 								<fmt:formatDate value="${po.orderPurchaseBusinessTime }" pattern="yyyy-MM-dd  HH:MM:ss"/>
 							</td>
-							<c:if test="${po.orderPurchaseState==0 }">
-								<td>未审核</td>
-							</c:if>
 							<c:if test="${po.orderPurchaseState !=2 }">
 								<td>未付款</td>
 							</c:if>
 							
-							<td><a href="#"><img class="operation"
+							<td><a href="purchaseOrder/find?orderPurchaseId=${po.orderPurchaseId  }"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
 								src="img/delete.png"></td>
 						</tr>
@@ -105,7 +115,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="" class="ok yes">确定</a><a class="ok no">取消</a>
+				<button class="ok yes" id="yes_ra">确定</button><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>

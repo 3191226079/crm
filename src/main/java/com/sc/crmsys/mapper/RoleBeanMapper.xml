@@ -103,4 +103,7 @@
       role_last_time = #{roleLastTime,jdbcType=TIMESTAMP}
     where role_number = #{roleNumber,jdbcType=VARCHAR}
   </update>
+  <select id="selectAllRole" resultMap="BaseResultMap">
+  	select * from role order by role_last_time desc
+  </select>
 </mapper>

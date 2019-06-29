@@ -2,6 +2,8 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.PermissionInformationBean;
 
 public interface PermissionInformationBeanMapper {
@@ -18,4 +20,8 @@ public interface PermissionInformationBeanMapper {
     int updateByPrimaryKey(PermissionInformationBean record);
     
     List<PermissionInformationBean> selectAllPermission();
+    
+    List<PermissionInformationBean> selectPermissionByUserId(@Param("uid")String userId);
+
+    String selectPermission(@Param("permission")String permission);
 }

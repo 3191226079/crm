@@ -1,5 +1,6 @@
 package com.sc.crmsys.mapper;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,9 +20,25 @@ public interface CustomerBeanMapper {
 
     CustomerBean selectByPrimaryKey(String customerId);
 
-    int updateByPrimaryKeySelective(CustomerBean record);
+    void updateByPrimaryKeySelective(CustomerBean record);
 
     int updateByPrimaryKey(CustomerBean record);
+    
+    
+    public ArrayList<String> getcustomerid();
+    
+    public  void add(@Param("a")String getcustomerid,@Param("b")String token);
+    
+    
+    
+    public ArrayList<String> getcustomerloseid();
+    
+  
+    
+    
+    
+    
+    List<CustomerBean>  selectall(CustomerBean customerBean);
     
     public List<CustomerBean> selectToday(@Param("a")Date earlytime,@Param("b")Date latetime);
     
@@ -30,6 +47,6 @@ public interface CustomerBeanMapper {
     public List<CustomerBean> selectseven(@Param("c")Date earlytime,@Param("d")Date latetime);
     public List<CustomerBean> selectonemonth(@Param("c")Date earlytime,@Param("d")Date latetime);
     //查询客户编号
-    List<CustomerBean>  getcustomerId();
+    List<CustomerBean>  getcustomerIdInfo();
    
 }

@@ -103,4 +103,31 @@
       company_id = #{companyId,jdbcType=VARCHAR}
     where journal_number = #{journalNumber,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectJournal" parameterType="com.sc.crmsys.bean.JournalBean" resultMap="journalMap">
+    select * 
+    from journal j inner join user u 
+    on j.user_id = u.user_id
+  </select>
+  
+  
+   <resultMap type="com.sc.crmsys.bean.JournalBean" id="journalMap">
+  	    <id column="journal_number" jdbcType="VARCHAR" property="journalNumber" />
+	    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+	    <result column="visit_ip" jdbcType="VARCHAR" property="visitIp" />
+	    <result column="permission" jdbcType="VARCHAR" property="permission" />
+	    <result column="visit_time" jdbcType="TIMESTAMP" property="visitTime" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+  		<association property="userBean" javaType="com.sc.crmsys.bean.UserBean" column="user_id">
+		  	<id column="user_id" jdbcType="VARCHAR" property="userId" />
+		    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+		    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+		    <result column="employ_id" jdbcType="VARCHAR" property="employId" />
+		    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		    <result column="user_state" jdbcType="VARCHAR" property="userState" />
+		    <result column="user_register_time" jdbcType="TIMESTAMP" property="userRegisterTime" />
+		    <result column="user_update_time" jdbcType="TIMESTAMP" property="userUpdateTime" />
+		    <result column="user_salt" jdbcType="VARCHAR" property="userSalt" />
+   		</association>
+   	</resultMap>
 </mapper>

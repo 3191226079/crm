@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sc.crmsys.mapper.SignBeanMapper">
+  <resultMap id="BaseResultMap" type="com.sc.crmsys.bean.SignBean">
+    <constructor>
+      <idArg column="sign_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="sign_num" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_days" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_state" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_year" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sign_month" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    sign_id, user_id, sign_time, sign_num, sign_days, sign_state, sign_year, sign_month
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sign
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sc.crmsys.bean.SignBean">
+    insert into sign (sign_id, user_id, sign_time, 
+      sign_num, sign_days, sign_state, 
+      sign_year, sign_month)
+    values (#{signId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, 
+      #{signNum,jdbcType=VARCHAR}, #{signDays,jdbcType=VARCHAR}, #{signState,jdbcType=VARCHAR}, 
+      #{signYear,jdbcType=VARCHAR}, #{signMonth,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sc.crmsys.bean.SignBean">
+    insert into sign
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        sign_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="signTime != null">
+        sign_time,
+      </if>
+      <if test="signNum != null">
+        sign_num,
+      </if>
+      <if test="signDays != null">
+        sign_days,
+      </if>
+      <if test="signState != null">
+        sign_state,
+      </if>
+      <if test="signYear != null">
+        sign_year,
+      </if>
+      <if test="signMonth != null">
+        sign_month,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="signId != null">
+        #{signId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signNum != null">
+        #{signNum,jdbcType=VARCHAR},
+      </if>
+      <if test="signDays != null">
+        #{signDays,jdbcType=VARCHAR},
+      </if>
+      <if test="signState != null">
+        #{signState,jdbcType=VARCHAR},
+      </if>
+      <if test="signYear != null">
+        #{signYear,jdbcType=VARCHAR},
+      </if>
+      <if test="signMonth != null">
+        #{signMonth,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sc.crmsys.bean.SignBean">
+    update sign
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="signTime != null">
+        sign_time = #{signTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signNum != null">
+        sign_num = #{signNum,jdbcType=VARCHAR},
+      </if>
+      <if test="signDays != null">
+        sign_days = #{signDays,jdbcType=VARCHAR},
+      </if>
+      <if test="signState != null">
+        sign_state = #{signState,jdbcType=VARCHAR},
+      </if>
+      <if test="signYear != null">
+        sign_year = #{signYear,jdbcType=VARCHAR},
+      </if>
+      <if test="signMonth != null">
+        sign_month = #{signMonth,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sc.crmsys.bean.SignBean">
+    update sign
+    set user_id = #{userId,jdbcType=VARCHAR},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      sign_num = #{signNum,jdbcType=VARCHAR},
+      sign_days = #{signDays,jdbcType=VARCHAR},
+      sign_state = #{signState,jdbcType=VARCHAR},
+      sign_year = #{signYear,jdbcType=VARCHAR},
+      sign_month = #{signMonth,jdbcType=VARCHAR}
+    where sign_id = #{signId,jdbcType=VARCHAR}
+  </update>
+  
+   <select id="selectSignInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+	    select *
+	    from sign
+	    where user_id = #{userId} and sign_year = #{signYear} and sign_month = #{signMonth}
+	  </select>
+	  
+	  <select id="getYerterDay" parameterType="com.sc.crmsys.bean.SignBean" resultMap="BaseResultMap">
+	    select *
+	    from sign
+	    where user_id = #{userId} and sign_time = #{signTime}
+	  </select>
+	  
+	  <select id="getEmpty" parameterType="com.sc.crmsys.bean.SignBean" resultType="java.lang.Integer">
+	    select count(*)
+	    from sign
+	    where user_id = #{userId} and sign_days = #{signDays} 
+	    and sign_month = #{signMonth} and sign_year = #{signYear}
+	  </select>
+	  
+	  <select id="signNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+	    select count(*)
+	    from sign
+	    where user_id = #{userId} and sign_year = #{signYear} 
+	    and sign_month = #{signMonth}
+	  </select>
+  
+  
+</mapper>

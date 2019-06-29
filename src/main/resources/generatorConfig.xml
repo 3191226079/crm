@@ -11,8 +11,7 @@
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-
-			connectionURL="jdbc:mysql://localhost:3306/crm" 
+			connectionURL="jdbc:mysql://localhost:3306/usermanager" 
 			userId="root"
 			password="root">
 		</jdbcConnection> 
@@ -54,6 +53,5 @@
 		<table tableName="user" domainObjectName="UserBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 		<table tableName="area" domainObjectName="AreaBean" enableCountByExample="false" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" selectByExampleQueryId="false"  />     
 			
-
 	</context>
 </generatorConfiguration>

@@ -51,7 +51,7 @@ $(function (){
 			<div class="connoisseur">
 				
 				<!-- banner 表格 显示 -->
-				<form action="add/add1" method="post">
+				<form action="add1/add2" method="post">
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<!-- <tr>
@@ -72,48 +72,42 @@ $(function (){
 							
 							<td width="135px" class="tdColor" colspan="4">添加客户信息</td>
 						</tr>
-						<tr>
-							<td width="135px" class="tdColor">客户编码</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerId" value="" >
-							</td>
-							<td width="135px" class="tdColor"  >客户名字</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerName" value=""></td>
-						</tr>
+						
 						<tr>
 							<td width="110px" class="tdColor">上级单位</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerUpDepartment" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerUpDepartment" value=""></td>
 							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerContactPerson" value="" ></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off"  name="customerContactPerson" value="" ></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">客户状态</td>
 							<td width="30px"><input type="text" style="width: 210px" name="customerState" value=""></td>
-							<td width="110px" class="tdColor">客户电话</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="customerPhone" value=""></td>
+							<td width="110px" class="tdColor" >客户电话</td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerPhone" id="phone" onblur="checkPhone()" value=""></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">客户地址</td>
-							<td width="300px" colspan="3"><input type="text" style="width: 710px;border: 1px solid none;padding-left: 5px;" name="customerAddress" value=""></td>
+							<td width="250px" colspan="3"><input type="text" autocomplete="off" style="width: 650px;border: 1px solid none;padding-left: 5px;" name="customerAddress" value=""></td>
 						
 						</tr>
 
 						<tr>
 							<td width="110px" class="tdColor">客户传真</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerFax" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerFax" id="fax" onblur="checkfax()" value=""></td>
 							<td width="110px" class="tdColor">客户邮箱</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" autocomplete="off"  id="email"  onblur="checkemail()" value=""></td>
 						</tr>
 						<tr>
 							
 							<td width="110px" class="tdColor">联系时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="customerContactTime"></td>
+							<td width="300px"><input type="text" class="vinput mh_date" autocomplete="off" readonly="true" style="width: 210px"  name="customerContactTime"></td>
 							<td width="110px" class="tdColor">备注信息</td>
 							<td width="300px"><input type="text" style="width: 210px" name="customerInfo" value=""></td>
 						</tr>
 						<tr>
-							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px" name="companyId" value=""></td>
+							<td width="135px" class="tdColor"  >客户名字</td>
+							<td width="370px"><input type="text" style="width: 210px" name="customerName" autocomplete="off" value=""></td>
 							<td width="110px" class="tdColor">修改时间</td>
 							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px" name="customerUpdateTime"></td>
 						</tr>
@@ -150,6 +144,33 @@ $(function (){
 </body>
 
 <script type="text/javascript">
+
+function checkPhone(){ 
+    var phone = document.getElementById('phone').value;
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){ 
+        alert("手机号码有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checkfax(){ 
+    var fax = document.getElementById('fax').value;
+    if(!/^(\d{3,4}-)?\d{7,8}$/.test(fax)){ 
+        alert("传真有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checkemail(){ 
+    var email1 = document.getElementById('email').value;
+    if(!/^\w+([-\.]\w+)*@\w+([\.-]\w+)*\.\w{2,4}$/.test(email1)){ 
+        alert("邮箱有误，请重填");  
+        return false; 
+    } 
+}
+
 
 
 

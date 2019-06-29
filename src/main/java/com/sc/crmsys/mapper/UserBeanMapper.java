@@ -19,4 +19,7 @@ public interface UserBeanMapper {
     
     UserBean selectByUserName(@Param("uname")String userName);
     
+    void updateUserState(@Param("id")String employId);
+    
+    
 }

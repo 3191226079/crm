@@ -7,6 +7,8 @@ import java.util.Random;
 
 import org.apache.shiro.crypto.hash.Md5Hash;
 
+import com.sc.crmsys.bean.GetTimeBean;
+
 public class MyUtils {
 	public static String md5(String pass,String salt,int hashIterations)
 	{
@@ -137,5 +139,17 @@ public class MyUtils {
 		
 		return time;
 	}
-	
+	//得到当前时间信息
+	public static GetTimeBean getTime()
+	{
+		Calendar cale = Calendar.getInstance();  
+		Date time = cale.getTime();
+        String year = String.valueOf(cale.get(Calendar.YEAR));  
+        String month = String.valueOf(cale.get(Calendar.MONTH) + 1);
+        cale.add(Calendar.DATE, -1);
+		Date yesterday = cale.getTime();
+		String day = String.valueOf(cale.get(Calendar.DAY_OF_MONTH) + 1);
+        GetTimeBean getTimeBean = new GetTimeBean(year, month,day,time,yesterday);
+        return getTimeBean;
+	}
 }

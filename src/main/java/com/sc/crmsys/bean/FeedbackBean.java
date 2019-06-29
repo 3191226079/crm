@@ -26,8 +26,22 @@ public class FeedbackBean {
     private String feedbackAnalyse;
 
     private Date feedbackLastTime;
+    
+    private CustomerBean customerBean;
 
-    public String getFeedbackId() {
+   
+
+	
+
+	public CustomerBean getCustomerBean() {
+		return customerBean;
+	}
+
+	public void setCustomerBean(CustomerBean customerBean) {
+		this.customerBean = customerBean;
+	}
+
+	public String getFeedbackId() {
         return feedbackId;
     }
 

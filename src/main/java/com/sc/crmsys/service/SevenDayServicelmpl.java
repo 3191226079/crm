@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.mapper.CustomerBeanMapper;
 import com.sc.crmsys.utils.MyUtils;
@@ -35,6 +37,18 @@ public class SevenDayServicelmpl implements SevenDayService{
 		customerBeanMapper.deleteByPrimaryKey(customerId);
 		
 	}
-	
+
+
+
+	@Override
+	public PageInfo<CustomerBean> selectAll(Integer pn, Integer size, CustomerBean customerBean) {
+		PageHelper.startPage(pn, size);
+		Date setsevenearly = MyUtils.setsevenearly();
+       Date setearly = MyUtils.setearly();
+		Date setlater = MyUtils.setlater();
+		List<CustomerBean> CustomerBean = customerBeanMapper.selectToday(setsevenearly, setlater);
+		PageInfo<CustomerBean> pageInfo = new PageInfo<CustomerBean>(CustomerBean);
+		return pageInfo;
+	}
 
 }

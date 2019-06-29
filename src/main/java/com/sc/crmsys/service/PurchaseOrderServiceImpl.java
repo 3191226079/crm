@@ -19,8 +19,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 	private OrderPurchaseBeanMapper orderPurchaseBeanMapper;
 
 	@Override
-	public List<OrderPurchaseBean> getPurchaseOrder(String companyId) {
-		List<OrderPurchaseBean> list = orderPurchaseBeanMapper.getPurchaseOrder(companyId);
+	public List<OrderPurchaseBean> getPurchaseOrder() {
+		List<OrderPurchaseBean> list = orderPurchaseBeanMapper.getPurchaseOrder();
 		return list;
 	}
 
@@ -30,21 +30,27 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 		
 	}
 
-	@Override
-	public void updatePurchaseOrder() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public void addPurchaseOrder(OrderPurchaseBean orderPurchaseBean, SupplierBean supplierBean,
-			DetailPurchaseBean detailPurchaseBean) {
+	public void addPurchaseOrder(OrderPurchaseBean orderPurchaseBean) {
 		
 		orderPurchaseBeanMapper.insert(orderPurchaseBean);
 		
 		
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void updatePurchaseOrder(OrderPurchaseBean orderPurchaseBean) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public OrderPurchaseBean find(String orderPurchaseId) {
+		OrderPurchaseBean orderPurchaseBean = orderPurchaseBeanMapper.find(orderPurchaseId);
+		return orderPurchaseBean;
 	}
 
 }

@@ -16,8 +16,8 @@
 	<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
-<script type="text/javascript"  src="js/rafael.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript"  src="js/rafael.js"></script>
 </head>
 <body>
 	<div id="pageAll">
@@ -33,7 +33,7 @@
 				<div class="baTop">
 					
 				</div>
-				<form action="purchase/update" method="post">
+				<form action="purchase/select" method="post">
 				<c:forEach items="${purchaseList}" var="p">
 				<%
 						List<PurchaseBean> purchaseList = (List<PurchaseBean>)request.getAttribute("purchaseList");
@@ -50,7 +50,7 @@
 				
 				<div class="baBody">
 					<div class="bbD">
-						<input type="hidden" class="input1" name="purchaseId" value="${p.purchaseId }"/>
+						<input type="hidden" class="input1" id="pid" name="purchaseId" value="${p.purchaseId }"/>
 					</div>
 					<div class="bbD">
 						<span class="nar">产品编号：</span><input type="text" class="input1" id="CN" name="commodityNumber" readonly="readonly" value="${p.stockBean.commodityNumber }"/>
@@ -62,22 +62,23 @@
 						<span class="blankr"></span><span class="nar">数量：</span><input type="text" class="input1" id="PC" name="productNum" readonly="readonly" value="${p.detailPurchaseBean.productNum }"/>
 					</div>
 					<div class="bbD">
-						<span class="blankr"></span><span class="nar">单位：</span><input type="text" class="input1" id="U" readonly="readonly" value="${p.stockBean.unit }"/>
-					</div>
-					<div class="bbD">
 						<span class="nar">交货时间：</span><input type="text" class="input1" id="BT" name="orderPurchaseBusinessTime" readonly="readonly" value="<%=bTime %>"/>
 					</div>
 					<div class="bbD">
 						<span class="nar">采购人员：</span><input type="text" class="input1" id="OPP" name="orderPurchasePerson" readonly="readonly" value="${p.detailPurchaseBean.orderPurchaseBean.orderPurchasePerson }"/>
 					</div>
-					<c:choose>
-						<c:when test="${p.purchaseState==1 }">
-							<div class="bbD">
-								<span class="blankr"></span><span class="nar">状态：</span><input type="text" class="input1"  value="采购中" readonly="readonly"/>
+					<div class="bbD">
+								<span class="blankr"></span><span class="nar">状态：</span>
+								<c:choose>
+									<c:when test="${p.purchaseState==1 }">
+										<span class="blankr"></span><span>采购中</span>
+									</c:when>
+									<c:when test="${p.purchaseState==0 }">
+										<span class="blankr"></span><span>代采购</span>
+									</c:when>
+								</c:choose>
 								<input type="hidden" class="input1" name="purchaseState" value="${p.purchaseState }"/>
-							</div>
-						</c:when>
-					</c:choose>
+					</div>
 					<div class="bbD">
 						<span class="blankr"></span><span>备注：</span>
 						<div class="btextr">
@@ -92,8 +93,10 @@
 					</div>
 					<div class="bbD">
 						<p class="bbDP">
-							<input type="button" class="btn_ok btn_yes" id="butten"  onclick="chanr()" value="修改">
+							<input type="button" class="btn_ok btn_yes" id="button"  value="修改">
+							<input type="button" class="btn_ok btn_yes" id="ubutton" style="display:none" value="保存">
 							<input type="submit" class="btn_ok btn_no"  value="返回">
+					
 						</p>
 					</div>
 				</div>
@@ -105,4 +108,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

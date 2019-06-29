@@ -18,9 +18,25 @@ public class PermissionInformationBean {
 
     private String parent;
     
+    private String check;
+    
     private List<PermissionInformationBean> pmsInfoBean;
+    
+    
 
-    public String getPermissionNumber() {
+    public String getCheck() {
+		return check;
+	}
+
+
+
+	public void setCheck(String check) {
+		this.check = check;
+	}
+
+
+
+	public String getPermissionNumber() {
         return permissionNumber;
     }
 

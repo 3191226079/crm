@@ -22,7 +22,7 @@ public class CustomerController {
 	public String selectId(Map<String, Object> map)
 	{
 		
-		List<CustomerBean> list = customerService.getCustomerId();
+		List<CustomerBean> list = customerService.getcustomerIdInfo();
 		System.out.println(list.size());
 		//System.out.println(customerId2);
 		map.put("list", list);

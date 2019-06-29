@@ -19,7 +19,7 @@
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
-<body>
+<body onload="page()">
 	
 		<div class="page">
 			<!-- banner页面样式 -->
@@ -29,7 +29,7 @@
 				<div class="banShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
+							
 					
 							<td width="200px" class="tdColor">客户姓名</td>
 							<td width="200px" class="tdColor">上级单位</td>
@@ -41,13 +41,13 @@
 							<td width="300px" class="tdColor">客户邮箱</td>
 							<td width="300px" class="tdColor">联系时间</td>
 							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
+							
 							<td width="300px" class="tdColor">修改时间</td>
-							<td width="300px" class="tdColor">修改</td>
+							<td width="300px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${getthreeday}" var="today1">		
+						<c:forEach items="${getthreeday.list}" var="today1">		
 				 		<tr>
-				 		<td>${today1.customerId}</td>
+				 		
 				 		<td>${today1.customerName}</td>
 				 		<td>${today1.customerUpDepartment}</td>
 				 		<td>${today1.customerContactPerson}</td>
@@ -60,7 +60,7 @@
 				 			<fmt:formatDate value="${today1.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		<td>${today1.customerInfo}</td>
-				 		<td>${today1.companyId}</td>
+				 	
 				 		<td>
 				 			<fmt:formatDate value="${today1.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
@@ -71,7 +71,7 @@
 		
 	
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				
 				</div>
 				<!-- user 表格 显示 end-->
@@ -118,5 +118,74 @@ $(document).ready(function(){
 		console.log(customerId);
 		document.getElementById("sure").href = 'today/delthreeday?customerId=' + customerId;	
 	}
-</script>
+	function page()
+	{
+        var td = document.getElementById('div');
+        if(${getthreeday.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'today/getthreeday?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${getthreeday.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${getthreeday.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'today/getthreeday?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getthreeday.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${getthreeday.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${getthreeday.pageNum}+i-5 <= ${getthreeday.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${selectAll.pageNum}+i-5;
+					a.href = 'today/getthreeday?pn=' + (${selectAll.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${getthreeday.pageNum} == (${getthreeday.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${getthreeday.pageNum } != ${getthreeday.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'today/getthreeday?pn=' + ${getthreeday.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
 </html>

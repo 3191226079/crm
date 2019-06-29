@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>潜在客户</title>
+<title>客户反馈</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 
 <link rel="stylesheet" type="text/css" href="css/manhuaDate.1.0.css">
@@ -60,17 +60,18 @@ $(function (){
 							<td width="135px" class="tdColor" colspan="4">添加客户反馈信息</td>
 						</tr>
 						<tr>
-							<td width="135px" class="tdColor">反馈编号</td>
-							<td width="370px"><input type="text" style="width: 210px" name="feedbackId" value="" >
+						
+							<td width="110px"><input type="hidden"  style="width: 210px" name="feedbackId" value="" >
 							</td>
-							<td width="135px" class="tdColor"  >客户编号</td>
-							<td width="370px"><input type="text" style="width: 210px" name="customerId" value=""></td>
+							
+							<td width="110px"><input type="hidden"   autocomplete="off" style="width: 210px" name="customerId" value="${feedbackBean.customerId }"></td>
 						</tr>
 						<tr>
-							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value=""></td>
+							
 							<td width="110px" class="tdColor">反馈状态</td>
 							<td width="300px"><input type="text" style="width: 210px" name="feedbackState" value="" ></td>
+							<td width="110px" class="tdColor">最后修改时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackLastTime"></td>
 						</tr>
 						<tr>
 							
@@ -82,26 +83,24 @@ $(function (){
 						
 						<tr>
 							<td width="110px" class="tdColor">反馈内容</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackContent" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackContent" value=""></td>
 						
 			
 							<td width="110px" class="tdColor">反馈原因</td>
-							<td width="300px" ><input type="text" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackReason" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="feedbackReason" value=""></td>
 						
 						</tr>
 
 						<tr>
 							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackCharge" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px"  name="feedbackCharge" value=""></td>
 							<td width="110px" class="tdColor">反馈主题</td>
 							<td width="300px"><input type="text" style="width: 210px" name="feedbackTitle" value=""></td>
 						</tr>
 						<tr>
-							
-							<td width="110px" class="tdColor">最后修改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackLastTime"></td>
+						
 							<td width="110px" class="tdColor">分析</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackAnalyse" value=""></td>
+							<td width="300px" colspan="3" ><input type="text"   autocomplete="off" style="width: 630px" name="feedbackAnalyse" value=""></td>
 						</tr>
 					</table>
 					<input type="submit" value="添加" style="width: 

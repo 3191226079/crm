@@ -25,10 +25,7 @@ public interface StockBeanMapper {
     //删除
     void deleteStockId(String commodityName);
 
-
-    
-
-    /*List<StockBean> getByPrimaryKey(String companyId);*/
+    List<StockBean> getStockList();
     
     void update(StockBean record);
 

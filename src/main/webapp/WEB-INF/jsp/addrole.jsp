@@ -121,6 +121,7 @@ ul.l_tree:before {
 				<img src="img/coin02.png" /><span><a href="javascript:;">角色管理</a>&nbsp;-&nbsp;</span>&nbsp;添加角色
 			</div>
 		</div>
+		<form action="role/insertRole" method="post" id="myformll532">
 		<div class="page ">
 			<div id="demo">
 				<div class="l_tree_container">
@@ -166,9 +167,38 @@ ul.l_tree:before {
 				</div>
 			</div>
 		</div>
+		<div class="page ">
+			<div class="bacen">
+					<div class="bbD myclassd">
+						&nbsp;&nbsp;&nbsp;&nbsp;角色名称：<input type="test" name="roleName" class="input3" />
+					</div>
+					<div class="bbD">
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<table border="0" cellpadding="0" cellspacing="0" style="margin-left:15px;">
+							<tr><td style="border:0px;">角色描述：</td><td style="border:0px;">
+							<textarea rows="5" cols="32" name="roleDescribe" style="margin-left:10px;"></textarea></td></tr>
+						</table>
+						
+					</div>
+					
+				
+				<div class="bbD">
+					<p class="bbDP">
+						<button class="btn_ok btn_yes" id="mysubmit09">提交</button>
+						<a class="btn_ok btn_no" href="inc/mainll.jsp">取消</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		</form>
 	</div>
 
 <script type="text/javascript">
+
+document.getElementById('mysubmit09').onclick = function()
+												{
+													document.getElementById('myformll532').submit();
+												};
 	function mychange(k)
 	{
 		var one = document.getElementById('PMS'+k);

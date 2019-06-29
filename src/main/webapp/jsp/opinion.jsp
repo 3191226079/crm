@@ -16,12 +16,6 @@
 
 <body>
 	<div id="pageAll">
-		<div class="pageTop">
-			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
-			</div>
-		</div>
 		<div class="page">
 			<!-- opinion 页面样式 -->
 			<div class="opinion">
@@ -31,7 +25,7 @@
 				<div class="opShow">
 					<div class="butrr">
 						<div class="buttopr">
-							<a href="jsp/banneradd.jsp" >添加</a>
+							<a href="purchase/getStockes" >添加</a>
 						</div>	
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0">
@@ -55,10 +49,13 @@
 							<td>${p.stockBean.commodityName }</td>
 							<td>${p.stockBean.description }</td>
 							<td>${p.stockBean.warehouseBean.warehouseName }</td>
-							<td>${p.detailPurchaseBean.productNum }</td>
+							<td>${p.companyId }</td>
 							<c:choose>
 								<c:when test="${p.purchaseState==1 }">
 									<td>采购中</td>
+								</c:when>
+								<c:when test="${p.purchaseState==0 }">
+									<td>待采购</td>
 								</c:when>
 							</c:choose>
 							<td><a href="purchase/find?purchaseId=${p.purchaseId }"><img class="operation"

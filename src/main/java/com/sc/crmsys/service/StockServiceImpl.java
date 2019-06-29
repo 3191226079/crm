@@ -17,14 +17,19 @@ public class StockServiceImpl implements  StockService{
 
 	@Resource
 	private StockBeanMapper stockBeanMapper;
+
 	
 	@Resource
 	private SaleInfoBeanMapper saleInfoBeanMapper;
 	
+
+
+
 	@Override
-	public List<StockBean> getPurchase(String companyId) {
-		/*List<StockBean> list = stockBeanMapper.getByPrimaryKey(companyId);*/
-		return null;
+	public List<StockBean> getStockes() {
+		List<StockBean> stockList = stockBeanMapper.getStockList();
+		
+		return stockList;
 	}
 
 	@Override
@@ -83,4 +88,17 @@ public class StockServiceImpl implements  StockService{
 
 	
 	
+	public StockBean getStock(String commodityNumber) {
+		StockBean stockBean = stockBeanMapper.selectByPrimaryKey(commodityNumber);
+		return stockBean;
+	}
+
+	@Override
+	public List<StockBean> getPurchase(String companyId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
 }

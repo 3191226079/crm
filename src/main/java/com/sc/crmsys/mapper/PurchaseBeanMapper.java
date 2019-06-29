@@ -25,7 +25,7 @@ public interface PurchaseBeanMapper {
     
     PurchaseBean getByPrimaryKey(String purchaseId,String productId);
     
-    List<PurchaseBean> getByPrimaryKey(String companyId);
+    List<PurchaseBean> getByPrimaryKey();
     
     List<PurchaseBean> findByPrimaryKey(String purchaseId);
     

@@ -7,6 +7,7 @@ import com.sc.crmsys.bean.StockBean;
 
 public interface StockService {
 	
+
 	List<StockBean> getPurchase(String companyId);
 	//添加商品
 	public void addStock(StockBean stockBean);
@@ -26,6 +27,10 @@ public interface StockService {
 	
 	
 	
+
+	List<StockBean> getStockes();
+	
+	StockBean getStock(String commodityNumber);
 	
 	
 	
