@@ -13,10 +13,6 @@ public class TaskDetailServiceImpl implements TaskDetailService{
 	@Resource
 	private TaskDetailBeanMapper taskDetailBeanMapper;
 	
-	@Override
-	public void deleteByPrimaryKey(String taskDetailId) {
-		taskDetailBeanMapper.deleteByPrimaryKey(taskDetailId);
-	}
 
 	@Override
 	public TaskDetailBean selectByPrimaryKey(String taskDetailId) {

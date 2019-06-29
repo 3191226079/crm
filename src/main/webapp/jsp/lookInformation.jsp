@@ -66,7 +66,7 @@
 									<c:if test="${InfoDetailBean.infoDetailState eq 0}">已读</c:if>
 								</td>
 								<td>
-									<c:if test="${InfoDetailBean.infoDetailState eq 1}">
+									<c:if test="${InfoDetailBean.infoDetailState eq 0}">
 										<img class="operation delban" src="img/delete.png" onclick="deleteInfo('${InfoDetailBean.infoDetailId}','${InfoDetailBean.infoId }')">
 									</c:if>
 								</td>

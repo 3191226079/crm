@@ -28,7 +28,9 @@ public class EmployController {
 		UserBean userBean = (UserBean)subject.getPrincipal();
 		employBean.setEmployId(userBean.getEmployId());
 		employServiceImpl.update(employBean.getEmployId());
+		System.out.println("bbbb");
 		EmployBean selectInfo = employServiceImpl.selectInfo(infoBean,employBean.getEmployId());
+		System.out.println("aaaa");
 		map.put("selectInfo", selectInfo);
 		return "forward:/jsp/employLook.jsp";
 	}

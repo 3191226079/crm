@@ -10,7 +10,5 @@ public interface InfoService {
 	
 	public void insert(InfoDetailBean infoDetailBean,InfoBean infoBean);
 	
-	public void deleteByinfoDetailId(String infoDetailId);
-	
-	public void deleteByinfoId(String infoId);
+	public void deleteByinfoDetailId(String infoDetailId,String infoId);
 }

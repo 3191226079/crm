@@ -152,7 +152,9 @@
       info_detail_update_time = #{infoDetailUpdateTime,jdbcType=TIMESTAMP}
     where info_detail_id = #{infoDetailId,jdbcType=VARCHAR}
   </update>
+  
   <update id="update">
-  	update info_detail set info_detail_state = '0' where employ_id = #{e}
+  	update info_detail set info_detail_state = '1' where employ_id = #{e}
   </update>
+  
 </mapper>

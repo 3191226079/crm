@@ -42,7 +42,6 @@ public class ActiveController {
 	@RequestMapping("/search")
 	public String Search(ActiveBean activeBean,Map<String, Object> map)
 	{
-		System.out.println(activeBean.getActiveTitle());
 		List<ActiveBean> title = activeService.selectByTitle(activeBean.getActiveTitle());
 		map.put("activeBean1", title);
 		return "forward:/jsp/lookSchedule.jsp";

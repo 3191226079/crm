@@ -38,8 +38,9 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public void deleteByPrimaryKey(String taskId) {
+	public void deleteByPrimaryKey(String taskId,String taskDetailId) {
 		taskBeanMapper.deleteByPrimaryKey(taskId);
+		taskDetailBeanMapper.deleteByPrimaryKey(taskDetailId);
 	}
 
 

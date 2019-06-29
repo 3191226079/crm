@@ -48,10 +48,9 @@
 					<form id="forms" action="task/selectTask" method="post">
 						<div class="cfD">
 							时间：
-							<input type="text" name="taskStartTime" class="vinput mh_date" autocomplete="off"/>&nbsp;-&nbsp;
-							<input type="text" name="taskEndTime" class="vinput mh_date" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;
-							<input autocomplete="off" name="taskTitle"  type="hidden" v-model="myresult">
-							<input class="addUser" autocomplete="off" name="checkPointBean.checkPointTarget" type="text" v-model="myresult" placeholder="任务标题/任务指标" />
+							<input type="text" name="taskStartTime" id="input1" class="vinput mh_date" value="${startTime }" autocomplete="off"/>&nbsp;-&nbsp;
+							<input type="text" name="taskEndTime" id="input2" class="vinput mh_date" value="${endTime }" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;
+							<input class="addUser" autocomplete="off" id="input3" name="taskTitle" value="${title }" type="text"  placeholder="任务标题/任务指标" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('forms').submit()};">搜索</button> -->
 							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1 addA2" href="task/jumpToAdd">添加任务</a>
@@ -146,13 +145,13 @@
 		});
 	});
 	// 广告弹出框 end
-	new Vue({
+/* 	new Vue({
 		el:"#dis",
 		data:
 		{
 			myresult:''
 		}
-	});
+	}); */
 	function deleteTask(taskId,taskDetailId) 
 	{
 		document.getElementById('read').href = "task/delete?taskId=" + taskId + "&taskDetailId=" + taskDetailId;
@@ -162,9 +161,13 @@
         var td = document.getElementById('div');
         if(${TaskDetailBean.pageNum} != 1)
        	{
+        	var startTime = document.getElementById('input1').value;
+			var endTime = document.getElementById('input2').value;
+			var title = document.getElementById('input3').value;
+			
         	var a = document.createElement('a');
         	a.innerHTML = '首页';
-        	a.href = 'task/selectTask?pn=1';
+        	a.href = 'task/selectTask?pn=1' + '&taskStartTime=' + startTime + '&taskEndTime=' + endTime + '&taskTitle' + title;
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';
@@ -176,9 +179,13 @@
         	{
 				if(i+1 <= ${TaskDetailBean.pages})
 				{
+					var startTime = document.getElementById('input1').value;
+					var endTime = document.getElementById('input2').value;
+					var title = document.getElementById('input3').value;
+					
 					var a = document.createElement('a');
 					a.innerHTML = i + 1;
-					a.href = 'task/selectTask?pn=' + (i + 1);
+					a.href = 'task/selectTask?pn=' + (i + 1) + '&taskStartTime=' + startTime + '&taskEndTime=' + endTime + '&taskTitle' + title;
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
@@ -199,9 +206,13 @@
         	{
 				if(${TaskDetailBean.pageNum}+i-5 <= ${TaskDetailBean.pages})
 				{
+					var startTime = document.getElementById('input1').value;
+					var endTime = document.getElementById('input2').value;
+					var title = document.getElementById('input3').value;
+					
 					var a = document.createElement('a');
 					a.innerHTML = ${activeBean1.pageNum}+i-5;
-					a.href = 'task/selectTask?pn=' + (${TaskDetailBean.pageNum}+i-5);
+					a.href = 'task/selectTask?pn=' + (${TaskDetailBean.pageNum}+i-5 + '&taskStartTime=' + startTime + '&taskEndTime=' + endTime + '&taskTitle' + title);
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
@@ -218,9 +229,13 @@
         
         if(${TaskDetailBean.pageNum } != ${TaskDetailBean.pages})
        	{
+        	var startTime = document.getElementById('input1').value;
+			var endTime = document.getElementById('input2').value;
+			var title = document.getElementById('input3').value;
+			
         	var a = document.createElement('a');
         	a.innerHTML = '尾页';
-        	a.href = 'task/selectTask?pn=' + ${TaskDetailBean.pages};
+        	a.href = 'task/selectTask?pn=' + ${TaskDetailBean.pages} + '&taskStartTime=' + startTime + '&taskEndTime=' + endTime + '&taskTitle' + title;
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';

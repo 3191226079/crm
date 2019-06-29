@@ -48,6 +48,7 @@ public class EmployServiceImpl implements EmployService{
 		for (int i = 0; i < employInfo.size(); i++) {
 			EmployBean employBean = employInfo.get(i);
 			UserBean userBean = employBean.getUserBean();
+			
 			GetTimeBean time = MyUtils.getTime();
 			String year = time.getYear();
 			String month = time.getMonth();

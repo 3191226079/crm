@@ -28,10 +28,11 @@
   <select id="selectInfo" resultMap="employMap">
   	SELECT * FROM employ em INNER JOIN info_detail id ON em.employ_id = id.employ_id INNER JOIN info i ON id.info_id = i.info_id
   	where em.employ_id = #{e}
-  		<if test="i.infoPerson != null">
+  		<!-- <if test="i.infoPerson != null">
   			info_person like '%${i.infoPerson}%'
-  		</if>
+  		</if> -->
   </select>
+  
   <resultMap type="com.sc.crmsys.bean.EmployBean" id="employMap">
   	<id column="employ_id" property="employId"/>
   	<result column="employ_name" property="employName"/>

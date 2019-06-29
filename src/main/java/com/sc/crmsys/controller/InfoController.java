@@ -76,8 +76,7 @@ public class InfoController {
 	@RequestMapping("/deleteInfo")
 	public String deleteInfo(String infoDetailId,String infoId)
 	{
-		infoService.deleteByinfoId(infoId);
-		infoService.deleteByinfoDetailId(infoDetailId);
+		infoService.deleteByinfoDetailId(infoDetailId, infoId);
 		return "redirect:selectInfo";
 	}
 }

@@ -45,8 +45,8 @@
 							<tr>
 								<td width="150px" class="tdColor tdC">序号</td>
 								<td width="300px" class="tdColor">考核名称</td>
-								<td width="600px" class="tdColor">考核描述</td>
-								<td width="600px" class="tdColor">发布时间</td>
+								<td width="800px" class="tdColor">考核描述</td>
+								<td width="300px" class="tdColor">发布时间</td>
 								<td width="200px" class="tdColor">操作</td>
 							</tr>
 							<c:forEach items="${selectAllList.list}" var="CheckPointBean" varStatus="s">

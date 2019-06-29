@@ -36,13 +36,9 @@ public class InfoServiceImpl implements InfoService{
 	}
 
 	@Override
-	public void deleteByinfoDetailId(String infoDetailId) 
+	public void deleteByinfoDetailId(String infoDetailId,String infoId) 
 	{
 		infoDetailBeanMapper.deleteByinfoDetailId(infoDetailId);
-	}
-
-	@Override
-	public void deleteByinfoId(String infoId) {
 		infoBeanMapper.deleteByinfoId(infoId);
 	}
 
