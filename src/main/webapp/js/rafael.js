@@ -138,7 +138,7 @@ $(document).ready(function (){
 	
 	
 	$("#yesr").click(function(){
-		var supplierId = $("#sid").val();
+		var supplierId = $("#supid").val();
 		
 		 $.ajax({
 	          type: 'get',
@@ -364,8 +364,8 @@ var detailPurchaseList = [];
 	});
 	
 	$("#yes_ra").click(function(){
-		var orderPurchaseId = $("#opId").val();
-		
+		var orderPurchaseId = $("#id").val();
+		console.log(orderPurchaseId);
 		 $.ajax({
 	          type: 'get',
 	          url:'purchaseOrder/del',
@@ -373,7 +373,7 @@ var detailPurchaseList = [];
 	          dataType: 'json',
 	          success:function (result)
 	          {
-	        	  location.href = "http://localhost:8080/crmsys/purchaseOrder/select";
+        	  location.href = "http://localhost:8080/crmsys/purchaseOrder/select";
 	        	  alert(result.msg);
 	          },
 	          error:function()

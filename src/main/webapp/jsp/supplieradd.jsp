@@ -17,10 +17,6 @@
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
-			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;行家添加
-			</div>
 		</div>
 		<div class="page ">
 			<!-- 上传广告页面样式 -->
@@ -60,7 +56,7 @@
 					<div class="bbD">
 						<p class="bbDP">
 							<button class="btn_ok btn_yes">提交</button>
-							<a class="btn_ok btn_no" href="supplieradd.jsp">取消</a>
+							<a class="btn_ok btn_no" href="supplier/select">取消</a>
 						</p>
 					</div>
 				</div>

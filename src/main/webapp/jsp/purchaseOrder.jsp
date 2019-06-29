@@ -63,6 +63,7 @@
 					
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
+							<td width="100px" class="tdColor tdC">序号</td>
 							<td width="366px" class="tdColor tdC">编号</td>
 							<td width="300px" class="tdColor">采购内容</td>
 							<td width="150px" class="tdColor">采购日期</td>
@@ -72,9 +73,10 @@
 							<td width="100px" class="tdColor">付款状态</td>
 							<td width="80px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${purchaseOrderList }" var="po">
+						<c:forEach items="${purchaseOrderList }" var="po" varStatus="c">
 						
 						<tr>
+							<td>${c.count }</td>
 							<td>${po.orderPurchaseId }
 								<input type="hidden" id="opId" name="orderPurchaseId" value="${po.orderPurchaseId }">
 							</td>
@@ -93,7 +95,7 @@
 							
 							<td><a href="purchaseOrder/find?orderPurchaseId=${po.orderPurchaseId  }"><img class="operation"
 									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
+								src="img/delete.png" onclick="delban('${po.orderPurchaseId  }')" ></td>
 						</tr>
 						</c:forEach>
 					</table>
@@ -115,6 +117,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
+				<input type="hidden" id="id" value="">
 				<button class="ok yes" id="yes_ra">确定</button><a class="ok no">取消</a>
 			</p>
 		</div>
@@ -124,9 +127,13 @@
 
 <script type="text/javascript">
 // 广告弹出框
-$(".delban").click(function(){
-  $(".banDel").show();
-});
+function delban(delid)
+{
+	
+	$(".banDel").show();
+	$("#id").val(delid);
+}
+
 $(".close").click(function(){
   $(".banDel").hide();
 });

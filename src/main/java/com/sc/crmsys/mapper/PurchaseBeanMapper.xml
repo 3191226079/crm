@@ -79,40 +79,28 @@
 	    <result column="purchase_info" jdbcType="VARCHAR" property="purchaseInfo" />
 	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
 	    <result column="purchase_update_time" jdbcType="TIMESTAMP" property="purchaseUpdateTime" />
-    <association property="stockBean" javaType="com.sc.crmsys.bean.StockBean" column="purchase_id">
-	  	<id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
-	    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
-	    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
-	    <result column="description" jdbcType="VARCHAR" property="description" />
-	    <result column="unit" jdbcType="VARCHAR" property="unit" />
-	    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
-	    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
-	    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
-	    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
-	    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
-	    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
-	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
-	    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
-	    <association property="warehouseBean" javaType="com.sc.crmsys.bean.WarehouseBean" column="warehouse_number">
-	    	<id column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
-		    <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
-		    <result column="warehouse_info" jdbcType="VARCHAR" property="warehouseInfo" />
+	    <association property="stockBean" javaType="com.sc.crmsys.bean.StockBean" column="commodity_number">
+		  	<id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+		    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+		    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+		    <result column="description" jdbcType="VARCHAR" property="description" />
+		    <result column="unit" jdbcType="VARCHAR" property="unit" />
+		    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+		    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
+		    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
+		    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
+		    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
+		    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
 		    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
-		    <result column="warehouse_last_time" jdbcType="TIMESTAMP" property="warehouseLastTime" />
-	   	</association>
-   </association>
-    <association property="detailPurchaseBean" javaType="com.sc.crmsys.bean.DetailPurchaseBean" column="product_id">
-    	<id column="detail_purchase_id" jdbcType="VARCHAR" property="detailPurchaseId" />
-	    <result column="order_purchase_id" jdbcType="VARCHAR" property="orderPurchaseId" />
-	    <result column="product_id" jdbcType="VARCHAR" property="productId" />
-	    <result column="product_num" jdbcType="VARCHAR" property="productNum" />
-	    <result column="product_price" jdbcType="VARCHAR" property="productPrice" />
-	    <result column="detail_purchase_state" jdbcType="VARCHAR" property="detailPurchaseState" />
-	    <result column="detail_purchase_person" jdbcType="VARCHAR" property="detailPurchasePerson" />
-	    <result column="detail_purchase_info" jdbcType="VARCHAR" property="detailPurchaseInfo" />
-	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
-	    <result column="detail_purchase_update_time" jdbcType="TIMESTAMP" property="detailPurchaseUpdateTime" />
-    </association>
+		    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
+		    <association property="warehouseBean" javaType="com.sc.crmsys.bean.WarehouseBean" column="warehouse_number">
+		    	<id column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+			    <result column="warehouse_name" jdbcType="VARCHAR" property="warehouseName" />
+			    <result column="warehouse_info" jdbcType="VARCHAR" property="warehouseInfo" />
+			    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+			    <result column="warehouse_last_time" jdbcType="TIMESTAMP" property="warehouseLastTime" />
+		   	</association>
+	   </association>
   </resultMap>
   
   <sql id="Base_Column_List">
@@ -234,7 +222,6 @@
   	SELECT * from purchase p 
   	INNER JOIN stock s on s.commodity_number = p.product_id 
   	INNER JOIN warehouse w ON w.warehouse_number = s.warehouse_number 
-  	INNER JOIN detail_purchase dp ON dp.product_id = s.commodity_number
   	where p.purchase_state!=5
   
   </select>
