@@ -35,14 +35,14 @@ public class ContactsController {
 		
 		 PageInfo<ContactsBean> selectAll = contactsService.selectAll(pn, size, contactsBean);
 		 map.put("selectAll", selectAll);
-		 return "forward:/jsp/contacts.jsp";
+		 return "forward:/jsp/contacts1.jsp";
 	}
 	
 	@RequestMapping("/add1")
 	public String add(ContactsBean contactsBean)
 	{
 		contactsService.add(contactsBean);
-		return "redirect:get";
+		return "redirect:/add1/get";
 	}
 	
 	@RequestMapping("/get1")
@@ -52,9 +52,26 @@ public class ContactsController {
 		map.put("get1", get1);
 		return "forward:/jsp/get1contacts.jsp";
 	}
+	@RequestMapping("/get2")
+	public String get2(String contactsId,Map<String, Object> map)
+	{
+		ContactsBean get2 = contactsService.get1(contactsId);
+		map.put("get2", get2);
+		return "forward:/jsp/get2contacts.jsp";
+	}
 	
 	@RequestMapping("/update")
 	public String update(ContactsBean contactsBean)
+	{
+		contactsService.update(contactsBean);
+		return "redirect:/add1/get";
+	}
+	
+	
+	
+	
+	@RequestMapping("/update1")
+	public String update1(ContactsBean contactsBean)
 	{
 		contactsService.update(contactsBean);
 		return "redirect:get";

@@ -57,12 +57,17 @@ $(function (){
 						
 						<tr>
 							
-							<td width="135px" class="tdColor" colspan="4">添加联系人</td>
+							<td width="135px" class="tdColor" colspan="4">修改联系人系信息</td>
+						</tr>
+						<tr>
+						
+							<td width="300px" colspan="2"><input type="hidden" style="width: 210px"  name="contactsId"   value="${get1.contactsId }"></td>
+							<td width="300px" colspan="2"><input type="hidden" style="width: 210px"  name="customerId"   value="${get1.customerId }"></td>
 						</tr>
 						
 						<tr>
 							<td width="110px" class="tdColor">联系人电子邮件</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" value="${get1.contactsEmail }"></td>
+							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" id="email"  onblur="checkemail()" value="${get1.contactsEmail }"></td>
 							<td width="110px" class="tdColor">联系人姓名</td>
 							<td width="300px"><input type="text" style="width: 210px" name="contactsName" value="${get1.contactsName }" ></td>
 						</tr>
@@ -76,18 +81,18 @@ $(function (){
 						
 						<tr>
 							<td width="110px" class="tdColor">联系人手机</td>
-							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" value="${get1.contactsPhone }"></td>
+							<td width="300px" ><input type="text" autocomplete="off"  id="phone" onblur="checkPhone()" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" value="${get1.contactsPhone }"></td>
 						
 			
 							<td width="110px" class="tdColor">联系人办公电话</td>
-							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" value="${get1.contactsOficePhone }"></td>
+							<td width="300px" ><input type="text" autocomplete="off" id="tel" onblur="checktel()" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" value="${get1.contactsOficePhone }"></td>
 						
 						</tr>
 
 						<tr>
 							
 							<td width="110px" class="tdColor" >联系人地址</td>
-							<td width="300px" colspan="3"><input type="text" style="width: 210px" name="contactsAddress" value="${get1.contactsAddress }"></td>
+							<td width="300px" colspan="3"><input type="text" style="width: 630px" name="contactsAddress" value="${get1.contactsAddress }"></td>
 						</tr>
 						<tr>
 							
@@ -99,7 +104,7 @@ $(function (){
 					</table>
 					<input type="submit" value="添加" style="width: 
 				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
-					<div class="paging">此处是分页</div>
+					
 				</div>
 			</form>
 
@@ -127,6 +132,33 @@ $(function (){
 </body>
 
 <script type="text/javascript">
+
+
+function checkPhone(){ 
+    var phone = document.getElementById('phone').value;
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){ 
+        alert("手机号码有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checktel(){ 
+    var tel = document.getElementById('tel').value;
+    if(!/0\d{2}-\d{7,8}/.test(tel)){ 
+        alert("固话有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checkemail(){ 
+    var email1 = document.getElementById('email').value;
+    if(!/^\w+([-\.]\w+)*@\w+([\.-]\w+)*\.\w{2,4}$/.test(email1)){ 
+        alert("邮箱有误，请重填");  
+        return false; 
+    } 
+}
 
 
 

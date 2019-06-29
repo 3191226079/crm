@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.sc.crmsys.bean.CustomerBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%
@@ -94,7 +97,7 @@ $(function (){
 							<td width="110px" class="tdColor">客户状态</td>
 							<td width="30px"><input type="text" style="width: 210px" name="customerState" value="${get1.customerState }"></td>
 							<td width="110px" class="tdColor">客户电话</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerPhone" value="${get1.customerPhone }"></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerPhone" id="phone" onblur="checkPhone()" value="${get1.customerPhone }"></td>
 						</tr>
 						<tr>
 							<td width="110px" class="tdColor">客户地址</td>
@@ -104,11 +107,19 @@ $(function (){
 
 						<tr>
 							<td width="110px" class="tdColor">客户传真</td>
-							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerFax" value="${get1.customerFax }"></td>
+							<td width="300px"><input type="text" style="width: 210px" autocomplete="off" name="customerFax" id="fax" onblur="checkfax()" value="${get1.customerFax }"></td>
 							<td width="110px" class="tdColor">客户邮箱</td>
-							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" autocomplete="off" value="${get1.customerEmail }"></td>
+							<td width="300px"><input type="text" style="width: 210px" name="customerEmail" autocomplete="off" id="email"  onblur="checkemail()" value="${get1.customerEmail }"></td>
 						</tr>
 						<tr>
+						
+						
+						<%
+						CustomerBean activeBean = (CustomerBean)request.getAttribute("get1");
+						Date activeStartTime = activeBean.getCustomerContactTime();
+						SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+						String date = simpleDateFormat1.format(activeStartTime);
+						%>
 							
 							<td width="110px" class="tdColor">联系时间</td>
 							<td width="300px"> <input type="text" class="vinput mh_date"  readonly="true" style="width: 210px"  name="customerContactTime" value="${get1.customerContactTime }"> </td>
@@ -155,7 +166,31 @@ $(function (){
 
 <script type="text/javascript">
 
+function checkPhone(){ 
+    var phone = document.getElementById('phone').value;
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){ 
+        alert("手机号码有误，请重填");  
+        return false; 
+    } 
+}
 
+
+function checkfax(){ 
+    var fax = document.getElementById('fax').value;
+    if(!/^(\d{3,4}-)?\d{7,8}$/.test(fax)){ 
+        alert("传真有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checkemail(){ 
+    var email1 = document.getElementById('email').value;
+    if(!/^\w+([-\.]\w+)*@\w+([\.-]\w+)*\.\w{2,4}$/.test(email1)){ 
+        alert("邮箱有误，请重填");  
+        return false; 
+    } 
+}
 
 
 // 广告弹出框

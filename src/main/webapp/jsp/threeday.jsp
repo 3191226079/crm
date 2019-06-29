@@ -29,7 +29,7 @@
 				<div class="banShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
+							
 					
 							<td width="200px" class="tdColor">客户姓名</td>
 							<td width="200px" class="tdColor">上级单位</td>
@@ -41,13 +41,13 @@
 							<td width="300px" class="tdColor">客户邮箱</td>
 							<td width="300px" class="tdColor">联系时间</td>
 							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
+							
 							<td width="300px" class="tdColor">修改时间</td>
-							<td width="300px" class="tdColor">修改</td>
+							<td width="300px" class="tdColor">操作</td>
 						</tr>
 						<c:forEach items="${getthreeday.list}" var="today1">		
 				 		<tr>
-				 		<td>${today1.customerId}</td>
+				 		
 				 		<td>${today1.customerName}</td>
 				 		<td>${today1.customerUpDepartment}</td>
 				 		<td>${today1.customerContactPerson}</td>
@@ -60,7 +60,7 @@
 				 			<fmt:formatDate value="${today1.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		<td>${today1.customerInfo}</td>
-				 		<td>${today1.companyId}</td>
+				 	
 				 		<td>
 				 			<fmt:formatDate value="${today1.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>

@@ -83,7 +83,6 @@
 				/upload/** = anon
 				/login.jsp = anon
 				/register.jsp = anon
-				/role/** = anon
 				/register = anon
 				
 <!-- 				/permission/t1 = perms[permission:t1] -->
@@ -94,4 +93,6 @@
 			</value>
 		</property>
 	</bean>
+	
+
 </beans> 	

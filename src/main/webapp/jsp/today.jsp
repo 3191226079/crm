@@ -37,7 +37,7 @@
 			
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
+						
 					
 							<td width="200px" class="tdColor">客户姓名</td>
 							<td width="200px" class="tdColor">上级单位</td>
@@ -49,14 +49,14 @@
 							<td width="300px" class="tdColor">客户邮箱</td>
 							<td width="300px" class="tdColor">联系时间</td>
 							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
+							
 							<td width="300px" class="tdColor">修改时间</td>
 							<td width="300px" class="tdColor">操作</td>
 							
 						</tr>
 				 		<c:forEach items="${selectAll.list}" var="today">		
 				 		<tr>
-				 		<td>${today.customerId}</td>
+				 	
 				 		<td>${today.customerName}</td>
 				 		<td>${today.customerUpDepartment}</td>
 				 		<td>${today.customerContactPerson}</td>
@@ -69,7 +69,7 @@
 				 			<fmt:formatDate value="${today.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		<td>${today.customerInfo}</td>
-				 		<td>${today.companyId}</td>
+	
 				 		<td>
 				 			<fmt:formatDate value="${today.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>

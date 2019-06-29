@@ -37,11 +37,11 @@
 				<div class="conShow">
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="150px" class="tdColor">流失客户编号</td>
+							<td width="150px" class="tdColor">客户姓名</td>
 							
-							<td width="150" class="tdColor">客户编号</td>
+							<td width="150" class="tdColor">客户电话</td>
 					
-							<td width="150px" class="tdColor">操作人员编号</td>
+							<td width="150px" class="tdColor">客户传真</td>
 							
 							<td width="150px" class="tdColor">处理方式</td>
 							
@@ -55,9 +55,9 @@
 						</tr>
 						<c:forEach items="${selectAll.list}" var="customerlose">
 						<tr>
-						<td>${customerlose.customerLoseId }</td>
-						<td>${customerlose.customerId }</td>
-						<td>${customerlose.customerLoseOperation }</td>
+						<td>${customerlose.customerBean.customerName }</td>
+						<td>${customerlose.customerBean.customerPhone }</td>
+						<td>${customerlose.customerBean.customerFax }</td>
 						<td>${customerlose.customerLosePromethods }</td>
 						<td>${customerlose.customerLoseSate }</td>
 						<td>${customerlose.companyId }</td>

@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class TaskBean {
     private String taskId;
 
@@ -10,18 +12,38 @@ public class TaskBean {
     private String taskContent;
 
     private String taskPerson;
-
-    private String checkPointId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date taskStartTime;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date taskEndTime;
 
     private Integer companyId;
 
     private Date taskUpdateTime;
+    
+    private String checkPointId;
+    
+    private CheckPointBean checkPointBean = new CheckPointBean();
+    
+    public CheckPointBean getCheckPointBean() {
+		return checkPointBean;
+	}
 
-    public String getTaskId() {
+	public void setCheckPointBean(CheckPointBean checkPointBean) {
+		this.checkPointBean = checkPointBean;
+	}
+
+	public String getCheckPointId() {
+		return checkPointId;
+	}
+
+	public void setCheckPointId(String checkPointId) {
+		this.checkPointId = checkPointId;
+	}
+
+	public String getTaskId() {
         return taskId;
     }
 
@@ -51,14 +73,6 @@ public class TaskBean {
 
     public void setTaskPerson(String taskPerson) {
         this.taskPerson = taskPerson == null ? null : taskPerson.trim();
-    }
-
-    public String getCheckPointId() {
-        return checkPointId;
-    }
-
-    public void setCheckPointId(String checkPointId) {
-        this.checkPointId = checkPointId == null ? null : checkPointId.trim();
     }
 
     public Date getTaskStartTime() {

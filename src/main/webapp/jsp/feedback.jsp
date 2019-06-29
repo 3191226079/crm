@@ -55,7 +55,7 @@ $(function (){
 					
 							
 
-							<td width="235px" class="tdColor">公司编号</td>
+							 <td width="200px" class="tdColor">客户姓名</td> 
 							
 							<td width="200px" class="tdColor">反馈状态</td>
 			
@@ -82,7 +82,7 @@ $(function (){
 							<tr>
 						
 						
-							<td>${getfeed.companyId}</td>
+							<td>${getfeed.customerBean.customerName}</td>
 							<td>${getfeed.feedbackState}</td>
 							<td>${getfeed.feedbackType}</td>
 							<td>

@@ -21,5 +21,12 @@ public interface CustomerLoseService {
 
 	public PageInfo<CustomerLoseBean> selectAll1(Integer pn,Integer size,CustomerLoseBean customerLoseBean);
 	
+	
+	
+	public PageInfo<CustomerLoseBean> selectlose(Integer pn,Integer size,CustomerLoseBean customerLoseBean);
+	
+	
+	
+	
 
 }

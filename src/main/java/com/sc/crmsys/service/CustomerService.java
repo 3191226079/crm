@@ -14,5 +14,4 @@ public interface CustomerService {
 	public void update(CustomerBean customerBean);
 	
 	public void del(String customerId);
-	 
 }

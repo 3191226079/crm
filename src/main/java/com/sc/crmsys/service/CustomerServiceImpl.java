@@ -5,11 +5,15 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.CustomerBean;
+import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.mapper.CustomerBeanMapper;
 
 @Service("customerService")
@@ -49,5 +53,9 @@ public class CustomerServiceImpl  implements CustomerService{
 		customerBeanMapper.deleteByPrimaryKey(customerId);
 		
 	}
+
+
+	
+
 
 }

@@ -34,8 +34,12 @@ public class CustomerBean {
     private Date customerUpdateTime;
     
     private String companyName;
+    
+   
 
-    public CustomerBean() {
+
+
+	public CustomerBean() {
 		super();
 	}
 

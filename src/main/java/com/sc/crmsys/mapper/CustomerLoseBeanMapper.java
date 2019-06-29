@@ -2,6 +2,7 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
 
 public interface CustomerLoseBeanMapper {
@@ -23,4 +24,6 @@ public interface CustomerLoseBeanMapper {
     public List<CustomerLoseBean> confirmationofloss();
     
     public void setcustomerlose();
+    
+    public List<CustomerLoseBean> selectlose();
 }

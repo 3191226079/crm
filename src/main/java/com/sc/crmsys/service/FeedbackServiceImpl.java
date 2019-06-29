@@ -16,7 +16,6 @@ import com.sc.crmsys.mapper.FeedbackBeanMapper;
 @Service("feedbackService")
 public class FeedbackServiceImpl implements FeedbackService{
 	
-	private static final List<FeedbackBean> FeedbackBean = null;
 	@Resource
 	private FeedbackBeanMapper feedbackBeanMapper;
 
@@ -55,10 +54,16 @@ public class FeedbackServiceImpl implements FeedbackService{
 
 	@Override
 	public PageInfo<FeedbackBean> selectAll(Integer pn, Integer size, FeedbackBean feedbackBean) {
-	PageHelper.startPage(pn, size);
-	List<FeedbackBean> getfeedback = feedbackBeanMapper.getfeedback();
-
-		return new PageInfo<FeedbackBean>(getfeedback);
+		PageHelper.startPage(pn, size); 
+		List<FeedbackBean> getcustomername = feedbackBeanMapper.getcustomername();
+	
+		
+	
+	
+	
+	
+		return new PageInfo<FeedbackBean>(getcustomername);
 	}
 
+	
 }

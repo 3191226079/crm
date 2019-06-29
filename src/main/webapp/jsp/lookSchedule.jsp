@@ -22,7 +22,7 @@
 		<div class="pageTop">
 			<div class="page">
 				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;日程管理
+					href="#">公共管理</a>&nbsp;-</span>&nbsp;查看日程
 			</div>
 	</div>
 
@@ -32,8 +32,9 @@
 				<div class="conform">
 					<form action="active/selectActive" method="post" id="myll">
 						<div class="cfD">
-							<input class="addUser" name="activeTitle" type="text" placeholder="日程主题" />
-							<button class="button" onclick="javascript:function(){document.getElementById('myll').submit()};" >搜索</button>
+							<input class="addUser"  autocomplete="off"  name="activeTitle" type="text" placeholder="日程主题" />
+							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myll').submit()};" >搜索</button> -->
+							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1" href="jsp/addSchedule.jsp">添加日程</a>
 						</div>
 					</form>
@@ -59,6 +60,10 @@
 										<c:if test="${activeBean.activeType eq 1 }">会议</c:if>
 										<c:if test="${activeBean.activeType eq 2 }">聚餐</c:if>
 										<c:if test="${activeBean.activeType eq 3 }">工作</c:if>
+										<c:if test="${activeBean.activeType eq 4 }">商务</c:if>
+										<c:if test="${activeBean.activeType eq 5 }">投简</c:if>
+										<c:if test="${activeBean.activeType eq 6 }">公关</c:if>
+										<c:if test="${activeBean.activeType eq 7 }">销售</c:if> 
 									</td>
 									<td>${activeBean.acitveDescribe }</td>
 									<td>

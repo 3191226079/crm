@@ -99,5 +99,16 @@ public class CustomerLoseController {
 		 return "forward:/jsp/customerlose.jsp";
 	}
 	
+	@RequestMapping("/selectlose")
+	public String selectlose(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerLoseBean customerLoseBean,Map<String, Object> map)
+	{
+		
+	
+		  PageInfo<CustomerLoseBean> selectAll = customerLoseService.selectlose(pn, size, customerLoseBean);
+		  
+		 map.put("selectAll", selectAll);
+		 return "forward:/jsp/overtime.jsp";
+	}
+	
 
 }

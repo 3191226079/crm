@@ -2,10 +2,13 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.EmployBean;
+import com.sc.crmsys.bean.InfoBean;
 
 public interface EmployBeanMapper {
-    int deleteByPrimaryKey(String employId);
+    void deleteByPrimaryKey(String employId);
 
     int insert(EmployBean record);
 
@@ -18,4 +21,6 @@ public interface EmployBeanMapper {
     int updateByPrimaryKey(EmployBean record);
     
     List<EmployBean> selectAllEmploy();
+    
+    EmployBean selectInfo(@Param("i")InfoBean infoBean,@Param("e")String employId);
 }

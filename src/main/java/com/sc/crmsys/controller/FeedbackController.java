@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,10 +42,15 @@ public class FeedbackController {
 			feedbackBean = new FeedbackBean();
 		}
 		
-		 PageInfo<FeedbackBean> getfeedback = feedbackService.selectAll(pn, size, feedbackBean);
 		
+		
+		PageInfo<FeedbackBean> getfeedback = feedbackService.selectAll(pn, size, feedbackBean);
+		
+		 
+		 
 		 map.put("getfeedback", getfeedback);
 		 return "forward:/jsp/feedback.jsp";
+		  
 	}
 	
 	

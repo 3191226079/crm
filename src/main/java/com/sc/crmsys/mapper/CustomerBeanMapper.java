@@ -1,5 +1,6 @@
 package com.sc.crmsys.mapper;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,14 @@ public interface CustomerBeanMapper {
 
     int updateByPrimaryKey(CustomerBean record);
     
+    
+    public ArrayList<String> getcustomerid();
+    
+    public  void add(@Param("a")String getcustomerid,@Param("b")String token);
+    
+    
+    
+    public ArrayList<String> getcustomerloseid();
     
   
     

@@ -84,6 +84,7 @@
 				 			<fmt:formatDate value="${today.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		
+				 		
 				 		<td><a href="add1/get1?customerId=${today.customerId }">
 									<img class="operation" src="img/update.png">
 								</a>

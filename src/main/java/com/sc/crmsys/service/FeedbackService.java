@@ -18,5 +18,9 @@ public interface FeedbackService {
 	
 	
 	public PageInfo<FeedbackBean> selectAll(Integer pn,Integer size,FeedbackBean feedbackBean);
+	
+	
+	
+	/*public List<FeedbackBean> getcustomername();*/
 
 }

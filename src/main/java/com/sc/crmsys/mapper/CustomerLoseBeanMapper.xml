@@ -10,6 +10,36 @@
     <result column="company_id" jdbcType="VARCHAR" property="companyId" />
     <result column="customer_lose_last_time" jdbcType="TIMESTAMP" property="customerLoseLastTime" />
   </resultMap>
+  
+  <resultMap type="com.sc.crmsys.bean.CustomerLoseBean" id="lian">
+  <id column="customer_lose_id" jdbcType="VARCHAR" property="customerLoseId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="customer_lose_operation" jdbcType="VARCHAR" property="customerLoseOperation" />
+    <result column="customer_lose_promethods" jdbcType="VARCHAR" property="customerLosePromethods" />
+    <result column="customer_lose_sate" jdbcType="VARCHAR" property="customerLoseSate" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="customer_lose_last_time" jdbcType="TIMESTAMP" property="customerLoseLastTime" />
+  <association property="customerBean" column="customer_id" javaType="com.sc.crmsys.bean.CustomerBean"> 
+  <id column="customer_id"  property="customerId" />
+    <result column="customer_name"  property="customerName" />
+    <result column="customer_up_department"  property="customerUpDepartment" />
+    <result column="customer_contact_person"  property="customerContactPerson" />
+    <result column="customer_state"  property="customerState" />
+    <result column="customer_address"  property="customerAddress" />
+    <result column="customer_phone"  property="customerPhone" />
+    <result column="customer_fax"  property="customerFax" />
+    <result column="customer_email"  property="customerEmail" />
+    <result column="customer_contact_time"  property="customerContactTime" />
+    <result column="customer_info"  property="customerInfo" />
+    <result column="company_id"  property="companyId" />
+    <result column="customer_update_time"  property="customerUpdateTime" />
+    
+  </association>
+ 
+  </resultMap>
+  
+  
+  
   <sql id="Base_Column_List">
     customer_lose_id, customer_id, customer_lose_operation, customer_lose_promethods, 
     customer_lose_sate, company_id, customer_lose_last_time
@@ -20,12 +50,23 @@
     from customer_lose
     where customer_lose_id = #{customerLoseId,jdbcType=VARCHAR}
   </select>
-  <select id="getcustomerlose" resultMap="BaseResultMap">
-  select * from customer_lose where customer_lose_sate =1
+  
+  <select id="getcustomerlose" resultMap="lian">
+  select * from customer c INNER JOIN customer_lose f ON f.customer_id= c.customer_id where customer_lose_sate =1
   </select>
   
-  <select id="confirmationofloss" resultMap="BaseResultMap" >
-   select * from customer_lose where customer_lose_sate =0
+  
+  
+  
+  <select id="confirmationofloss" resultMap="lian" >
+  select * from customer c INNER JOIN customer_lose f ON f.customer_id= c.customer_id where customer_lose_sate =0
+  </select>
+  
+  <select id="selectlose" resultMap="lian" >
+  select * from customer c INNER JOIN customer_lose f ON f.customer_id= c.customer_id
+  
+
+  
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

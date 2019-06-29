@@ -2,6 +2,7 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.FeedbackBean;
 
 public interface FeedbackBeanMapper {
@@ -18,4 +19,6 @@ public interface FeedbackBeanMapper {
     int updateByPrimaryKey(FeedbackBean record);
     
     public List<FeedbackBean> getfeedback();
+    
+    public List<FeedbackBean> getcustomername();
 }

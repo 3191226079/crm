@@ -58,7 +58,7 @@ public class InfoController {
 	{
 		if(infoDetailBean == null)
 		{
-			
+
 			infoDetailBean = new InfoDetailBean();
 		}
 		PageInfo<InfoDetailBean> InfoDetailBean = infoService.selectAll(pn,size,infoDetailBean);

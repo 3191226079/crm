@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
 import com.sc.crmsys.mapper.CustomerLoseBeanMapper;
 
@@ -73,6 +74,30 @@ public class CustomerLoseServiceImpl implements CustomerLoseService{
 		PageInfo<CustomerLoseBean> pageInfo = new PageInfo<CustomerLoseBean>(getcustomerlose);	
 		return pageInfo;
 	}
+
+
+	@Override
+	public PageInfo<CustomerLoseBean> selectlose(Integer pn, Integer size, CustomerLoseBean customerLoseBean) {
+		PageHelper.startPage(pn, size);
+		List<CustomerLoseBean> selectlose = customerLoseBeanMapper.selectlose();
+		PageInfo<CustomerLoseBean> pageInfo = new PageInfo<CustomerLoseBean>(selectlose);
+		return pageInfo;
+	}
+
+
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	

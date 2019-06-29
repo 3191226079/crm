@@ -75,7 +75,7 @@ $(function (){
 							<td width="110px" class="tdColor">联系人姓名</td>
 							<td width="300px"><input type="text" style="width: 210px" name="contactsName" value="" ></td>
 							<td width="110px" class="tdColor">联系人电子邮件</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" value=""></td>
+							<td width="300px"><input type="text" style="width: 210px"  name="contactsEmail" id="email"  onblur="checkemail()" value=""></td>
 						</tr>
 						<tr>
 							
@@ -87,11 +87,11 @@ $(function (){
 						
 						<tr>
 							<td width="110px" class="tdColor">联系人手机</td>
-							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off"  style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsPhone" id="phone" onblur="checkPhone()" value=""></td>
 						
 			
 							<td width="110px" class="tdColor">联系人办公电话</td>
-							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" value=""></td>
+							<td width="300px" ><input type="text" autocomplete="off" style="width: 210px;border: 1px solid none;padding-left: 5px;" name="contactsOficePhone" id="tel" onblur="checktel()" value=""></td>
 						
 						</tr>
 
@@ -140,6 +140,33 @@ $(function (){
 
 <script type="text/javascript">
 
+
+
+function checkPhone(){ 
+    var phone = document.getElementById('phone').value;
+    if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))){ 
+        alert("手机号码有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checktel(){ 
+    var tel = document.getElementById('tel').value;
+    if(!/0\d{2}-\d{7,8}/.test(tel)){ 
+        alert("固话有误，请重填");  
+        return false; 
+    } 
+}
+
+
+function checkemail(){ 
+    var email1 = document.getElementById('email').value;
+    if(!/^\w+([-\.]\w+)*@\w+([\.-]\w+)*\.\w{2,4}$/.test(email1)){ 
+        alert("邮箱有误，请重填");  
+        return false; 
+    } 
+}
 
 
 

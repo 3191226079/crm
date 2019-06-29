@@ -54,18 +54,22 @@ $(function (){
 						
 						<tr>
 							
-							<td width="135px" class="tdColor" colspan="4">添加客户反馈信息</td>
+							<td width="135px" class="tdColor" colspan="4">更改客户反馈信息</td>
 						</tr>
 						<tr>
-							<td width="135px" class="tdColor" type="hidden">反馈编号</td>
-							<td width="370px"><input type="hidden" style="width: 210px" readonly name="feedbackId" value="${get1feedback.feedbackId }" >
+						
+							<td width="370px"  colspan="2"><input type="hidden" style="width: 210px" readonly name="feedbackId" value="${get1feedback.feedbackId }" >
 							</td>
-							<td width="135px" class="tdColor"  type="hidden">客户编号</td>
-							<td width="370px"><input type="hidden" style="width: 210px" name="customerId" value="${get1feedback.customerId }"></td>
+							
+							<td width="370px"  colspan="2"><input type="hidden"  style="width: 210px" name="customerId" value="${get1feedback.customerId }"></td>
 						</tr>
 						<tr>
-							<td width="110px" class="tdColor">公司编号</td>
-							<td width="300px"><input type="text" style="width: 210px"  name="companyId" value="${get1feedback.companyId }"></td>
+						<td width="300px" colspan="4"><input type="hidden" style="width: 210px"  name="companyId" value="${get1feedback.companyId }"></td>
+						</tr>
+						<tr>
+							<td width="110px" class="tdColor">负责人</td>
+							<td width="300px"><input type="text" style="width: 210px" name="feedbackCharge" value="${get1feedback.feedbackCharge }"></td>
+							
 							<td width="110px" class="tdColor">反馈状态</td>
 							<td width="300px"><input type="text" style="width: 210px" name="feedbackState" value="${get1feedback.feedbackState }" ></td>
 						</tr>
@@ -88,22 +92,21 @@ $(function (){
 						</tr>
 
 						<tr>
-							<td width="110px" class="tdColor">负责人</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackCharge" value="${get1feedback.feedbackCharge }"></td>
+							<td width="110px" class="tdColor">最后修改时间</td>
+							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackLastTime" value="${get1feedback.feedbackLastTime }"></td>
 							<td width="110px" class="tdColor">反馈主题</td>
 							<td width="300px"><input type="text" style="width: 210px" name="feedbackTitle" value="${get1feedback.feedbackTitle }"></td>
 						</tr>
 						<tr>
 							
-							<td width="110px" class="tdColor">最后修改时间</td>
-							<td width="300px"><input type="text" class="vinput mh_date" readonly="true" style="width: 210px"  name="feedbackLastTime" value="${get1feedback.feedbackLastTime }"></td>
+							
 							<td width="110px" class="tdColor">分析</td>
-							<td width="300px"><input type="text" style="width: 210px" name="feedbackAnalyse" value="${get1feedback.feedbackAnalyse }"></td>
+							<td width="300px" colspan="3"><input type="text" style="width: 620px" name="feedbackAnalyse" value="${get1feedback.feedbackAnalyse }"></td>
 						</tr>
 					</table>
 					<input type="submit" value="确认" style="width: 
-				     200px;height:40px; color: #438eb9; margin-left: 410px"  >
-					<div class="paging">此处是分页</div>
+				     200px;height:40px; color: #438eb9; margin-left: 350px"  >
+					
 				</div>
 			</form>
 

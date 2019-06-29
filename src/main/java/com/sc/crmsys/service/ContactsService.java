@@ -23,4 +23,7 @@ public interface ContactsService {
 	public PageInfo<ContactsBean> check(Integer pn,Integer size,String customerId);
 	
 	/*public List<ContactsBean> check(String customerId);*/
+	
+	
+	
 }

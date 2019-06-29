@@ -55,7 +55,7 @@ public class SelectController {
 			customerBean = new CustomerBean();
 		}
 		
-		 PageInfo<CustomerBean> getthreeday = todayService.selectAll(pn, size, customerBean);
+		 PageInfo<CustomerBean> getthreeday = threeDayService.selectAll(pn, size, customerBean);
 		 map.put("getthreeday", getthreeday);
 		 return "forward:/jsp/threeday.jsp";
 	}
@@ -77,7 +77,7 @@ public class SelectController {
 			customerBean = new CustomerBean();
 		}
 		
-		 PageInfo<CustomerBean> getsevenday = todayService.selectAll(pn, size, customerBean);
+		 PageInfo<CustomerBean> getsevenday = sevenDayService.selectAll(pn, size, customerBean);
 		 map.put("getsevenday", getsevenday);
 		 return "forward:/jsp/sevenday.jsp";
 	}
@@ -101,7 +101,7 @@ public class SelectController {
 			customerBean = new CustomerBean();
 		}
 		
-		 PageInfo<CustomerBean> getonemonthday = todayService.selectAll(pn, size, customerBean);
+		 PageInfo<CustomerBean> getonemonthday = oneMonthService.selectAll(pn, size, customerBean);
 		 map.put("getonemonthday", getonemonthday);
 		 return "forward:/jsp/onemonth.jsp";
 	}
