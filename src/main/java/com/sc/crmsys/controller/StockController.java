@@ -1,5 +1,6 @@
 package com.sc.crmsys.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -8,7 +9,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sc.crmsys.bean.SaleInfoBean;
 import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.service.StockService;
 
@@ -57,9 +60,9 @@ public class StockController {
 		
 	}
 	@RequestMapping("updateId")
-	public String updateStockId(StockBean stockBean, Map<String, Object> map)
+	public String updateStockId(StockBean stockBean,SaleInfoBean saleInfoBean, Map<String, Object> map)
 	{
-		stockService.updateStockId(stockBean);
+		stockService.updateStockId(stockBean,saleInfoBean);
 		return "redirect:/stock/select";
 		
 	}
@@ -73,6 +76,41 @@ public class StockController {
 		
 	}
 	
+	//查询价格
+	@RequestMapping("/selectPrice")
+	@ResponseBody
+	public Map<String, Object> selectStockPrice(String num)
+	{
+		StockBean se = stockService.selectByPrimaryKey(num);
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("se", se);
+		return map;	
+	}
+	
+	//查询商品数量
+	@RequestMapping("/outStock")
+	public String selectStockNum(SaleInfoBean saleInfoBean,Map<String, Object> map)
+	{
+		StockBean stockBean = stockService.selectByPrimaryKey(saleInfoBean.getGoodsId());
+		String number = stockBean.getStockNumber();
+		/*String number = stockBean.getCommodityNumber();*/
+		Integer inNumber = Integer.valueOf(number);
+		
+		String goodsNum = saleInfoBean.getGoodsNum();
+		
+		if(inNumber > Integer.valueOf(goodsNum))
+		{
+			Integer realNumber = inNumber-Integer.valueOf(goodsNum);
+			stockBean.setStockNumber(realNumber.toString());
+			stockService.updateStockId(stockBean,saleInfoBean);
+			return "forward:/inc/mainll.jsp";	
+		}
+		else
+		{
+			map.put("fail", "库存不足");
+		}
+		return "forward:/saleout/get";	
+	}
 	
 	
 

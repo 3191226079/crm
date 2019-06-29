@@ -33,6 +33,70 @@
    
   </select>
   
+  <!-- <select id="seletStockSaleout" resultMap="SaleMap">
+  	SELECT * FROM stock s INNER JOIN saleout sa ON s.company_id = sa.company_id  
+  </select>
+  
+  
+  <resultMap id="SaleMap" type="com.sc.crmsys.bean.SaleOutBean">
+    <id column="saleout_id" jdbcType="VARCHAR" property="saleoutId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+  	<result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="saleout_time" jdbcType="TIMESTAMP" property="saleoutTime" />
+    <result column="saleout_invoce" jdbcType="VARCHAR" property="saleoutInvoce" />
+    <result column="saleout_price" jdbcType="VARCHAR" property="saleoutPrice" />
+    <result column="saleout_state" jdbcType="VARCHAR" property="saleoutState" />
+    <result column="sale_state" jdbcType="VARCHAR" property="saleState" />
+    <result column="saleout_remarks" jdbcType="VARCHAR" property="saleoutRemarks" />
+    <result column="saleout_last_time" jdbcType="TIMESTAMP" property="saleoutLastTime" />
+   	<association property="stockBean1" javaType="com.sc.crmsys.bean.StockBean" column="company_id">
+   		<id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+	    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+	    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+	    <result column="description" jdbcType="VARCHAR" property="description" />
+	    <result column="unit" jdbcType="VARCHAR" property="unit" />
+	    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+	    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
+	    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
+	    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
+	    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
+	    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
+	 	<result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
+   	</association>
+  </resultMap> -->
+  
+  <!--<select id="selectSS" resultMap="saleStockMap">
+  	SELECT * FROM saleout    
+  </select>
+  
+  <resultMap type="com.sc.crmsys.bean.SaleOutBean" id="saleStockMap">
+  	<id column="saleout_id" jdbcType="VARCHAR" property="saleoutId" />
+    <result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="saleout_time" jdbcType="TIMESTAMP" property="saleoutTime" />
+    <result column="saleout_invoce" jdbcType="VARCHAR" property="saleoutInvoce" />
+    <result column="saleout_price" jdbcType="VARCHAR" property="saleoutPrice" />
+    <result column="saleout_state" jdbcType="VARCHAR" property="saleoutState" />
+    <result column="sale_state" jdbcType="VARCHAR" property="saleState" />
+    <result column="saleout_remarks" jdbcType="VARCHAR" property="saleoutRemarks" />
+    <result column="saleout_last_time" jdbcType="TIMESTAMP" property="saleoutLastTime" />
+   	<association property="stockBeanss"  javaType="com.sc.crmsys.bean.StockBean" column="company_id">
+   		<id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+	    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+	    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+	    <result column="description" jdbcType="VARCHAR" property="description" />
+	    <result column="unit" jdbcType="VARCHAR" property="unit" />
+	    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+	    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
+	    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
+	    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
+	    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
+	    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
+   	</association>
+  </resultMap>  -->
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">

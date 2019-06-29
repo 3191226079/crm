@@ -1,12 +1,15 @@
 package com.sc.crmsys.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.sc.crmsys.bean.SaleInfoBean;
 import com.sc.crmsys.bean.StockBean;
+import com.sc.crmsys.mapper.SaleInfoBeanMapper;
 import com.sc.crmsys.mapper.StockBeanMapper;
 
 @Service("stockService")
@@ -14,6 +17,9 @@ public class StockServiceImpl implements  StockService{
 
 	@Resource
 	private StockBeanMapper stockBeanMapper;
+	
+	@Resource
+	private SaleInfoBeanMapper saleInfoBeanMapper;
 	
 	@Override
 	public List<StockBean> getPurchase(String companyId) {
@@ -45,8 +51,13 @@ public class StockServiceImpl implements  StockService{
 	}
 
 	@Override
-	public void updateStockId(StockBean stockBean) {
+	public void updateStockId(StockBean stockBean,SaleInfoBean saleInfoBean) {
 		stockBeanMapper.updateByPrimaryKeySelective(stockBean);
+		String saleinfoId = UUID.randomUUID().toString();
+		saleInfoBean.setSaleinfoId(saleinfoId);
+		saleInfoBeanMapper.insert(saleInfoBean);
+		
+		
 		
 	}
 
@@ -54,6 +65,13 @@ public class StockServiceImpl implements  StockService{
 	public List<StockBean> getStock() {
 		List<StockBean> getStock = stockBeanMapper.selectStock();
 		return getStock;
+	}
+	//查询价格
+	@Override
+	public StockBean selectStockPrice(String commodityNumber)
+	{
+		StockBean price = stockBeanMapper.selectByPrimaryKey(commodityNumber);
+		return price;
 	}
 
 	

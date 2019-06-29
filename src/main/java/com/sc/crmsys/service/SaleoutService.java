@@ -16,7 +16,12 @@ public interface SaleoutService {
 	
 	//查销售单编号
 	public List<SaleOutBean>  getSaleOutId();
+	//链表查询
+	public List<SaleOutBean>  selectSaleStock();
 	
-	public List<SaleOutBean>  selectSaleOutId();
+	List<SaleOutBean> selectSaleOutId();
+	
+	List<SaleOutBean> getSSS();
+	
 
 }

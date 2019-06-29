@@ -1,6 +1,7 @@
 package com.sc.crmsys.controller;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -11,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sc.crmsys.bean.SaleOutBean;
+import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.service.SaleoutService;
+import com.sc.crmsys.service.StockService;
 
 @Controller
 @RequestMapping("/saleout")
@@ -20,15 +23,19 @@ public class SaleoutController {
 	@Resource
 	private SaleoutService saleoutService;
 	
+	@Resource
+	private StockService stockService; 
+	
 	
 	@RequestMapping("/get")
-	public String getsaleout(Map<String, Object> map)
+	public String getsaleout(String fail, Map<String, Object> map)
 	{
 		List<SaleOutBean> getsaleout = saleoutService.getsaleout();
+		List<StockBean> getStock = stockService.selectStock();
 		map.put("getsaleout", getsaleout);
-		
-		
-		return "forward:/jsp/saleout.jsp";
+		map.put("getStock", getStock);
+		map.put("fail", fail);
+		return "forward:/jsp/outsaleinfo.jsp";
 	}
 	
 	
@@ -70,7 +77,7 @@ public class SaleoutController {
 		return "redirect:get";
 	}
 	
-	@RequestMapping("selectSale")
+	@RequestMapping("/selectSale")
 	public String selectSaleout(Map<String, Object> map)
 	{
 		List<SaleOutBean> saleOutId = saleoutService.getSaleOutId();
@@ -79,12 +86,26 @@ public class SaleoutController {
 		
 	}
 	
-	/*@RequestMapping("getSale")
-	public String getSaleout(Map<String, Object> map)
+	@RequestMapping("/getSale")
+	public String getSaleoutStock(Map<String, Object> map)
 	{
-		List<SaleOutBean> getOutId = saleoutService.getSaleOutId();
-		map.put("getOutId", getOutId);
+		List<SaleOutBean> selectSaleStock = saleoutService.selectSaleStock();
+		System.out.println(selectSaleStock);
+		map.put("selectSaleStock", selectSaleStock);
 		return "forward:/jsp/outsaleinfo.jsp";
 		
-	}*/
+	}
+	@RequestMapping("/gSS")
+	public String getSaleS(Map<String, Object> map)
+	{
+		List<SaleOutBean> sss = saleoutService.getSSS();
+		
+		/*for (Iterator iterator = sss.iterator(); iterator.hasNext();) {
+			SaleOutBean saleOutBean = (SaleOutBean) iterator.next();
+		}*/
+		map.put("sss", sss);
+		return "forward:/jsp/outsaleinfo.jsp";
+		
+	}
+	
 }

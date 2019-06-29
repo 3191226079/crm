@@ -128,7 +128,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(".no").click(function(){
 		  $(".banDel").hide();
 		});
-		
+		//确认删除
 		function setPath(id)
 		{
 			console.log(id);

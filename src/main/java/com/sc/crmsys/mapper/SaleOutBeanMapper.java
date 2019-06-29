@@ -23,5 +23,12 @@ public interface SaleOutBeanMapper {
     //查询销售单编号
     List<SaleOutBean>  getSaleOutId();
     
+    List<SaleOutBean>  seletStockSaleout();
+    
+    //测试查询
+    List<SaleOutBean> selectSS();
+    
+    
+    
  
 }

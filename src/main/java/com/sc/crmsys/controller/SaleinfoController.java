@@ -1,13 +1,14 @@
 package com.sc.crmsys.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.sc.crmsys.bean.SaleInfoBean;
 import com.sc.crmsys.service.SaleinfoService;
 
@@ -31,10 +32,12 @@ public class SaleinfoController {
 	@RequestMapping("/add")
 	public String addsaleinfo(SaleInfoBean saleInfoBean)
 	{
+		//使用UUID设置主键
+		String id = UUID.randomUUID().toString();
+		saleInfoBean.setSaleinfoId(id);
+		saleInfoBean.setSaleinfoLastTime(new Date());
 		saleinfoService.addsaleinfo(saleInfoBean);
-		
-		
-		return "redirect:get";
+		return "redirect:/user/index";
 	}
 	
 	@RequestMapping("/get1")

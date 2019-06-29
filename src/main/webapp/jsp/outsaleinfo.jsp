@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>"> 
     <link rel="stylesheet" type="text/css" href="css/css.css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>   
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <title>销售详情表</title>        
  </head>
  <body>
@@ -27,82 +27,99 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<!-- wish页面样式 -->
 			<div class="wish">
 				<!-- wish 表格 显示 -->
-			
+			<form action="stock/outStock" method="post">
 				<div class="wishShow">
 					<table border="1" cellspacing="0" cellpadding="0">
-						<tr>
+						<%-- <tr>
 							<td width="150px" class="tdColor tdC" name="saleinfoId">销售单详情编号</td>
 							<td>
-								<select class="textBox" name="warehouseNumber">
-									<c:forEach items="${selectWarehouse }" var="classbean">
-									 	<option value="${classbean.warehouseNumber}">${classbean.warehouseName}</option>
+								<input style="height:40px;width:160px;" type="text" name="goodsId">
+								<select style="width:150px; height:40px;" class="textBox" name="warehouseNumber">
+									<c:forEach items="${sss }" var="ff">
+									 	<option value="${ff.stockBeanss.warehouseNumber}">${ff.stockBeanss.warehouseName}</option>
 									</c:forEach> 
-							    </select>
+							    </select> 
+							</td>
+						</tr> --%>
+						 <tr>
+							<td width="175px" class="tdColor" name="companyId">公司编号</td>
+							<td>
+								<select name="companyId" style="width:160px; height:40px;">
+									<c:forEach items="${getsaleout}" var="getstock">
+										<option  value="${getstock.companyId}">${getstock.companyId}</option>
+									</c:forEach>
+								</select>
+							</td>
+						</tr> 
+						<tr>
+							<td width="200px" class="tdColor" name="saleoutId">销售单编号</td>
+							<td>
+								
+							    <select name="saleoutId" style="width:160px; height:40px;">
+									<c:forEach items="${getsaleout}" var="getstock">
+										<option  value="${getstock.saleoutInvoce}">${getstock.saleoutInvoce}</option>
+									</c:forEach>
+								</select>
 							</td>
 						</tr>
 						<tr>
-							<td width="200px" class="tdColor" name="companyId">销售单编号</td>
+							<td width="175px" class="tdColor" name="goodsId">商品编号***</td>
 							<td>
-								<select class="textBox" name="warehouseNumber" width="200px" class="tdColor">
-									
-							    </select>
-							</td>
-						</tr>
-						<tr>
-							<td width="175px" class="tdColor" name="saleoutId">商品编号</td>
-							<td>
-								<select>
+								<select name="goodsId"  style="width:160px; height:40px;" onchange="aa()" id="mytt">
 									<c:forEach items="${getStock}" var="getstock">
 										<option  value="${getstock.commodityNumber}">${getstock.commodityName}</option>
 									</c:forEach>
 								</select>
 							</td>
 						</tr>
+						
 						<tr>
-							<td width="185px" class="tdColor" name="goodsId">商品数量</td>
+							<td width="185px" class="tdColor" name="goodsPrice">商品价格***</td>
+							<td>
+								<input id="myprice" type="text" name="cc" readonly style="height:40px;width:160px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="185px" class="tdColor" >库存数量</td>
+							<td>
+								<input id="mynum" type="text" name="cc" readonly style="height:40px;width:160px;">
+							</td>
+						</tr>
+						<tr>
+							<td width="185px" class="tdColor" name="goodsNum">出库数量</td>
+							<td>
+								<input style="height:40px;width:160px;" type="text" name="goodsNum">
+							</td>
+						</tr>
+						<tr>
+							<td width="180px" class="tdColor" name="saleinfoRemarks">备注信息</td>
+							<td>
+								<input style="height:40px;width:160px;" type="text" name="saleinfoRemarks">
+							</td>
+						</tr>
+				
+					 	<!-- <tr>
+							<td width="155px" class="tdColor" name="saleinfoLastTime">最后修改时间</td>
 							<td>
 								
 							</td>
-						</tr>
-						<tr>
-							<td width="185px" class="tdColor" name="goodsNum">商品价格</td>
-							<td>
-								<select>
-									<c:forEach items="${getStock}" var="getstock">
-										<option  value="${getstock.retailPrice}">${getstock.retailPrice}</option>
-									</c:forEach>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td width="180px" class="tdColor" name="goodsPrice">备注信息</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td width="175px" class="tdColor" name="saleinfoRemarks">公司编号</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td width="155px" class="tdColor" name="saleinfoLastTime">最后修改时间</td>
-							<td></td>
-						</tr>
-					
-						
-						
-						
-						
-						
-						
-						
-						
-						
+						</tr> -->
+				
 					</table>
+					<div class="bbD">
+						<p class="bbDP">
+							
+							<input type="submit" value="出库" class="btn_ok btn_yes">
+							<a class="btn_ok btn_no" href="#">取消</a>
+						</p>
+					</div>
 					<div class="paging">此处是分页</div>
 				</div>
-				
+			</form>	
 				<!-- wish 表格 显示 end-->
 			</div>
 			<!-- wish页面样式end -->
+			${fail }
 		</div>
 
 	</div>
@@ -124,6 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  
  </body>
  	<script type="text/javascript">
+ 	
 // 广告弹出框
 		$(".delban").click(function(){
 		  $(".banDel").show();
@@ -141,10 +159,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var path = 'stock/deleteId?commodityNumber='+id;
 			document.getElementById('del').href = path;
 		}
-		
+		/* 
+		function aa()
+		{
+			
+		} */
+		var num1 = $('#mytt').val();
+		$.ajax({
+			type:'POST',//请求方式为post
+			url:'stock/selectPrice',//请求地址
+			data:{'num':num1},//参数
+			success:function (result)
+			//success指的是请求成功并返回信息
+			//result是返回的内容
+			{
+				//从后台获取价格
+				var price = result.se.retailPrice;
+				$('#myprice').val(price);//将值放到页面
+				$('#mynum').val(result.se.stockNumber);//将值放到页面
+				
+			},
+			error:function()
+			{
+				alert('系统繁忙');
+			}
+		});
 		
 		$(document).ready(function (){
-			$('.btn').click(function (){
+			$('#mytt').change(function(){
+				var num = $('#mytt').val();
+				$.ajax({
+					type:'POST',//请求方式为post
+					url:'stock/selectPrice',//请求地址
+					data:{'num':num},//参数
+					success:function (result)
+					//success指的是请求成功并返回信息
+					//result是返回的内容
+					{
+						var price = result.se.retailPrice;
+						$('#myprice').val(price);
+						$('#mynum').val(result.se.stockNumber);//将值放到页面
+					},
+					error:function()
+					{
+						alert('系统繁忙');
+					}
+				});
+			});
+			
+			 $('.btn').click(function (){
 				var saleinfoId=$('#saleinfoId').val();
 				var companyId=$('#companyId').val();
 				var saleoutId=$('#saleoutId').val();
@@ -187,9 +250,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						alert('系统繁忙');
 					}
 				});
-			});
+			}); 
 
-		});
+		}); 
 // 广告弹出框 end
 </script>
 </html>
