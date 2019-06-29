@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.github.pagehelper.PageInfo;
-import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.CustomerLoseBean;
 import com.sc.crmsys.service.CustomerLoseService;
 
@@ -27,14 +26,7 @@ public class CustomerLoseController {
 	
 	
 
-	@RequestMapping("/getcustomerlose")
 	
-	public String getcustomerlose(Map<String, Object> map)
-	{
-		List<CustomerLoseBean> customerlose = customerLoseService.getcustomerlose();
-		map.put("customerlose", customerlose);
-		return "forward:/jsp/customerlose.jsp";
-	}
 
 
 
@@ -119,7 +111,7 @@ public class CustomerLoseController {
 		{
 			customerLoseBean = new CustomerLoseBean();
 		}
-		
+		System.out.println("dsgd");
 		 PageInfo<CustomerLoseBean> selectAll = customerLoseService.selectAll(pn, size, customerLoseBean);
 		 map.put("selectAll", selectAll);
 		 return "forward:/jsp/customerlose.jsp";
