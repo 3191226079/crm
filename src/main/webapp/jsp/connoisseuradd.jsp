@@ -50,7 +50,7 @@
 	}
 
 	.banneradd_bor {
-		border: 1px solid #ccc;
+		
 		margin-bottom: 160px;
 		margin-top: 10px;
 		
@@ -90,6 +90,44 @@
 		margin: 0 auto;
 		padding-left: 200px;
 		background-color: white;
+	}
+	.bbD_r {
+	margin-top: 20px;
+	padding-left: 500px;
+	position: fixed;
+	bottom: -100px;
+	}
+	
+	.bbD_r .bbDP_r {
+		text-align: left;
+		padding-left: 25px;
+	
+	}
+	
+	.bbD_r .bbDP_r .btn_ok_r {
+		display: inline-block;
+		width: 100px;
+		height: 40px;
+		line-height: 40px;
+		background-color: #3695cc;
+		color: #fff;
+		margin-top: 50px;
+		margin-right: 25px;
+		font-size: 16px;
+		cursor: pointer;
+		text-align: center;
+		margin-bottom: 160px;
+		border: none;
+	}
+	
+	.bbD_r .bbDP_r .btn_no_r {
+		color: #333;
+		background-color: #fff;
+		border: 1px solid #3695cc;
+	}
+	
+	.bbD_r .bbDP_r .btn_yes_r {
+		margin-left: 66px;
 	}
 	
 	</style>
@@ -176,52 +214,40 @@
 							</td>
 						</tr>
 					</table>				
-					
-					<div class="bbD">
-						<p class="bbDP">
-							<button class="btn_ok btn_yes" id="opb">保存</button>
-							<a class="btn_ok btn_no" href="purchaseOrder/select">取消</a>
-						</p>
-					</div>
 				</div>
 				<div class="conShowr">
 					<input type="hidden" id="opid" value="">
-					<table border="1" cellspacing="0" cellpadding="0">
+					<table border="1" cellspacing="0" cellpadding="0" id="tabr">
 						<tr>
 							<td width="100px" class="tdColor tdC">序号</td>
 							<td width="200px" class="tdColor">产品名称</td>
 							<td width="400px" class="tdColor">产品编号</td>
-							<td width="150px" class="tdColor">数量</td>
-							<td width="150px" class="tdColor">单价</td>
-							<td width="155px" class="tdColor">单位</td>
+							<td width="160px" class="tdColor">数量</td>
+							<td width="160px" class="tdColor">单价</td>
+							<td width="170px" class="tdColor">单位</td>
 							<td width="150px" class="tdColor">金额</td>
-							<td width="100px" class="tdColor">是否入库</td>
-							<td width="150px" class="tdColor">操作</td>
+							<td width="125px" class="tdColor">是否入库</td>
 						</tr>
 						<tr>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>
-							</td>
-							<td>	
-							</td>
-							<td></td>
-							
-							
-							<td><a href="#"><img class="operation"
-									src="img/update.png"></a> <img class="operation delban"
-								src="img/delete.png"></td>
+							<td id="td_1"></td>
+							<td id="td_2"></td>
+							<td id="td_3"></td>
+							<td id="td_4"></td>
+							<td id="td_5"></td>
+							<td id="td_6"></td>
+							<td id="td_7"></td>
+							<td id="td_8"></td>
 						</tr>
 						
 					</table>
 					<div class="addr" id="addr">添加</div>
 					<div class="paging"><span class="pagerr">上一页</span><span class="pagerr">共1页</span><span class="pagerr">下一页</span></div>
+				</div>
+				<div class="bbD_r">
+						<p class="bbDP_r">
+							<button class="btn_ok_r btn_yes_r" id="opb">保存</button>
+							<a class="btn_ok_r btn_no_r" href="purchaseOrder/select">取消</a>
+						</p>
 				</div>
 			</div>
 			
@@ -315,17 +341,26 @@
 		
 	});
 	
-	$("#detailb").click(function(){
-		$("sed").val();
-	});
+	/* $("#detailb").click(function(){
+		var productId =  $("sed").val();
+		var productNum = $("productNum").val();
+		var productPrice = $("productPrice").val();
+		var unit = $("unit").val();
+		var detailPurchaseInfo = $("detailPurchaseInfo").val();
+		var detailPurchasePerson = $("detailPurchasePerson").val();
+		var detailPurchaseUpdateTime = $("detailPurchaseUpdateTime").val();
+		
+		$.ajax({
+			type:'post',
+			url:'',
+			
+			
+		});
+		
+		
+		
+	}); */
 
-	sed
-	productNum
-	productPrice
-	unit
-	detailPurchaseInfo
-	detailPurchasePerson
-	detailPurchaseUpdateTime
 
 </script>
 </html>

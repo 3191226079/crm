@@ -45,9 +45,31 @@
 	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
 	    <result column="supplier_update_time" jdbcType="TIMESTAMP" property="supplierUpdateTime" />
     </association>
-    <collection property="" ofType="com.sc.crmsys.bean.DetailPurchaseBean"  column="order_purchase_id">
-    	
-    
+    <collection property="detailPurchaseList" ofType="com.sc.crmsys.bean.DetailPurchaseBean"  column="order_purchase_id">
+    	<id column="detail_purchase_id" jdbcType="VARCHAR" property="detailPurchaseId" />
+	    <result column="order_purchase_id" jdbcType="VARCHAR" property="orderPurchaseId" />
+	    <result column="product_num" jdbcType="VARCHAR" property="productNum" />
+	    <result column="product_price" jdbcType="VARCHAR" property="productPrice" />
+	    <result column="detail_purchase_state" jdbcType="VARCHAR" property="detailPurchaseState" />
+	    <result column="detail_purchase_person" jdbcType="VARCHAR" property="detailPurchasePerson" />
+	    <result column="detail_purchase_info" jdbcType="VARCHAR" property="detailPurchaseInfo" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="detail_purchase_update_time" jdbcType="TIMESTAMP" property="detailPurchaseUpdateTime" />
+    	<association property="stockBean" javaType="com.sc.crmsys.bean.StockBean" column="commodity_number">
+    		<id column="commodity_number" jdbcType="VARCHAR" property="commodityNumber" />
+		    <result column="commodity_name" jdbcType="VARCHAR" property="commodityName" />
+		    <result column="commodity_type" jdbcType="VARCHAR" property="commodityType" />
+		    <result column="description" jdbcType="VARCHAR" property="description" />
+		    <result column="unit" jdbcType="VARCHAR" property="unit" />
+		    <result column="warehouse_number" jdbcType="VARCHAR" property="warehouseNumber" />
+		    <result column="stock_number" jdbcType="VARCHAR" property="stockNumber" />
+		    <result column="cost_price" jdbcType="VARCHAR" property="costPrice" />
+		    <result column="retail_price" jdbcType="VARCHAR" property="retailPrice" />
+		    <result column="sale_price" jdbcType="VARCHAR" property="salePrice" />
+		    <result column="postscript" jdbcType="VARCHAR" property="postscript" />
+		    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		    <result column="stock_last_time" jdbcType="TIMESTAMP" property="stockLastTime" />
+    	</association>
     </collection>
   </resultMap>
   
@@ -282,21 +304,25 @@
     where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
   </update>
   
-    <update id="updateState" parameterType="com.sc.crmsys.bean.OrderPurchaseBean">
+    <update id="updateState">
     update order_purchase
     set 
       order_purchase_state = 10,
-      order_purchase_update_time = #{orderPurchaseUpdateTime,jdbcType=TIMESTAMP}
-    where order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+      order_purchase_update_time = #{orderPurchaseUpdateTime}
+    where order_purchase_id = #{orderPurchaseId}
   </update>
   
   <select id="getPurchaseOrder" parameterType="com.sc.crmsys.bean.OrderPurchaseBean" resultMap="BRMap">
   	SELECT * from order_purchase op 
   	INNER JOIN supplier s ON op.supplier_id = s.supplier_id
+  	where order_purchase_state != 10
   </select>
    <select id="find" parameterType="com.sc.crmsys.bean.OrderPurchaseBean" resultMap="BRMap">
   	SELECT * from order_purchase op 
-  	INNER JOIN supplier s ON op.supplier_id = s.supplier_id WHERE op.order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
+	INNER JOIN supplier s ON op.supplier_id = s.supplier_id 
+	INNER JOIN detail_purchase dp ON op.order_purchase_id = dp.order_purchase_id
+	INNER JOIN stock st ON st.commodity_number = dp.product_id
+  	WHERE op.order_purchase_id = #{orderPurchaseId,jdbcType=VARCHAR}
   </select>
   
 </mapper>

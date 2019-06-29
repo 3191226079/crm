@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,10 +32,16 @@
 				<form action="purchase/add" method="get">
 				<div class="baBody">
 					<div class="bbD">
-						<span class="nar">产品编号：</span><input type="text" class="input1" name="productId"/>
+						<span class="nar">产品编号：</span><input type="text" class="input1" readonly="readonly" id="productId" name="productId" value=""/>
 					</div>
 					<div class="bbD">
-						<span class="nar">产品名称：</span><input type="text" class="input1"  />
+						<span class="nar">产品名称：</span>
+						<select class="input1" id="slr">
+							<option>请选择</option>
+							<c:forEach items="${stockes }" var="s">
+							<option value="${s.commodityNumber}">${s.commodityName }</option>
+							</c:forEach>
+						</select>
 					</div>
 					<div class="bbD">
 						<span class="blankr"></span><span class="nar">数量：</span><input type="text" class="input1" name="companyId" />
@@ -54,7 +61,7 @@
 					<div class="bbD">
 						<p class="bbDP">
 							<input type="submit" class="btn_ok btn_yes" value="提交">
-							<a class="btn_ok btn_no" href="jsp/banneradd.jsp">取消</a>
+							<a class="btn_ok btn_no" href="purchase/select">取消</a>
 						</p>
 					</div>
 				</div>
@@ -65,4 +72,14 @@
 		</div>
 	</div>
 </body>
+	<script type="text/javascript">
+		$("#slr").change(function(){
+			var commodityNumber =  $(this).val();
+			
+			$("#productId").val(commodityNumber);
+		});
+	
+	
+	</script>
+
 </html>

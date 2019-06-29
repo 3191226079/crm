@@ -16,12 +16,6 @@
 
 <body>
 	<div id="pageAll">
-		<div class="pageTop">
-			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;意见管理
-			</div>
-		</div>
 		<div class="page">
 			<!-- opinion 页面样式 -->
 			<div class="opinion">
@@ -31,7 +25,7 @@
 				<div class="opShow">
 					<div class="butrr">
 						<div class="buttopr">
-							<a href="jsp/banneradd.jsp" >添加</a>
+							<a href="purchase/getStockes" >添加</a>
 						</div>	
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0">

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,6 +21,7 @@ import com.sc.crmsys.bean.OrderPurchaseBean;
 import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.bean.SupplierBean;
 import com.sc.crmsys.bean.UserBean;
+import com.sc.crmsys.service.DetailPurchaseService;
 import com.sc.crmsys.service.PurchaseOrderService;
 import com.sc.crmsys.service.StockService;
 import com.sc.crmsys.service.SupplierService;
@@ -37,35 +39,30 @@ public class PurchaseOrderController {
 	@Resource
 	private StockService stockService;
 	
+	@Resource
+	private DetailPurchaseService detailPurchaseService;
+	
 	@RequestMapping("/select")
-	public String getPurchaseOrder(HttpServletRequest req,Map<String, Object> data)
+	public String getPurchaseOrder(Map<String, Object> data)
 	{
 		List<OrderPurchaseBean> purchaseOrderList = purchaseOrderService.getPurchaseOrder();
 		data.put("purchaseOrderList", purchaseOrderList);
 		return "forward:/jsp/purchaseOrder.jsp";
 	}
-	
-	@RequestMapping("/del")
-	public String delPurchaseOrder(String orderPurchaseId)
-	{
-		purchaseOrderService.delPurchaseOrder(orderPurchaseId, new Date());
-		return "redirect:/purchaseOrder/select";
-	}
-	
 	@ResponseBody
-	@RequestMapping("/add")
-	public Map<String, Object> addPurchaseOrder(OrderPurchaseBean orderPurchaseBean)
+	@RequestMapping("/del")
+	public Map<String, Object> delPurchaseOrder(String orderPurchaseId)
 	{
-		
 		HashMap<String, Object> map = new HashMap<>();
-		String orderPurchaseId = UUID.randomUUID().toString();
-		orderPurchaseBean.setOrderPurchaseId(orderPurchaseId);
-		orderPurchaseBean.setOrderPurchaseUpdateTime(new Date());
-		purchaseOrderService.addPurchaseOrder(orderPurchaseBean);
 		
-		map.put("orderPurchaseId", orderPurchaseId);
+		
+		purchaseOrderService.delPurchaseOrder(orderPurchaseId, new Date());
+		String msg = "删除成功";
+		map.put("msg", msg);
 		return map;
 	}
+	
+	
 	
 	@RequestMapping("/getSuppliers")
 	public String getSuppliers(Map<String, Object> data)
@@ -113,10 +110,35 @@ public class PurchaseOrderController {
 		return "forward:/jsp/connoisseur.jsp";
 	}
 	
-	public Map<String, Object> addDetail(DetailPurchaseBean detailPurchaseBean)
+	@ResponseBody
+	@RequestMapping("/add")
+	public Map<String, Object> addPurchaseOrder(@RequestBody OrderPurchaseBean orderPurchaseBean)
 	{
+		System.out.println("aaa");
+		System.out.println(orderPurchaseBean.toString());
 		HashMap<String, Object> map = new HashMap<>();
+		String orderPurchaseId = UUID.randomUUID().toString();
+		orderPurchaseBean.setOrderPurchaseState("0");
+		orderPurchaseBean.setOrderPurchaseId(orderPurchaseId);
+		orderPurchaseBean.setOrderPurchaseUpdateTime(new Date());
+		purchaseOrderService.addPurchaseOrder(orderPurchaseBean);
+		
+		List<DetailPurchaseBean> detailPurchaseList = orderPurchaseBean.getDetailPurchaseList();
+		
+		for (int i = 0; i <detailPurchaseList.size(); i++) {
+			DetailPurchaseBean detailPurchaseBean = detailPurchaseList.get(i);
+			String detailPurchaseId = UUID.randomUUID().toString();
+			detailPurchaseBean.setOrderPurchaseId(orderPurchaseId);
+			detailPurchaseBean.setDetailPurchaseState("0");
+			detailPurchaseBean.setDetailPurchaseUpdateTime(new Date());
+			detailPurchaseBean.setDetailPurchaseId(detailPurchaseId);
+			detailPurchaseService.addDetail(detailPurchaseBean);
+		}
+		
+		String success = "添加成功";
+		map.put("success", success);
 		return map;
 	}
+	
 	
 }

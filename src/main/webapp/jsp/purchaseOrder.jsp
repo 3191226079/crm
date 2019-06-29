@@ -13,11 +13,30 @@
 	<title>采购单</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" type="text/css" href="css/rafaelcss.css">
-<script type="text/javascript" src="js/rafael.js"></script>
+
 <script type="text/javascript" src="js/vue.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/rafael.js"></script>
 
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
+<style type="text/css">
+.banDel .delete .delP2 .ok 
+{
+	width:100px;
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	background-color: #3695cc;
+	color: #fff;
+	margin-top: 65px;
+	margin-left: 25px;
+	margin-right: 25px;
+	font-size: 16px;
+	cursor: pointer;
+	margin-bottom: 65px;
+}
+
+</style>
 </head>
 
 <body>
@@ -56,7 +75,9 @@
 						<c:forEach items="${purchaseOrderList }" var="po">
 						
 						<tr>
-							<td>${po.orderPurchaseId }</td>
+							<td>${po.orderPurchaseId }
+								<input type="hidden" id="opId" name="orderPurchaseId" value="${po.orderPurchaseId }">
+							</td>
 							<td>${po.orderPurchaseTitle }</td>
 							<td>
 								<fmt:formatDate value="${po.orderPurchaseTime }" pattern="yyyy-MM-dd  HH:MM:ss"/>
@@ -94,7 +115,7 @@
 			</div>
 			<p class="delP1">你确定要删除此条记录吗？</p>
 			<p class="delP2">
-				<a href="" class="ok yes">确定</a><a class="ok no">取消</a>
+				<button class="ok yes" id="yes_ra">确定</button><a class="ok no">取消</a>
 			</p>
 		</div>
 	</div>

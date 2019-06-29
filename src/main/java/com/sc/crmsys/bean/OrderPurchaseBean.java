@@ -33,7 +33,8 @@ public class OrderPurchaseBean {
     private String orderPurchaseInfo;
 
     private String companyId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseUpdateTime;
     
     private SupplierBean supplierBean;

@@ -16,43 +16,35 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/rafael.js"></script>
 <style type="text/css">
-.bbD .bbDP .backr
-{
-	width: 100px;
-	height: 40px;
-	line-height: 40px;
-	background-color: #3695cc;
-	color: #fff;
-	margin-top: 50px;
-	margin-right: 25px;
-	font-size: 16px;
-	cursor: pointer;
-	text-align: center;
-	margin-bottom: 160px;
-	border: none;
-	display:block;
-}
+	.banneradd_bor 
+	{
+		
+		margin-bottom: 160px;
+		margin-top: 10px;
+			
+	}
+	.baBody_r
+	{
+		width: 100%;
+		height: 600px;
+		margin-top: 20px;
+		margin-left: 90px;
+	
+	}
 </style>
 
 </head>
 <body>
 	<div id="pageAll">
 		<div class="pageTop">
-			<div class="page">
-				<img src="img/coin02.png" /><span><a href="#">首页</a>&nbsp;-&nbsp;<a
-					href="#">公共管理</a>&nbsp;-</span>&nbsp;行家添加
-			</div>
 		</div>
 		<div class="page ">
 			<!-- 上传广告页面样式 -->
-			<div class="banneradd bor">
-				<div class="baTopNo">
-					
-				</div>
+			<div class="banneradd_bor">
 				<form action="supplier/update" method="post">
 				<div class="baBody_r">
 					<div class="bbD">
-						<input type="hidden" name="supplierId" value="${supplierBean.supplierId }">
+						<input type="hidden" name="supplierId" id="supplierId" value="${supplierBean.supplierId }">
 						<span class="blankr3"></span><span class="nar">供应商名称：</span><input type="text" class="input1" id="supplierName" name="supplierName" readonly="readonly" value="${supplierBean.supplierName }"/>
 					</div>
 					<div class="bbD">
@@ -81,11 +73,9 @@
 					</div>
 					<div class="bbD">
 						<p class="bbDP" id="updater">
-							<input type="button" class="btn_ok btn_yes" value="修改" id="but" >
+							<input type="button" class="btn_ok btn_yes" value="修改" id="ubut" >
+							<input type="button" class="btn_ok btn_yes" value="保存" id="but" style="display: none;" >
 							<a class="btn_ok btn_no" href="supplier/select">返回</a>
-						</p>
-						<p id="backr" class="bbDP">
-							<button class="backr">保存并返回</button>
 						</p>
 					</div>
 				</div>
@@ -96,17 +86,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	 	$("#but").click(function(){
-		console.log($("#updater"));
-		$("#updater").css("display","none");
-		$("#backr").css("display","block");
-		$("#supplierName").removeAttr("readonly");
-		$("#supplierContact").removeAttr("readonly");
-		$("#supplierPhone").removeAttr("readonly");
-		$("#supplierFax").removeAttr("readonly");
-		$("#supplierEmail").removeAttr("readonly");
-		$("#supplierInfo").removeAttr("readonly");	
-		});
+	 	
 	 
 	</script>
 </body>

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sc.crmsys.bean.DetailPurchaseBean;
 import com.sc.crmsys.bean.OrderPurchaseBean;
 import com.sc.crmsys.bean.PurchaseBean;
+import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.service.PurchaseService;
+import com.sc.crmsys.service.StockService;
 
 @Controller
 @RequestMapping("/purchase")
@@ -25,6 +27,9 @@ public class PurchaseController {
 	
 	@Resource
 	private PurchaseService purchaseService;
+	
+	@Resource
+	private StockService stockService;
 	
 	/**
 	 * 查询该公司需采购的产品，即补货表
@@ -117,4 +122,14 @@ public class PurchaseController {
 		purchaseService.updatePurchaseState(purchaseId,new Date());
 		return "redirect:/purchase/select";
 	}
+	
+	@RequestMapping("/getStockes")
+	public String getStockes(Map<String, Object> data)
+	{
+		List<StockBean> stockes = stockService.getStockes();
+		data.put("stockes", stockes);
+		return "forward:/jsp/banneradd.jsp";
+	}
+	
+	
 }

@@ -15,20 +15,67 @@ function chanr()
 }
 
 $(document).ready(function (){
-	/*$("#but").click(function(){
-			console.log($("#updater"));
-			$("#updater").css("display","none");
-			$("#backr").css("display","block");
+	
+	
+	$("#ubut").click(function(){
+			
+			$(this).css("display","none");
+			$("#but").css("display","inline-block");
 			$("#supplierName").removeAttr("readonly");
 			$("#supplierContact").removeAttr("readonly");
 			$("#supplierPhone").removeAttr("readonly");
 			$("#supplierFax").removeAttr("readonly");
 			$("#supplierEmail").removeAttr("readonly");
 			$("#supplierInfo").removeAttr("readonly");	
+	});
+	
+	$("#but").click(function(){
+		$(this).css("display","none");
+		$("#ubut").css("display","inline-block");
+		$("#supplierName").attr("readonly");
+		$("#supplierContact").attr("readonly");
+		$("#supplierPhone").attr("readonly");
+		$("#supplierFax").attr("readonly");
+		$("#supplierEmail").attr("readonly");
+		$("#supplierInfo").attr("readonly");	
+		
+		var supplierId = $("#supplierId").val();
+		var supplierName = $("#supplierName").val();
+		var supplierContact = $("#supplierContact").val();
+		var supplierPhone = $("#supplierPhone").val();
+		var supplierFax = $("#supplierFax").val();
+		var supplierEmail = $("#supplierEmail").val();
+		var supplierInfo = $("#supplierInfo").val();
+		
+		
+		$.ajax({
+			type: 'get',
+			url: 'supplier/update',
+			data:{
+				"supplierId":supplierId,
+				"supplierName":supplierName,
+				"supplierContact":supplierContact,
+				"supplierPhone":supplierPhone,
+				"supplierFax":supplierFax,
+				"supplierEmail":supplierEmail,
+				"supplierInfo":supplierInfo
+			},
+			dataType:'json',
+			success:function(result)
+			{
+				
+				alert(result.msg);
+			},
+			error:function()
+	          {
+	              alert('系统繁忙');
+	          }
 			
-		
-		
-	});*/
+		});
+	});
+	
+	
+	
 	$("#button").click(function(){
 		$("#CN").removeAttr("readonly");
 		$("#PN").removeAttr("readonly");
@@ -39,6 +86,8 @@ $(document).ready(function (){
 		
 		$(this).css("display","none");
 		$("#ubutton").css("display","inline-block");
+		
+	
 		
 		
 		
@@ -101,64 +150,15 @@ $(document).ready(function (){
 	        	  location.href = "http://localhost:8080/crmsys/supplier/select";
 	        	  alert(result.success);
 	          },
+	          error:function()
+		      {
+		              alert('系统繁忙');
+		      }
 	          
 
 	      });
 	});
 	
-	$("#opb").click(function(){
-		var orderPurchaseTitle = $("#orderPurchaseTitle").val();
-		var orderPurchaseTime = $("#orderPurchaseTime").val();
-		var supplierId = $("#sel").val();
-		var orderPurchaseMoney = $("#orderPurchaseMoney").val();
-		var orderPurchaseState = $("#orderPurchaseState").val();
-		var orderPurchaseInfo = $("#orderPurchaseInfo").val();
-		var orderPurchaseBusinessTime = $("#orderPurchaseBusinessTime").val();
-		var orderPurchaseBusinessType = $("#orderPurchaseBusinessType").val();
-		var orderPurchaseBusinessAddress = $("#orderPurchaseBusinessAddress").val();
-		var orderPurchasePerson = $("#orderPurchasePerson").val();
-		
-		/*$("#orderPurchaseTitle").attr("readonly","readonly");
-		$("#orderPurchaseTime").attr("readonly","readonly");
-		$("#supplierId").attr("readonly","readonly");
-		$("#orderPurchaseMoney").attr("readonly","readonly");
-		$("#orderPurchaseBusinessTime").attr("readonly","readonly");
-		$("#orderPurchaseBusinessType").attr("readonly","readonly");
-		$("#orderPurchaseBusinessAddress").attr("readonly","readonly");
-		$("#orderPurchasePerson").attr("readonly","readonly");*/
-		
-		$.ajax({
-			type:'get',
-			url:'purchaseOrder/add',
-			data:{
-				"orderPurchaseTitle":orderPurchaseTitle,
-				"orderPurchaseTime":orderPurchaseTime,
-				"supplierId":supplierId,
-				"orderPurchaseMoney":orderPurchaseMoney,
-				"orderPurchaseState":orderPurchaseState,
-				"orderPurchaseInfo":orderPurchaseInfo,
-				"orderPurchaseBusinessTime":orderPurchaseBusinessTime,
-				"orderPurchaseBusinessType":orderPurchaseBusinessType,
-				"orderPurchaseBusinessAddress":orderPurchaseBusinessAddress,
-				"orderPurchasePerson":orderPurchasePerson
-			},
-			dataType:'json',
-			success:function(result)
-			{
-				alert('保存成功');
-				$("#opid").val(result.orderPurchaseId);
-				console.log(result.orderPurchaseId);
-			},
-			error:function()
-	        {
-	              alert('系统繁忙');
-	        }
-			
-			
-		})
-		
-		
-	});
 	
 	$("#sel").change(function(){
 
@@ -277,7 +277,121 @@ $(document).ready(function (){
 			
 		});
 	});
-	 
+var count = 1;
+var sumMoney= 0;
+var detailPurchaseList = [];
+	$("#detailb").click(function(){
+		var productId =  $("#sed").val();
+		var productNum = $("#productNum").val();
+		var productPrice = $("#productPrice").val();
+		var unit = $("#unit").val();
+		var detailPurchaseInfo = $("#detailPurchaseInfo").val();
+		var detailPurchasePerson = $("#detailPurchasePerson").val();
+		var orderPurchaseId = $("#opid").val();
+		sumMoney = sumMoney+(productPrice*productNum);
+		$("#box_r").css("display","none");
+		$("#box_r").css("position","relative");
+		$("#orderPurchaseMoney").val(sumMoney);
+		$("#orderPurchaseState").val("未付款");
+		
+		var commodityName = $("#sed  option:selected").text();
+		var msg = "未入库";
+		var tr = '<tr><td>'+count+'</td><td>'+commodityName+'</td><td>'+productId+'</td><td>'+productNum+'</td><td>'+productPrice+'</td><td>'+unit+'</td><td>'+productNum*productPrice+'</td><td>'+msg+'</td></tr>'   
+		$('#tabr').append($(tr));
+		count = count + 1;
+		var detailPurchaseId = null;
+		var detailPurchaseState = null;
+		
+		//采购单明细信息
+		var data = {
+				"orderPurchaseId":orderPurchaseId,
+				"productId":productId,
+				"productNum":productNum,
+				"productPrice":productPrice,
+				"detailPurchaseInfo":detailPurchaseInfo,
+				"detailPurchasePerson":detailPurchasePerson,
+					
+			};
+		detailPurchaseList.push(data);
+				
+		
+		
+		
+		
+	});
+	
+	$("#opb").click(function(){
+		var orderPurchaseTitle = $("#orderPurchaseTitle").val();
+		var orderPurchaseTime = $("#orderPurchaseTime").val();
+		var supplierId = $("#sel").val();
+		var orderPurchaseMoney = $("#orderPurchaseMoney").val();
+		var orderPurchaseState = $("#orderPurchaseState").val();
+		var orderPurchaseInfo = $("#orderPurchaseInfo").val();
+		var orderPurchaseBusinessTime = $("#orderPurchaseBusinessTime").val();
+		var orderPurchaseBusinessType = $("#orderPurchaseBusinessType").val();
+		var orderPurchaseBusinessAddress = $("#orderPurchaseBusinessAddress").val();
+		var orderPurchasePerson = $("#orderPurchasePerson").val();
+		
+		
+		
+		//采购单信息
+		var data ={
+				orderPurchaseTitle:orderPurchaseTitle,
+				orderPurchaseTime:orderPurchaseTime,
+				supplierId:supplierId,
+				orderPurchaseMoney:orderPurchaseMoney,
+				orderPurchaseInfo:orderPurchaseInfo,
+				orderPurchaseBusinessTime:orderPurchaseBusinessTime,
+				orderPurchaseBusinessType:orderPurchaseBusinessType,
+				orderPurchaseBusinessAddress:orderPurchaseBusinessAddress,
+				orderPurchasePerson:orderPurchasePerson,
+				detailPurchaseList:detailPurchaseList
+		};
+		
+	var orderPurchaseBean =JSON.stringify(data);
+	console.log(orderPurchaseBean);
+		$.ajax({
+			type:'post',
+			url:'purchaseOrder/add',
+			data:orderPurchaseBean,
+			headers:{'Accept':'application/json','Content-Type':'application/json;charset=utf-8'},
+			dataType:'json',
+			success:function(result)
+			{
+				alert(result.success);
+			},
+			error:function()
+	        {
+	              alert('系统繁忙');
+	        }
+			
+			
+		})
+		
+		
+	});
+	
+	$("#yes_ra").click(function(){
+		var orderPurchaseId = $("#opId").val();
+		
+		 $.ajax({
+	          type: 'get',
+	          url:'purchaseOrder/del',
+	          data: {"orderPurchaseId":orderPurchaseId},
+	          dataType: 'json',
+	          success:function (result)
+	          {
+	        	  location.href = "http://localhost:8080/crmsys/purchaseOrder/select";
+	        	  alert(result.msg);
+	          },
+	          error:function()
+		      {
+		              alert('系统繁忙');
+		      }
+
+	      });
+	});
+	
 	
 	
 	

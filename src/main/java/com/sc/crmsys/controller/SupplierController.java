@@ -59,12 +59,15 @@ public class SupplierController {
 	 * @return
 	 */
 	@RequestMapping("/update")
-	public String updateSupplier(SupplierBean supplierBean)
+	@ResponseBody
+	public Map<String, Object> updateSupplier(SupplierBean supplierBean)
 	{
+		HashMap<String, Object> map = new HashMap<>();
 		supplierBean.setSupplierUpdateTime(new Date());
-		
 		supplierService.updateSupplier(supplierBean);
-		return "redirect:/supplier/find?supplierId="+supplierBean.getSupplierId();
+		String msg = "修改成功";
+		map.put("msg", msg);
+		return map;
 	}
 	
 	/**
@@ -104,6 +107,7 @@ public class SupplierController {
 		supplierBean.setSupplierId(supplierId);
 		
 		supplierBean.setSupplierUpdateTime(new Date());
+		supplierBean.setSupplierState("1");
 		
 		supplierService.addSupplier(supplierBean);
 		return "redirect:/supplier/select";
