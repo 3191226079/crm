@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class FeedbackController {
 		return "forward:/jsp/feedback.jsp";
 	}
 	*/
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/getfeedback")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,FeedbackBean feedbackBean,Map<String, Object> map)
 	{
@@ -55,7 +57,7 @@ public class FeedbackController {
 	
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/addfeedback")
 	public String addfeedback(FeedbackBean feedbackBean)
 	{
@@ -63,6 +65,7 @@ public class FeedbackController {
 		return "redirect:getfeedback";
 	}
 
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get1")
 	public String get1feedback(String feedbackId,Map<String, Object> map)
 	{
@@ -71,6 +74,7 @@ public class FeedbackController {
 		return "forward:/jsp/get1feedback.jsp";
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update")
 	public String updatefeedback(FeedbackBean feedbackBean)
 	{
@@ -78,7 +82,7 @@ public class FeedbackController {
 		return "redirect:getfeedback";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del")
 	public String delfeedback(String feedbackId)
 	{
@@ -87,7 +91,7 @@ public class FeedbackController {
 	}
 	
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/zhuan")
 	public String zhaun(String customerId,Map<String, Object> map)
 	{

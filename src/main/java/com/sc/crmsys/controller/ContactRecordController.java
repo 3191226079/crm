@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,7 +32,7 @@ public class ContactRecordController
 		return "forward:/jsp/contactrecord.jsp";
 	}*/
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ContactLogsBean contactLogsBean,Map<String, Object> map)
 	{
@@ -46,7 +47,7 @@ public class ContactRecordController
 		 return "forward:/jsp/contactrecord.jsp";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/add")
 	public String addcontactrecord(ContactLogsBean contactLogsBean)
 	{
@@ -55,7 +56,7 @@ public class ContactRecordController
 		return "redirect:get";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/get1")
 	public String get1contactrecord(String contactLogsId,Map<String, Object> map)
 	{
@@ -65,6 +66,7 @@ public class ContactRecordController
 		
 	}
 	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/update")
 	public String updatecontactrecord(ContactLogsBean contactLogsBean)
 	{
@@ -72,7 +74,7 @@ public class ContactRecordController
 		return "redirect:get";
 	}
 	
-	
+	@RequiresPermissions("kunda:customermanage")
 	@RequestMapping("/del")
 	public String delcontactrecord(String contactLogsId)
 	{

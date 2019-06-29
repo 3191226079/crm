@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +48,7 @@ public class SelectController {
 		
 	}*/
 	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/getthreeday")
 	public String selectInfo1(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
@@ -61,7 +63,7 @@ public class SelectController {
 	}
 	
 	
-	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/delthreeday")
 	public String delthreeday(String customerId)
 	{
@@ -69,6 +71,7 @@ public class SelectController {
 		  return "redirect:getthreeday";
 	}
 	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/getsevenday")
 	public String selectInfo2(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
@@ -85,7 +88,7 @@ public class SelectController {
 	
 	
 	
-	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/delsevenday")
 	public String delsevenday(String customerId)
 	{
@@ -93,6 +96,7 @@ public class SelectController {
 		return "redirect:getsevenday";
 	}
 	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/getonemonthday")
 	public String selectInfo3(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
@@ -109,7 +113,7 @@ public class SelectController {
 	
 	
 	
-	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/delmm")
 	public String delmm(String customerId)
 	{
@@ -117,6 +121,7 @@ public class SelectController {
 		return "redirect:getonemonthday";
 	}
 	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("deltoday")
 	public String delToday(String customerId)
 	{
@@ -124,6 +129,7 @@ public class SelectController {
 	  return "redirect:gettoday";
 	}
 	
+	@RequiresPermissions("kunda:contactcustomer")
 	@RequestMapping("/gettoday")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,CustomerBean customerBean,Map<String, Object> map)
 	{
