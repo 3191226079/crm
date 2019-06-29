@@ -40,6 +40,8 @@ public class EmployBean {
     
     private UserBean userBean;
     
+    
+		
     private Integer signCount; 
 
     private List<InfoDetailBean> infoDetailBeanList;

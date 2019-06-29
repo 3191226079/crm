@@ -93,4 +93,10 @@
       permission_role_last_time = #{permissionRoleLastTime,jdbcType=TIMESTAMP}
     where permission_role_number = #{permissionRoleNumber,jdbcType=VARCHAR}
   </update>
+  <select id="selectPMSRoleByRoleId" resultMap="BaseResultMap">
+  	select * from permission_role where role_number = #{rnum}
+  </select>
+  <delete id="deleteByRoleNumer">
+  	delete from permission_role where role_number = #{rnum}
+  </delete>
 </mapper>
