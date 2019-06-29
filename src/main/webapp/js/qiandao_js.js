@@ -1,8 +1,16 @@
 $(function() {
+	
+	var sig = document.getElementsByClassName("signss").length;
+	$("#signNum1").html(sig);
     var signFun = function() {
-
-        var dateArray = [1, 2, 4, 6] // 假设已经签到的
-        
+    	
+    	var dateArray = [];
+    	 // 假设已经签到的
+    	var dateArrays = $(".signDays");
+    	dateArrays.each(function(){
+    		var v = parseInt($(this).val())-1;
+    		dateArray.push(v);
+    	});
         var $dateBox = $("#js-qiandao-list"),
             $currentDate = $(".current-date"),
             $qiandaoBnt = $("#js-just-qiandao"),
@@ -39,19 +47,43 @@ $(function() {
                     qiandaoFun();
                 }
             }) //签到
-
+            
+        var state = $('#sign_state').val();
+        console.log(state);
+        if(state == '2')
+        {
+        	_handle = false;
+        	$qiandaoBnt.addClass('actived');
+        }
+            
+      
         $qiandaoBnt.on("click", function() {
             if (_handle) {
                 qiandaoFun();
-            }
-        }); //签到
-
+           //传输签到信息息
+                $.ajax({
+                    type:'post',
+                    url:'sign/add',
+                    data:{},
+                    dataType:'json',
+                    success:function(result)
+                    {
+                    	$("#sign_num").html(result.signNum);
+                    },
+                    error:function()
+                    {
+                        alert('系统繁忙');
+                    }
+                    
+                });
+                }
+            }); //签到
         function qiandaoFun() {
             $qiandaoBnt.addClass('actived');
             openLayer("qiandao-active", qianDao);
             _handle = false;
         }
-
+        
         function qianDao() {
             $(".date" + myDate.getDate()).addClass('qiandao');
         }
@@ -59,8 +91,10 @@ $(function() {
 
     function openLayer(a, Fun) {
         $('.' + a).fadeIn(Fun)
+        
+        
     } //打开弹窗
-
+   
     var closeLayer = function() {
             $("body").on("click", ".close-qiandao-layer", function() {
                 $(this).parents(".qiandao-layer").fadeOut()

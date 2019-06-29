@@ -7,8 +7,8 @@ img{vertical-align:top}
 .qiandao-sprits{background-image:url(../images/qiandao_sprits.png);background-repeat:no-repeat}
 .qiandao-tran{-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;-o-transition:all .3s ease-out;transition:all .3s ease-out;-ms-transition:all .3s ease-out}
 .qiandao-radius{-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px}
-.qiandao-warp{height:1306px;background:url(../images/qiandao_warp_bg.jpg) no-repeat top center}
-.qiandap-box{margin:0 auto;width:70pc;height:1306px;background-color:#4d56a3}
+.qiandao-warp{height:720px;}
+.qiandap-box{margin:0 auto;width:70pc;height:720px;background-color:#4d56a3}
 .qiandao-con{margin:0 auto;width:1035px;height:684px;background-image:url(../images/qiandao_con.jpg)}
 .qiandao-left{float:left;padding:20px 42px 0 39px;width:603px}
 .qiandao-right{float:right;padding:0 20px;width:290px}
@@ -18,7 +18,7 @@ img{vertical-align:top}
 .qiandao-top{padding-top:70px;height:13pc}
 .just-qiandao{margin:0 auto 20px;width:212px;height:67px;cursor:pointer}
 .just-qiandao.actived,.just-qiandao:active{background-position:0 -68px}
-.qiandao-notic{color:#b25d06;text-align:center;font-size:18px}
+.qiandao-notic{color:#b25d06;font-size:18px}
 .qiandao-rule-list{margin-bottom:35px;color:#8d8ebb;font-size:1pc;line-height:26px}
 .qiandao-rule-list h4{font-weight:bolder;font-size:1pc}
 .qiandao-main{overflow:hidden;width:603px}
@@ -63,9 +63,9 @@ img{vertical-align:top}
 .qiandao-history-layer .qiandao-layer-con{margin:-257px 0 0 -293px;width:586px;height:484px}
 .close-qiandao-layer{position:absolute;top:13px;right:13px;width:1pc;height:1pc;background-position:-228px -51px}
 .qiandao-history-inf{margin-top:25px;color:#666;text-align:center;font-size:14px}
-.qiandao-history-inf li{float:left;width:25%}
+.qiandao-history-inf li{float:left;width:25%;margin-left: 100px;}
 .qiandao-history-inf li h4{color:#33b23f;font-size:40px;line-height:50px}
-.qiandao-history-table{overflow:hidden;margin:20px;-webkit-border-radius:5px 5px 0 0;-moz-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;-o-border-radius:5px 5px 0 0;-ms-border-radius:5px 5px 0 0}
+.qiandao-history-table{margin:20px;-webkit-border-radius:5px 5px 0 0;-moz-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;-o-border-radius:5px 5px 0 0;-ms-border-radius:5px 5px 0 0}
 .qiandao-history-table table{width:100%;color:#666;text-align:center;font-size:1pc;border-spacing:0}
 .qiandao-history-table table th{width:33.3%;background-color:#f2f2f2;text-align:center;line-height:40px}
 .qiandao-history-table td{width:33.3%;border-bottom:1px #e5e5e5 dashed;line-height:34px}

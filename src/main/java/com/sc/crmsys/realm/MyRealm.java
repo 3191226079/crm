@@ -1,5 +1,7 @@
 package com.sc.crmsys.realm;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.shiro.authc.AuthenticationException;
@@ -7,11 +9,14 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
+import com.sc.crmsys.bean.PermissionInformationBean;
 import com.sc.crmsys.bean.UserBean;
+import com.sc.crmsys.service.RoleService;
 import com.sc.crmsys.service.UserService;
 import com.sc.crmsys.utils.MyUtils;
 
@@ -20,6 +25,9 @@ public class MyRealm extends AuthorizingRealm{
 	@Resource
 	private UserService userServiceImpl;
 	
+	@Resource
+	private RoleService roleServiceImpl;
+	
 	@Override
 	public String getName() {
 		return "MyRealm";
@@ -27,8 +35,17 @@ public class MyRealm extends AuthorizingRealm{
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		
+		UserBean userBean = (UserBean)principals.getPrimaryPrincipal();
+		List<PermissionInformationBean> permissionList = roleServiceImpl.selectPermissionByUserId(userBean.getUserId());
+		for(PermissionInformationBean p : permissionList)
+		{
+			String permission = p.getPermission();
+			simpleAuthorizationInfo.addStringPermission(permission);
+		}
+		return simpleAuthorizationInfo;
 	}
 
 	@Override

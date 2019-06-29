@@ -12,6 +12,13 @@
   <sql id="Base_Column_List">
     job_id, job_name, dept_number, job_remarks, company_id, job_last_time
   </sql>
+  
+  <select id="selectJobId" parameterType="java.lang.String" resultType="java.lang.String">
+    select job_id
+    from job
+    where job_name = #{jobName}
+  </select>
+  
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
@@ -103,4 +110,32 @@
       job_last_time = #{jobLastTime,jdbcType=TIMESTAMP}
     where job_id = #{jobId,jdbcType=VARCHAR}
   </update>
+  <select id="selectAllJobll" resultMap="BaseResultMap">
+  	select * from job
+  </select>
+  
+   <delete id="deleteJobs" parameterType="java.lang.String">
+    delete from job
+    where dept_number = #{deptNumber}
+  </delete>
+  
+  <select id="selectJobAndDept" parameterType="java.lang.String" resultMap="jobListMap">
+    SELECT * FROM job j INNER JOIN department d ON j.dept_number = d.dept_number
+  </select>
+  
+  <resultMap type="com.sc.crmsys.bean.JobBean" id="jobListMap">
+  	    <id column="job_id" jdbcType="VARCHAR" property="jobId" />
+	    <result column="job_name" jdbcType="VARCHAR" property="jobName" />
+	    <result column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+	    <result column="job_remarks" jdbcType="VARCHAR" property="jobRemarks" />
+	    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+	    <result column="job_last_time" jdbcType="TIMESTAMP" property="jobLastTime" />
+  		<collection property="deparmentBean" ofType="com.sc.crmsys.bean.DepartmentBean" column="dept_number">
+	  		<id column="dept_number" jdbcType="VARCHAR" property="deptNumber" />
+		    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+		    <result column="dept_remarks" jdbcType="VARCHAR" property="deptRemarks" />
+		    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+		    <result column="dept_last_time" jdbcType="TIMESTAMP" property="deptLastTime" />
+	 </collection>
+  </resultMap>
 </mapper>

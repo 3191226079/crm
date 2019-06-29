@@ -36,9 +36,43 @@ public class EmployBean {
 
     private Date employUpdateTime;
     
-    private List<InfoDetailBean> infoDetailBeanList;
+    private JobBean jobBean;
     
+    private UserBean userBean;
+    
+    
+		
+    private Integer signCount; 
 
+    private List<InfoDetailBean> infoDetailBeanList;
+  
+    private int littleCount;
+    
+    
+    public Integer getLittleCount() {
+		return littleCount;
+	}
+
+	public void setLittleCount(Integer littleCount) {
+		this.littleCount = littleCount;
+	}
+
+	public Integer getSignCount() {
+		return signCount;
+	}
+
+	public void setSignCount(Integer signCount) {
+		this.signCount = signCount;
+	}
+
+	public UserBean getUserBean() {
+		return userBean;
+	}
+
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
+	
 	public List<InfoDetailBean> getInfoDetailBeanList() {
 		return infoDetailBeanList;
 	}
@@ -170,8 +204,22 @@ public class EmployBean {
     public Date getEmployUpdateTime() {
         return employUpdateTime;
     }
+    
 
-    public void setEmployUpdateTime(Date employUpdateTime) {
+	public JobBean getJobBean() {
+		return jobBean;
+	}
+
+	public void setJobBean(JobBean jobBean) {
+		this.jobBean = jobBean;
+	}
+
+	public void setEmployUpdateTime(Date employUpdateTime) {
         this.employUpdateTime = employUpdateTime;
     }
+
+	public EmployBean() {
+		super();
+	}
+	
 }
