@@ -31,7 +31,7 @@
 				<div class="conform">
 					<form action="checkPoint/selectCheckPoint" method="post" id="myForm">
 						<div class="cfD">
-							<input class="addUser" autocomplete="off" name="checkPointTarget" value="${checkPointTarget }" type="text" placeholder="考核名称" />
+							<input class="addUser" id="input1" autocomplete="off" name="checkPointTarget" value="${checkPointTarget }" type="text" placeholder="考核名称" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myForm').submit()};">搜索</button> -->
 							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1" href="jsp/checkPointAdd.jsp">添加指标</a>
@@ -112,9 +112,11 @@
             var td = document.getElementById('addtd');
             if(${selectAllList.pageNum} != 1)
            	{
+            	var checkPointTarget = document.getElementById('input1').value;
+            	
             	var a = document.createElement('a');
             	a.innerHTML = '首页';
-            	a.href = 'checkPoint/selectCheckPoint?pn=1';
+            	a.href = 'checkPoint/selectCheckPoint?pn=1' + '&checkPointTarget=' + checkPointTarget;
             	td.appendChild(a);
             	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
             	a.style.float = 'left';
@@ -126,9 +128,11 @@
             	{
 					if(i+1 <= ${selectAllList.pages})
 					{
+						var checkPointTarget = document.getElementById('input1').value;
+						
 						var a = document.createElement('a');
 						a.innerHTML = i + 1;
-						a.href = 'checkPoint/selectCheckPoint?pn=' + (i + 1);
+						a.href = 'checkPoint/selectCheckPoint?pn=' + (i + 1) + '&checkPointTarget=' + checkPointTarget;
 						td.appendChild(a);
 						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
@@ -149,9 +153,11 @@
             	{
 					if(${selectAllList.pageNum}+i-5 <= ${selectAllList.pages})
 					{
+						var checkPointTarget = document.getElementById('input1').value;
+						
 						var a = document.createElement('a');
 						a.innerHTML = ${selectAllList.pageNum}+i-5;
-						a.href = 'checkPoint/selectCheckPoint?pn=' + (${selectAllList.pageNum}+i-5);
+						a.href = 'checkPoint/selectCheckPoint?pn=' + (${selectAllList.pageNum}+i-5) + '&checkPointTarget=' + checkPointTarget;
 						td.appendChild(a);
 						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
@@ -168,9 +174,12 @@
             
             if(${selectAllList.pageNum } != ${selectAllList.pages})
            	{
+            	
+            	var checkPointTarget = document.getElementById('input1').value;
+            	
             	var a = document.createElement('a');
             	a.innerHTML = '尾页';
-            	a.href = 'checkPoint/selectCheckPoint?pn=' + ${selectAllList.pages};
+            	a.href = 'checkPoint/selectCheckPoint?pn=' + ${selectAllList.pages} + '&checkPointTarget=' + checkPointTarget;
             	td.appendChild(a);
             	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
             	a.style.float = 'left';

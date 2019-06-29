@@ -34,7 +34,7 @@
 						<div class="cfD">
 							<!-- <input type="hidden" name="employBean.employPhone" v-model="myresult">
 							<input type="hidden" name="employBean.employName" v-model="myresult"> -->
-							<input class="addUser" value="${title }" name="infoBean.infoTitle"  autocomplete="off"  type="text" placeholder="输入接收者/主题/联系电话" />
+							<input class="addUser" value="${title }" id="input1" name="infoBean.infoTitle"  autocomplete="off"  type="text" placeholder="输入接收者/主题/联系电话" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('forms').submit()};">搜索</button> -->
 							<input class="button" value="搜索" type="submit">
 							<a class="addA addA1" href="info/jumptosend">发送短信</a>
@@ -127,9 +127,11 @@
         var td = document.getElementById('div');
         if(${InfoDetail.pageNum} != 1)
        	{
+        	var title = document.getElementById('input1').value;
+        	
         	var a = document.createElement('a');
         	a.innerHTML = '首页';
-        	a.href = 'info/selectInfo?pn=1';
+        	a.href = 'info/selectInfo?pn=1' + '&infoBean.infoTitle=' + title;
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';
@@ -141,9 +143,11 @@
         	{
 				if(i+1 <= ${InfoDetail.pages})
 				{
+					var title = document.getElementById('input1').value;
+					
 					var a = document.createElement('a');
 					a.innerHTML = i + 1;
-					a.href = 'info/selectInfo?pn=' + (i + 1);
+					a.href = 'info/selectInfo?pn=' + (i + 1) + '&infoBean.infoTitle=' + title;
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
@@ -164,9 +168,11 @@
         	{
 				if(${InfoDetail.pageNum}+i-5 <= ${InfoDetail.pages})
 				{
+					var title = document.getElementById('input1').value;
+					
 					var a = document.createElement('a');
 					a.innerHTML = ${activeBean1.pageNum}+i-5;
-					a.href = 'info/selectInfo?pn=' + (${InfoDetail.pageNum}+i-5);
+					a.href = 'info/selectInfo?pn=' + (${InfoDetail.pageNum}+i-5) + '&infoBean.infoTitle=' + title;
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
@@ -183,9 +189,11 @@
         
         if(${InfoDetail.pageNum } != ${InfoDetail.pages})
        	{
+        	var title = document.getElementById('input1').value;
+        	
         	var a = document.createElement('a');
         	a.innerHTML = '尾页';
-        	a.href = 'info/selectInfo?pn=' + ${InfoDetail.pages};
+        	a.href = 'info/selectInfo?pn=' + ${InfoDetail.pages} + '&infoBean.infoTitle=' + title;
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';

@@ -1,5 +1,7 @@
 package com.sc.crmsys.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -32,12 +34,12 @@ public class ActiveController {
 	}
 	
 	@RequestMapping("/selectActive")
-	public String selectActive(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,String activeTitle,Map<String, Object> data)
+	public String selectActive(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,ActiveBean activeBean,Map<String, Object> data)
 	{
-		PageInfo<ActiveBean> activeBean1 = activeService.selectAll(pn,size,activeTitle);
-		data.put("title", activeTitle);
-		data.put("activeBean1", activeBean1);
-		return "forward:/jsp/lookSchedule.jsp";
+			PageInfo<ActiveBean> activeBean1 = activeService.selectAll(pn,size,activeBean.getActiveTitle());
+			data.put("title", activeBean.getActiveTitle());
+			data.put("activeBean1", activeBean1);
+			return "forward:/jsp/lookSchedule.jsp";
 	}
 	
 	@RequestMapping("/search")
