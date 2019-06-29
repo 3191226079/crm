@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class OrderPurchaseBean {
     private String orderPurchaseId;
 
     private String orderPurchaseTitle;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone="GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseTime;
 
     private String supplierId;
@@ -21,7 +23,7 @@ public class OrderPurchaseBean {
 
     private String orderPurchaseState;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone="GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseBusinessTime;
 
     private String orderPurchaseBusinessAddress;

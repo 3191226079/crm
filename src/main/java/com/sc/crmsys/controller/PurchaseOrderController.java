@@ -114,8 +114,6 @@ public class PurchaseOrderController {
 	@RequestMapping("/add")
 	public Map<String, Object> addPurchaseOrder(@RequestBody OrderPurchaseBean orderPurchaseBean)
 	{
-		System.out.println("aaa");
-		System.out.println(orderPurchaseBean.toString());
 		HashMap<String, Object> map = new HashMap<>();
 		String orderPurchaseId = UUID.randomUUID().toString();
 		orderPurchaseBean.setOrderPurchaseState("0");

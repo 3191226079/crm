@@ -216,12 +216,6 @@ $(document).ready(function (){
 	
 	
 	
-	/*$("#detailb").click(function(){
-		var 
-		
-		
-	});*/
-	
 	$("#buttono").click(function(){
 		$("#CN").removeAttr("readonly");
 		$("#PN").removeAttr("readonly");
@@ -304,7 +298,6 @@ var detailPurchaseList = [];
 		
 		//采购单明细信息
 		var data = {
-				"orderPurchaseId":orderPurchaseId,
 				"productId":productId,
 				"productNum":productNum,
 				"productPrice":productPrice,
@@ -349,7 +342,6 @@ var detailPurchaseList = [];
 		};
 		
 	var orderPurchaseBean =JSON.stringify(data);
-	console.log(orderPurchaseBean);
 		$.ajax({
 			type:'post',
 			url:'purchaseOrder/add',
