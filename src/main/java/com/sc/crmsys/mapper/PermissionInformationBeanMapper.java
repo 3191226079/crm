@@ -22,4 +22,6 @@ public interface PermissionInformationBeanMapper {
     List<PermissionInformationBean> selectAllPermission();
     
     List<PermissionInformationBean> selectPermissionByUserId(@Param("uid")String userId);
+
+    String selectPermission(@Param("permission")String permission);
 }

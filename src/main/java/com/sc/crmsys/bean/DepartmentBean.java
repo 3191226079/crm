@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class DepartmentBean {
     private String deptNumber;
@@ -12,8 +13,19 @@ public class DepartmentBean {
     private String companyId;
 
     private Date deptLastTime;
+    
+    private List<JobBean> jobList;
+    
 
-    public String getDeptNumber() {
+    public List<JobBean> getJobList() {
+		return jobList;
+	}
+
+	public void setJobList(List<JobBean> jobList) {
+		this.jobList = jobList;
+	}
+
+	public String getDeptNumber() {
         return deptNumber;
     }
 

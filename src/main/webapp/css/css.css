@@ -55,8 +55,8 @@ td {
 	border: 1px solid #dcdbdb;
 }
 
-.tdColor {
-	height: 40px;
+.tdColor{
+	height: 40px; 
 	background-color: #f2f2f2;
 	color: #438eb9;
 }
@@ -171,7 +171,6 @@ td {
 
 .banDel .delete .delP2 .ok {
 	display: inline-block;
-	width: 100px;
 	height: 40px;
 	line-height: 40px;
 	background-color: #3695cc;
@@ -385,6 +384,7 @@ td {
 
 .cfD {
 	margin-top: 15px;
+	margin-left: 200px;
 }
 
 .cfD select {
@@ -600,6 +600,7 @@ td {
 /*心愿管理页面 、约见管理页面CSS*/
 .wishShow {
 	margin-top: 30px;
+	margin-left: 200px;
 }
 
 .wishShow .wishImgv {
@@ -738,6 +739,40 @@ td {
 	padding: 4px;
 	position: relative;
 	top: -5px;
+}
+
+.addJob
+{
+	with:288px;
+	margin-left: 250px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: none;
+}
+.addDept
+{
+	with:288px;
+	margin-left: 250px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: none;
+}
+.updateJob
+{
+	with:288px;
+	margin-left: 250px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	display: none;
+}
+
+.put
+{
+	width: 150px;border: 1px solid none;padding-left: 5px;
+}
+.mit
+{
+	width:332px;height:40px; color: #438eb9;
 }
 
 

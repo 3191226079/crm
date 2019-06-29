@@ -22,8 +22,20 @@ public class UserBean {
     private UserRoleBean userRoleBean;
 
     private String userSalt;
+    
+    private String signCount;
+    
+    
 
-    public String getUserId() {
+    public String getSignCount() {
+		return signCount;
+	}
+
+	public void setSignCount(String signCount) {
+		this.signCount = signCount;
+	}
+
+	public String getUserId() {
         return userId;
     }
 
@@ -108,11 +120,14 @@ public class UserBean {
     public void setUserSalt(String userSalt) {
         this.userSalt = userSalt == null ? null : userSalt.trim();
     }
-    @Override
+
+	@Override
 	public String toString() {
 		return "UserBean [userId=" + userId + ", userName=" + userName + ", userPassword=" + userPassword
 				+ ", employId=" + employId + ", companyId=" + companyId + ", userState=" + userState
-				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + "]";
+				+ ", userRegisterTime=" + userRegisterTime + ", userUpdateTime=" + userUpdateTime + ", userSalt="
+				+ userSalt + ", signCount=" + signCount + "]";
 	}
+    
 
 }
