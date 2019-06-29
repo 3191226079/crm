@@ -36,7 +36,7 @@
 						<dd>
 							<img class="coin11" src="img/coin111.png" /><img class="coin22"
 								src="img/coin222.png" /><a class="cks" href="${subfieldBean1.permissionInformationBean.informationRemarks }"
-								target="main">${subfieldBean1.subfieldName }</a><img class="icon5" src="img/coin21.png" />
+								target="${subfieldBean1.subfieldName eq '退出' ? '_parent' : 'main' }">${subfieldBean1.subfieldName }</a><img class="icon5" src="img/coin21.png" />
 						</dd>
 					</c:forEach>
 				</dl>

@@ -64,8 +64,8 @@ function show(obj)
 					<div class="baBody">
 						<div class="bbD">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头像：
-							<div class="vipHead" style="position: relative;">
-								<input type="file" onchange="show(this)" name="uploadImg" style="width: 100px;height: 97px;opacity:0;position: absolute;" > 
+							<div class="vipHead" style="position: relative;border: 1px solid black;">
+								<input type="file" onchange="show(this)" name="uploadImg" style="width: 100px;height: 97px;opacity:0;position: absolute;" >
 								<img id="myimg134" alt="" src="${employBean.employImg }" style="width: 100px;height: 97px">
 							</div>
 							
