@@ -54,7 +54,7 @@ function show(obj)
 		</div>
 		<div class="page ">
 			<!-- 上传广告页面样式 -->
-			<div class="banneradd bor">
+			<div class="bor">
 				<div class="baTopNo">
 					<span>员工修改</span>
 				</div>
