@@ -86,5 +86,7 @@
 	<mvc:resources location="/qqjs/" mapping="/qqjs/**"></mvc:resources>
 	<mvc:resources location="/qqcss/" mapping="/qqcss/**"></mvc:resources>
 	<mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+	
+	
 		
 </beans>

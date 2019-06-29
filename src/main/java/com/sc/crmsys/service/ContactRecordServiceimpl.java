@@ -6,6 +6,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.ContactLogsBean;
 
 import com.sc.crmsys.mapper.ContactLogsBeanMapper;
@@ -47,6 +49,14 @@ public class ContactRecordServiceimpl  implements ContactRecordService{
 	public void delcontactrecord(String contactLogsId) {
 		
 		contactLogsBeanMapper.deleteByPrimaryKey(contactLogsId);
+	}
+
+	@Override
+	public PageInfo<ContactLogsBean> selectAll(Integer pn, Integer size, ContactLogsBean contactLogsBean) {
+	PageHelper.startPage(pn, size);
+	List<ContactLogsBean> getcontactrecord = contactLogsBeanMapper.getcontactrecord();
+	PageInfo<ContactLogsBean> pageInfo = new PageInfo<ContactLogsBean>(getcontactrecord);
+		return pageInfo;
 	}
 
 }

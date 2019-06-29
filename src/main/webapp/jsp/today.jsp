@@ -18,7 +18,7 @@
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
-<body>
+<body onload="page()">
 	<div id="pageAll">
 		<div class="pageTop">
 			<div class="page">
@@ -37,7 +37,7 @@
 			
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor">客户编号</td>
+						
 					
 							<td width="200px" class="tdColor">客户姓名</td>
 							<td width="200px" class="tdColor">上级单位</td>
@@ -49,14 +49,14 @@
 							<td width="300px" class="tdColor">客户邮箱</td>
 							<td width="300px" class="tdColor">联系时间</td>
 							<td width="300px" class="tdColor">备注信息</td>
-							<td width="300px" class="tdColor">公司编号</td>
+							
 							<td width="300px" class="tdColor">修改时间</td>
 							<td width="300px" class="tdColor">操作</td>
 							
 						</tr>
-				 		<c:forEach items="${selectToday}" var="today">		
+				 		<c:forEach items="${selectAll.list}" var="today">		
 				 		<tr>
-				 		<td>${today.customerId}</td>
+				 	
 				 		<td>${today.customerName}</td>
 				 		<td>${today.customerUpDepartment}</td>
 				 		<td>${today.customerContactPerson}</td>
@@ -69,7 +69,7 @@
 				 			<fmt:formatDate value="${today.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
 				 		<td>${today.customerInfo}</td>
-				 		<td>${today.companyId}</td>
+	
 				 		<td>
 				 			<fmt:formatDate value="${today.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 				 		</td>
@@ -85,7 +85,7 @@
 				 		
 	
 					</table>
-					<div class="paging">此处是分页</div>
+					<div class="paging" id="div" style="float:right"></div>
 				
 				</div>
 				<!-- user 表格 显示 end-->
@@ -129,8 +129,78 @@ $(document).ready(function(){
 
 	function deleteSa(customerId) 
 	{
-		console.log(customerId);
+		
 		document.getElementById("sure").href = 'today/deltoday?customerId=' + customerId;	
 	}
-</script>
+	
+	function page()
+	{
+        var td = document.getElementById('div');
+        if(${selectAll.pageNum} != 1)
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '首页';
+        	a.href = 'today/gettoday?pn=1';
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+        
+        if(${selectAll.pageNum} <= 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(i+1 <= ${selectAll.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = i + 1;
+					a.href = 'today/gettoday?pn=' + (i + 1);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${selectAll.pageNum} == i+1)
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+				
+			}
+        }
+        if(${selectAll.pageNum} > 6)
+        {
+        	for (var i = 0; i < 10; i++) 
+        	{
+				if(${selectAll.pageNum}+i-5 <= ${selectAll.pages})
+				{
+					var a = document.createElement('a');
+					a.innerHTML = ${selectAll.pageNum}+i-5;
+					a.href = 'today/gettoday?pn=' + (${selectAll.pageNum}+i-5);
+					td.appendChild(a);
+					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
+					a.style.float = 'left';
+					
+					if(${selectAll.pageNum} == (${selectAll.pageNum}+i-5))
+					{
+						a.style.color = 'red';
+						a.href = 'javascript:;'
+						a.style.textDecoration = 'none';
+					}
+				}
+			}
+        }
+        
+        if(${selectAll.pageNum } != ${selectAll.pages})
+       	{
+        	var a = document.createElement('a');
+        	a.innerHTML = '尾页';
+        	a.href = 'today/gettoday?pn=' + ${selectAll.pages};
+        	td.appendChild(a);
+        	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
+        	a.style.float = 'left';
+       	}
+	}
+	</script>
 </html>

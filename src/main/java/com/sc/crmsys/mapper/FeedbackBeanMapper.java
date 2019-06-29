@@ -2,10 +2,11 @@ package com.sc.crmsys.mapper;
 
 import java.util.List;
 
+import com.sc.crmsys.bean.CustomerBean;
 import com.sc.crmsys.bean.FeedbackBean;
 
 public interface FeedbackBeanMapper {
-    int deleteByPrimaryKey(String feedbackId);
+    void deleteByPrimaryKey(String feedbackId);
 
     int insert(FeedbackBean record);
 
@@ -13,9 +14,11 @@ public interface FeedbackBeanMapper {
 
     FeedbackBean selectByPrimaryKey(String feedbackId);
 
-    int updateByPrimaryKeySelective(FeedbackBean record);
+    void updateByPrimaryKeySelective(FeedbackBean record);
 
     int updateByPrimaryKey(FeedbackBean record);
     
     public List<FeedbackBean> getfeedback();
+    
+    public List<FeedbackBean> getcustomername();
 }

@@ -4,74 +4,99 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 
- 
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<base href="<%=basePath%>">
+<base  href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>联系记录表</title>
+<title>客户信息</title>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="js/page.js" ></script> -->
 </head>
 
 <body onload="page()">
-	
+	<div id="pageAll">
+		<div >
+			
+		</div>
+
 		<div class="page">
-			<!-- banner页面样式 -->
-			<div class="banner">
-		
-				<!-- banner 表格 显示 -->
-				
-				
-				<div class="banShow">
-				<div class="butrr">
-				<div></div>
-				<div></div>
-				<div></div>
-						<div class="buttopr">
-							<a href="jsp/addcontactrecord.jsp" >添加</a>
-						</div>	
-					</div>
+			<!-- topic页面样式 -->
+			<div class="topic">
+				<div class="conform">
 					<form>
+						
+						
+					</form>
+				</div>
+				<!-- topic表格 显示 -->
+				<div class="conShow">
+				<div class="butrr">
+						
+					</div>
 					<table border="1" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="66px" class="tdColor tdC">联系记录ID</td>
-							<td width="200px" class="tdColor">联系标题</td>
-							<td width="235px" class="tdColor">联系时间</td>
-							<td width="200px" class="tdColor">客户编号</td>
-							<td width="200px" class="tdColor">联系内容</td>
-							<td width="200px" class="tdColor">公司编号</td>
-							<td width="200px" class="tdColor">最后修改时间</td>
-							<td width="200px" class="tdColor">操作</td>
+							<td width="150px" class="tdColor">客户姓名</td>
 							
-						</tr>
-						<c:forEach items="${getcontactrecord.list}" var="getcontactrecord">
-						<tr>
-						<td>${getcontactrecord.contactLogsId}</td>
-						<td>${getcontactrecord.contactLogsTitle}</td>
-						<td>
-				 			<fmt:formatDate value="${getcontactrecord.contactLogsTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-				 		</td>
+							<td width="150" class="tdColor">上级单位</td>
+					
+							<td width="150px" class="tdColor">负责人</td>
+							
+							<td width="150px" class="tdColor">客户状态</td>
+							
+							<td width="150px" class="tdColor">客户地址</td>
+							
+							<td width="150px" class="tdColor">客户电话</td>
+							<td width="150px" class="tdColor">客户传真</td>
+							<td width="150px" class="tdColor">客户邮箱</td>
+							<td width="150px" class="tdColor">联系时间</td>
+							<td width="150px" class="tdColor">流失状态</td>
+							<td width="150px" class="tdColor">处理方式</td>
+							<td width="150px" class="tdColor">备注信息</td>
+							<td width="150px" class="tdColor">修改时间</td>
+							<td width="150px" class="tdColor">操作</td>
+							
 						
-						<td>${getcontactrecord.customerId}</td>
-						<td>${getcontactrecord.contactLogsContent}</td>
-						<td>${getcontactrecord.companyId}</td>
-						<td>
-				 			<fmt:formatDate value="${getcontactrecord.contactLogsLastTime}" pattern="yyyy-MM-dd HH:mm:ss" />
-				 		</td>
+						</tr>
+						<c:forEach items="${selectAll.list}" var="today">		
+				 		<tr>
+				 		
+				 		<td>${today.customerBean.customerName}</td>
+				 		<td>${today.customerBean.customerUpDepartment}</td>
+				 		<td>${today.customerBean.customerContactPerson}</td>
+				 		<td>${today.customerBean.customerState}</td>
+				 		<td>${today.customerBean.customerAddress}</td>
+				 		<td>${today.customerBean.customerPhone}</td>
+				 		<td>${today.customerBean.customerFax}</td>
+				 		<td>${today.customerBean.customerEmail}</td>
 				 		<td>
-						<a href="getcontactrecord/get1?contactLogsId=${getcontactrecord.contactLogsId }">
-									<img class="operation" src="img/update.png"></a> 
-						<img class="operation delban" src="img/delete.png" onclick="deleteSa('${getcontactrecord.contactLogsId}')">
-						</td>
-						
-						</tr>
-						</c:forEach>				
+				 			<fmt:formatDate value="${today.customerBean.customerContactTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+				 		</td>
+				 		
+				 		<td>${today.customerLosePromethods }</td>
+				 		<td>${today.customerLoseSate }</td>
+				 		<td>${today.customerBean.customerInfo}</td>
+				 		
+				 		<td>
+				 			<fmt:formatDate value="${today.customerBean.customerUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+				 		</td>
+				 		
+				 		<td>
+				 		 <img class="operation delban" src="img/delete.png" onclick="deleteSa('${today.customerBean.customerId}')"></td>
+				 		
+				 		
+				 		</tr>
+				 		</c:forEach>
+				 		
+				 		
+				 		
+				 		
+				 		
+	
 					</table>
 					<div class="paging" id="div" style="float:right"></div>
 				
@@ -115,38 +140,39 @@ $(document).ready(function(){
 	
 // 广告弹出框 end
 
-	function deleteSa(contactLogsId) 
+	function deleteSa(customerId) 
 	{
-	
-		document.getElementById("sure").href = 'getcontactrecord/del?contactLogsId=' + contactLogsId;	
+		
+		document.getElementById("sure").href = 'add1/del1?customerId=' + customerId;	
 	}
+	
 	function page()
 	{
         var td = document.getElementById('div');
-        if(${getcontactrecord.pageNum} != 1)
+        if(${selectAll.pageNum} != 1)
        	{
         	var a = document.createElement('a');
         	a.innerHTML = '首页';
-        	a.href = 'getcontactrecord/get?pn=1';
+        	a.href = 'add1/selectlose?pn=1';
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';
        	}
         
-        if(${getcontactrecord.pageNum} <= 6)
+        if(${selectAll.pageNum} <= 6)
         {
         	for (var i = 0; i < 10; i++) 
         	{
-				if(i+1 <= ${getcontactrecord.pages})
+				if(i+1 <= ${selectAll.pages})
 				{
 					var a = document.createElement('a');
 					a.innerHTML = i + 1;
-					a.href = 'getcontactrecord/get?pn=' + (i + 1);
+					a.href = 'add1/selectlose?pn=' + (i + 1);
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
 					
-					if(${getcontactrecord.pageNum} == i+1)
+					if(${selectAll.pageNum} == i+1)
 					{
 						a.style.color = 'red';
 						a.href = 'javascript:;'
@@ -156,20 +182,20 @@ $(document).ready(function(){
 				
 			}
         }
-        if(${getcontactrecord.pageNum} > 6)
+        if(${selectAll.pageNum} > 6)
         {
         	for (var i = 0; i < 10; i++) 
         	{
-				if(${getcontactrecord.pageNum}+i-5 <= ${getcontactrecord.pages})
+				if(${selectAll.pageNum}+i-5 <= ${selectAll.pages})
 				{
 					var a = document.createElement('a');
-					a.innerHTML = ${getcontactrecord.pageNum}+i-5;
-					a.href = 'getcontactrecord/get?pn=' + (${getcontactrecord.pageNum}+i-5);
+					a.innerHTML = ${selectAll.pageNum}+i-5;
+					a.href = 'add1/selectlose?pn=' + (${selectAll.pageNum}+i-5);
 					td.appendChild(a);
 					a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 					a.style.float = 'left';
 					
-					if(${getcontactrecord.pageNum} == (${getcontactrecord.pageNum}+i-5))
+					if(${selectAll.pageNum} == (${selectAll.pageNum}+i-5))
 					{
 						a.style.color = 'red';
 						a.href = 'javascript:;'
@@ -179,11 +205,11 @@ $(document).ready(function(){
 			}
         }
         
-        if(${getcontactrecord.pageNum } != ${getcontactrecord.pages})
+        if(${selectAll.pageNum } != ${selectAll.pages})
        	{
         	var a = document.createElement('a');
         	a.innerHTML = '尾页';
-        	a.href = 'getcontactrecord/get?pn=' + ${getcontactrecord.pages};
+        	a.href = 'add1/selectlose?pn=' + ${selectAll.pages};
         	td.appendChild(a);
         	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
         	a.style.float = 'left';

@@ -15,6 +15,41 @@
     <result column="feedback_analyse" jdbcType="VARCHAR" property="feedbackAnalyse" />
     <result column="feedback_last_time" jdbcType="TIMESTAMP" property="feedbackLastTime" />
   </resultMap>
+  
+  <resultMap type="com.sc.crmsys.bean.FeedbackBean" id="ff">
+ 	<id column="feedback_id" jdbcType="VARCHAR" property="feedbackId" />
+  	<result column="customer_id" jdbcType="VARCHAR" property="customerId" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="feedback_state" jdbcType="VARCHAR" property="feedbackState" />
+    <result column="feedback_type" jdbcType="VARCHAR" property="feedbackType" />
+    <result column="feedback_time" jdbcType="TIMESTAMP" property="feedbackTime" />
+    <result column="feedback_reason" jdbcType="VARCHAR" property="feedbackReason" />
+    <result column="feedback_charge" jdbcType="VARCHAR" property="feedbackCharge" />
+    <result column="feedback_title" jdbcType="VARCHAR" property="feedbackTitle" />
+    <result column="feedback_content" jdbcType="VARCHAR" property="feedbackContent" />
+    <result column="feedback_analyse" jdbcType="VARCHAR" property="feedbackAnalyse" />
+    <result column="feedback_last_time" jdbcType="TIMESTAMP" property="feedbackLastTime" />
+    
+    <association property="customerBean" column="customer_id" javaType="com.sc.crmsys.bean.CustomerBean">
+    
+     <id column="customer_id"  property="customerId" />
+    <result column="customer_name"  property="customerName" />
+    <result column="customer_up_department"  property="customerUpDepartment" />
+    <result column="customer_contact_person"  property="customerContactPerson" />
+    <result column="customer_state"  property="customerState" />
+    <result column="customer_address"  property="customerAddress" />
+    <result column="customer_phone"  property="customerPhone" />
+    <result column="customer_fax"  property="customerFax" />
+    <result column="customer_email"  property="customerEmail" />
+    <result column="customer_contact_time"  property="customerContactTime" />
+    <result column="customer_info"  property="customerInfo" />
+    <result column="company_id"  property="companyId" />
+    <result column="customer_update_time"  property="customerUpdateTime" />
+    
+    </association>
+  </resultMap>
+  
+  
   <sql id="Base_Column_List">
     feedback_id, customer_id, company_id, feedback_state, feedback_type, feedback_time, 
     feedback_reason, feedback_charge, feedback_title, feedback_content, feedback_analyse, 
@@ -31,6 +66,15 @@
   select * from feedback
 
   </select>
+  
+  
+ 
+  
+  <select id="getcustomername" resultMap="ff">
+ 	select * from customer c INNER JOIN feedback f ON f.customer_id= c.customer_id
+  </select>
+  
+  
   
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
