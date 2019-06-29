@@ -16,6 +16,8 @@
 
 <body>
 	<div id="pageAll">
+		<div class="pageTop">
+		</div>
 		<div class="page">
 			<!-- opinion 页面样式 -->
 			<div class="opinion">
@@ -31,6 +33,7 @@
 					<table border="0" cellspacing="0" cellpadding="0">
 						
 						<tr>
+							<td width="100px" class="tdColor tdC">序号</td>
 							<td width="486px" class="tdColor tdC">补货编号</td>
 							<td width="430px" class="tdColor">产品编号</td>
 							<td width="130px" class="tdColor">产品类别</td>
@@ -41,8 +44,9 @@
 							<td width="160px" class="tdColor">补货状态</td>
 							<td width="180px" class="tdColor">操作</td>
 						</tr>
-						<c:forEach items="${purchaseList }" var="p">
+						<c:forEach items="${purchaseList }" var="p" varStatus="c">
 						<tr height="40px">
+							<td>${c.count }</td>
 							<td>${p.purchaseId }</td>
 							<td>${p.productId }</td>
 							<td>${p.stockBean.commodityType }</td>

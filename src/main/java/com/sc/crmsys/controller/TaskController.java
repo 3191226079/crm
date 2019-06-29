@@ -73,11 +73,14 @@ public class TaskController {
 	
 	
 	@RequestMapping("/selectTask")
-	public String selectTask(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean)
+	public String selectTask(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,Map<String, Object> map,TaskBean taskBean,String taskStartTime,String taskEndTime,String taskTitle)
 	{
 		if(taskBean.getTaskStartTime() != null)
 		{
 			PageInfo<TaskDetailBean> TaskDetailBean = taskService.selectAllTask(pn, size, taskBean);
+			map.put("endTime", taskEndTime);
+			map.put("startTime", taskStartTime);
+			map.put("title", taskTitle);
 			map.put("TaskDetailBean", TaskDetailBean);
 			return "forward:/jsp/TaskLook.jsp";
 		}
@@ -112,8 +115,7 @@ public class TaskController {
 	@RequestMapping("/delete")
 	public String deleteTask(String taskId,String checkPointId,String taskDetailId)
 	{
-		taskService.deleteByPrimaryKey(taskId);
-		taskDetailService.deleteByPrimaryKey(taskDetailId);
+		taskService.deleteByPrimaryKey(taskId, taskDetailId);
 		return "redirect:selectTask";
 	}
 	

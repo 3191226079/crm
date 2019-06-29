@@ -19,11 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageInfo;
 import com.sc.crmsys.bean.EmployBean;
 import com.sc.crmsys.bean.InfoBean;
+import com.sc.crmsys.bean.InfoDetailBean;
 import com.sc.crmsys.bean.JobBean;
 import com.sc.crmsys.bean.RoleBean;
 import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.bean.UserRoleBean;
 import com.sc.crmsys.service.EmployService;
+import com.sc.crmsys.service.InfoService;
 import com.sc.crmsys.utils.MyUtils;
 
 @Controller
@@ -32,6 +34,9 @@ public class EmployController {
 
 	@Resource
 	private EmployService employServiceImpl;
+	
+	@Resource
+	private InfoService infoService;
 	
 	@RequestMapping("/selectEmploy")
 	public String selectInfo(Map<String, Object> map,InfoBean infoBean,EmployBean employBean)
@@ -43,6 +48,13 @@ public class EmployController {
 		EmployBean selectInfo = employServiceImpl.selectInfo(infoBean,employBean.getEmployId());
 		map.put("selectInfo", selectInfo);
 		return "forward:/jsp/employLook.jsp";
+	}
+	
+	@RequestMapping("/deleteInfo")
+	public String delete(String infoDetailId,String infoId)
+	{
+		infoService.deleteByinfoDetailId(infoDetailId, infoId);
+		return "redirect:selectEmploy";
 	}
 	
 	@RequestMapping("/jumpToAddEmploy")

@@ -1,5 +1,7 @@
 package com.sc.crmsys.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -56,14 +58,10 @@ public class InfoController {
 	@RequestMapping("/selectInfo")
 	public String selectInfo(@RequestParam(defaultValue="1")Integer pn,@RequestParam(defaultValue="5")Integer size,InfoDetailBean infoDetailBean,Map<String, Object> map)
 	{
-		if(infoDetailBean == null)
-		{
-
-			infoDetailBean = new InfoDetailBean();
-		}
-		PageInfo<InfoDetailBean> InfoDetailBean = infoService.selectAll(pn,size,infoDetailBean);
-		map.put("InfoDetail", InfoDetailBean);
-		return "forward:/jsp/lookInformation.jsp";
+			PageInfo<InfoDetailBean> InfoDetailBean = infoService.selectAll(pn,size,infoDetailBean);
+			map.put("title", infoDetailBean.getInfoBean().getInfoTitle());
+			map.put("InfoDetail", InfoDetailBean);
+			return "forward:/jsp/lookInformation.jsp";
 	}
 	
 	@RequestMapping("/jumptosend")
@@ -77,8 +75,7 @@ public class InfoController {
 	@RequestMapping("/deleteInfo")
 	public String deleteInfo(String infoDetailId,String infoId)
 	{
-		infoService.deleteByinfoId(infoId);
-		infoService.deleteByinfoDetailId(infoDetailId);
+		infoService.deleteByinfoDetailId(infoDetailId, infoId);
 		return "redirect:selectInfo";
 	}
 }

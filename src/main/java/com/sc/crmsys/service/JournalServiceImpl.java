@@ -43,7 +43,6 @@ public class JournalServiceImpl implements JournalService{
 		journal.setVisitTime(date);
 		String permission = permissionMapper.selectPermission(journal.getVisitIp());
 		
-		System.out.println(permission);
 		if (permission != null) {
 			journal.setPermission(permission);//得到权限名
 			journalMapper.insertSelective(journal);

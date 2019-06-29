@@ -56,7 +56,7 @@
                             <h4>其他说明</h4>
                             <p>对月末全勤奖以及工资有异议，可到财务部或人事部咨询</p>
                         </div>
-                        <a class="qiandao-notic" href="" style="margin-left:100px">点击返回主页</a>
+                        <a class="qiandao-notic" href="inc/mainll.jsp" style="margin-left:100px">点击返回主页</a>
                     </div>
                 </div>
             </div>

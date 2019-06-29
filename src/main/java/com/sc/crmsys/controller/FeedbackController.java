@@ -60,7 +60,7 @@ public class FeedbackController {
 	public String addfeedback(FeedbackBean feedbackBean)
 	{
 		feedbackService.addfeedback(feedbackBean);
-		return "redirect:getfeedback";
+		return "redirect:/add1/get";
 	}
 
 	@RequestMapping("/get1")

@@ -10,7 +10,7 @@ public interface TaskService {
 	
 	public PageInfo<TaskDetailBean> selectAll(Integer pn,Integer size,TaskBean taskBean);
 	
-	public void deleteByPrimaryKey(String taskId);
+	public void deleteByPrimaryKey(String taskId,String taskDetailId);
 	
 	public TaskBean selectByPrimaryKey(String taskId);
 	
