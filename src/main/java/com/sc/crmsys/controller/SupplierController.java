@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,8 @@ public class SupplierController {
 	 * @param data
 	 * @return
 	 */
+	
+	@RequiresPermissions("changzheng:supply")
 	@RequestMapping("/select")
 	public String getSupplier(Map<String, Object> data)
 	{
@@ -44,6 +47,7 @@ public class SupplierController {
 	 * @param supplierId
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:supply")
 	@RequestMapping("/find")
 	public String findSupplier(Map<String, Object> data,String supplierId)
 	{
@@ -58,6 +62,7 @@ public class SupplierController {
 	 * @param supplierBean
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:supply")
 	@RequestMapping("/update")
 	@ResponseBody
 	public Map<String, Object> updateSupplier(SupplierBean supplierBean)
@@ -75,7 +80,7 @@ public class SupplierController {
 	 * @param supplierId
 	 * @return
 	 */
-	
+	@RequiresPermissions("changzheng:supply")
 	@RequestMapping("/del")
 	@ResponseBody
 	public Map<String, Object> delSupplier(String supplierId)
@@ -93,6 +98,7 @@ public class SupplierController {
 	 * @param supplierBean
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:supply")
 	@RequestMapping("/add")
 	public String addSupplier(SupplierBean supplierBean)
 	{

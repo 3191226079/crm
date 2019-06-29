@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +38,8 @@ public class PurchaseController {
 	 * @param data
 	 * @return
 	 */
+	
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/select")
 	public String getPurchase(Map<String, Object> data)
 	{
@@ -53,6 +56,7 @@ public class PurchaseController {
 	 * @param orderPurchaseBean
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/add")
 	public String addPurchase(Map<String, Object> data,PurchaseBean purchaseBean)
 	{
@@ -79,6 +83,7 @@ public class PurchaseController {
 	 * @param data
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/find")
 	public String findPurchase(String purchaseId,Map<String, Object> data)
 	{
@@ -96,6 +101,7 @@ public class PurchaseController {
 	 * @param orderPurchaseBean
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/update")
 	@ResponseBody
 	public Map<String, Object> updatePurchase(PurchaseBean purchaseBean,DetailPurchaseBean detailPurchaseBean,OrderPurchaseBean orderPurchaseBean)
@@ -116,6 +122,7 @@ public class PurchaseController {
 	 * @param purchaseId
 	 * @return
 	 */
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/del")
 	public String delPurchase(String purchaseId)
 	{
@@ -123,7 +130,7 @@ public class PurchaseController {
 		return "redirect:/purchase/select";
 	}
 	
-
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("selectAll")
 	public String selectAll(Map<String, Object> data,PurchaseBean purchaseBean)
 	{
@@ -133,6 +140,7 @@ public class PurchaseController {
 		
 	}
 
+	@RequiresPermissions("changzheng:needgoods")
 	@RequestMapping("/getStockes")
 	public String getStockes(Map<String, Object> data)
 	{

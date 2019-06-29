@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +49,7 @@ public class QuestionController {
 		return "forward:/question/info";
 	}
 	
+	@RequiresPermissions("huguan:service")
 	@RequestMapping("/answer")
 	public String answerInfo(Map map,String content,String state,@RequestParam(defaultValue="1")int pn,@RequestParam(defaultValue="5")int size)
 	{
@@ -56,6 +58,7 @@ public class QuestionController {
 		return "forward:/jsp/answer.jsp";
 	}
 	
+	@RequiresPermissions("huguan:service")
 	@RequestMapping("/addanswer")
 	@ResponseBody
 	public HashMap<String, Object>  addAnswer(QuestionBean question)
