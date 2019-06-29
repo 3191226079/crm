@@ -25,7 +25,7 @@
 		</div>
 		<div class="page ">
 			<!-- 上传广告页面样式 -->
-			<div class="banneradd bor">
+			<div class="bor">
 				<div class="baTop">
 					
 				</div>

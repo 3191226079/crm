@@ -50,6 +50,13 @@ public class EmployController {
 		return "forward:/jsp/employLook.jsp";
 	}
 	
+	@RequestMapping("/deleteInfo")
+	public String delete(String infoDetailId,String infoId)
+	{
+		infoService.deleteByinfoDetailId(infoDetailId, infoId);
+		return "redirect:selectEmploy";
+	}
+	
 	@RequestMapping("/jumpToAddEmploy")
 	public String jumpToAddEmploy(Map<String, Object> map)
 	{
