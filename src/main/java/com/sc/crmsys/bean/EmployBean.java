@@ -38,6 +38,28 @@ public class EmployBean {
     
     private List<InfoDetailBean> infoDetailBeanList;
     
+    private UserBean userBean;
+    
+    private JobBean jobBean;
+    
+    
+    
+
+	public JobBean getJobBean() {
+		return jobBean;
+	}
+
+	public void setJobBean(JobBean jobBean) {
+		this.jobBean = jobBean;
+	}
+
+	public UserBean getUserBean() {
+		return userBean;
+	}
+
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
 
 	public List<InfoDetailBean> getInfoDetailBeanList() {
 		return infoDetailBeanList;

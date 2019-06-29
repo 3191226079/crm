@@ -18,6 +18,8 @@ public class UserBean {
     private Date userRegisterTime;
 
     private Date userUpdateTime;
+    
+    private UserRoleBean userRoleBean;
 
     private String userSalt;
 
@@ -25,7 +27,21 @@ public class UserBean {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    
+    
+    public UserRoleBean getUserRoleBean() {
+		return userRoleBean;
+	}
+
+
+
+	public void setUserRoleBean(UserRoleBean userRoleBean) {
+		this.userRoleBean = userRoleBean;
+	}
+
+
+
+	public void setUserId(String userId) {
         this.userId = userId == null ? null : userId.trim();
     }
 

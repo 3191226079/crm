@@ -79,6 +79,25 @@
       subfield_last_time = #{subfieldLastTime,jdbcType=TIMESTAMP}
     where subfield_number = #{subfieldNumber,jdbcType=VARCHAR}
   </update>
-  
+  <select id="selectSubfieldByUserId" resultMap="mySubfield">
+  	select ps1.subfield_number ps1num, ps1.subfield_name ps1name, ps2.subfield_number ps2num, ps2.subfield_name ps2name, pi.permission_number pinum, pi.information_remarks piir from permission_subfield ps1 inner join permission_subfield ps2 on ps1.subfield_number = ps2.subfield_remarks
+	inner join permission_information pi on ps2.subfield_number = pi.subfield_number 
+	inner join permission_role pr on pr.permission_number = pi.permission_number
+	inner join role r on r.role_number = pr.role_number
+	inner join user_role ur on ur.role_number = r.role_number
+	inner join user u on u.user_id = ur.user_id where u.user_id = #{uid} and ps1.subfield_remarks = 'aahdfa' order by ps1.subfield_last_time asc
+  </select>
+  <resultMap id="mySubfield" type="com.sc.crmsys.bean.PermissionSubfieldBean">
+  	<id column="ps1num" property="subfieldNumber"/>
+  	<result column="ps1name" property="subfieldName"/>
+  	<collection property="permissionSubfieldList" ofType="com.sc.crmsys.bean.PermissionSubfieldBean" column="ps1num">
+  		<id column="ps2num" property="subfieldNumber"/>
+	  	<result column="ps2name" property="subfieldName"/>
+	  	<association property="permissionInformationBean" javaType="com.sc.crmsys.bean.PermissionInformationBean" column="ps2num">
+	  		<id column="pinum" property="permissionNumber"/>
+		  	<result column="piir" property="informationRemarks"/>
+		</association>
+	</collection>
+  </resultMap>
   
 </mapper>

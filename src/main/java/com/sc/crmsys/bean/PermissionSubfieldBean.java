@@ -1,6 +1,7 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class PermissionSubfieldBean {
     private String subfieldNumber;
@@ -10,8 +11,32 @@ public class PermissionSubfieldBean {
     private String subfieldRemarks;
 
     private Date subfieldLastTime;
+    
+    private List<PermissionSubfieldBean> permissionSubfieldList;
+    
+    private PermissionInformationBean permissionInformationBean;
+    
+    
 
-    public String getSubfieldNumber() {
+    
+
+	public List<PermissionSubfieldBean> getPermissionSubfieldList() {
+		return permissionSubfieldList;
+	}
+
+	public void setPermissionSubfieldList(List<PermissionSubfieldBean> permissionSubfieldList) {
+		this.permissionSubfieldList = permissionSubfieldList;
+	}
+
+	public PermissionInformationBean getPermissionInformationBean() {
+		return permissionInformationBean;
+	}
+
+	public void setPermissionInformationBean(PermissionInformationBean permissionInformationBean) {
+		this.permissionInformationBean = permissionInformationBean;
+	}
+
+	public String getSubfieldNumber() {
         return subfieldNumber;
     }
 

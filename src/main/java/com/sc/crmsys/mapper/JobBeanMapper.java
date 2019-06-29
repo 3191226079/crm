@@ -1,5 +1,7 @@
 package com.sc.crmsys.mapper;
 
+import java.util.List;
+
 import com.sc.crmsys.bean.JobBean;
 
 public interface JobBeanMapper {
@@ -14,4 +16,6 @@ public interface JobBeanMapper {
     int updateByPrimaryKeySelective(JobBean record);
 
     int updateByPrimaryKey(JobBean record);
+    
+    List<JobBean> selectAllJobll();
 }

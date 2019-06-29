@@ -268,4 +268,40 @@
       employ_update_time = #{employUpdateTime,jdbcType=TIMESTAMP}
     where employ_id = #{employId,jdbcType=VARCHAR}
   </update>
+  <select id="selectEmployAndUser" resultMap="employAndUser">
+  	select * from employ e inner join user u on e.employ_id = u.employ_id inner join job j on e.job_id = j.job_id inner join user_role ur on ur.user_id = u.user_id where e.employ_state = '1' order by e.employ_update_time desc
+  </select>
+  <resultMap type="com.sc.crmsys.bean.EmployBean" id="employAndUser">
+  	<id column="employ_id" property="employId"/>
+  	<result column="employ_name" property="employName"/>
+  	<result column="employ_sex" property="employSex"/>
+  	<result column="employ_img" property="employImg"/>
+  	<result column="employ_salary" property="employSalary"/>
+  	<result column="employ_identify" property="employIdentify"/>
+  	<result column="employ_address" property="employAddress"/>
+  	<result column="employ_education" property="employEducation"/>
+  	<result column="employ_politic" property="employPolitic"/>
+  	<result column="employ_school" property="employSchool"/>
+  	<result column="employ_phone" property="employPhone"/>
+  	<result column="job_id" property="jobId"/>
+  	<association property="userBean" javaType="com.sc.crmsys.bean.UserBean" column="employ_id">
+  		<id column="user_id" property="userId"/>
+	  	<result column="user_name" property="userName"/>
+	  	<result column="user_register_time" property="userRegisterTime"/>
+	  	<association property="userRoleBean" javaType="com.sc.crmsys.bean.UserRoleBean" column="user_id">
+	  		<id column="user_role_id" property="userRoleId"/>
+		  	<result column="role_number" property="roleNumber"/>
+  		</association>
+  	</association>
+  	<association property="jobBean" javaType="com.sc.crmsys.bean.JobBean" column="job_id">
+  		<id column="job_id" property="jobId"/>
+	  	<result column="job_name" property="jobName"/>
+  	</association>
+  </resultMap>
+  <select id="selectEmployById" resultMap="employAndUser">
+  	select * from employ e inner join user u on e.employ_id = u.employ_id inner join job j on e.job_id = j.job_id inner join user_role ur on ur.user_id = u.user_id where e.employ_id = #{id}
+  </select>
+  <update id="updateEmployState">
+  	update employ set employ_state = '0' where employ_id = #{id}
+  </update>
 </mapper>

@@ -134,4 +134,8 @@ left join permission_information p3 on p2.permission_number = p3.parent where p1
 	 </collection>
   </resultMap>
   
+  <select id="selectPermissionByUserId" resultMap="BaseResultMap">
+  	select pi.* from user u inner join user_role ur on u.user_id = ur.user_id inner join role r on r.role_number = ur.role_number inner join permission_role pr on pr.role_number = r.role_number inner join permission_information pi on pr.permission_number = pi.permission_number where u.user_id = #{uid}
+  </select>
+  
 </mapper>

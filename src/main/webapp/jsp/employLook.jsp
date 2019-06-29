@@ -53,7 +53,7 @@
 									已读
 								</td>
 								<td>
-									<img class="operation delban" src="img/delete.png" onclick="deleteEmploy('${infoDetailBean.employId}')">
+									<img class="operation delban" src="img/delete.png" onclick="deleteEmploy('${infoDetailBean.infoDetailId}','${infoDetailBean.infoId}')">
 								</td>
 							</tr>
 						</c:forEach>
@@ -95,9 +95,9 @@
 		});
 	// 广告弹出框 end
 	
-	function deleteEmploy(employId)
+	function deleteEmploy(infoDetailId,infoId)
 	{
-		document.getElementById('read').href = "employ/delete?employId=" + employId;
+		document.getElementById('read').href = "info/deleteInfo?infoDetailId=" + infoDetailId + '&infoId=' + infoId;
 	}
 	</script>
 </html>
