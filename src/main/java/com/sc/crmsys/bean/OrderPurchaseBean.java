@@ -1,15 +1,18 @@
 package com.sc.crmsys.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class OrderPurchaseBean {
     private String orderPurchaseId;
 
     private String orderPurchaseTitle;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone="GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseTime;
 
     private String supplierId;
@@ -20,7 +23,7 @@ public class OrderPurchaseBean {
 
     private String orderPurchaseState;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone="GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseBusinessTime;
 
     private String orderPurchaseBusinessAddress;
@@ -32,14 +35,27 @@ public class OrderPurchaseBean {
     private String orderPurchaseInfo;
 
     private String companyId;
-
+    
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date orderPurchaseUpdateTime;
     
     private SupplierBean supplierBean;
     
+    private List<DetailPurchaseBean> detailPurchaseList;
+    
+    
+    
     
 
-    public SupplierBean getSupplierBean() {
+    public List<DetailPurchaseBean> getDetailPurchaseList() {
+		return detailPurchaseList;
+	}
+
+	public void setDetailPurchaseList(List<DetailPurchaseBean> detailPurchaseList) {
+		this.detailPurchaseList = detailPurchaseList;
+	}
+
+	public SupplierBean getSupplierBean() {
 		return supplierBean;
 	}
 

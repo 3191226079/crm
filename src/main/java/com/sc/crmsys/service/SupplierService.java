@@ -8,7 +8,13 @@ public interface SupplierService {
 	
 	List<SupplierBean> getSupplier();
 	
-	SupplierBean findSuplier(String supplierId);
+	SupplierBean findSupplier(String supplierId);
+	
+	void updateSupplier(SupplierBean supplierBean);
+	
+	void updateSupplierState(String supplierId);
+	
+	void addSupplier(SupplierBean supplierBean);
 	
 
 }

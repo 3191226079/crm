@@ -2,6 +2,8 @@ package com.sc.crmsys.bean;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class SupplierBean {
     private String supplierId;
 
@@ -23,9 +25,12 @@ public class SupplierBean {
 
     private String companyId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date supplierUpdateTime;
+    
 
-    public String getSupplierId() {
+
+	public String getSupplierId() {
         return supplierId;
     }
 

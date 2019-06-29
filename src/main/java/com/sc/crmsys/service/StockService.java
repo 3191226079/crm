@@ -6,7 +6,9 @@ import com.sc.crmsys.bean.StockBean;
 
 public interface StockService {
 	
-	List<StockBean> getPurchase(String companyId);
+	List<StockBean> getStockes();
+	
+	StockBean getStock(String commodityNumber);
 	
 	
 	

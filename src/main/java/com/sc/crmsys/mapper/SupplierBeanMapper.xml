@@ -159,12 +159,18 @@
       supplier_info = #{supplierInfo,jdbcType=VARCHAR},
       company_id = #{companyId,jdbcType=VARCHAR},
       supplier_update_time = #{supplierUpdateTime,jdbcType=TIMESTAMP}
-    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+    where supplier_id = #{supplierId,jdbcType=VARCHAR} 
   </update>
   
     <select id="getSupplier" parameterType="com.sc.crmsys.bean.SupplierBean" resultMap="BaseResultMap">
-    select * from supplier
+    select * from supplier where supplier_state != 5 
     
   </select>
+  
+  <update id="updateState" parameterType="com.sc.crmsys.bean.SupplierBean">
+    update supplier set
+      supplier_state = 5
+    where supplier_id = #{supplierId,jdbcType=VARCHAR}
+  </update>
   
 </mapper>

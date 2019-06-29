@@ -3,6 +3,8 @@ package com.sc.crmsys.mapper;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.sc.crmsys.bean.OrderPurchaseBean;
 
 public interface OrderPurchaseBeanMapper {
@@ -20,7 +22,9 @@ public interface OrderPurchaseBeanMapper {
     
     void update(OrderPurchaseBean record);
     
-    List<OrderPurchaseBean> getPurchaseOrder(String comapnyId);
+    List<OrderPurchaseBean> getPurchaseOrder();
     
-    void updateState(String orderPurchaseId,Date orderPurchaseUpdateTime);
+    OrderPurchaseBean find(String orderPurchaseId);
+    
+    void updateState(@Param("orderPurchaseId")String orderPurchaseId,@Param("orderPurchaseUpdateTime")Date orderPurchaseUpdateTime);
 }
