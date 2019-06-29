@@ -35,6 +35,7 @@ public class CheckPointController {
 	public String selectCheckPoint(@RequestParam(defaultValue="1")Integer pn, @RequestParam(defaultValue="5")Integer size,String checkPointTarget,Map<String, Object> map)
 	{
 		PageInfo<CheckPointBean> CheckPointBean = checkPointService.selectAll(pn, size, checkPointTarget);
+		map.put("checkPointTarget", checkPointTarget);
 		map.put("selectAllList", CheckPointBean);
 		return "forward:/jsp/checkPointLook.jsp";
 	}

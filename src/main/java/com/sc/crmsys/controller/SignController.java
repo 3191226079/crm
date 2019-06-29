@@ -110,6 +110,7 @@ public class SignController {
 				signCountBean.setSignCountTime(time);
 				signCountBean.setSignMonth(month);
 				signCountBean.setSignYear(year);
+				signCountBean.setUserId(userId);
 				signService.addSignCountInfo(signCountBean);
 			}
 			else

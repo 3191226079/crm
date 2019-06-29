@@ -147,7 +147,7 @@
 <div class="container">
     <div class="head">
         问题反馈
-        <a href="login.jsp" style="font-size: 15px;margin-left: 580px;">管理员登陆</a>
+        <a href="login.jsp" style="font-size: 15px;margin-left: 530px;">管理员登陆</a>
         <input type="text" placeholder="输入要查找的内容..." class="info" id="content" name="content">
         <input type="button" onclick="sub()" value="搜 索" class="select"> 
     </div>

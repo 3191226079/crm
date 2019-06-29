@@ -32,7 +32,7 @@
 				<div class="conform">
 					<form action="active/selectActive" method="post" id="myll">
 						<div class="cfD">
-							<input class="addUser"  autocomplete="off"  name="activeTitle" type="text" placeholder="日程主题" />
+							<input class="addUser" id="input1"  autocomplete="off" value="${title }"  name="activeTitle" type="text" placeholder="日程主题" />
 							<!-- <button class="button" onclick="javascript:function(){document.getElementById('myll').submit()};" >搜索</button> -->
 							<input class="button" type="submit" value="搜索">
 							<a class="addA addA1" href="jsp/addSchedule.jsp">添加日程</a>
@@ -123,14 +123,17 @@
 		{
 			document.getElementById('jumpall').href = 'active/deleteActive?activeId=' + idstr;
 		}
+		
 		function addNode()
 		{
             var td = document.getElementById('addtd');
             if(${activeBean1.pageNum} != 1)
            	{
+            	var title = document.getElementById('input1').value;
+            	
             	var a = document.createElement('a');
             	a.innerHTML = '首页';
-            	a.href = 'active/selectActive?pn=1';
+            	a.href = 'active/selectActive?pn=1' + '&activeTitle' + title;
             	td.appendChild(a);
             	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
             	a.style.float = 'left';
@@ -142,9 +145,11 @@
             	{
 					if(i+1 <= ${activeBean1.pages})
 					{
+						var title = document.getElementById('input1').value;
+						
 						var a = document.createElement('a');
 						a.innerHTML = i + 1;
-						a.href = 'active/selectActive?pn=' + (i + 1);
+						a.href = 'active/selectActive?pn=' + (i + 1) + '&activeTitle' + title;
 						td.appendChild(a);
 						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
@@ -165,9 +170,11 @@
             	{
 					if(${activeBean1.pageNum}+i-5 <= ${activeBean1.pages})
 					{
+						var title = document.getElementById('input1').value;
+						
 						var a = document.createElement('a');
 						a.innerHTML = ${activeBean1.pageNum}+i-5;
-						a.href = 'active/selectActive?pn=' + (${activeBean1.pageNum}+i-5);
+						a.href = 'active/selectActive?pn=' + (${activeBean1.pageNum}+i-5) + '&activeTitle' + title;
 						td.appendChild(a);
 						a.style = 'display = block ;width: 50px; text-align: center; font-size: 20px; height: 40px; line-height: 40px;';
 						a.style.float = 'left';
@@ -184,9 +191,11 @@
             
             if(${activeBean1.pageNum } != ${activeBean1.pages})
            	{
+            	var title = document.getElementById('input1').value;
+            	
             	var a = document.createElement('a');
             	a.innerHTML = '尾页';
-            	a.href = 'active/selectActive?pn=' + ${activeBean1.pages};
+            	a.href = 'active/selectActive?pn=' + ${activeBean1.pages} + '&activeTitle' + title;
             	td.appendChild(a);
             	a.style = 'display = block; border-style: solid; width: 60px; text-align: center; height: 40px; font-size: 15px; line-height: 40px;';
             	a.style.float = 'left';

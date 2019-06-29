@@ -28,10 +28,11 @@
   <select id="selectInfo" resultMap="employMap">
   	SELECT * FROM employ em INNER JOIN info_detail id ON em.employ_id = id.employ_id INNER JOIN info i ON id.info_id = i.info_id
   	where em.employ_id = #{e}
-  		<if test="i.infoPerson != null">
+  		<!-- <if test="i.infoPerson != null">
   			info_person like '%${i.infoPerson}%'
-  		</if>
+  		</if> -->
   </select>
+  
   <resultMap type="com.sc.crmsys.bean.EmployBean" id="employMap">
   	<id column="employ_id" property="employId"/>
   	<result column="employ_name" property="employName"/>
@@ -304,8 +305,8 @@
   	select * from employ e inner join user u on e.employ_id = u.employ_id inner join job j on e.job_id = j.job_id inner join user_role ur on ur.user_id = u.user_id where e.employ_id = #{id}
   </select>
   <update id="updateEmployState">
-  	update employ set employ_state = '0' where employ_id = #{id}
-  </update>
+  	update employ set employ_state = '1' where employ_id = #{id}
+  </update> 
  
   <select id="employInfo" resultMap="employInfoMap">
   	SELECT * FROM employ e INNER JOIN job j ON e.job_id = j.job_id

@@ -97,7 +97,7 @@
 	
 	function deleteEmploy(infoDetailId,infoId)
 	{
-		document.getElementById('read').href = "info/deleteInfo?infoDetailId=" + infoDetailId + '&infoId=' + infoId;
+		document.getElementById('read').href = "employ/deleteInfo?infoDetailId=" + infoDetailId + '&infoId=' + infoId;
 	}
 	</script>
 </html>

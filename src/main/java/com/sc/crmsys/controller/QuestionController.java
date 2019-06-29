@@ -40,7 +40,6 @@ public class QuestionController {
 	@RequestMapping("/add")
 	public String add(QuestionBean question)
 	{
-		System.out.println(question.getQuestionContent());
 		String questionId = UUID.randomUUID().toString();
 		Date date = new Date();
 		question.setQuestionId(questionId);

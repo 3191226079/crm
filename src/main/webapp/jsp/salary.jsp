@@ -75,7 +75,7 @@
 								<td width="100px" class="tdColor_b" style="background-color: rgb(242,242,242);color: #438eb9;">${employ.employSalary}</td>
 								<td width="130px" class="tdColor_r"  style="background-color: rgb(242,242,242);color: #438eb9;"></td><!-- 实发工资 -->
 								<td width="100px" class="tdColor">
-									<img class="operation delban" src="img/update.png" onclick="change_job(${employ.employId})">
+									<img class="operation delban" src="img/update.png" onclick="change_job('${employ.employId}')">
 							    </td>
 							</tr>
 						</c:forEach>
@@ -129,6 +129,7 @@ function change_job(employ_id)
 {
 	employId = employ_id;
 }
+
 // 广告弹出框
 $(".delban").click(function(){
 	

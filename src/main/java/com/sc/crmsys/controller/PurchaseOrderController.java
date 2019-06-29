@@ -7,10 +7,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +17,6 @@ import com.sc.crmsys.bean.DetailPurchaseBean;
 import com.sc.crmsys.bean.OrderPurchaseBean;
 import com.sc.crmsys.bean.StockBean;
 import com.sc.crmsys.bean.SupplierBean;
-import com.sc.crmsys.bean.UserBean;
 import com.sc.crmsys.service.DetailPurchaseService;
 import com.sc.crmsys.service.PurchaseOrderService;
 import com.sc.crmsys.service.StockService;
@@ -93,13 +89,6 @@ public class PurchaseOrderController {
 		StockBean stockBean = stockService.getStock(commodityNumber);
 		map.put("stockBean", stockBean);
 		return map;
-	}
-	
-	public String update()
-	{
-		
-		
-		return "";
 	}
 	
 	@RequestMapping("/find")

@@ -58,7 +58,7 @@
 								<td width="100px" class="tdColor">${employ.jobBean.deparmentBean.deptName}</td>
 								<td width="100px" class="tdColor">${employ.jobBean.jobName}</td>
 								<td width="130px" class="tdColor" style="color:black;">
-									<img class="operation delban" src="img/update.png" onclick="change_job()">
+									<img class="operation delban" src="img/update.png" onclick="change_job('${employ.employId}')">
 								</td>
 								
 							</tr>
@@ -133,9 +133,12 @@ function send(pn)
 	location.href = 'mangePerson/info?pn='+(pn-1);	
 }
 
+var employId="";
+
 var deptdata = null;
-function change_job()
+function change_job(em_id)
 {
+	employId = em_id;
 	//查询职务与部门信息
 	$.ajax({
         type:'post',
@@ -196,15 +199,12 @@ $(".no").click(function(){
   $(".banDel").hide();
 });
 
+
+
+
 $("#smt").click(function(){
-	var employId = $('#first').val();
 	var jobId = $("#second").val();
 	
-   var data = {
-		   jobId:jobId,
-		   employId:employId
-   };
-	console.log(data.jobName);
 
 	 $.ajax({
         type:'post',
