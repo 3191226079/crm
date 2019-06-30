@@ -51,7 +51,7 @@ public class TaskController {
 		taskBean.setTaskId(taskId);
 		Subject subject = SecurityUtils.getSubject();
 		UserBean userBean = (UserBean)subject.getPrincipal();
-		taskBean.setTaskPerson(userBean.getEmployId());
+		taskBean.setTaskPerson(userBean.getUserName());
 		taskBean.setTaskUpdateTime(new Date());
 		
 		String taskDetailId = UUID.randomUUID().toString();

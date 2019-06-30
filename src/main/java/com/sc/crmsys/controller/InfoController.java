@@ -42,7 +42,7 @@ public class InfoController {
 		infoBean.setInfoId(infoId);
 		Subject subject = SecurityUtils.getSubject();
 		UserBean userBean = (UserBean)subject.getPrincipal();
-		infoBean.setInfoPerson(userBean.getEmployId());
+		infoBean.setInfoPerson(userBean.getUserName());
 		infoBean.setInfoUpdateTime(new Date());
 		
 		String infoDetailId = UUID.randomUUID().toString();

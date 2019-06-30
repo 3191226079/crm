@@ -41,7 +41,6 @@ public class TimeTaskCool {
 			
 		}
 	
-		System.out.println("qqqqqqqqqq");
 		if(b<list.size())
 		{
 			

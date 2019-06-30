@@ -23,7 +23,7 @@ public class JournalInterceptor implements HandlerInterceptor{
 		
 	        
 	        JournalBean journalBean = new JournalBean();
-	        journalBean.setVisitIp(request.getServletPath());//得到请求地址，存入Bean
+	        journalBean.setVisitIp(request.getServletPath().substring(1,request.getServletPath().length() ));//得到请求地址，存入Bean
 	        journalService.addJoural(journalBean);
 	     
 	      return true;

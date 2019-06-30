@@ -39,7 +39,7 @@
 						</tr>
 						<c:forEach items="${requestScope.pageInfo.list }" var="roleBean" varStatus="ss">
 							<tr height="40px">
-								<td>${ss.index+1+(pageInfo.pageNum-1)*pageSize }</td>
+								<td>${ss.index+1+(pageInfo.pageNum-1)*(pageInfo.pageSize) }</td>
 								<td>${roleBean.roleName }</td>
 								<td>${roleBean.roleDescribe }</td>
 								<td><fmt:formatDate value="${roleBean.roleLastTime }" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate></td>

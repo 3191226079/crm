@@ -51,7 +51,10 @@
 						<c:forEach items="${employ.list}" var="employ">
 							<tr>
 								<td width="120px" class="tdColor tdC">${employ.employName}</td>
-								<td width="100px" class="tdColor">${employ.employSex}</td>
+								<td width="100px" class="tdColor">
+									<c:if test="${employ.employSex eq '1' }">男</c:if>
+									<c:if test="${employ.employSex ne '1' }">女</c:if>
+								</td>
 								<td width="200px" class="tdColor">${employ.employIdentify}</td>
 								<td width="100px" class="tdColor">${employ.employEducation}</td>
 								<td width="200px" class="tdColor">${employ.employPhone}</td>
