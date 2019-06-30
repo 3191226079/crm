@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,7 @@ public class StockController {
 	@Resource
 	private StockService stockService;
 	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("/add")
 	public String addStock(StockBean stockBean)
 	{
@@ -36,6 +38,7 @@ public class StockController {
 		return "redirect:/stock/select";
 	}
 	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("/select")
 	public String selectstocks(Map<String, Object> map)
 	{
@@ -44,6 +47,8 @@ public class StockController {
 		return "forward:/jsp/wish.jsp";
 		
 	}
+	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("selectId")
 	public String selectStockId(String id,Map<String, Object> map)
 	{
@@ -51,6 +56,8 @@ public class StockController {
 		map.put("selectByPrimaryKey", selectByPrimaryKey);
 		return "forward:/jsp/updategoods.jsp";	
 	}
+	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("deleteId")
 	public String deleteStockId(String commodityNumber)
 	{
@@ -59,6 +66,8 @@ public class StockController {
 		return "redirect:select";
 		
 	}
+	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("updateId")
 	public String updateStockId(StockBean stockBean,SaleInfoBean saleInfoBean, Map<String, Object> map)
 	{
@@ -67,6 +76,7 @@ public class StockController {
 		
 	}
 	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("/getstock")
 	public String getstocks(Map<String, Object> map)
 	{
@@ -77,6 +87,7 @@ public class StockController {
 	}
 	
 	//查询价格
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("/selectPrice")
 	@ResponseBody
 	public Map<String, Object> selectStockPrice(String num)
@@ -88,6 +99,7 @@ public class StockController {
 	}
 	
 	//查询商品数量
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/outStock")
 	public String selectStockNum(SaleInfoBean saleInfoBean,Map<String, Object> map)
 	{

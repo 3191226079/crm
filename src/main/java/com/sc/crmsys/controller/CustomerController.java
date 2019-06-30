@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +19,7 @@ public class CustomerController {
 	@Resource
 	private CustomerService customerService;
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/selectId")
 	public String selectId(Map<String, Object> map)
 	{

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.sc.crmsys.bean.SaleInfoBean;
@@ -19,7 +20,7 @@ public class SaleinfoController {
 	@Resource
 	private SaleinfoService saleinfoService;
 	
-	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/get")
 	public String getsaleinfo(Map<String, Object> map)	
 	{
@@ -29,6 +30,7 @@ public class SaleinfoController {
 		return "forward:/jsp/saleinfo.jsp";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/add")
 	public String addsaleinfo(SaleInfoBean saleInfoBean)
 	{
@@ -40,6 +42,7 @@ public class SaleinfoController {
 		return "redirect:/user/index";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/get1")
 	public String get1saleinfo(String saleinfoId,Map<String, Object> map)
 	{
@@ -49,6 +52,7 @@ public class SaleinfoController {
 		return "forward:/jsp/get1saleinfo.jsp";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/update")
 	public String updatesaleinfo(SaleInfoBean saleInfoBean)
 	{
@@ -56,6 +60,7 @@ public class SaleinfoController {
 		return "redirect:get";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/del")
 	public String  delsaleinfo(String saleinfoId)
 	{

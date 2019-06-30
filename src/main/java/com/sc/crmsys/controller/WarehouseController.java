@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +29,7 @@ public class WarehouseController {
 		
 	}
 	
+	@RequiresPermissions("liuqi:production")
 	@RequestMapping("/selectAll")
 	public String selectAll(Map<String, Object> map)
 	{

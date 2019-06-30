@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,7 +27,7 @@ public class SaleoutController {
 	@Resource
 	private StockService stockService; 
 	
-	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/get")
 	public String getsaleout(String fail, Map<String, Object> map)
 	{
@@ -38,7 +39,7 @@ public class SaleoutController {
 		return "forward:/jsp/outsaleinfo.jsp";
 	}
 	
-	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/add")
 	public String addsaleout(SaleOutBean saleOutBean)
 	{
@@ -50,10 +51,12 @@ public class SaleoutController {
 		saleOutBean.setSaleoutTime(date);
 		
 		saleoutService.addsaleout(saleOutBean);
-		return "redirect:/jsp/outsaleinfo.jsp";
+		
+		return "redirect:/saleout/get";
 		
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/get1")
 	public String get1saleout(String saleoutId,Map<String, Object> map)
 	{
@@ -62,6 +65,7 @@ public class SaleoutController {
 		return "forward:/jsp/get1saleout.jsp";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/update")
 	public String updatesaleout(SaleOutBean saleOutBean)
 	{
@@ -69,6 +73,7 @@ public class SaleoutController {
 		return "redirect:get";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/del")
 	public String delsaleout(String saleoutId)
 	{
@@ -76,6 +81,7 @@ public class SaleoutController {
 		return "redirect:get";
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/selectSale")
 	public String selectSaleout(Map<String, Object> map)
 	{
@@ -85,6 +91,7 @@ public class SaleoutController {
 		
 	}
 	
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/getSale")
 	public String getSaleoutStock(Map<String, Object> map)
 	{
@@ -94,6 +101,7 @@ public class SaleoutController {
 		return "forward:/jsp/outsaleinfo.jsp";
 		
 	}
+	@RequiresPermissions("liuqi:outorder")
 	@RequestMapping("/gSS")
 	public String getSaleS(Map<String, Object> map)
 	{
